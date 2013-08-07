@@ -62,6 +62,7 @@ wp-content/mysql.sql
 # Including twentyeleven because that is our parent theme
 # /wp-content/themes/twentyeleven
 /wp-content/themes/twentytwelve
+/wp-content/themes/twentythirteen
 /wp-content/themes/index.php
 /wp-content/plugins/index.php
 # Plugins that are not strictly functionality-oriented
