@@ -50,3 +50,20 @@ Version:        0.1.0
     margin: 0 0 .5em 0;
     padding: 0;
 }
+
+
+/**************************************
+ Overrides for Parent Theme's style.css
+ **************************************/
+
+#site-title {
+    padding-top: 2.65625em;
+}
+
+#site-description {
+    margin-bottom: 2.65625em;
+}
+
+#branding #searchform {
+    top: 2.8em;
+}

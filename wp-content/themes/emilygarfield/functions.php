@@ -1,23 +1,24 @@
 <?php
 
 /**
- * Enqueue the parent theme's stylesheet
- *
- * Somewhat problematically, the child theme's stylesheet is hard-coded
- * towards the top of header.php -- Since we're only using the child theme
- * to style ag_artwork-related content this is not likely to introduce any
- * specificity issues, but do note that the parent theme's stylesheet
- * rule declarations come AFTER the child theme's.
+ * Enqueue the child & parent theme's stylesheets
  */
 function ehg_enqueue_styles() {
     wp_register_style(
         'ehg_parent_stylesheet',
         get_template_directory_uri() . "/style.css",
         array(),
+        '1.5'
+    );
+
+    wp_register_style(
+        'ehg_stylesheet',
+        get_stylesheet_directory_uri() . "/style.css",
+        array( 'ehg_parent_stylesheet' ),
         '0.1.0'
     );
 
-    wp_enqueue_style( 'ehg_parent_stylesheet' );
+    wp_enqueue_style( 'ehg_stylesheet' );
 }
 add_action( 'wp_enqueue_scripts', 'ehg_enqueue_styles' );
 
