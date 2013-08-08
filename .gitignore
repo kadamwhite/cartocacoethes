@@ -28,6 +28,9 @@ wp-content/mu-plugins/limit-login-attempts
 wp-content/mu-plugins/wpengine-common
 wp-content/mysql.sql
 
+# Non-essential plugins
+wp-content/plugins/wordpress-importer
+
 # wp core (as of 3.4.1)
 /db-config.php
 /index.php
