@@ -27,6 +27,7 @@ Version:        0.1.0
 }
 
 .artwork-thumbnail-meta {
+    background: url('images/60-percent-white.png');
     background: rgba( 255, 255, 255, .6 );
     padding: 10px 5px;
     position: absolute;
@@ -36,12 +37,16 @@ Version:        0.1.0
     opacity: 0;
     -webkit-transition: opacity 300ms linear;
     transition:         opacity 300ms linear;
+    /* Hide in IE8 and below */
+    display: none\9;
 }
 
 .artwork-thumbnail:hover .artwork-thumbnail-meta {
     opacity: 1;
     -webkit-transition: opacity 250ms linear;
     transition:         opacity 250ms linear;
+    /* Show in IE8 and below */
+    display: block\9;
 }
 
 .artwork-thumbnail-meta h2 {
