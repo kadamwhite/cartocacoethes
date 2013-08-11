@@ -43,3 +43,9 @@ function ehg_artwork_per_page( $query ) {
 }
 add_action( 'pre_get_posts', 'ehg_artwork_per_page' );
 
+function ehg_hide_news_from_recent_posts( $args ) {
+    // Don't show "News", which happens to have an ID of 21
+    $args['category__not_in'] = 21;
+    return $args;
+}
+add_filter( 'widget_posts_args', 'ehg_hide_news_from_recent_posts' );
