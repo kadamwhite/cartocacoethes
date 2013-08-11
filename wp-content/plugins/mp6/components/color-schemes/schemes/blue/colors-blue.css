@@ -1,0 +1,216 @@
+/*------------------------------------------------------------------------------
+
+Howdy! This is the CSS file that makes MP6 blue by
+overriding MP6's default styles.
+
+------------------------------------------------------------------------------*/
+
+html {
+	background: #fff;
+}
+
+kbd, code {
+	background: #f5f5f5;
+}
+
+
+/*------------------------------------------------------------------------------
+  Admin Menu
+------------------------------------------------------------------------------*/
+
+#adminmenuback,
+#adminmenuwrap {
+	background: #1e8cbe;
+}
+
+#adminmenu a,
+#adminmenu a:hover {
+	color: #fff;
+}
+
+#adminmenu div.wp-menu-image:before {
+	color: #fff;
+}
+
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub > a.menu-top,
+#adminmenu li > a.menu-top:focus {
+	background-color: #36a3ca;
+ 	color: #fff;
+}
+
+#adminmenu li:hover div.wp-menu-image:before {
+	color: #fff;
+}
+
+ul#adminmenu a.wp-has-current-submenu:after,
+ul#adminmenu > li.current > a.current:after {
+    border-right-color: #fff;
+}
+
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.current a.menu-top,
+.folded #adminmenu li.wp-has-current-submenu,
+.folded #adminmenu li.current.menu-top,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow div {
+	background: #36a3ca;
+}
+
+#adminmenu .wp-submenu a,
+.folded #adminmenu a.wp-has-current-submenu:focus + .wp-submenu a,
+.folded #adminmenu .wp-has-current-submenu .wp-submenu a {
+	color: #dee8ec;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu,
+.no-js li.wp-has-current-submenu:hover .wp-submenu,
+#adminmenu a.wp-has-current-submenu:focus + .wp-submenu,
+#adminmenu .wp-has-current-submenu .wp-submenu.sub-open,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu {
+	background-color: #0074a2;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu a,
+.no-js li.wp-has-current-submenu:hover .wp-submenu a,
+#adminmenu a.wp-has-current-submenu:focus + .wp-submenu a,
+#adminmenu .wp-has-current-submenu .wp-submenu.sub-open a,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu a {
+	color: #dee8ec;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu a:hover,
+.no-js li.wp-has-current-submenu:hover .wp-submenu a:hover,
+#adminmenu a.wp-has-current-submenu:focus + .wp-submenu a:hover,
+.folded #adminmenu a.wp-has-current-submenu:focus + .wp-submenu a:hover,
+.folded #adminmenu .wp-has-current-submenu .wp-submenu a:hover {
+	color: #fff;
+}
+
+#adminmenu .wp-submenu,
+.folded #adminmenu a.wp-has-current-submenu:focus + .wp-submenu,
+.folded #adminmenu .wp-has-current-submenu .wp-submenu {
+	background-color: #0074a2;
+	-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#adminmenu li.wp-has-submenu.wp-not-current-submenu.opensub:hover:after {
+	border-right-color: #0074a2;
+}
+
+#adminmenu .wp-submenu a,
+.folded #adminmenu a.wp-has-current-submenu:focus + .wp-submenu a,
+.folded #adminmenu .wp-has-current-submenu .wp-submenu a {
+	color: #fff;
+}
+
+#adminmenu .wp-submenu a:hover {
+	color: #78c8e6;
+}
+
+/* Collapse Button */
+#collapse-menu,
+#collapse-button div:after {
+	color: #dee8ec;
+}
+
+#collapse-menu:hover,
+#collapse-menu:hover #collapse-button div:after {
+	color: #fff;
+}
+
+/* Update/Comment bubble */
+#adminmenu li.current a .awaiting-mod,
+#adminmenu li a.wp-has-current-submenu .update-plugins {
+	background-color: #e66f00;
+}
+
+#adminmenu .awaiting-mod,
+#adminmenu .update-plugins,
+#sidemenu a .update-plugins,
+#rightnow .reallynow {
+	background-color: #e66f00;
+}
+
+
+/*------------------------------------------------------------------------------
+  Section Title
+------------------------------------------------------------------------------*/
+
+.widget .widget-top,
+.postbox h3,
+.stuffbox h3,
+.control-section .accordion-section-title,
+h3.dashboard-widget-title,
+h3.dashboard-widget-title span,
+h3.dashboard-widget-title small,
+.sidebar-name,
+#nav-menu-header,
+#nav-menu-footer,
+.menu-item-handle,
+.checkbox,
+.side-info,
+.widefat thead th,
+.widefat tfoot th,
+.wrap .add-new-h2,
+.wrap .add-new-h2:active,
+#add-new-comment a {
+	background: #f6f6f6;
+}
+
+.alternate, .alt {
+	background: #f9f9f9;
+}
+
+.form-table th,
+.form-table td {
+	border-bottom-color: #f1f1f1;
+}
+
+/* Shadows */
+.widget,
+.menu-item-settings,
+#widget-list .widget-top,
+.postbox,
+#menu-management .menu-edit,
+.manage-menus,
+table.widefat,
+.stuffbox,
+p.popular-tags,
+.widgets-holder-wrap,
+.welcome-panel,
+.wp-editor-container,
+#post-status-info,
+.popular-tags,
+.feature-filter,
+div.updated,
+.press-this #message {
+	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+#screen-meta {
+	-webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Page Navigation Tabs */
+.nav-tab {
+	background: #f5f5f5;
+}
+
+.nav-tab-active,
+.nav-tab-active:hover {
+	background: #fff;
+	border-bottom-color: #fff;
+}
+
+/* Help Menu */
+#contextual-help-back,
+.contextual-help-tabs .active,
+.contextual-help-tabs .active a,
+.contextual-help-tabs .active a:hover {
+	background: #FBFBFB;
+}
