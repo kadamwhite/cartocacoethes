@@ -24,7 +24,7 @@ add_action( 'wp_enqueue_scripts', 'ehg_enqueue_styles' );
 
 
 /**
- * Show 20 thumbnails per page when browsing artwork archives
+ * Show 24 thumbnails per page when browsing artwork archives
  *
  * If we're looking at an archive for artwork or for any custom artwork
  * taxonomies, it is visually preferable to show a thumbnail grid instead
@@ -38,7 +38,8 @@ function ehg_artwork_per_page( $query ) {
     if ( $query->is_post_type_archive('ag_artwork_item') ||
          $query->is_tax('ag_artwork_dimensions') ||
          $query->is_tax('ag_artwork_media') ) {
-        $query->set( 'posts_per_page', 20 );
+        $query->set( 'posts_per_page', 24 );
     }
 }
 add_action( 'pre_get_posts', 'ehg_artwork_per_page' );
+
