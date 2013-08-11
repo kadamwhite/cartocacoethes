@@ -1,12 +1,7 @@
 <?php
 // Build the title attribute
-if ( function_exists('ag_artwork_media_list') && function_exists('ag_artwork_dimensions_list') ) {
-    $title = sprintf(
-        __( '%s, %s (%s)', 'twentyeleven' ),
-        the_title_attribute( 'echo=0' ),
-        ag_artwork_dimensions_list( get_the_ID(), true ),
-        ag_artwork_media_list( get_the_ID(), true )
-    );
+if ( function_exists('ag_artwork_title_attribute') ) {
+    $title = ag_artwork_title_attribute( get_the_ID() );
 } else {
     $title = sprintf( __( '%s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) );
 }

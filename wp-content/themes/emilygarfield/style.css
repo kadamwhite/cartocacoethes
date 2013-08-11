@@ -72,3 +72,18 @@ Version:        0.1.0
 #branding #searchform {
     top: 2.8em;
 }
+
+/******************************
+ Styles from ArtGallery plugin,
+ in-lined here for performance
+ ******************************/
+
+.ag_gallery_widget img {
+  -webkit-transition: opacity 300ms linear;
+  transition: opacity 300ms linear; }
+.ag_gallery_widget a:hover {
+  text-decoration: none; }
+  .ag_gallery_widget a:hover img {
+    opacity: 0.6;
+    -webkit-transition: opacity 250ms linear;
+    transition: opacity 250ms linear; }
