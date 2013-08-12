@@ -77,6 +77,91 @@ Version:        0.1.0
 #branding #searchform {
     top: 2.8em;
 }
+/******************************
+ Styles for Header Widget Areas
+ ******************************/
+
+#front-page-widgets {
+    padding: 0 7.6%;
+    overflow: hidden;
+}
+#front-page-widgets .widget-title {
+    font-size: 12px;
+}
+#front-page-left {
+    float: left;
+    margin-right: 2.84%;
+    position: relative;
+    width: 75%;
+}
+#front-page-right {
+    float: left;
+    width: 22.16%;
+    /* for statement */
+    font-size: 95%;
+}
+#front-page-bottom {
+    clear: both;
+    width: 100%;
+}
+#front-page-bottom .widget {
+    clear: none;
+    float: left;
+    margin-right: 3.7%;
+    width: 30.85%;
+}
+@media (max-width: 800px) {
+    #front-page-widgets .widget-area {
+        float: none;
+        margin: 0;
+        width: auto;
+    }
+}
+
+#front-page-widgets .ag_gallery_widget {
+    margin-bottom: 0.5em;
+}
+#front-page-widgets .ag_gallery_widget img {
+    width: 24%;
+}
+@media (max-width: 650px) {
+    #front-page-widgets .ag_gallery_widget img {
+        width: 32%;
+    }
+}
+@media (max-width: 450px) {
+    #front-page-widgets .ag_gallery_widget img {
+        width: 49%;
+    }
+}
+
+/********************
+ Homepage News header
+ ********************/
+
+#home-news-banner {
+    /* Styles cribbed from twentyeleven's #access element */
+    background: #222; /* Show a solid color for older browsers */
+    background: -moz-linear-gradient(#252525, #0a0a0a);
+    background: -o-linear-gradient(#252525, #0a0a0a);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#252525), to(#0a0a0a)); /* older webkit syntax */
+    background: -webkit-linear-gradient(#252525, #0a0a0a);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+    clear: both;
+    display: block;
+    float: left;
+    width: 84.8%;
+    /* Position correctly */
+    margin: 1.625em auto;
+    padding: 0.625em 7.6%;
+}
+#home-news-banner h2 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
 
 /******************************
  Styles from ArtGallery plugin,
@@ -92,3 +177,29 @@ Version:        0.1.0
     opacity: 0.6;
     -webkit-transition: opacity 250ms linear;
     transition: opacity 250ms linear; }
+
+/*****************************
+ Styles from Mailchimp widgets,
+ in-lined here for performance
+ *****************************/
+
+ #mc_embed_signup label {
+    color:black;
+    font-size:12px;
+    font-weight:normal;}
+#mc_embed_signup input.email {
+    display: inline-block;
+    font-size: 12px;}
+#mc_embed_signup input.button {
+    display: inline-block;
+    margin-top: 4px;}
+
+/************************
+ Overrides for the sizing
+ of Gallery widget images
+ ************************/
+
+#secondary .ag_gallery_widget img {
+    width: 60px;
+    height: 60px;
+}
