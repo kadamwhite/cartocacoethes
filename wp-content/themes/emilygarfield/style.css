@@ -25,10 +25,13 @@ Version:        0.1.0
     }
 }
 
-.artwork-thumbnail .artwork-thumbnail-meta,
-.artwork-thumbnail img {
+.artwork-thumbnail .artwork-thumbnail-meta {
     height: 100%;
     width: 100%;
+}
+.artwork-thumbnail img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .artwork-thumbnail-meta {
