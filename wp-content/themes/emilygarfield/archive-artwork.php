@@ -8,7 +8,7 @@
                 <?php if ( is_tax() ) : ?>
                     <?php printf(
                         __( '%s: %s', 'twentyeleven' ),
-                        get_taxonomy( get_query_var( 'taxonomy' ) )->labels->name,
+                        get_taxonomy( get_query_var( 'taxonomy' ) )->labels->singular_name,
                         '<span>' . single_tag_title( '', false ) . '</span>'
                     ); ?>
                 <?php else : ?>
