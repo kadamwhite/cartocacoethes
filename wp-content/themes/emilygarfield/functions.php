@@ -83,6 +83,7 @@ function ehg_artwork_per_page( $query ) {
         return;
     }
     if ( $query->is_post_type_archive('ag_artwork_item') ||
+         $query->is_tax('ag_artwork_categories') ||
          $query->is_tax('ag_artwork_dimensions') ||
          $query->is_tax('ag_artwork_media') ) {
         $query->set( 'posts_per_page', 24 );
@@ -96,6 +97,7 @@ function ehg_news_only_front_page( $query ) {
     }
     if ( $query->is_home() ) {
         $query->set( 'category_name', 'news' );
+        $query->set( 'posts_per_page', 6 );
     }
 }
 add_action( 'pre_get_posts', 'ehg_news_only_front_page' );
