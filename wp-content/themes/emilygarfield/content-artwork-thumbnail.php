@@ -6,7 +6,7 @@ if ( function_exists('ag_artwork_title_attribute') ) {
     $title = sprintf( __( '%s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) );
 }
 ?>
-<a class="artwork-thumbnail"
+<a class="artwork-thumbnail <?php the_field('artwork_type'); ?>"
    href="<?php the_permalink(); ?>"
    title="<?php echo esc_attr( $title ); ?>"
    rel="bookmark">
