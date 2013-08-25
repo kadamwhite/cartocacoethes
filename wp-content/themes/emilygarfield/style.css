@@ -194,7 +194,7 @@ Version:        0.1.0
  in-lined here for performance
  *****************************/
 
- #mc_embed_signup label {
+#mc_embed_signup label {
     color:black;
     font-size:12px;
     font-weight:normal;}
@@ -204,6 +204,13 @@ Version:        0.1.0
 #mc_embed_signup input.button {
     display: inline-block;
     margin-top: 4px;}
+/* Custom */
+#mc_embed_signup p {
+    margin-bottom: 0;
+}
+.widget #mc_embed_signup form {
+    padding: 5px 0;
+}
 
 /************************
  Overrides for the sizing
