@@ -36,7 +36,7 @@ function ehg_widgets_init() {
 
     // Top left of homepage widget area
     register_sidebar( array(
-        'name' => __( 'Homepage Header Widgets Top Left', 'emilygarfield' ),
+        'name' => __( 'Homepage Content Area, Left Side', 'emilygarfield' ),
         'id' => 'sidebar-front-1',
         'description' => __( 'The large left-hand front page widget area', 'emilygarfield' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -47,7 +47,7 @@ function ehg_widgets_init() {
 
     // Top right of homepage widget area
     register_sidebar( array(
-        'name' => __( 'Homepage Header Widgets Top Right', 'emilygarfield' ),
+        'name' => __( 'Homepage Content Area, Right Side', 'emilygarfield' ),
         'id' => 'sidebar-front-2',
         'description' => __( 'The small right-hand front page widget area', 'emilygarfield' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -58,9 +58,39 @@ function ehg_widgets_init() {
 
     // Bottom (full width) of homepage widget area
     register_sidebar( array(
-        'name' => __( 'Homepage Header Widgets Bottom', 'emilygarfield' ),
-        'id' => 'sidebar-front-3',
-        'description' => __( 'The bottom of the front page widget area', 'emilygarfield' ),
+        'name' => __( 'Homepage Main Sidebar', 'emilygarfield' ),
+        'id' => 'sidebar-homepage',
+        'description' => __( 'Widgets to display next to the News column on the homepage', 'emilygarfield' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => "</aside>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name' => __( 'Homepage Footer Area One', 'emilygarfield' ),
+        'id' => 'homepage-footer-widgets-1',
+        'description' => __( 'An optional widget area for the site footer on your homepage', 'emilygarfield' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => "</aside>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name' => __( 'Homepage Footer Area Two', 'emilygarfield' ),
+        'id' => 'homepage-footer-widgets-2',
+        'description' => __( 'An optional widget area for the site footer on your homepage', 'emilygarfield' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => "</aside>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name' => __( 'Homepage Footer Area Three', 'emilygarfield' ),
+        'id' => 'homepage-footer-widgets-3',
+        'description' => __( 'An optional widget area for the site footer on your homepage', 'emilygarfield' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget' => "</aside>",
         'before_title' => '<h3 class="widget-title">',
@@ -97,7 +127,7 @@ function ehg_news_only_front_page( $query ) {
     }
     if ( $query->is_home() ) {
         $query->set( 'category_name', 'news' );
-        $query->set( 'posts_per_page', 6 );
+        $query->set( 'posts_per_page', 3 );
     }
 }
 add_action( 'pre_get_posts', 'ehg_news_only_front_page' );
