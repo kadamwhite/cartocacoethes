@@ -127,7 +127,7 @@ function ehg_news_only_front_page( $query ) {
     }
     if ( $query->is_home() ) {
         $query->set( 'category_name', 'news' );
-        $query->set( 'posts_per_page', 3 );
+        $query->set( 'posts_per_page', 2 );
     }
 }
 add_action( 'pre_get_posts', 'ehg_news_only_front_page' );

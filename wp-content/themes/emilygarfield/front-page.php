@@ -15,11 +15,16 @@ get_header();
 
 // $q = new WP_Query( $args ); ?>
 
-        <?php get_sidebar( 'front-page-content' ); ?>
+        <?php if ( ! is_paged() ) :
+            get_sidebar( 'front-page-content' ); ?>
 
         <div id="home-news-banner">
-            <h2><?php _e( 'News & Events', 'emilygarfield' ); ?></h2>
+            <h2><a href="/category/news/">
+                <?php _e( 'News & Events', 'emilygarfield' ); ?>
+            </a></h2>
         </div>
+
+        <?php endif; ?>
 
         <div id="primary">
             <div id="content" role="main">

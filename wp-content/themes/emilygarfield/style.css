@@ -169,9 +169,11 @@ Version:        0.1.0
     padding: 0.625em 7.6%;
 }
 #home-news-banner h2 {
-    color: white;
     font-size: 20px;
     font-weight: bold;
+}
+#home-news-banner h2 a {
+    color: white;
 }
 
 /******************************
