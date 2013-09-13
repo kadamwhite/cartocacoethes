@@ -30,9 +30,13 @@ wp-content/mysql.sql
 
 # Non-essential plugins
 wp-content/plugins/wordpress-importer
+wp-content/plugins/blogger-importer
 wp-content/plugins/debug-bar
 wp-content/plugins/regenerate-thumbnails
 wp-content/plugins/rewrite-rules-inspector
+wp-content/plugins/category-posts
+wp-content/plugins/google-analytics-for-wordpress
+wp-content/plugins/smarter-navigation
 
 # wp core (as of 3.4.1)
 /db-config.php
