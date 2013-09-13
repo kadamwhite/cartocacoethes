@@ -241,6 +241,11 @@ a.preview {
 	margin-top: -8px;
 }
 
+.auto-fold ul#adminmenu li.wp-has-submenu.wp-not-current-submenu:hover:after {
+	display: none;
+}
+
+
 /* Make the submenus appear correctly when tapped. */
 #adminmenu .wp-submenu {
 	position: relative;
@@ -268,39 +273,15 @@ a.preview {
 	display: block;
 }
 
+.auto-fold ul#adminmenu li:hover a.wp-has-current-submenu:after {
+	display: block;
+}
+
 /* Remove submenu headers and adjust sub meu*/
 #adminmenu .wp-submenu .wp-submenu-head {
 	display: none;
 }
 
-/* Remove the hover styles so touch scrolling doesn't activate them */
-#adminmenu li.menu-top:hover,
-#adminmenu li.menu-top:hover a {
-	background-color: transparent;
-}
-#adminmenu li.menu-top:hover a {
-	color: #ddd;
-}
-#adminmenu li:hover div.wp-menu-image:before {
-	color: #999;
-}
-
-#adminmenu li.menu-top:hover,
-#adminmenu li.menu-top:hover a {
-	background-color: transparent;
-}
-
-#adminmenu li.menu-top.wp-has-current-submenu:hover > a {
-	background-color: #0074a2;
-	color: #fff;
-}
-
-/* Re-add styles on selected menus */
-#adminmenu li.menu-top.selected,
-#adminmenu li.menu-top.selected > a {
-	background-color: #111;
-	color: #2ea2cc;
-}
 
 
 /**
@@ -762,6 +743,15 @@ p.search-box input[name="s"] {
 	width: auto;
 	vertical-align: middle;
 }
+
+.form-table .color-palette td {
+	display: table-cell;
+	width: 15px;
+}
+.form-table table.color-palette {
+	margin-right: 10px;
+}
+
 textarea,
 input {
 	font-size: 16px;

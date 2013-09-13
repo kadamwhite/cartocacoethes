@@ -17,57 +17,27 @@
 
 		elements : [],
 
-		// default colors, will be removed once `colors-mp6.css` has been moved to color schemes
-		defaults : {
-			colors : {
-				base : '#999',
-				hover : '#2ea2cc',
-				current : '#fff'
-			}
-		},
-
 		init : function() {
 
 			this.adminMenu = $( '#adminmenu' );
 
-			// merge `this.defaults` with `mp6_color_scheme`
-			if ( typeof mp6_color_scheme === 'undefined' ) {
-				this.colorscheme = $.extend( true, this.defaults, {} );
-			} else {
-				this.colorscheme = $.extend( true, this.defaults, mp6_color_scheme );
-			}
-
-			// populate elements array
-			this.find();
-
-			// loop through all elements
-			_.map( this.elements, function( $element ) {
-
-				var $parent = $element.parent();
-
-				if ( $parent.hasClass( 'current' ) || $parent.hasClass( 'wp-has-current-submenu' ) ) {
-
-					// paint icon in 'current' color
-					svgPainter.paint( $element, svgPainter.colorscheme.colors.current );
-
-				} else {
-
-					// paint icon in base color
-					svgPainter.paint( $element, svgPainter.colorscheme.colors.base );
-
-					// set hover callbacks
-					$parent.hover(
-						function() { svgPainter.paint( $element, svgPainter.colorscheme.colors.hover ); },
-						function() { svgPainter.paint( $element, svgPainter.colorscheme.colors.base ); }
-					);
-
-				}
-
-			});
+			this.setColors();
+			this.findElements();
+			this.paint();
 
 		},
 
-		find : function() {
+		setColors : function( colors ) {
+
+			if ( typeof colors === 'undefined' && typeof mp6_color_scheme !== 'undefined' ) {
+				var colors = mp6_color_scheme;
+			}
+
+			this.colorscheme = colors;
+
+		},
+
+		findElements : function() {
 
 			this.adminMenu.find( '.wp-menu-image' ).each(function() {
 
@@ -81,7 +51,36 @@
 
 		},
 
-		paint : function( $element, color ) {
+		paint : function() {
+
+			// loop through all elements
+			$.each( this.elements, function( index, $element ) {
+
+				var $menuitem = $element.parent().parent();
+
+				if ( $menuitem.hasClass( 'current' ) || $menuitem.hasClass( 'wp-has-current-submenu' ) ) {
+
+					// paint icon in 'current' color
+					svgPainter.paintElement( $element, svgPainter.colorscheme.icons.current );
+
+				} else {
+
+					// paint icon in base color
+					svgPainter.paintElement( $element, svgPainter.colorscheme.icons.base );
+
+					// set hover callbacks
+					$menuitem.hover(
+						function() { svgPainter.paintElement( $element, svgPainter.colorscheme.icons.focus ); },
+						function() { svgPainter.paintElement( $element, svgPainter.colorscheme.icons.base ); }
+					);
+
+				}
+
+			});
+
+		},
+
+		paintElement : function( $element, color ) {
 
 			// only accept hex colors: #101 or #101010
 			if ( ! color.match( /^(#[0-9a-f]{3}|#[0-9a-f]{6})$/i ) )
@@ -91,13 +90,15 @@
 
 			if ( ! xml ) {
 
-				var bgimg = $element.css( 'background-image' );
-				var base64 = bgimg.match( /.+base64,(.+)\)/ )[1];
+				var base64 = $element.css( 'background-image' ).match( /.+data:image\/svg\+xml;base64,(.+)\)/ );
+
+				if ( ! base64 )
+					return;
 
 				try {
-					var xml = window.atob( base64 );
-				} catch (e) {
-					var xml = $.base64.atob( base64 );
+					var xml = window.atob( base64[1] );
+				} catch ( e ) {
+					var xml = $.base64.atob( base64[1] );
 				}
 
 				// replace `fill` attributes
@@ -118,7 +119,6 @@
 			$element.attr( 'style', "background-image: url('data:image/svg+xml;base64," + xml + "') !important;" );
 
 		}
-
 
 	};
 

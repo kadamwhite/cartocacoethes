@@ -51,49 +51,49 @@ Last merged revision: 24545
 }
 
 /* These are part of TinyMCE, used in TinyMCE Advanced, but not WordPress. These are not MP6-ified.  */
-.wp_themeSkin .mce_sup,
-.wp_themeSkin .mce_sub,
-.wp_themeSkin .mce_media,
-.wp_themeSkin .mce_styleprops,
-.wp_themeSkin .mce_search,
-.wp_themeSkin .mce_emotions,
-.wp_themeSkin .mce_print,
-.wp_themeSkin .mce_attribs,
-.wp_themeSkin .mce_hr,
-.wp_themeSkin .mce_cut,
-.wp_themeSkin .mce_copy,
-.wp_themeSkin .mce_paste,
-.wp_themeSkin .mce_cite,
-.wp_themeSkin .mce_visualchars,
-.wp_themeSkin .mce_advhr,
-.wp_themeSkin .mce_insertdate,
-.wp_themeSkin .mce_anchor,
-.wp_themeSkin .mce_visualaid,
-.wp_themeSkin .mce_cleanup,
-.wp_themeSkin .mce_table,
-.wp_themeSkin .mce_row_props,
-.wp_themeSkin .mce_cell_props,
-.wp_themeSkin .mce_row_before,
-.wp_themeSkin .mce_row_after,
-.wp_themeSkin .mce_delete_row,
-.wp_themeSkin .mce_col_before,
-.wp_themeSkin .mce_col_after,
-.wp_themeSkin .mce_delete_col,
-.wp_themeSkin .mce_split_cells,
-.wp_themeSkin .mce_merge_cells,
-.wp_themeSkin .mce_delete_table,
-.wp_themeSkin .mce_ins,
-.wp_themeSkin .mce_abbr,
-.wp_themeSkin .mce_acronym,
-.wp_themeSkin .mce_del,
-.wp_themeSkin .mce_replace,
-.wp_themeSkin .mce_code,
-.wp_themeSkin .mce_nonbreaking,
-.wp_themeSkin .mce_inserttime,
-.wp_themeSkin .mce_insertlayer,
-.wp_themeSkin .mce_moveforward,
-.wp_themeSkin .mce_movebackward,
-.wp_themeSkin .mce_absolute
+.wp_themeSkin span.mce_sup,
+.wp_themeSkin span.mce_sub,
+.wp_themeSkin span.mce_media,
+.wp_themeSkin span.mce_styleprops,
+.wp_themeSkin span.mce_search,
+.wp_themeSkin span.mce_emotions,
+.wp_themeSkin span.mce_print,
+.wp_themeSkin span.mce_attribs,
+.wp_themeSkin span.mce_hr,
+.wp_themeSkin span.mce_cut,
+.wp_themeSkin span.mce_copy,
+.wp_themeSkin span.mce_paste,
+.wp_themeSkin span.mce_cite,
+.wp_themeSkin span.mce_visualchars,
+.wp_themeSkin span.mce_advhr,
+.wp_themeSkin span.mce_insertdate,
+.wp_themeSkin span.mce_anchor,
+.wp_themeSkin span.mce_visualaid,
+.wp_themeSkin span.mce_cleanup,
+.wp_themeSkin span.mce_table,
+.wp_themeSkin span.mce_row_props,
+.wp_themeSkin span.mce_cell_props,
+.wp_themeSkin span.mce_row_before,
+.wp_themeSkin span.mce_row_after,
+.wp_themeSkin span.mce_delete_row,
+.wp_themeSkin span.mce_col_before,
+.wp_themeSkin span.mce_col_after,
+.wp_themeSkin span.mce_delete_col,
+.wp_themeSkin span.mce_split_cells,
+.wp_themeSkin span.mce_merge_cells,
+.wp_themeSkin span.mce_delete_table,
+.wp_themeSkin span.mce_ins,
+.wp_themeSkin span.mce_abbr,
+.wp_themeSkin span.mce_acronym,
+.wp_themeSkin span.mce_del,
+.wp_themeSkin span.mce_replace,
+.wp_themeSkin span.mce_code,
+.wp_themeSkin span.mce_nonbreaking,
+.wp_themeSkin span.mce_inserttime,
+.wp_themeSkin span.mce_insertlayer,
+.wp_themeSkin span.mce_moveforward,
+.wp_themeSkin span.mce_movebackward,
+.wp_themeSkin span.mce_absolute
 {
 	-moz-transition: none;
 	-webkit-transition: none;
@@ -736,6 +736,9 @@ span.mce_wp_help:before {
 span.mce_image:before {
 	content: '\f104';
 }
+span.mce_ltr:before {
+	content: '\f320';
+}
 
 
 /* Theme */
@@ -1094,7 +1097,7 @@ span.mce_image:before {
 }
 
 .wp-editor-tools {
-	padding: 0 10px 0 0;
+	padding: 0;
 }
 
 .rtl .wp-editor-tools {
@@ -1110,19 +1113,19 @@ span.mce_image:before {
 
 .quicktags-toolbar,
 .wp_themeSkin tr.mceFirst td.mceToolbar {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #dedede;
 	background: #f5f5f5;
 }
 
 .wp-switch-editor {
-	background: #e0e0e0;
-	border: none !important;
+	background: #ebebeb;
+	border: 1px solid #dedede;
 	color: #777;
 	cursor: pointer;
 	float: right;
-	font: 13px/18px "Open Sans", sans-serif;
-	height: 17px;
-	margin: 5px 5px 0 0;
+	font: 13px/19px "Open Sans", sans-serif;
+	height: 19px;
+	margin: 5px 0 0 5px;
 	padding: 3px 8px 4px;
 }
 
@@ -1136,6 +1139,7 @@ html[dir="rtl"] .wp-switch-editor {
 
 .wp-switch-editor:hover {
 	text-decoration: none !important;
+	background: #fff;
 }
 
 .js .tmce-active .wp-editor-area {
@@ -1148,19 +1152,24 @@ html[dir="rtl"] .wp-switch-editor {
 
 .tmce-active .switch-tmce,
 .html-active .switch-html {
-	border: none;
 	background: #f5f5f5;
 	color: #555;
-
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
-	box-shadow: 0 -1px 2px rgba(0,0,0,0.05);
+	height: 20px;
+	border-bottom: none;
 }
 
 .wp-media-buttons .button {
 	margin-right: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 4px;
 	padding-left: 7px;
 	padding-right: 7px;
+}
+
+.wp-media-buttons .button:active {
+	position: relative;
+	top: 1px;
+	margin-top: -1px;
+	margin-bottom: 1px;
 }
 
 .rtl .wp-media-buttons .button {
@@ -1191,8 +1200,8 @@ html[dir="rtl"] .wp-switch-editor {
 .wp-media-buttons span.wp-media-buttons-icon,
 .wp-media-buttons span.jetpack-contact-form-icon {
 	display: inline-block;
-	width: 16px;
-	height: 16px;
+	width: 18px;
+	height: 18px;
 	vertical-align: text-top;
 	margin: 0 2px;
 }
@@ -1204,7 +1213,7 @@ html[dir="rtl"] .wp-switch-editor {
 
 .wp-media-buttons .add_media span.wp-media-buttons-icon:before,
 .wp-media-buttons #insert-jetpack-contact-form span.jetpack-contact-form-icon:before {
-	font: normal 14px/1 'dashicons';
+	font: normal 18px/1 'dashicons';
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 }

@@ -52,7 +52,7 @@ html #wpadminbar {
 
 #wpadminbar .menupop li:hover > .ab-sub-wrapper,
 #wpadminbar .menupop li.hover > .ab-sub-wrapper {
-	margin-top: -47px;
+	margin-top: -46px;
 }
 
 #wpadminbar .ab-top-menu .menupop .ab-sub-wrapper .menupop > .ab-item {
@@ -60,13 +60,12 @@ html #wpadminbar {
 }
 
 #wpadminbar .menupop .menupop > .ab-item:before {
-	top: 16px;
+	top: 10px;
 	right: 6px;
 }
 
-#wpadminbar .ab-top-menu > .menupop > .ab-sub-wrapper a {
+#wpadminbar .ab-top-menu > .menupop > .ab-sub-wrapper .ab-item {
 	font-size: 16px;
-	border-bottom: 1px solid #444 !important;
 	padding: 10px 15px;
 }
 
@@ -102,21 +101,21 @@ html #wpadminbar {
 #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
 	display: block;
 	text-indent: 0;
-	font: normal 30px/1 'dashicons';
+	font: normal 30px/1 'dashicons' !important;
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 }
 
 #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
 	content: '\f102';
-	padding-top: 7px;
+	padding-top: 5px;
 	padding-left: 11px;
 }
 
 #wpadminbar #wp-admin-bar-my-sites > .ab-item:before {
 	content: '\f112';
-	font-size: 28px;
-	padding-top: 10px;
+	font-size: 28px !important;
+	padding-top: 8px;
 	padding-left: 12px;
 }
 
@@ -215,16 +214,16 @@ html #wpadminbar {
 	right: 0;
 	left: auto;
 }
-#wpadminbar #wp-admin-bar-comments {
-	margin-right: 105px;
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-comments {
+	margin-right: 100px;
 }
-#wpadminbar #wp-admin-bar-new-content {
-	margin-right: -106px;
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-new-content {
+	margin-right: -104px;
 }
-#wpadminbar #wp-admin-bar-my-account {
-	margin-right: -156px;
+#wpadminbar ul#wp-admin-bar-top-secondary>li#wp-admin-bar-my-account {
+	margin-right: -152px;
 }
-.network-admin #wpadminbar #wp-admin-bar-my-account {
+.network-admin #wpadminbar ul#wp-admin-bar-top-secondary>li#wp-admin-bar-my-account {
 	margin-right: 0;
 }
 
