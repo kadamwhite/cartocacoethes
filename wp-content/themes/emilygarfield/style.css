@@ -118,10 +118,6 @@ Version:        0.1.0
  Overrides for Parent Theme's style.css
  **************************************/
 
-#site-title {
-    padding-top: 2.65625em;
-}
-
 #site-description {
     margin-bottom: 2.65625em;
 }
@@ -146,6 +142,18 @@ Version:        0.1.0
 @media only screen and (max-device-width: 480px) {
     #page {
         margin-bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 650px) {
+    #site-title {
+        padding-top: 2.65625em;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 650px) {
+    #site-title {
+        padding-top: 1.625em;
     }
 }
 
