@@ -114,6 +114,13 @@ Version:        0.1.0
 #branding #searchform {
     top: 2.8em;
 }
+
+@media only screen and (max-device-width: 480px) {
+    #page {
+        margin-bottom: 0;
+    }
+}
+
 /******************************
  Styles for Header Widget Areas
  ******************************/
