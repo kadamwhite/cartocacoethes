@@ -177,7 +177,7 @@ function twentyeleven_content_nav( $html_id ) {
 
     if ( $wp_query->max_num_pages > 1 ) :
 
-        if ( ehg_is_artwork_query( $wp_query ) ) {
+        if ( ehg_is_artwork_query( $wp_query ) && ! wp_is_mobile() ) {
             $next_posts_text = __( '<span class="meta-nav">&larr;</span> Older artwork', 'emilygarfield' );
             $previous_posts_text = __( 'Newer artwork <span class="meta-nav">&rarr;</span>', 'emilygarfield' );
         } else {
