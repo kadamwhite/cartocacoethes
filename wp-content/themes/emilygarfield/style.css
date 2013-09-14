@@ -73,6 +73,32 @@ Version:        0.1.0
 }
 
 
+/*********************************************
+ Styles for the copyright notice in the footer
+ *********************************************/
+
+.copyright-more-info {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+    margin: auto;
+    max-width: 400px;
+    padding: 1.625em 1em 0;
+    text-align: left;
+}
+
+#site-generator p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Hide the "Proudly Powered by WordPress" from view
+   using twentyeleven's assistive text style rules */
+#site-generator > a:last-child {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
 /**************************************
  Overrides for Parent Theme's style.css
  **************************************/

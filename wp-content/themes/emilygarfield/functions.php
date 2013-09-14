@@ -3,7 +3,15 @@
 /**
  * Enqueue the child & parent theme's stylesheets
  */
-function ehg_enqueue_styles() {
+function ehg_enqueue_scripts_and_styles() {
+    wp_register_script(
+        'ehg_interaction',
+        get_stylesheet_directory_uri() . "/js/interaction.js",
+        array( 'jquery' ),
+        '0.1.0',
+        true // Load in footer
+    );
+
     wp_register_style(
         'ehg_parent_stylesheet',
         get_template_directory_uri() . "/style.css",
@@ -25,9 +33,10 @@ function ehg_enqueue_styles() {
         '0.1.0'
     );
 
+    wp_enqueue_script( 'ehg_interaction' );
     wp_enqueue_style( 'ehg_stylesheet' );
 }
-add_action( 'wp_enqueue_scripts', 'ehg_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'ehg_enqueue_scripts_and_styles' );
 
 /**
  * Register and initialize the two custom Homepage widget areas
