@@ -19,9 +19,11 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
+	<?php if ( 'video' != get_field( 'artwork_type' ) ) : ?>
 	<div class="entry-image">
 		<?php the_post_thumbnail( 'large' ); ?>
 	</div><!-- .entry-image -->
+	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php the_content(); ?>
