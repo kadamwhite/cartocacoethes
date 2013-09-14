@@ -203,6 +203,7 @@ Version:        0.1.0
 }
 #front-page-widgets .ag_gallery_widget img {
     width: 24%;
+    min-width: 100px\9;
 }
 @media (max-width: 650px) {
     #front-page-widgets .ag_gallery_widget img {
