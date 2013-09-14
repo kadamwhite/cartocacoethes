@@ -8,6 +8,10 @@ Template:       twentyeleven
 Version:        0.1.0
 */
 
+/***********************************************
+ Styles for the Artwork archives page thumbnails
+ ***********************************************/
+ 
 .artwork-thumbnail,
 .artwork-thumbnail-meta {
     -moz-box-sizing: border-box;
@@ -73,6 +77,17 @@ Version:        0.1.0
 }
 
 
+/**********************************
+ Styles for the Single Artwork page
+ **********************************/
+
+.entry-image {
+    text-align: center;
+}
+.entry-image img {
+    max-width: 100%;
+}
+
 /*********************************************
  Styles for the copyright notice in the footer
  *********************************************/
@@ -113,6 +128,19 @@ Version:        0.1.0
 
 #branding #searchform {
     top: 2.8em;
+}
+
+/* Single posts page tweaks */
+.single-ag_artwork_item #nav-single {
+    float: none;
+}
+
+.singular .hentry {
+    padding-top: 0;
+}
+
+.single-ag_artwork_item .entry-title {
+    padding-bottom: 0.8125em;
 }
 
 @media only screen and (max-device-width: 480px) {

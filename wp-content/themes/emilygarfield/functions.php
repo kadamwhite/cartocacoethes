@@ -121,10 +121,7 @@ function ehg_artwork_per_page( $query ) {
     if ( is_admin() || !$query->is_main_query() ) {
         return;
     }
-    if ( $query->is_post_type_archive('ag_artwork_item') ||
-         $query->is_tax('ag_artwork_categories') ||
-         $query->is_tax('ag_artwork_dimensions') ||
-         $query->is_tax('ag_artwork_media') ) {
+    if ( ehg_is_artwork_query( $query ) ) {
         $query->set( 'posts_per_page', 24 );
     }
 }
@@ -158,3 +155,40 @@ function ehg_body_classes( $classes ) {
 }
 // Ensure filter runs AFTER `twentyeleven_body_classes`
 add_filter( 'body_class', 'ehg_body_classes', 20 );
+
+function ehg_footer_copyright() {
+    get_template_part( 'copyright-notice' );
+}
+add_action( 'twentyeleven_credits', 'ehg_footer_copyright' );
+
+function ehg_is_artwork_query( $query ) {
+    return $query->is_post_type_archive('ag_artwork_item') ||
+           $query->is_tax('ag_artwork_categories') ||
+           $query->is_tax('ag_artwork_dimensions') ||
+           $query->is_tax('ag_artwork_media');
+}
+
+/**
+ * Override for twentyeleven_content_nav
+ * Display navigation to next/previous pages when applicable, and correctly labels artwork items
+ */
+function twentyeleven_content_nav( $html_id ) {
+    global $wp_query;
+
+    if ( $wp_query->max_num_pages > 1 ) :
+
+        if ( ehg_is_artwork_query( $wp_query ) ) {
+            $next_posts_text = __( '<span class="meta-nav">&larr;</span> Older artwork', 'emilygarfield' );
+            $previous_posts_text = __( 'Newer artwork <span class="meta-nav">&rarr;</span>', 'emilygarfield' );
+        } else {
+            $next_posts_text = __( '<span class="meta-nav">&larr;</span> Older posts', 'emilygarfield' );
+            $previous_posts_text = __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'emilygarfield' );
+        }
+    ?>
+        <nav id="<?php echo esc_attr( $html_id ); ?>">
+            <h3 class="assistive-text"><?php _e( 'Post navigation', 'emilygarfield' ); ?></h3>
+            <div class="nav-previous"><?php next_posts_link( $next_posts_text     ); ?></div>
+            <div class="nav-next"><?php previous_posts_link( $previous_posts_text ); ?></div>
+        </nav><!-- #nav-above -->
+    <?php endif;
+}
