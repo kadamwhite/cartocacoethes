@@ -163,6 +163,7 @@ add_action( 'twentyeleven_credits', 'ehg_footer_copyright' );
 
 function ehg_is_artwork_query( $query ) {
     return $query->is_post_type_archive('ag_artwork_item') ||
+           $query->is_tax('ag_artwork_availability') ||
            $query->is_tax('ag_artwork_categories') ||
            $query->is_tax('ag_artwork_dimensions') ||
            $query->is_tax('ag_artwork_media');
