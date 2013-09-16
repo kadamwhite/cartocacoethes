@@ -44,6 +44,15 @@
 			'</p>'
 		); ?>
 
+		<?php
+			/* Get the assigned availability terms */
+			$availability = wp_get_post_terms( $post->ID, 'ag_artwork_availability', array( 'fields' => 'names' ) );
+			/* TODO: Make this content-editable */
+			if ( in_array( 'Available', $availability ) ) :
+		?>
+		<p><a href="/about">Contact artist for pricing</a></p>
+		<?php endif; ?>
+
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
