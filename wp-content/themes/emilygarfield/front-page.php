@@ -5,17 +5,15 @@ Front Page template (News posts, extra sidebar area)
 
 get_header();
 
-// $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+// Show the two most recent news posts on homepage
+$args= array(
+    'category_name' => 'news',
+    'posts_per_page' => 2
+);
 
-// // Show 6 most recent news posts on homepage
-// $args= array(
-//     'category_name' => 'news',
-//     'posts_per_page' => 6
-// );
+$q = new WP_Query( $args ); ?>
 
-// $q = new WP_Query( $args ); ?>
-
-        <?php if ( ! is_paged() ) :
+        <?php if ( ! $q->is_paged() ) :
             get_sidebar( 'front-page-content' ); ?>
 
         <div id="home-news-banner">
@@ -29,12 +27,12 @@ get_header();
         <div id="primary">
             <div id="content" role="main">
 
-            <?php if ( have_posts() ) : ?>
+            <?php if ( $q->have_posts() ) : ?>
                 
                 <?php twentyeleven_content_nav( 'nav-above' ); ?>
 
                 <?php /* Start the Custom Loop */ ?>
-                <?php while ( have_posts() ) : the_post(); ?>
+                <?php while ( $q->have_posts() ) : $q->the_post(); ?>
 
                     <?php get_template_part( 'content', get_post_format() ); ?>
 
@@ -56,6 +54,7 @@ get_header();
                 </article><!-- #post-0 -->
 
             <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
 
             </div><!-- #content -->
         </div><!-- #primary -->

@@ -118,29 +118,18 @@ add_action( 'widgets_init', 'ehg_widgets_init', 20 );
  * we can display twice as many of them without undue scrolling.
  */
 function ehg_artwork_per_page( $query ) {
-    if ( is_admin() || !$query->is_main_query() ) {
+    if ( is_admin() || ! $query->is_main_query() ) {
         return;
     }
     if ( ehg_is_artwork_query( $query ) ) {
-        $query->set( 'posts_per_page', 24 );
+        $query->set( 'posts_per_page', 28 );
     }
 }
 add_action( 'pre_get_posts', 'ehg_artwork_per_page' );
 
-function ehg_news_only_front_page( $query ) {
-    if ( is_admin() || !$query->is_main_query() ) {
-        return;
-    }
-    if ( $query->is_home() ) {
-        $query->set( 'category_name', 'news' );
-        $query->set( 'posts_per_page', 2 );
-    }
-}
-add_action( 'pre_get_posts', 'ehg_news_only_front_page' );
-
 function ehg_body_classes( $classes ) {
-    // If we're on the Blog page template,
-    if ( ! is_page_template( 'blog.php' ) ) {
+    // If we're on the homepage template,
+    if ( ! is_front_page() ) {
         return $classes;
     }
     // don't render the "singular" class
