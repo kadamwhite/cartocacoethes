@@ -138,13 +138,6 @@ function ehg_news_only_front_page( $query ) {
 }
 add_action( 'pre_get_posts', 'ehg_news_only_front_page' );
 
-function ehg_hide_news_from_recent_posts( $args ) {
-    // Don't show "News", which happens to have an ID of 21
-    $args['category__not_in'] = 21;
-    return $args;
-}
-add_filter( 'widget_posts_args', 'ehg_hide_news_from_recent_posts' );
-
 function ehg_body_classes( $classes ) {
     // If we're on the Blog page template,
     if ( ! is_page_template( 'blog.php' ) ) {
