@@ -4,4 +4,11 @@
 		e.preventDefault();
 		$copyright.slideToggle();
 	});
+
+	var $commentsForm = $('#comments');
+	$('#comment-toggle').on('click', function( e ) {
+		e.preventDefault();
+		$commentsForm.slideToggle();
+		$(this).find('span').toggle();
+	});
 })( jQuery );
