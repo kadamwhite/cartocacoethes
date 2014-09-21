@@ -12,7 +12,7 @@
  * @since Twenty Eleven 1.0
  */
 ?>
-
+<?php if ( comments_open() || have_comments() ) : ?>
 <footer class="entry-content">
 	<p class="entry-meta"><a id="comment-toggle" href="#"><em>
 		<span>Show</span>
@@ -20,6 +20,7 @@
 		Comments
 	</em></a></p>
 </footer>
+<?php endif; // comments_open() || have_comments() ?>
 
 <div id="comments" style="display:none;">
 
