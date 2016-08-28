@@ -11,7 +11,7 @@ Version:        0.1.0
 /***********************************************
  Styles for the Artwork archives page thumbnails
  ***********************************************/
- 
+
 .artwork-thumbnail,
 .artwork-thumbnail-meta {
     -moz-box-sizing: border-box;
@@ -242,9 +242,97 @@ Version:        0.1.0
 #home-news-banner h2 {
     font-size: 20px;
     font-weight: bold;
+    color: white;
 }
 #home-news-banner h2 a {
     color: white;
+}
+
+/****************************
+ Homepage Featured Categories
+ ****************************/
+.flex-container {
+    position: relative;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.flex-item {
+    flex: 1 auto;
+}
+
+.featured-category {
+    box-sizing: border-box;
+}
+
+@media all and (min-width: 600px) {
+    .flex-item {
+        flex-basis: 50%;
+    }
+
+    .featured-category:nth-of-type(2n+1) {
+        padding-right: 2%;
+    }
+
+    .featured-category:nth-of-type(2n) {
+        padding-left: 2%;
+    }
+
+    .featured-category img {
+        max-width: 300px;
+    }
+}
+
+.featured-category-title {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 2.6em;
+    text-transform: uppercase;
+}
+
+.featured-category img {
+    max-width: 100%;
+}
+
+.featured-category .hentry {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.featured-category .entry-title {
+    font-size: 18px;
+    padding-top: 0;
+    padding-right: 0;
+}
+
+.featured-category .entry-summary {
+    padding: 0.625em 0 1.625em;
+}
+
+.featured-category .featured-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 66.66%;
+    overflow: hidden;
+    margin-bottom: 0.625em;
+}
+
+.featured-category .entry-summary a {
+    display: block;
+}
+
+@media (screen and min-width: 768px) {
+    .featured-category {
+        flex-basis: 50%;
+    }
 }
 
 /******************************
