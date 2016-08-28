@@ -1,8 +1,10 @@
 <?php
 /**
- * The template for displaying posts in the Image Post Format on index and archive pages
+ * Template for displaying posts in the Image Post Format
  *
- * Learn more: http://codex.wordpress.org/Post_Formats
+ * Used on index and archive pages.
+ *
+ * @link https://codex.wordpress.org/Post_Formats
  *
  * @package WordPress
  * @subpackage Twenty_Eleven
@@ -18,7 +20,7 @@
 
 			<?php if ( comments_open() && ! post_password_required() ) : ?>
 			<div class="comments-link">
-				<?php comments_popup_link( '<span class="leave-reply">' . __( "Reply", 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>
+				<?php comments_popup_link( '<span class="leave-reply">' . __( 'Reply', 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>
 			</div>
 			<?php endif; ?>
 		</header><!-- .entry-header -->

@@ -1,7 +1,8 @@
 <?php
 /**
  * Template Name: Showcase Template
- * Description: A Page Template that showcases Sticky Posts, Asides, and Blog Posts
+ *
+ * Description: A Page Template that showcases Sticky Posts, Asides, and Blog Posts.
  *
  * The showcase template in Twenty Eleven consists of a featured posts section using sticky posts,
  * another recent posts area (with the latest post shown in full and the rest as a list)
@@ -25,7 +26,7 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php
-					/**
+					/*
 					 * We are using a heading by rendering the_content
 					 * If we have content for this page, let's display it.
 					 */
@@ -36,7 +37,7 @@ get_header(); ?>
 				<?php endwhile; ?>
 
 				<?php
-					/**
+					/*
 					 * Begin the featured posts section.
 					 *
 					 * See if we have any sticky posts and use them to create our featured posts.
@@ -60,7 +61,7 @@ get_header(); ?>
 					// Proceed only if published posts exist
 					if ( $featured->have_posts() ) :
 
-					/**
+					/*
 					 * We will need to count featured posts starting from zero
 					 * to create the slider navigation.
 					 */
@@ -83,7 +84,7 @@ get_header(); ?>
 					// Increase the counter.
 					$counter_slider++;
 
-					/**
+					/*
 					 * We're going to add a class to our featured post for featured images
 					 * by default it'll have the feature-text class.
 					 */
@@ -104,10 +105,10 @@ get_header(); ?>
 					}
 					?>
 
-					<section class="featured-post <?php echo $feature_class; ?>" id="featured-post-<?php echo $counter_slider; ?>">
+					<section class="featured-post <?php echo esc_attr( $feature_class ); ?>" id="featured-post-<?php echo esc_attr( $counter_slider ); ?>">
 
 						<?php
-							/**
+							/*
 							 * If the thumbnail is as big as the header image
 							 * make it a large featured post, otherwise render it small
 							 */
@@ -134,20 +135,20 @@ get_header(); ?>
 					<?php
 
 						// Reset the counter so that we end up with matching elements
-				    	$counter_slider = 0;
+						$counter_slider = 0;
 
 						// Begin from zero
-				    	rewind_posts();
+						rewind_posts();
 
 						// Let's roll again.
-				    	while ( $featured->have_posts() ) : $featured->the_post();
-				    		$counter_slider++;
+						while ( $featured->have_posts() ) : $featured->the_post();
+							$counter_slider++;
 							if ( 1 == $counter_slider )
-								$class = 'class="active"';
+								$class = ' class="active"';
 							else
 								$class = '';
-				    	?>
-						<li><a href="#featured-post-<?php echo $counter_slider; ?>" title="<?php echo esc_attr( sprintf( __( 'Featuring: %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ) ); ?>" <?php echo $class; ?>></a></li>
+						?>
+						<li><a href="#featured-post-<?php echo esc_attr( $counter_slider ); ?>" title="<?php echo esc_attr( sprintf( __( 'Featuring: %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ) ); ?>"<?php echo $class; ?>></a></li>
 					<?php endwhile;	?>
 					</ul>
 				</nav>
