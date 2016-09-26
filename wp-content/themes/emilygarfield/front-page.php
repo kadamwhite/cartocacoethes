@@ -5,14 +5,12 @@ Front Page template (News posts, extra sidebar area)
 
 get_header();
 
+// Show the two most recent posts from each of the 4 most recent categories on homepage
 $featured_posts = ehg_get_homepage_content();
 
-// Show the two most recent posts from each of the 4 most recent categories on homepage
-$args= array(
-    'category_name' => 'news',
-    'posts_per_page' => 2
-);
 ?>
+
+        <?php get_sidebar( 'front-page-content' ); ?>
 
         <div id="home-news-banner">
             <h2><?php _e( 'Latest Updates', 'emilygarfield' ); ?></h2>
@@ -47,25 +45,27 @@ $args= array(
                             $post = $featured_posts[ 'posts' ][ $post_id ];
                             ?>
                             <article id="<?php echo $post_id; ?>" <?php post_class( $post_id ); ?>>
-                                <?php if ( 0 === $idx ) : ?>
-                                <div class="featured-image">
-                                    <?php echo get_the_post_thumbnail( $post_id, 'medium' ); ?>
-                                </div>
-                                <?php endif; ?>
                                 <header class="entry-header">
                                     <h1 class="entry-title">
                                         <a href="<?php echo get_permalink( $post_id ); ?>" rel="bookmark">
                                             <?php echo $post->post_title; ?>
                                         </a>
                                     </h1>
+                                    <?php if ( 0 === $idx ) : ?>
+                                    <div class="featured-image">
+                                        <?php echo get_the_post_thumbnail( $post_id, 'medium' ); ?>
+                                    </div>
+                                    <?php endif; ?>
                                     <div class="entry-meta">
                                         <?php twentyeleven_posted_on(); ?>
                                     </div><!-- .entry-meta -->
                                 </header><!-- .entry-header -->
+                                <?php if ( 0 === $idx ) : ?>
                                 <div class="entry-summary">
                                     <?php echo $post->post_excerpt; ?>
                                     <a href="<?php echo get_permalink( $post_id ); ?>" rel="bookmark">Continue Reading &rarr;</a>
                                 </div><!-- .entry-summary -->
+                                <?php endif; ?>
                             </article>
                         <?php endforeach; ?>
                     </div>
