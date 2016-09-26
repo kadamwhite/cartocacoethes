@@ -8,6 +8,7 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
+$subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
 ?><!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" <?php language_attributes(); ?>>
@@ -36,7 +37,7 @@
     bloginfo( 'name' );
 
     // Add the blog description for the home/front page.
-    $site_description = get_bloginfo( 'description', 'display' );
+    $site_description = count( $subtitle_options ) ? $subtitle_options[ 0 ] : '';
     if ( $site_description && ( is_home() || is_front_page() ) )
         echo " | $site_description";
 
@@ -71,8 +72,18 @@
 <div id="page" class="hfeed">
     <header id="branding" role="banner">
             <hgroup>
-                <h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-                <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+                <h1 id="site-title">
+                    <span>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+                           title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"
+                           rel="home">
+                            <?php bloginfo( 'name' ); ?>
+                        </a>
+                    </span>
+                </h1>
+                <h2 id="site-description">
+                    <?php echo $subtitle_options[ mt_rand( 0, count( $subtitle_options ) - 1 ) ]; ?>
+                </h2>
             </hgroup>
 
             <?php
