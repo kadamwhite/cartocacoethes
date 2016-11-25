@@ -1,0 +1,84 @@
+nav {
+  display: block;
+}
+
+/* One column */
+.one-column #nav-below {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.625em;
+}
+
+#content nav {
+  clear: both;
+  overflow: hidden;
+  padding: 0 0 1.625em;
+
+  a {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 2.2em;
+  }
+
+  .meta-nav {
+    font-weight: normal;
+  }
+}
+#nav-above {
+  padding: 0 0 1.625em;
+  display: none;
+}
+.paged #nav-above {
+  display: block;
+}
+.nav-previous {
+  float: left;
+  width: 50%;
+}
+.nav-next {
+  float: right;
+  text-align: right;
+  width: 50%;
+}
+
+/* Singular navigation */
+#nav-single {
+  float: right;
+  position: relative;
+  top: -0.3em;
+  text-align: right;
+  z-index: 1;
+
+  .nav-previous,
+  .nav-next {
+    width: auto;
+  }
+  .nav-next {
+    padding-left: .5em;
+  }
+  .nav-previous {
+    padding-right: .5em;
+  }
+}
+
+
+@media (max-width: 800px) {
+  /* Simplify the basic layout */
+  #nav-below {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.625em;
+  }
+}
+
+@media (max-width: 650px) {
+  /* Make sure the post-post navigation doesn't collide with anything */
+  #nav-single {
+    display: block;
+    position: static;
+  }
+}
+
+@media print {
+  #content nav {
+    display: none;
+  }
+}

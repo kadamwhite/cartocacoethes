@@ -33,8 +33,19 @@ function ehg_enqueue_scripts_and_styles() {
         '0.1.0'
     );
 
+    wp_register_style(
+        'ehg_stylesheet_new',
+        get_stylesheet_directory_uri() . "/build/style.css",
+        array( 'mailchimp' ),
+        '0.1.0'
+    );
+
     wp_enqueue_script( 'ehg_interaction' );
-    wp_enqueue_style( 'ehg_stylesheet' );
+    if ( is_front_page() || is_home() ) {
+        wp_enqueue_style( 'ehg_stylesheet_new' );
+    } else {
+        wp_enqueue_style( 'ehg_stylesheet' );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'ehg_enqueue_scripts_and_styles' );
 

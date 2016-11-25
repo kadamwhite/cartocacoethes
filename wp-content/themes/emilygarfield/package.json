@@ -1,0 +1,33 @@
+{
+  "name": "emilygarfield.com",
+  "private": true,
+  "version": "0.1.0",
+  "author": "K Adam White",
+  "description": "Theme for a website with A LOT OF MAPS",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/kadamwhite/emilygarfield.com.git"
+  },
+  "keywords": [
+    "wordpress",
+    "wordpress theme",
+    "theme",
+    "theme"
+  ],
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/kadamwhite/emilygarfield.com#readme",
+  "devDependencies": {
+    "css-loader": "^0.26.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.3.1",
+    "webpack": "^1.13.3"
+  }
+}

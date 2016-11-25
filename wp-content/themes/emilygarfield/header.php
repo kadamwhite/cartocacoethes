@@ -70,6 +70,7 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
             </h2>
         </div>
 
+        <?php if ( ! is_front_page() ) : ?>
         <?php
             // Check to see if the header image has been removed
             $header_image = get_header_image();
@@ -101,6 +102,7 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
             <?php endif; // end check for featured image or standard header ?>
         </a>
         <?php endif; // end check for removed header image ?>
+        <?php endif; // end check for front page (front page uses new design) ?>
 
         <?php
             // Has the text been hidden?
