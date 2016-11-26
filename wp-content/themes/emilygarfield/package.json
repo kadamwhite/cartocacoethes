@@ -22,8 +22,10 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/kadamwhite/emilygarfield.com#readme",
   "devDependencies": {
+    "autoprefixer": "^6.5.3",
     "css-loader": "^0.26.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "postcss-loader": "^1.1.1",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",

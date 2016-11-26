@@ -5,12 +5,7 @@
 
 #access {
   background: dark-grey; /* Show a solid color for older browsers */
-  background: -moz-linear-gradient(#252525, #0a0a0a);
-  background: -o-linear-gradient(#252525, #0a0a0a);
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#252525), to(#0a0a0a)); /* older webkit syntax */
-  background: -webkit-linear-gradient(#252525, #0a0a0a);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+  background: linear-gradient(#252525, #0a0a0a);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
   clear: both;
   display: block;
@@ -36,8 +31,6 @@
   text-decoration: none;
 }
 #access ul ul {
-  -moz-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
-  -webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
   box-shadow: 0 3px 3px rgba(0,0,0,0.2);
   display: none;
   float: left;
@@ -71,10 +64,7 @@
 #access li:hover > a,
 #access a:focus {
   background: #f9f9f9; /* Show a solid color for older browsers */
-  background: -moz-linear-gradient(#f9f9f9, #e5e5e5);
-  background: -o-linear-gradient(#f9f9f9, #e5e5e5);
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#e5e5e5)); /* Older webkit syntax */
-  background: -webkit-linear-gradient(#f9f9f9, #e5e5e5);
+  background: linear-gradient(#f9f9f9, #e5e5e5);
   color: #373737;
 }
 #access ul li:hover > ul {
@@ -99,15 +89,9 @@
 }
 #branding #s {
   float: right;
-  -webkit-transition-duration: 400ms;
-  -webkit-transition-property: width, background;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-duration: 400ms;
-  -moz-transition-property: width, background;
-  -moz-transition-timing-function: ease;
-  -o-transition-duration: 400ms;
-  -o-transition-property: width, background;
-  -o-transition-timing-function: ease;
+  transition-duration: 400ms;
+  transition-property: width, background;
+  transition-timing-function: ease;
   width: 72px;
 }
 #branding #s:focus {
