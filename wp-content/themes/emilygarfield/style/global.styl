@@ -18,6 +18,8 @@ body {
 }
 #page {
   background: white;
+  position: relative;
+  z-index: 0;
 }
 
 /* Headings */
@@ -210,4 +212,27 @@ a:hover {
   top: 0;
   left: 7.6%;
   width: auto;
+}
+
+embed,
+iframe,
+object {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+/* SVG Icons base styles */
+
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  position: relative; /* Align more nicely with capital letters */
+  top: -0.0625em;
+  vertical-align: middle;
+  width: 1em;
+}
+
+button,
+a {
+  cursor: pointer;
 }

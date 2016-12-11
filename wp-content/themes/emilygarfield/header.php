@@ -10,34 +10,22 @@
  */
 $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
 ?><!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-js no-svg">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><?php
-    /*
-     * Print the <title> tag based on what is being viewed.
-     */
-    global $page, $paged;
 
-    wp_title( '|', true, 'right' );
-
-    // Add the blog name.
-    bloginfo( 'name' );
-
-    // Add the blog description for the home/front page.
-    $site_description = count( $subtitle_options ) ? $subtitle_options[ 0 ] : '';
-    if ( $site_description && ( is_home() || is_front_page() ) )
-        echo " | $site_description";
-
-    // Add a page number if necessary:
-    if ( $paged >= 2 || $page >= 2 )
-        echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
-
-?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="shortcut icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png">
+
+<?php /* JavaScript detection */ ?>
+<script>
+(function(html){
+    html.className = html.className.replace(/\bno-js\b/,'js')}
+)(document.documentElement);
+</script>
+
 <?php
     /* We add some JavaScript to pages with the comment form
      * to support sites with threaded comments (when in use).
@@ -55,7 +43,29 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
 </head>
 
 <body <?php body_class(); ?>>
+
+<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
+<div class="skip-link">
+    <a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'twentyeleven' ); ?>">
+        <?php _e( 'Skip to primary content', 'twentyeleven' ); ?>
+    </a>
+</div>
+<div class="skip-link">
+    <a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'twentyeleven' ); ?>">
+        <?php _e( 'Skip to secondary content', 'twentyeleven' ); ?>
+    </a>
+</div>
+
+<?php if ( ehg_new_theme() && has_nav_menu( 'primary' ) ) : ?>
+    <header id="masthead" class="navigation-top" role="banner">
+        <div class="wrap">
+            <?php get_template_part( 'components/navigation', 'top' ); ?>
+        </div><!-- .wrap -->
+    </header><!-- #masthead.navigation-top -->
+<?php endif; ?>
+
 <div id="page" class="hfeed">
+
     <header id="branding" role="banner">
         <div class="hgroup">
             <h1 id="site-title">
@@ -117,14 +127,13 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
             <?php get_search_form(); ?>
         <?php endif; ?>
 
-        <nav id="access" role="navigation">
-            <h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
-            <?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-            <div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
-            <div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to secondary content', 'twentyeleven' ); ?></a></div>
-            <?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
-            <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-        </nav><!-- #access -->
+        <?php if ( ! ehg_new_theme() ) : ?>
+            <nav id="access" role="navigation">
+                <h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
+                <?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+            </nav><!-- #access -->
+        <?php endif; ?>
     </header><!-- #branding -->
 
 

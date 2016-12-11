@@ -1,6 +1,45 @@
 <?php
 
 /**
+ * SVG icons functions and filters.
+ */
+// require get_parent_theme_file_path( '/inc/icon-functions.php' );
+require get_theme_file_path( '/inc/icon-functions.php' );
+
+function ehg_new_theme() {
+    return is_front_page() || is_home();
+}
+
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
+ */
+function ehg_setup() {
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support( 'automatic-feed-links' );
+
+    /*
+     * Let WordPress manage the document title.
+     * By adding theme support, we declare that this theme does not use a
+     * hard-coded <title> tag in the document head, and expect WordPress to
+     * provide it for us.
+     */
+    add_theme_support( 'title-tag' );
+
+    /*
+     * Enable support for Post Thumbnails on posts and pages.
+     *
+     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+     */
+    add_theme_support( 'post-thumbnails' );
+
+}
+add_action( 'after_setup_theme', 'ehg_setup' );
+
+/**
  * Enqueue the child & parent theme's stylesheets
  */
 function ehg_enqueue_scripts_and_styles() {
@@ -41,11 +80,29 @@ function ehg_enqueue_scripts_and_styles() {
     );
 
     wp_enqueue_script( 'ehg_interaction' );
-    if ( is_front_page() || is_home() ) {
-        wp_enqueue_style( 'ehg_stylesheet_new' );
-    } else {
+
+    if ( ! ehg_new_theme() ) {
         wp_enqueue_style( 'ehg_stylesheet' );
+        return;
     }
+
+    wp_enqueue_style( 'ehg_stylesheet_new' );
+
+    $emilygarfield_l10n = array(
+        'quote'          => ehg_get_svg( array( 'icon' => 'quote-right' ) ),
+        'expand'         => __( 'Expand child menu', 'emilygarfield' ),
+        'collapse'       => __( 'Collapse child menu', 'emilygarfield' ),
+        'icon'           => ehg_get_svg( array( 'icon' => 'expand', 'fallback' => true ) )
+    );
+
+    wp_enqueue_script(
+        'emilygarfield-theme',
+        get_theme_file_uri( '/build/theme.js' ),
+        array( 'jquery' ),
+        '1.0',
+        true
+    );
+    wp_localize_script( 'emilygarfield-theme', 'ehgScreenReaderText', $emilygarfield_l10n );
 }
 add_action( 'wp_enqueue_scripts', 'ehg_enqueue_scripts_and_styles' );
 

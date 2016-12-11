@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'source-map',
   context: __dirname,
   entry: {
-    style: './style/index.styl'
+    theme: './js/theme.js'
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -15,6 +15,10 @@ module.exports = {
   postcss: [
     autoprefixer({ browsers: ['last 2 versions', '> 1%'] })
   ],
+  externals: {
+    ehgScreenReaderText: 'ehgScreenReaderText',
+    jquery: 'jQuery'
+  },
   module: {
     loaders: [
       {
@@ -28,6 +32,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('style.css')
   ]
 };
