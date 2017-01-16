@@ -1,5 +1,6 @@
 var ehgScreenReaderText = require( 'ehgScreenReaderText' );
 var $ = require( 'jquery' );
+var debounce = require( 'lodash.debounce' );
 
 // Variables and DOM Caching
 var $body = $( 'body' );
@@ -24,6 +25,14 @@ var headerOffset;
 var menuTop;
 
 /**
+ * Ensure the main content starts below the navigation header
+ */
+function clearContentBelowNav() {
+  navigationHeight = $navigation.height();
+  $( '#page' ).css( 'padding-top', navigationHeight + 'px' );
+}
+
+/**
  * Sets properties of navigation
  */
 function setNavProps() {
@@ -33,6 +42,7 @@ function setNavProps() {
   navMenuItemHeight     = $navMenuItem.outerHeight() * 2;
   idealNavHeight        = navPadding + navMenuItemHeight;
   navIsNotTooTall       = navigationHeight <= idealNavHeight;
+  clearContentBelowNav();
 }
 
 /**
@@ -65,6 +75,34 @@ function adjustScrollClass() {
       // Remove 'fixed' class if nav is taller than two rows
       $navigation.removeClass( navigationFixedClass );
     }
+  }
+}
+
+var $titles = $( '.featured-category-title' );
+function adjustHomepageCategoryTitles() {
+  if (!$titles.length) {
+    return;
+  }
+  $titles.find( 'br' ).remove();
+  var range = $titles.get().reduce(function(minmax, titleNode) {
+    var $title = $( titleNode );
+    var titleHeight = $title.height();
+    return {
+      max: Math.max(minmax.max, titleHeight),
+      min: Math.min(minmax.min, titleHeight)
+    };
+  }, {
+    min: Infinity,
+    max: -Infinity
+  });
+  if (range.min !== range.max) {
+    $titles.each(function( idx, titleNode ) {
+      var $title = $( titleNode );
+      var titleHeight = $title.height();
+      if ( titleHeight < range.max ) {
+        $title.html( $title.html() + '<br>&nbsp;' );
+      }
+    });
   }
 }
 
@@ -103,6 +141,7 @@ $( document ).ready( function() {
 
     setNavProps();
     adjustScrollClass();
+    adjustHomepageCategoryTitles();
   }
 
   supportsInlineSVG();
@@ -114,13 +153,40 @@ $( document ).ready( function() {
 if ( $body.find( '.main-navigation' ).length ) {
 
   // On scroll, we want to stick/unstick the navigation
-  $( window ).on( 'scroll', function() {
+  // debounce to 60fps
+  $( window ).on( 'scroll', debounce( function() {
     adjustScrollClass();
-  } );
+  }, 17 ) );
 
   // Also want to make sure the navigation is where it should be on resize
-  $( window ).resize( function() {
+  // debounce to 60fps
+  $( window ).resize( debounce( function() {
     setNavProps();
+    adjustHomepageCategoryTitles();
     setTimeout( adjustScrollClass, 500 );
-  } );
+  }, 17 ) );
 }
+
+/**
+ * Toggle display visibility of copyright information in footer
+ */
+var $copyright = $( '.copyright-more-info' );
+var $copyrightToggle = $( '#copyright-more-info-toggle' );
+$copyrightToggle.on( 'click', function( e ) {
+  $copyright.toggleClass( 'assistive-text' );
+  if ( $copyright.hasClass('assistive-text') ) {
+    $copyrightToggle.attr( 'href', '#' );
+  } else {
+    $copyrightToggle.attr( 'href', '#copyright-notice' );
+  }
+});
+
+/**
+ * Toggle visibility of comment threads
+ */
+var $commentsForm = $('#comments');
+$('#comment-toggle').on('click', function( e ) {
+  e.preventDefault();
+  $commentsForm.slideToggle();
+  $(this).find('span').toggle();
+});

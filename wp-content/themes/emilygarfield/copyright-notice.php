@@ -1,14 +1,14 @@
 <p>
 	&copy;2008 &ndash; <?php echo date('Y'); ?> Emily Garfield.
-	<a href="#"
+	<a href="#copyright-notice"
 	   id="copyright-more-info-toggle"
 	   title="<?php esc_attr_e( 'More information about content rights', 'emilygarfield' ); ?>"
 	>
-	    More Information
+		More Information
 	</a>
 </p>
 
-<div class="copyright-more-info">
+<div id="copyright-notice" class="copyright-more-info assistive-text">
 	<p>
 		<?php _e( 'Unauthorized use and/or duplication of this material without express and written permission from the artist is strictly prohibited.', 'emilygarfield' ); ?>
 		<?php _e( 'Excerpts and links may be used, provided that full and clear credit is given to Emily Garfield with appropriate and specific direction to the original content.', 'emilygarfield' ); ?>

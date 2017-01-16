@@ -34,7 +34,6 @@ $featured_posts = ehg_get_homepage_content();
 
             <?php else : ?>
 
-                <div class="flex-container">
                 <?php foreach ( $featured_posts['posts_by_category'] as $category_id => $post_ids ) :
                     $category = $featured_posts['categories'][ $category_id ];
                     ?>
@@ -53,12 +52,12 @@ $featured_posts = ehg_get_homepage_content();
                                     </h1>
                                     <?php if ( 0 === $idx ) : ?>
                                     <div class="featured-image">
-                                        <?php echo get_the_post_thumbnail( $post_id, 'medium' ); ?>
+                                        <?php echo get_the_post_thumbnail( $post_id, 'landscape_sm' ); ?>
                                     </div>
                                     <?php endif; ?>
-                                    <div class="entry-meta">
-                                        <?php twentyeleven_posted_on(); ?>
-                                    </div><!-- .entry-meta -->
+                                    <small class="entry-meta">
+                                        <?php ehg_posted_on(); ?>
+                                    </small><!-- .entry-meta -->
                                 </header><!-- .entry-header -->
                                 <?php if ( 0 === $idx ) : ?>
                                 <div class="entry-summary">
@@ -70,7 +69,6 @@ $featured_posts = ehg_get_homepage_content();
                         <?php endforeach; ?>
                     </div>
                 <?php endforeach; ?>
-                </div>
             <?php endif;
             ?>
 

@@ -1,35 +1,95 @@
+@import './_mixins';
+
 /* =Header
 ----------------------------------------------- */
 
 #branding {
-  border-top: 2px solid #bbb;
-  padding-bottom: 10px;
+  padding: 3.65625em 0;
+  // On small screens, use more of the full width to make room for the title
+  margin: -0.5em;
+  +respond-above($sm-screen) {
+    padding: 3.65625em 0;
+    margin: 0;
+  }
   position: relative;
-  z-index: 9999;
+  overflow: hidden;
+  z-index: 100; // Why, though?
 }
-#site-title {
-  margin-right: 270px;
-  padding: 3.65625em 0 0;
+#site-title,
+#site-description {
+  text-align: center;
+  +respond-above($md-screen) {
+    text-align: left;
+    width: 60%;
+    float: left;
+  }
 }
 #site-title a {
   color: #111;
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
   line-height: 36px;
   text-decoration: none;
-}
-#site-title a:hover,
-#site-title a:focus,
-#site-title a:active {
-  color: #1982d1;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #1982d1;
+  }
 }
 #site-description {
   color: #7a7a7a;
-  font-size: 14px;
-  margin: 0 270px 3.65625em 0;
+  font-size: 18px;
 }
 #branding img {
   height: auto;
   display: block;
   width: 100%;
+}
+
+/* Search Form */
+#branding #searchform {
+  margin: 1em auto 0;
+  text-align: center;
+  +respond-above($md-screen) {
+    margin-top: 0;
+    text-align: right;
+  }
+}
+#branding #s {
+  transition-duration: 400ms;
+  transition-property: width, background;
+  transition-timing-function: ease;
+  width: 72px;
+}
+#branding #s:focus {
+  background-color: #f9f9f9;
+  width: 196px;
+}
+#branding #searchsubmit {
+  display: none;
+}
+#branding .only-search #searchform {
+  top: 5px;
+  z-index: 1;
+}
+#branding .only-search #s {
+  background-color: mid-grey;
+  border-color: black;
+  color: dark-grey;
+}
+#branding .only-search #s,
+#branding .only-search #s:focus {
+  width: 85%;
+}
+#branding .only-search #s:focus {
+  background-color: #bbb;
+}
+#branding .with-image #searchform {
+  top: auto;
+  bottom: -27px;
+  max-width: 195px;
+}
+#branding .only-search + #access div {
+  padding-right: 205px;
 }

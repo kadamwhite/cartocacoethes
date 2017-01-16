@@ -1,3 +1,5 @@
+@import './_mixins';
+
 /* =Footer
 ----------------------------------------------- */
 
@@ -6,27 +8,50 @@
 }
 #supplementary {
   border-top: 1px solid #ddd;
-  padding: 1.625em 7.6%;
+  padding-top: 1em;
+  +respond-above($sm-screen) { padding: 2em 1em 0; }
+  +respond-above($md-screen) { padding: 2em 2em 0; }
   overflow: hidden;
 }
 
+footer .widget-area {
+  ul {
+    margin-left: 0;
+  }
+
+  li {
+    display: inline-block;
+    &:not(:last-child) {
+      a::after {
+        content: ',';
+      }
+    }
+  }
+
+  +respond-below($sm-screen) {
+    float: none;
+    margin: 0 1em;
+    width: auto !important;
+  }
+}
+
 /* Two Footer Widget Areas */
-#supplementary.two .widget-area {
+footer .two .widget-area {
   float: left;
   margin-right: 3.7%;
   width: 48.1%;
 }
-#supplementary.two .widget-area + .widget-area {
+footer .two .widget-area + .widget-area {
   margin-right: 0;
 }
 
 /* Three Footer Widget Areas */
-#supplementary.three .widget-area {
+footer .three .widget-area {
   float: left;
   margin-right: 3.7%;
   width: 30.85%;
 }
-#supplementary.three .widget-area + .widget-area + .widget-area {
+footer .three .widget-area + .widget-area + .widget-area {
   margin-right: 0;
 }
 
@@ -40,7 +65,33 @@
   padding: 2.2em 0.5em;
   text-align: center;
 }
+#site-generator p:last-of-type {
+  margin-bottom: 0;
+}
 #site-generator a {
   color: #555;
   font-weight: bold;
+}
+
+// Hide the "Proudly Powered by WordPress"
+#site-generator > a:last-child {
+  display: none;
+}
+
+.copyright-more-info {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 450px;
+  padding: 1.625em 1em 0;
+  text-align: left;
+}
+// Overrule the assistive-text styles when the anchor is present in the URL,
+// to provide a low-impact no-JS fallback
+.copyright-more-info:target {
+  height: auto;
+  overflow: auto;
+  position: static !important; // overrides .assistive-text
+  width: auto;
+  clip: auto;
 }

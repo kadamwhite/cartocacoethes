@@ -1,6 +1,5 @@
 var ehgScreenReaderText = require( 'ehgScreenReaderText' );
 var $ = require( 'jquery' );
-console.log(ehgScreenReaderText);
 
 /**
  * Theme functions file.
@@ -56,7 +55,6 @@ if (mainNavigation.length) {
 	masthead         = $( '#masthead' );
 	menuToggle       = masthead.find( '.menu-toggle' );
 	siteNavigation   = masthead.find( '.main-navigation > div > ul' );
-	console.log(menuToggle);
 
 	// Enable menuToggle.
 	( function() {

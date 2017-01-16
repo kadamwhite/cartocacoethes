@@ -7,7 +7,6 @@ nav {
 --------------------------------------------------------------*/
 
 .navigation-top {
-  margin: 0 -1em;
   background: #fff;
   border-bottom: 1px solid #eee;
   border-top: 1px solid #eee;
@@ -16,8 +15,12 @@ nav {
 }
 
 .navigation-top .wrap {
-  max-width: 1000px;
-  padding: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1em;
+  padding: 0 1rem;
+  +respond-above($md-screen) { padding: 0 2rem; }
+  +respond-above($lg-screen) { padding: 0 4rem; }
 }
 
 .navigation-top a {
@@ -196,7 +199,7 @@ nav {
   display: none;
 }
 
-@media screen and (min-width: 600px) {
++respond-above($sm-screen) {
   .site-navigation-fixed.navigation-top {
     position: fixed;
     left: 0;
@@ -209,19 +212,8 @@ nav {
   }
 
   .navigation-top {
-    margin: 0 -2em;
     font-size: 0.875rem;
-    // top: 0;
-    // left: 0;
-    // position: absolute;
-    // right: 0;
-    // width: 100%;
     z-index: 3;
-  }
-
-  .navigation-top .wrap {
-    max-width: 1000px;
-    padding: 0 2.4166666666667em;
   }
 
   /* Main Navigation */
@@ -427,11 +419,14 @@ nav {
   }
 }
 
-@media screen and (min-width: 782px) {
++respond-above($md-screen) {
+  .main-navigation {
+    a {
+      padding: 1em 1.25em 1em 0;
+    }
+  }
+
   .admin-bar .site-navigation-fixed.navigation-top {
     top: 32px;
-  }
-  body {
-    padding-top: 32px;
   }
 }

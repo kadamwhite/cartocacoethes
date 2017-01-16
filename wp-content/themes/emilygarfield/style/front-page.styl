@@ -1,0 +1,49 @@
+@require './_mixins';
+
+.home {
+  #content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  .featured-category {
+    +respond-above($sm-screen) {
+      width: 48%;
+    }
+    +respond-above($md-screen) {
+      width: 48%;
+    }
+    +respond-above($xl-screen) {
+      width: 24%;
+    }
+
+    .entry-header {
+      display: flex;
+      flex-direction: column;
+    }
+    .entry-title {
+      order: 2;
+    }
+    .featured-image {
+      order: 1;
+    }
+    .entry-meta {
+      order: 3;
+    }
+  }
+
+  article {
+    margin-bottom: 1em;
+  }
+
+  .entry-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .entry-meta {
+    font-style: italic;
+  }
+  .entry-summary a {
+    display: block;
+  }
+}

@@ -25,11 +25,14 @@
     "autoprefixer": "^6.5.3",
     "css-loader": "^0.26.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "lodash.debounce": "^4.0.8",
     "postcss-loader": "^1.1.1",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.3"
   }
 }

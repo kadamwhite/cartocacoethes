@@ -11,6 +11,24 @@ function ehg_new_theme() {
 }
 
 /**
+ * Sets up custom thumbnail sizes for use in this theme
+ */
+function ehg_register_image_sizes() {
+    $ASPECT = 3 / 2;
+    $widths = array(
+        'xs' => 160,
+        'sm' => 320,
+        'md' => 640,
+        'lg' => 960,
+        'xl' => 1280
+    );
+
+    foreach ( $widths as $size => $width ) {
+        add_image_size( "landscape_$size", $width, floor( $width / $ASPECT ), true );
+    }
+}
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  *
  * Note that this function is hooked into the after_setup_theme hook, which
@@ -35,6 +53,11 @@ function ehg_setup() {
      * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
      */
     add_theme_support( 'post-thumbnails' );
+
+    /**
+     * Define custom image sizes
+     */
+    ehg_register_image_sizes();
 
 }
 add_action( 'after_setup_theme', 'ehg_setup' );
@@ -79,9 +102,8 @@ function ehg_enqueue_scripts_and_styles() {
         '0.1.0'
     );
 
-    wp_enqueue_script( 'ehg_interaction' );
-
     if ( ! ehg_new_theme() ) {
+        wp_enqueue_script( 'ehg_interaction' );
         wp_enqueue_style( 'ehg_stylesheet' );
         return;
     }
@@ -244,6 +266,13 @@ function twentyeleven_content_nav( $html_id ) {
     <?php endif;
 }
 
+function ehg_posted_on() {
+    printf( __( '<span class="assistive-text">Posted on </span><time class="entry-date" datetime="%1$s">%2$s</time>', 'emilygarfield' ),
+        esc_attr( get_the_date( 'c' ) ),
+        esc_html( get_the_date( 'M j, Y' ) )
+    );
+}
+
 // ==========================================
 //    HOMEPAGE FEATURED CONTENT MANAGEMENT
 // ==========================================
@@ -369,7 +398,7 @@ function ehg_get_homepage_content() {
         // Execute the queries
         $featured_posts = ehg_get_featured_posts( array(
             'category_count' => 4,
-            'posts_per_category' => 2
+            'posts_per_category' => 3
         ) );
 
         // store the transient
@@ -385,3 +414,27 @@ add_action( 'save_post', function( $post_id ) {
         delete_transient( 'ehg_homepage_content' );
     }
 });
+
+function ehg_get_site_subtitle() {
+    $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
+    $option_count = count( $subtitle_options );
+    return $option_count ?
+        $subtitle_options[ mt_rand( 0, $option_count - 1 ) ] :
+        '';
+}
+
+function ehg_filter_document_title($title) {
+    $filtered_title = array();
+    foreach ( $title as $key => $value ) {
+        if ($key !== 'tagline') {
+            $filtered_title[ $key ] = $value;
+        } else {
+            $subtitle_options = explode( '|', $value );
+            if ( count( $subtitle_options ) ) {
+                $filtered_title[ $key ] =  $subtitle_options[ 0 ];
+            }
+        }
+    }
+    return $filtered_title;
+}
+add_filter( 'document_title_parts', 'ehg_filter_document_title', 10 );

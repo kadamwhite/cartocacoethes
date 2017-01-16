@@ -23,7 +23,7 @@ module.exports = {
     loaders: [
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|svg)(\?.*)?$/,
-        loader: 'raw-loader'
+        loader: 'url-loader?limit=10000'
       },
       {
         test: /\.styl$/,

@@ -8,7 +8,6 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
-$subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
 ?><!doctype html>
 <html <?php language_attributes(); ?> class="no-js no-svg">
 <head>
@@ -67,6 +66,18 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
 <div id="page" class="hfeed">
 
     <header id="branding" role="banner">
+    <?php if ( ehg_new_theme() ) : ?>
+        <h1 id="site-title">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+               title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"
+               rel="home">
+                <?php bloginfo( 'name' ); ?>
+            </a>
+        </h1>
+        <h2 id="site-description"><?php echo ehg_get_site_subtitle(); ?></h2>
+
+        <?php get_search_form(); ?>
+    <?php else : ?>
         <div class="hgroup">
             <h1 id="site-title">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
@@ -76,11 +87,10 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
                     </a>
             </h1>
             <h2 id="site-description">
-                <?php echo $subtitle_options[ mt_rand( 0, count( $subtitle_options ) - 1 ) ]; ?>
+                <?php echo ehg_get_site_subtitle(); ?>
             </h2>
         </div>
 
-        <?php if ( ! is_front_page() ) : ?>
         <?php
             // Check to see if the header image has been removed
             $header_image = get_header_image();
@@ -112,7 +122,6 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
             <?php endif; // end check for featured image or standard header ?>
         </a>
         <?php endif; // end check for removed header image ?>
-        <?php endif; // end check for front page (front page uses new design) ?>
 
         <?php
             // Has the text been hidden?
@@ -127,13 +136,12 @@ $subtitle_options = explode( '|', get_bloginfo( 'description', 'display' ) );
             <?php get_search_form(); ?>
         <?php endif; ?>
 
-        <?php if ( ! ehg_new_theme() ) : ?>
-            <nav id="access" role="navigation">
-                <h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
-                <?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
-                <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-            </nav><!-- #access -->
-        <?php endif; ?>
+        <nav id="access" role="navigation">
+            <h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
+            <?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
+            <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+        </nav><!-- #access -->
+    <?php endif; /* end check for new design */?>
     </header><!-- #branding -->
 
 
