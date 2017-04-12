@@ -17,26 +17,33 @@
     if (   ! is_active_sidebar( 'homepage-footer-widgets-1'  )
         && ! is_active_sidebar( 'homepage-footer-widgets-2' )
         && ! is_active_sidebar( 'homepage-footer-widgets-3'  )
+        && ! is_active_sidebar( 'homepage-footer-full-width'  )
     )
         return;
     // If we get this far, we have widgets. Let do this.
 ?>
 <div id="supplementary" <?php twentyeleven_footer_sidebar_class(); ?>>
     <?php if ( is_active_sidebar( 'homepage-footer-widgets-1' ) ) : ?>
-    <div id="first" class="widget-area" role="complementary">
+    <div class="widget-area" role="complementary">
         <?php dynamic_sidebar( 'homepage-footer-widgets-1' ); ?>
     </div><!-- #first .widget-area -->
     <?php endif; ?>
 
     <?php if ( is_active_sidebar( 'homepage-footer-widgets-2' ) ) : ?>
-    <div id="second" class="widget-area" role="complementary">
+    <div class="widget-area" role="complementary">
         <?php dynamic_sidebar( 'homepage-footer-widgets-2' ); ?>
     </div><!-- #second .widget-area -->
     <?php endif; ?>
 
     <?php if ( is_active_sidebar( 'homepage-footer-widgets-3' ) ) : ?>
-    <div id="third" class="widget-area" role="complementary">
+    <div class="widget-area" role="complementary">
         <?php dynamic_sidebar( 'homepage-footer-widgets-3' ); ?>
+    </div><!-- #third .widget-area -->
+    <?php endif; ?>
+
+    <?php if ( is_active_sidebar( 'homepage-footer-full-width' ) ) : ?>
+    <div class="widget-area widget-area-full-width" role="complementary">
+        <?php dynamic_sidebar( 'homepage-footer-full-width' ); ?>
     </div><!-- #third .widget-area -->
     <?php endif; ?>
 </div><!-- #supplementary -->

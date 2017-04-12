@@ -1,4 +1,5 @@
-@import './_mixins';
+@require './_mixins';
+@require './_variables';
 
 /* =Structure
 ----------------------------------------------- */
@@ -13,20 +14,6 @@ body {
   +respond-above($md-screen) { padding: 0 2em; }
 }
 
-#primary {
-  +respond-above($md-screen) {
-    float: left;
-    width: 68%;
-    margin-right: 2%;
-  }
-  +respond-above($lg-screen) {
-    width: 73%;
-  }
-  +respond-above($xl-screen) {
-    width: 79%;
-    margin-right: 1%;
-  }
-}
 #secondary {
   +respond-above($md-screen) {
     float: left;
@@ -54,9 +41,6 @@ footer {
 #front-page-widgets {
   padding: 0;
   overflow: hidden;
-}
-#front-page-widgets .widget-title {
-  font-size: 14px;
 }
 #front-page-left {
   margin-bottom: 2em;
@@ -125,10 +109,15 @@ footer {
     }
   }
 
-  +respond-between($md-screen, $lg-screen) {
-    a:nth-of-type(10),
-    a:nth-of-type(11)
-    a:nth-of-type(12) {
+  +respond-below($sm-screen) {
+    a:nth-of-type(7),
+    a:nth-of-type(8)
+    a:nth-of-type(9) {
+      display: none;
+    }
+  }
+  +respond-above($md-screen) {
+    a:nth-of-type(9) {
       display: none;
     }
   }
@@ -138,22 +127,24 @@ footer {
  Homepage News header
  ********************/
 
-#home-news-banner {
+.header-banner {
   background: #222;
   clear: both;
   display: block;
   margin: 1.625em -1em;
-  padding: 0.625em 1em;
+  padding: 1em;
   +respond-above($md-screen) {
     margin: 1.625em -2em;
     padding: 0.625em 2em;
   }
 }
-#home-news-banner h2 {
-  font-size: 20px;
+.header-banner h2 {
+  font-size: $font-size-md;
+  +respond-above($sm-screen) { font-size: $font-size-lg; }
+  +respond-above($md-screen) { font-size: $font-size-xl; }
   font-weight: bold;
   color: white;
 }
-#home-news-banner h2 a {
+.header-banner h2 a {
   color: white;
 }

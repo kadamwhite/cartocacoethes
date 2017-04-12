@@ -155,17 +155,6 @@ function ehg_widgets_init() {
         'after_title' => '</h2>',
     ) );
 
-    // Bottom (full width) of homepage widget area
-    register_sidebar( array(
-        'name' => __( 'Homepage Main Sidebar', 'emilygarfield' ),
-        'id' => 'sidebar-homepage',
-        'description' => __( 'Widgets to display next to the News column on the homepage', 'emilygarfield' ),
-        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-        'after_widget' => "</aside>",
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
-    ) );
-
     register_sidebar( array(
         'name' => __( 'Homepage Footer Area One', 'emilygarfield' ),
         'id' => 'homepage-footer-widgets-1',
@@ -190,6 +179,16 @@ function ehg_widgets_init() {
         'name' => __( 'Homepage Footer Area Three', 'emilygarfield' ),
         'id' => 'homepage-footer-widgets-3',
         'description' => __( 'An optional widget area for the site footer on your homepage', 'emilygarfield' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => "</aside>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name' => __( 'Homepage Footer Bottom', 'emilygarfield' ),
+        'id' => 'homepage-footer-full-width',
+        'description' => __( 'The full-width area below the three-up homepage widgets', 'emilygarfield' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget' => "</aside>",
         'before_title' => '<h3 class="widget-title">',

@@ -4,7 +4,7 @@
 ----------------------------------------------- */
 
 html {
-  font-size: 16px;
+  font-size: $font-size-sm;
 }
 
 body, input, textarea {
@@ -25,12 +25,23 @@ body {
 /* Headings */
 h1,h2,h3,h4,h5,h6 {
   clear: both;
+  line-height: 1.5;
 }
 .widget-title,
 .featured-category-title {
-  font-size: 16px;
+  font-size: $font-size-md;
+  margin-bottom: 1em;
+  +respond-above($sm-screen) {
+    font-size: $font-size-md;
+  }
   font-weight: bold;
   text-transform: uppercase;
+}
+.widget-title {
+  text-align: center;
+  +respond-above($sm-screen) {
+    text-align: left;
+  }
 }
 hr {
   background-color: #ccc;

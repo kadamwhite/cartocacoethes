@@ -12,7 +12,7 @@ $featured_posts = ehg_get_homepage_content();
 
         <?php get_sidebar( 'front-page-content' ); ?>
 
-        <div id="home-news-banner">
+        <div class="header-banner">
             <h2><?php _e( 'Latest Updates', 'emilygarfield' ); ?></h2>
         </div>
 
@@ -23,7 +23,7 @@ $featured_posts = ehg_get_homepage_content();
 
                 <article id="post-0" class="post no-results not-found">
                     <header class="entry-header">
-                        <h1 class="entry-title"><?php _e( 'Nothing Found', 'twentyeleven' ); ?></h1>
+                        <h3 class="entry-title"><?php _e( 'Nothing Found', 'twentyeleven' ); ?></h1>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
@@ -39,32 +39,38 @@ $featured_posts = ehg_get_homepage_content();
                     ?>
                     <div class="featured-category flex-item">
                         <h2 class="featured-category-title"><?php echo $category->name; ?></h2>
-
                         <?php foreach ( $post_ids as $idx=>$post_id ) :
                             $post = $featured_posts[ 'posts' ][ $post_id ];
                             ?>
+
                             <article id="<?php echo $post_id; ?>" <?php post_class( $post_id ); ?>>
                                 <header class="entry-header">
+
                                     <h1 class="entry-title">
                                         <a href="<?php echo get_permalink( $post_id ); ?>" rel="bookmark">
                                             <?php echo $post->post_title; ?>
                                         </a>
                                     </h1>
+
                                     <?php if ( 0 === $idx ) : ?>
                                     <div class="featured-image">
                                         <?php echo get_the_post_thumbnail( $post_id, 'landscape_sm' ); ?>
                                     </div>
                                     <?php endif; ?>
+
                                     <small class="entry-meta">
                                         <?php ehg_posted_on(); ?>
                                     </small><!-- .entry-meta -->
+
                                 </header><!-- .entry-header -->
+
                                 <?php if ( 0 === $idx ) : ?>
                                 <div class="entry-summary">
                                     <?php echo $post->post_excerpt; ?>
                                     <a href="<?php echo get_permalink( $post_id ); ?>" rel="bookmark">Continue Reading &rarr;</a>
                                 </div><!-- .entry-summary -->
                                 <?php endif; ?>
+
                             </article>
                         <?php endforeach; ?>
                     </div>
@@ -75,5 +81,4 @@ $featured_posts = ehg_get_homepage_content();
             </div><!-- #content -->
         </div><!-- #primary -->
 
-<?php get_sidebar( 'front-page' ); ?>
 <?php get_footer( 'front-page' ); ?>

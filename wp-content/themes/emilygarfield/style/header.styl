@@ -1,13 +1,15 @@
 @import './_mixins';
+@import './_variables';
 
 /* =Header
 ----------------------------------------------- */
 
 #branding {
-  padding: 3.65625em 0;
+  padding: 1.65625em 0;
   // On small screens, use more of the full width to make room for the title
   margin: -0.5em;
   +respond-above($sm-screen) {
+    padding: 3.65625em 0;
     padding: 3.65625em 0;
     margin: 0;
   }
@@ -26,10 +28,18 @@
 }
 #site-title a {
   color: #111;
-  font-size: 36px;
   font-weight: bold;
-  line-height: 36px;
   text-decoration: none;
+  font-size: $font-size-lg;
+  line-height: $font-size-lg;
+  +respond-above($sm-screen) {
+    font-size: $font-size-xl;
+    line-height: $font-size-xl;
+  }
+  +respond-above($md-screen) {
+    font-size: $font-size-site-title;
+    line-height: $font-size-site-title;
+  }
 
   &:hover,
   &:focus,
@@ -39,7 +49,7 @@
 }
 #site-description {
   color: #7a7a7a;
-  font-size: 18px;
+  font-size: $font-size-sm;
 }
 #branding img {
   height: auto;
