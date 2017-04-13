@@ -121,6 +121,41 @@ footer {
       display: none;
     }
   }
+
+  img,
+  .artwork-thumbnail-meta {
+    position: relative;
+  }
+
+  .artwork-thumbnail-meta {
+    box-sizing: border-box;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity 250ms linear;
+    transition:         opacity 250ms linear;
+    padding: 10px;
+    background: rgba( 255, 255, 255, .6 );
+    font-size: 100%;
+
+    .entry-title {
+      line-height: 1.5em;
+      margin: 0 0 .5em 0;
+      padding: 0;
+      color: black;
+      z-index: 1;
+      font-size: $font-size-sm;
+      +respond-above($lg-screen) { font-size: $font-size-md; }
+    }
+  }
+
+  .artwork-thumbnail:hover {
+    img,
+    .artwork-thumbnail-meta {
+      opacity: 1;
+    }
+  }
 }
 
 /********************

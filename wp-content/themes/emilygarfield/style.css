@@ -74,7 +74,7 @@ Version:        0.1.0
     display: block\9;
 }
 
-.artwork-thumbnail-meta h2 {
+.artwork-thumbnail-meta .entry-title {
     font-size: .9em;
     line-height: 1.5em;
     margin: 0 0 .5em 0;
