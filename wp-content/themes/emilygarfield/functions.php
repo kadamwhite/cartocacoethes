@@ -7,7 +7,7 @@
 require get_theme_file_path( '/inc/icon-functions.php' );
 
 function ehg_new_theme() {
-    return is_front_page() || is_home();
+    return is_front_page();
 }
 
 /**
