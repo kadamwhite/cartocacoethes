@@ -1,0 +1,29 @@
+hosts:
+  - ehg.local
+
+paths:
+  # All paths relative to parent folder (Chassis install root)
+  base: .
+  wp: wp
+  # Use the nested wp-content directory instead of this /content directory
+  content: content/wp-content
+
+extensions:
+  - chassis/tester
+  - chassis/xdebug
+  - chassis/db-backup
+  - chassis/imagick
+
+plugins:
+  # These plugins are used on the site but we don't need to track them in the repo
+  - category-posts
+  - featured-item-metabox
+  - gutenberg
+  - jetpack
+  - public-post-preview
+  - safe-redirect-manager
+  - smarter-navigation
+  # These development-oriented plugins are only needed locally
+  - debug-bar
+  - regenerate-thumbnails
+  - rewrite-rules-inspector

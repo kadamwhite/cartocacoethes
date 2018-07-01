@@ -46,6 +46,8 @@ wp-content/plugins/safe-redirect-manager
 wp-content/plugins/hw-image-widget
 wp-content/plugins/image-widget
 wp-content/themes/twentyseventeen
+wp-content/plugins/gutenberg
+wp-content/plugins/public-post-preview
 
 # wp core (as of 3.4.1)
 /db-config.php
