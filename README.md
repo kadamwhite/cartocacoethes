@@ -15,10 +15,13 @@ cd ehg.local
 # Clone this repository as `/content`.
 git clone --recursive git@github.com:kadamwhite/emilygarfield.com.git content
 
-# Initialize the VM
+# Copy the local configuration override to the Chassis root.
+cp content/local-config.php .
+
+# Initialize the VM.
 vagrant up
 
-# Re-run the provisioner to download plugins declared in config.local.yaml
+# Re-run the provisioner to download plugins declared in config.local.yaml.
 vagrant provision
 ```
 
@@ -45,10 +48,6 @@ wp user create admin admin@ehg.local --role=administrator --user_pass=password;
 
 wp plugin activate --all;
 '
-
-# Finally, regenerate thumbnails to force use of local files instead of Jetpack's CDN.
-# (This will take a long time.)
-vagrant ssh -c 'wp media regenerate --yes'
 ```
 
 5. Once you have varified that the site is working correctly, delete the database backup file (`chassis-backup.sql`).
