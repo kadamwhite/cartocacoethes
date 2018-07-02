@@ -21,8 +21,16 @@
     )
         return;
     // If we get this far, we have widgets. Let do this.
+
+    $has_homepage_widget_columns = (
+        is_active_sidebar( 'homepage-footer-widgets-1'  )
+        && is_active_sidebar( 'homepage-footer-widgets-2' )
+        && is_active_sidebar( 'homepage-footer-widgets-3'  )
+    );
 ?>
+<?php if ( $has_homepage_widget_columns ) : ?>
 <div id="supplementary" <?php twentyeleven_footer_sidebar_class(); ?>>
+<?php endif; ?>
     <?php if ( is_active_sidebar( 'homepage-footer-widgets-1' ) ) : ?>
     <div class="widget-area" role="complementary">
         <?php dynamic_sidebar( 'homepage-footer-widgets-1' ); ?>
@@ -46,4 +54,6 @@
         <?php dynamic_sidebar( 'homepage-footer-full-width' ); ?>
     </div><!-- #third .widget-area -->
     <?php endif; ?>
+<?php if ( $has_homepage_widget_columns ) : ?>
 </div><!-- #supplementary -->
+<?php endif;
