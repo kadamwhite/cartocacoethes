@@ -13,7 +13,7 @@ $featured_posts = ehg_get_homepage_content();
         <?php get_sidebar( 'front-page-content' ); ?>
 
         <div class="header-banner">
-            <h2><?php _e( 'Latest Updates', 'emilygarfield' ); ?></h2>
+            <h2><?php _e( 'Latest Projects', 'emilygarfield' ); ?></h2>
         </div>
 
         <div id="primary">
