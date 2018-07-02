@@ -53,7 +53,7 @@ wp search-replace http://emilygarfield.com http://ehg.local;
 wp user create admin admin@ehg.local --role=administrator --user_pass=password;
 
 wp plugin activate --all;
-';
+'
 ```
 
 6. Once you have varified that the site is working correctly, delete the database backup file (`chassis-backup.sql`).
