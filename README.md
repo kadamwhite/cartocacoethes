@@ -14,23 +14,26 @@ cd ehg.local
 
 # Clone this repository as `/content`.
 git clone --recursive git@github.com:kadamwhite/emilygarfield.com.git content
+
+# Initialize the VM
+vagrant up
 ```
 
-2. Retrieve a backup of the production database from the WP Engine control panel, and save that database as `chassis-backup.sql` in the Chassis project root folder.
+2. Retrieve a backup of the production database from the WP Engine control panel, and copy that database file as `chassis-backup.sql` in the Chassis project root folder.
 
 3. Download a full site backup from the WP Engine control panel, and move the `uploads` folder from the backup into `content/wp-content/uploads`.
 
-4. Initialize the VM by running `vagrant up`
+4. Run `vagrant provision` once more to import the database and download the plugins declared in our Chassis configuration.
 
-5. After the install completes, run these commands to rewrite the production site URLs to use the local VM's hostname:
+5. After the provisioner completes, run these commands to activate plugins, rewrite the production site URLs to use the local VM's hostname, and create a local admin user:
 ```
 vagrant ssh -c '
+wp plugin activate --all
 wp search-replace https://www.emilygarfield.com http://ehg.local;
 wp search-replace https://emilygarfield.com http://ehg.local;
 wp search-replace http://www.emilygarfield.com http://ehg.local;
 wp search-replace http://emilygarfield.com http://ehg.local;
 wp user create admin admin@ehg.local --role=administrator --user_pass=password;
-wp plugin activate --all
 '
 ```
 
