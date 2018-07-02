@@ -29,13 +29,19 @@ vagrant provision
 
 3. Retrieve a backup of the production database from the WP Engine control panel, and copy that database file as `chassis-backup.sql` in the Chassis project root folder.
 
-4. Delete the database that Vagrant set up on the initial `up`, then run the provisioner one final time to trigger the content import. Once the database has been imported, we use WP-CLI to activate plugins, rewrite the production site URLs to use the local VM's hostname, and create a local admin user.
+4. Delete the database that Vagrant set up on the initial `up`, to make room for our new backup.
 ```bash
 # Delete original database.
 vagrant ssh -c 'mysql --user="wordpress" --password="vagrantpassword" --database="wordpress" --execute="DROP DATABASE wordpress; CREATE DATABASE wordpress;"'
+```
 
+5. Run the provisioner one final time to trigger the content import. Once the database has been imported, we use WP-CLI to activate plugins, rewrite the production site URLs to use the local VM's hostname, and create a local admin user.
+```bash
 # Re-provision to import database.
 vagrant provision
+
+# Remove the database backup file so subsequent provision runs do not fail.
+rm chassis-backup.sql
 
 # Modify database for local use & activate all plugins.
 vagrant ssh -c '
@@ -47,9 +53,9 @@ wp search-replace http://emilygarfield.com http://ehg.local;
 wp user create admin admin@ehg.local --role=administrator --user_pass=password;
 
 wp plugin activate --all;
-'
+';
 ```
 
-5. Once you have varified that the site is working correctly, delete the database backup file (`chassis-backup.sql`).
+6. Once you have varified that the site is working correctly, delete the database backup file (`chassis-backup.sql`).
 
 You may now access the site at [ehg.local](http://ehg.local), and administer the local copy with username `admin` and password `password`. Happy coding!
