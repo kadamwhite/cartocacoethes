@@ -15,9 +15,6 @@ cd ehg.local
 # Clone this repository as `/content`.
 git clone --recursive git@github.com:kadamwhite/emilygarfield.com.git content
 
-# Copy the local configuration override to the Chassis root.
-cp content/local-config.php .
-
 # Initialize the VM.
 vagrant up
 

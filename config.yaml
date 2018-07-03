@@ -24,6 +24,7 @@ plugins:
   - safe-redirect-manager
   - smarter-navigation
   # These development-oriented plugins are only needed locally
+  - block-unit-test
   - debug-bar
   - regenerate-thumbnails
   - rewrite-rules-inspector
