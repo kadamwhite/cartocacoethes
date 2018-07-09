@@ -33,6 +33,7 @@ wp-content/mysql.sql
 # Non-essential plugins
 wp-content/plugins/wordpress-importer
 wp-content/plugins/blogger-importer
+wp-content/plugins/block-unit-test
 wp-content/plugins/debug-bar
 wp-content/plugins/regenerate-thumbnails
 wp-content/plugins/post-thumbnail-editor
