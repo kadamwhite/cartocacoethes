@@ -3,6 +3,7 @@
 	display: block;
 	float: left;
 	width: 100%;
+	background: $color__background-body;
 
 	ul {
 		display: none;
@@ -11,63 +12,18 @@
 		padding-left: 0;
 
 		ul {
-			box-sizing: border-box;
-			border: 1px solid rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 9999;
-			background: white;
-			margin-left: -0.5em;
-
-			ul {
-				left: -999em;
-				top: 0;
-				margin-top: calc( -0.5em - 1px );
-				margin-left: 0;
-			}
-
-			li {
-				margin: 0.5em 0;
-
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			a {
-				width: 200px;
-				padding: 0.25em 0 0.25em 0.5em;
-				margin-right: 0;
-			}
-
-			:hover > a,
-			.focus > a {
-				color: $color__link;
-				// Border-based highlighting is for top-level list items only
-				padding-top: 0.25em;
-				border: 0;
-			}
-		}
-
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
+			padding-left: 1em;
 		}
 	}
 
 	li {
-		float: left;
-		position: relative;
-		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
 	}
 
 	a {
 		display: block;
-		padding: 1em 0 0.5em;
-		margin-right: 1.25em;
+		padding: 0.5em 0;
 		text-decoration: none;
 		font-weight: bold;
 		color: $color__text-main;
@@ -76,9 +32,6 @@
 	:hover > a,
 	.focus > a {
 		color: $color__link;
-		// Highlight top-level <a> tags
-		padding-top: 0.5em;
-		border-top: 0.5em solid $color__text-main;
 	}
 
 	a:hover,
@@ -86,94 +39,171 @@
 		color: $color__link;
 	}
 
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-		border-top: 0.5em solid $color__text-main;
-		padding-top: 0.5em;
-	}
-	ul ul .current_page_item > a,
-	ul ul .current-menu-item > a,
-	ul ul .current_page_ancestor > a,
-	ul ul .current-menu-ancestor > a {
-		border-top: 0;
-		padding-top: 0.25em;
+	@include respond-above(sm) {
+		border-bottom: 1px solid $color__border;
 
-		padding-left: 0.3em;
-		border-left: 0.2em solid currentColor;
-	}
-
-	/* Child item indicators. */
-	ul li.menu-item-has-children,
-	ul li.page_item_has_children {
-		> a {
-			padding-right: 1em;
-		}
-		> a:after {
-			content: "\0203A";
-			@include font-size(1.5);
-			line-height: 1rem;
-			display: inline-block;
-			padding-bottom: 0.25em;
-			transform: rotate(90deg);
-			position: absolute;
-			right: 1em;
+		.menu-main-menu-container {
+			@include cap-block-width;
 		}
 
-
-		/* Nested children. */
-		li.menu-item-has-children > a:after,
-		li.page_item_has_children > a:after {
-			padding: 0;
-			transform: rotate(0);
-			position: static;
-			line-height: 1;
-			float: right;
-		}
-
-		/* Carat at top of dropdown menu. */
-		&:before,
-		&:after {
-			border-style: solid;
-			border-width: 0 6px 6px;
-			content: "";
+		ul {
 			display: none;
-			height: 0;
-			position: absolute;
-			right: 1em;
-			bottom: -1px;
-			width: 0;
-			z-index: 10000;
+			list-style: none;
+
+			ul {
+				box-sizing: border-box;
+				border: 1px solid $color__border;
+				float: left;
+				position: absolute;
+				top: 100%;
+				left: -999em;
+				z-index: 9999;
+				background: $color__background-body;
+				padding-left: 0;
+				margin: 0 0 0 -0.5em;
+
+				ul {
+					left: -999em;
+					top: 0;
+					margin-top: -1px;
+					margin-left: 0;
+				}
+
+				li {
+					&:hover > ul,
+					&.focus > ul {
+						left: 100%;
+					}
+				}
+
+				a {
+					width: 200px;
+					padding: 0.5em 0 0.5em 0.5em;
+					margin-right: 0;
+				}
+
+				:hover > a,
+				.focus > a {
+					color: $color__link;
+					// Border-based highlighting is for top-level list items only
+					padding-top: 0.5em;
+					border: 0;
+				}
+			}
+
+			li:hover > ul,
+			li.focus > ul {
+				left: auto;
+			}
 		}
-	
-		&.focus:before,
-		&:hover:before,
-		&.focus:after,
-		&:hover:after {
-			display: block;
+
+		li {
+			float: left;
+			position: relative;
+			box-sizing: border-box;
 		}
-	
-		&:before,
-		&:before {
-			border-color: transparent transparent #bbb;
-			bottom: 0;
+
+		a {
+			padding: 1em 0 0.5em;
+			margin-right: 1.25em;
 		}
-	}
-	
-	ul li.menu-item-has-children:after,
-	ul li.page_item_has_children:after {
-		border-color: transparent transparent #fff;
-	}
-	
-	ul ul li {
-		&.menu-item-has-children,
-		&.page_item_has_children {
+
+		:hover > a,
+		.focus > a {
+			// Highlight top-level <a> tags
+			padding-top: 0.5em;
+			border-top: 0.5em solid $color__text-main;
+		}
+
+		.current_page_item > a,
+		.current-menu-item > a,
+		.current_page_ancestor > a,
+		.current-menu-ancestor > a {
+			border-top: 0.5em solid $color__text-main;
+			padding-top: 0.5em;
+		}
+		ul ul .current_page_item > a,
+		ul ul .current-menu-item > a,
+		ul ul .current_page_ancestor > a,
+		ul ul .current-menu-ancestor > a {
+			border-top: 0;
+			padding-top: 0.5em;
+
+			padding-left: 0.3em;
+			border-left: 0.2em solid currentColor;
+		}
+
+		/* Child item indicators. */
+		ul li.menu-item-has-children,
+		ul li.page_item_has_children {
+			> a {
+				padding-right: 1em;
+			}
+			> a:after {
+				content: "\0203A";
+				@include font-size(1.5);
+				line-height: 1rem;
+				display: inline-block;
+				padding-bottom: 0.25em;
+				transform: rotate(90deg);
+				position: absolute;
+				right: 1em;
+			}
+
+
+			/* Nested children. */
+			li.menu-item-has-children > a:after,
+			li.page_item_has_children > a:after {
+				padding: 0;
+				transform: rotate(0);
+				position: static;
+				line-height: 1;
+				float: right;
+			}
+
+			/* Carat at top of dropdown menu. */
+			&:before,
+			&:after {
+				border-style: solid;
+				border-width: 0 6px 6px;
+				content: "";
+				display: none;
+				height: 0;
+				position: absolute;
+				right: 1em;
+				bottom: -1px;
+				width: 0;
+				z-index: 10000;
+			}
+
 			&.focus:before,
 			&:hover:before,
 			&.focus:after,
 			&:hover:after {
-				display: none;
+				display: block;
+			}
+
+			&:before,
+			&:before {
+				border-color: transparent transparent #bbb;
+				bottom: 0;
+			}
+		}
+
+		ul li.menu-item-has-children:after,
+		ul li.page_item_has_children:after {
+			border-color: transparent transparent #fff;
+		}
+
+		ul ul li {
+			&.menu-item-has-children,
+			&.page_item_has_children {
+				&.focus:before,
+				&:hover:before,
+				&.focus:after,
+				&:hover:after {
+					display: none;
+				}
 			}
 		}
 	}
@@ -185,7 +215,7 @@
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@include respond-above(sm) {
 	.menu-toggle {
 		display: none;
 	}

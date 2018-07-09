@@ -10,6 +10,7 @@ input[type="submit"] {
 	@include font-size(0.75);
 	line-height: 1;
 	padding: .6em 1em .4em;
+	cursor: pointer;
 
 	&:hover {
 		border-color: $color__border-button-hover;

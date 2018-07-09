@@ -29,6 +29,14 @@
 	margin-right: auto;
 }
 
+@mixin cap-block-width {
+	@include center-block;
+	width: 100%;
+	max-width: $size__page-max-width;
+	padding: 0 2rem;
+	background: $color__background-body;
+}
+
 // Clearfix
 @mixin clearfix() {
 	content: "";

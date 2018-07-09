@@ -14,5 +14,6 @@
     "wp-content/upgrade": true,
     "wp-content/uploads": true,
     "iterative-landscape": true,
-  }
+  },
+  "files.trimTrailingWhitespace": true
 }
