@@ -8,17 +8,39 @@
 	ul {
 		display: none;
 		list-style: none;
-		margin: 0;
+		margin: 0 1.5em;
 		padding-left: 0;
 
-		ul {
-			padding-left: 1em;
+		@include respond-below(sm) {
+			ul {
+				padding-left: 1em;
+
+				ul {
+					li,
+					li a {
+						display: inline;
+					}
+					li a:after {
+						content: ",";
+						display: inline;
+						break-before: avoid;
+					}
+					li:last-child a:after {
+						display: none;
+					}
+				}
+			}
 		}
 	}
 
 	li {
 		padding: 0;
 		margin: 0;
+		border-bottom: 1px solid $color__border;
+
+		li {
+			border: none;
+		}
 	}
 
 	a {
@@ -47,11 +69,11 @@
 		}
 
 		ul {
-			display: none;
+			display: block;
 			list-style: none;
+			margin: 0;
 
 			ul {
-				box-sizing: border-box;
 				border: 1px solid $color__border;
 				float: left;
 				position: absolute;
@@ -100,7 +122,7 @@
 		li {
 			float: left;
 			position: relative;
-			box-sizing: border-box;
+			border: none;
 		}
 
 		a {
@@ -213,7 +235,71 @@
 .menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
+	ul ul {
+		display: inline-block;
+	}
 }
+.menu-toggle {
+	width: 100%;
+	@include font-size(1.2);
+	background: $color__background-body;
+	border: 0;
+	padding: 0.75em 0;
+	border-bottom: 1px solid $color__border;
+	text-align: center;
+
+	&:hover {
+		color: $color__link;
+	}
+}
+
+.main-navigation .hamburger {
+	position: relative;
+	display: inline-block;
+	line-height: 1;
+	vertical-align: sub;
+	padding-right: 1em;
+  height: 1em;
+	width: 1em;
+
+	&:before,
+	&:after {
+		content: "";
+		width: 1em;
+		height: 20%;
+		position: absolute;
+		top: 50%;
+		margin-top: -10%;
+		transform-origin: 50% 50%;
+		transition: none;
+		background: currentColor;
+	}
+	&:before {
+		// Use text shadow for the middle bar.
+		box-shadow:
+			0 -0.4em 0 0 currentColor,
+			0 0.4em 0 0 currentColor;
+	}
+}
+.main-navigation.toggled .hamburger {
+	&:before,
+	&:after {
+		content: "";
+		width: 1em;
+		position: absolute;
+		top: 50%;
+		margin-top: -10%;
+		transition: transform 150ms ease-in-out;
+	}
+	&:before {
+		box-shadow: none;
+		transform: rotate(45deg);
+	}
+	&:after {
+		transform: rotate(-45deg);
+	}
+}
+
 
 @include respond-above(sm) {
 	.menu-toggle {

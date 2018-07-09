@@ -1,0 +1,13 @@
+/*--------------------------------------------------------------
+# Gutenberg block style overrides.
+--------------------------------------------------------------*/
+
+.gallery-caption {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.wp-block-gallery {
+	margin: 0;
+}
