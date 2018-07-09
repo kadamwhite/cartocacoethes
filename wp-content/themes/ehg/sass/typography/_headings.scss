@@ -1,3 +1,51 @@
+// Ratios used in this file inspired by http://typecast.com/blog/a-more-modern-scale-for-web-typography
+
 h1, h2, h3, h4, h5, h6 {
+	margin: 0.5em 0 1em;
 	clear: both;
+}
+
+h1 {
+	@include font-size(2);
+	line-height: 1.25;
+	@include respond-above(sm) {
+		@include font-size(2.5);
+		line-height: 1.125;
+	}
+	@include respond-above(md) {
+		@include font-size(3);
+		line-height: 1.05;
+	}
+}
+
+h2 {
+	@include font-size(1.675);
+	line-height: 1.15385;
+	@include respond-above(sm) { @include font-size(2); }
+	@include respond-above(md) {
+		@include font-size(2.25);
+		line-height: 1.25;
+	}
+}
+
+h3 {
+	@include font-size(1.375);
+	line-height: 1.13636;
+	@include respond-above(sm) { @include font-size(1.5); }
+	@include respond-above(md) {
+		@include font-size(1.75);
+		line-height: 1.25;
+	}
+}
+
+h4 {
+	@include font-size(1.125);
+	line-height: 1.11111;
+	@include respond-above(sm) { line-height: 1.22222; }
+}
+
+h5,
+h6 {
+	@include font-size(1);
+	line-height: 1.11111;
 }

@@ -1,4 +1,24 @@
 table {
 	margin: 0 0 1.5em;
 	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	font-weight: bold;
+	border-bottom: 1px solid $color__border-input;
+}
+
+td {
+	padding: 0.25em 0.5em;
+
+	&:first-child { padding-left: 0; }
+	&:last-child { padding-right: 0; }
+}
+
+td {
+	border-bottom: 1px dotted $color__border-input;
+}
+tr:last-child td {
+	border-bottom: 0;
 }
