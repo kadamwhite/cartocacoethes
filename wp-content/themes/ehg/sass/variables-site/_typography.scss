@@ -3,3 +3,7 @@ $font__code: "League Mono", Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono",
 $font__pre: "League Mono", "Courier 10 Pitch", Courier, monospace;
 $font__line-height-body: 1.5;
 $font__line-height-pre: 1.6;
+
+a {
+	transition: color 200ms;
+}
