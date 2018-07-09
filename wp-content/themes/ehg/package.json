@@ -6,7 +6,8 @@
   "author": "K Adam White",
   "license": "(Artistic-2.0 OR GPL-2.0-or-later)",
   "scripts": {
-    "scss": "sass --load-path scss --style=expanded --indented sass/style.scss style.css"
+    "sass": "sass --load-path scss --style=expanded sass/style.scss style.css",
+    "sass:watch": "npm run sass -- --watch"
   },
   "devDependencies": {
     "sass": "^1.9.0"
