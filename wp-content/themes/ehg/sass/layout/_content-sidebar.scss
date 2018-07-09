@@ -1,4 +1,4 @@
-header {
+.site-header {
 	// Visually reverse header & nav
 	display: flex;
 	flex-direction: column-reverse;
@@ -8,7 +8,12 @@ header {
 	text-align: center;
 }
 
-@include respond-above(sm) {
+.site-branding,
+.content-area {
+	margin: 0 1em;
+}
+
+@include respond-above(md) {
 	body {
 		background: $color__background;
 	}

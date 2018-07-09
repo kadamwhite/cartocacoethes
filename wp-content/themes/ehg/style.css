@@ -1054,9 +1054,6 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
-## Menus
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
@@ -1165,7 +1162,7 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
-header {
+.site-header {
   display: flex;
   flex-direction: column-reverse;
 }
@@ -1174,7 +1171,12 @@ header {
   text-align: center;
 }
 
-@media (min-width: 768px) {
+.site-branding,
+.content-area {
+  margin: 0 1em;
+}
+
+@media (min-width: 992px) {
   body {
     background: #f9f6f6;
   }
