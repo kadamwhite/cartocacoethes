@@ -50,10 +50,10 @@
 				<?php esc_html_e( 'Menu', 'ehg' ); ?>
 			</button>
 			<?php
-			wp_nav_menu( array(
+			wp_nav_menu( [
 				'theme_location' => 'menu-primary',
 				'menu_id'        => 'primary-menu',
-			) );
+			] );
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
