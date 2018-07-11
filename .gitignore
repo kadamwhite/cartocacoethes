@@ -10,6 +10,7 @@ Thumbs.db
 # Composer & npm
 vendor/
 node_modules/
+package-lock.json
 
 # wordpress specific
 wp-config.php
