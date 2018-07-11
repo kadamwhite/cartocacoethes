@@ -1,0 +1,7 @@
+language: php
+php:
+  - '7.0'
+install:
+  - composer install --no-dev
+script:
+  - vendor/bin/phpcs --standard=vendor/humanmade/coding-standards -s .

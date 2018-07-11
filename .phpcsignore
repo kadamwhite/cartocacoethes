@@ -1,0 +1,19 @@
+# 3rd party dependencies
+vendor/
+wp-content/plugins/acf-repeater/
+wp-content/plugins/category-posts/
+wp-content/plugins/debug-bar/
+wp-content/plugins/featured-item-metabox/
+wp-content/plugins/gutenberg/
+wp-content/plugins/jetpack/
+wp-content/plugins/public-post-preview/
+wp-content/plugins/regenerate-thumbnails/
+wp-content/plugins/rewrite-rules-inspector/
+wp-content/plugins/safe-redirect-manager/
+wp-content/plugins/smarter-navigation/
+wp-content/themes/twentyeleven/
+
+# Old theme
+wp-content/plugins/artgallery/config/acf-config.php
+wp-content/plugins/artgallery/includes/
+wp-content/themes/emilygarfield/

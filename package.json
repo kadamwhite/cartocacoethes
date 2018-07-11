@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "emilygarfield.com",
+  "version": "1.0.0",
+  "description": "WordPress theme and plugins for emilygarfield.com",
+  "author": "K Adam White",
+  "license": "(Artistic-2.0 OR GPL-2.0-or-later)",
+  "homepage": "https://github.com/kadamwhite/emilygarfield.com#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadamwhite/emilygarfield.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kadamwhite/emilygarfield.com/issues"
+  },
+  "scripts": {
+    "phpcs": "vendor/bin/phpcs --standard=vendor/humanmade/coding-standards -s ."
+  }
+}
