@@ -1,6 +1,7 @@
 # 3rd party dependencies
 vendor/
 wp-content/plugins/acf-repeater/
+wp-content/plugins/block-unit-test/
 wp-content/plugins/category-posts/
 wp-content/plugins/debug-bar/
 wp-content/plugins/featured-item-metabox/
@@ -14,6 +15,5 @@ wp-content/plugins/smarter-navigation/
 wp-content/themes/twentyeleven/
 
 # Old theme
-wp-content/plugins/artgallery/config/acf-config.php
-wp-content/plugins/artgallery/includes/
+wp-content/plugins/artgallery/
 wp-content/themes/emilygarfield/

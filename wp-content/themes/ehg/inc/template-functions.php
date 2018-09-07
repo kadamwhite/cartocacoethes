@@ -4,6 +4,12 @@
  *
  * @package Emily_Garfield_Art
  */
+namespace EHG\TemplateFunctions;
+
+function setup() {
+	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes' );
+	add_action( 'wp_head', __NAMESPACE__ . '\\pingback_header' );
+}
 
 /**
  * Adds custom classes to the array of body classes.
@@ -11,7 +17,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function ehg_body_classes( $classes ) {
+function body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -24,14 +30,12 @@ function ehg_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'ehg_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function ehg_pingback_header() {
+function pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-add_action( 'wp_head', 'ehg_pingback_header' );

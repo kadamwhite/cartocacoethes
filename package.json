@@ -15,6 +15,6 @@
   },
   "scripts": {
     "postinstall": "composer install",
-    "phpcs": "vendor/bin/phpcs --standard=vendor/humanmade/coding-standards -s ."
+    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s ."
   }
 }

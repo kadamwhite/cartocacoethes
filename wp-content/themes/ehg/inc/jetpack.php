@@ -6,6 +6,11 @@
  *
  * @package Emily_Garfield_Art
  */
+namespace EHG\Jetpack;
+
+function setup() {
+	add_action( 'after_setup_theme', __NAMESPACE__ . '\\ehg_jetpack_setup' );
+}
 
 /**
  * Jetpack setup function.
@@ -14,11 +19,11 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function ehg_jetpack_setup() {
+function jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', [
 		'container' => 'main',
-		'render'    => 'ehg_infinite_scroll_render',
+		'render'    => __NAMESPACE__ . '\\infinite_scroll_render',
 		'footer'    => 'page',
 	] );
 
@@ -42,12 +47,11 @@ function ehg_jetpack_setup() {
 		],
 	] );
 }
-add_action( 'after_setup_theme', 'ehg_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function ehg_infinite_scroll_render() {
+function infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
