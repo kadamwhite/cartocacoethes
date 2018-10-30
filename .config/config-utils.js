@@ -15,7 +15,7 @@ const devServerPort = () => parseInt( process.env.PORT, 10 ) || 9090;
  * @param  {...String} relPaths Strings describing a file relative to the content/ folder.
  * @returns {String} An absolute file system path.
  */
-const filePath = ( ...relPaths ) => join( process.cwd(), ...relPaths );
+const filePath = ( ...relPaths ) => join( process.cwd(), 'wp-content', ...relPaths );
 
 /**
  * An array of file system paths in which to find first-party source code.
@@ -23,7 +23,7 @@ const filePath = ( ...relPaths ) => join( process.cwd(), ...relPaths );
  */
 const srcPaths = [
 	filePath( 'themes', 'ehg', 'src' ),
-	filePath( 'mu-plugins', 'ehg-blocks', 'src' ),
+	filePath( 'themes', 'ehg', 'blocks' ),
 ];
 
 /**

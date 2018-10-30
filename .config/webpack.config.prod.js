@@ -1,6 +1,7 @@
 /**
  * This file defines the base configuration that is used for the production build.
  */
+const glob = require( 'glob' );
 const { filePath } = require( './config-utils' );
 const prodConfig = require( './webpack-shared.prod' );
 
@@ -10,30 +11,30 @@ module.exports = [
 	 */
 	prodConfig( {
 		entry: {
-			'customizer': filePath( 'wp-content/themes/ehg/src/customizer.js' ),
-			'theme': filePath( 'wp-content/themes/ehg/src/theme.js' ),
+			customizer: filePath( 'themes/ehg/src/customizer.js' ),
+			theme: filePath( 'themes/ehg/src/theme.js' ),
 		},
 		output: {
 			// Add /* filename */ comments to generated require()s in the output.
-			pathinfo: true,
-			path: filePath( 'wp-content/themes/ehg/build' ),
+			pathinfo: false,
+			path: filePath( 'themes/ehg/build' ),
 			filename: '[name].js',
 		},
 	} ),
 
-	// /**
-	//  * Gutenberg block production build configuration.
-	//  */
-	// prodConfig( {
-	// 	entry: {
-	// 		editor: filePath( 'mu-plugins/ehg-blocks/src/editor.js' ),
-	// 		frontend: filePath( 'mu-plugins/ehg-blocks/src/frontend.js' ),
-	// 	},
-	// 	output: {
-	// 		// Add /* filename */ comments to generated require()s in the output.
-	// 		pathinfo: true,
-	// 		path: filePath( 'mu-plugins/ehg-blocks/build' ),
-	// 		filename: '[name].bundle.js',
-	// 	},
-	// } ),
+	/**
+	 * Gutenberg block production build configuration.
+	 */
+	prodConfig( {
+		entry: {
+			// Auto-load all block scripts.
+			editor: glob.sync( filePath( 'themes/ehg/blocks/**/index.js' ) ),
+		},
+		output: {
+			// Add /* filename */ comments to generated require()s in the output.
+			pathinfo: false,
+			path: filePath( 'themes/ehg/build' ),
+			filename: '[name].js',
+		},
+	} ),
 ];

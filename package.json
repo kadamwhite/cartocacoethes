@@ -16,14 +16,16 @@
   "scripts": {
     "postinstall": "composer install",
     "build": "webpack --config=.config/webpack.config.prod.js",
-    "eslint": "eslint wp-content/themes/ehg/src .config",
+    "eslint": "eslint wp-content/themes/ehg/src wp-content/themes/ehg/blocks .config",
     "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s .",
-    "lint": "npm run eslint && npm run phpcs"
+    "lint": "npm run eslint && npm run phpcs",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
     "@wordpress/babel-preset-default": "^3.0.1",
     "autoprefixer": "^9.3.1",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -36,7 +38,9 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
+    "glob": "^7.1.3",
     "hard-source-webpack-plugin": "^0.12.0",
+    "jest": "^23.6.0",
     "mini-css-extract-plugin": "^0.4.4",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
