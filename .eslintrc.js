@@ -80,7 +80,7 @@ module.exports = {
 			'after': true,
 		} ],
 		'space-before-function-paren': [ 'error', {
-			'anonymous': 'always',
+			'anonymous': 'never',
 			'asyncArrow': 'always',
 			'named': 'never',
 		} ],
@@ -102,5 +102,12 @@ module.exports = {
 		// caused by eslint-config-react-app still using the deprecated rule, and
 		// can be removed once the react-app config is updated to a recent jsx-a11y.
 		'jsx-a11y/href-no-hash': [ 'off' ],
+
+		// Overrides and extensions of the HM config.
+	  "no-debugger": "warn",
+	  "react/react-in-jsx-scope": "off",
+	},
+	"globals": {
+	  "wp": true,
 	},
 };

@@ -3,7 +3,7 @@
  */
 const { loaders } = require( './config-utils' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
+// const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 
 module.exports = config => ( {
 	mode: 'production',
@@ -55,13 +55,13 @@ module.exports = config => ( {
 
 	// Optimize output bundle.
 	optimization: {
-		minimizer: [ new UglifyJsPlugin( {
-			uglifyOptions: {
-				output: {
-					comments: false,
-				},
-			},
-		} ) ],
+		// minimizer: [ new UglifyJsPlugin( {
+		// 	uglifyOptions: {
+		// 		output: {
+		// 			comments: false,
+		// 		},
+		// 	},
+		// } ) ],
 		noEmitOnErrors: true,
 		nodeEnv: 'production',
 	},
@@ -72,7 +72,7 @@ module.exports = config => ( {
 	// Allow config to add plugins.
 	plugins: [
 		new MiniCssExtractPlugin( {
-			filename: '[name].bundle.css',
+			filename: '[name].css',
 		} ),
 		...( config.plugins || [] ),
 	],

@@ -2,7 +2,7 @@
  * This file defines the base configuration that is used for the production build.
  */
 const { filePath } = require( './config-utils' );
-const prodConfig = require( './shared-config.prod' );
+const prodConfig = require( './webpack-shared.prod' );
 
 module.exports = [
 	/**
@@ -10,14 +10,14 @@ module.exports = [
 	 */
 	prodConfig( {
 		entry: {
-			'editor': filePath( 'themes/ehg/src/editor.js' ),
-			'frontend': filePath( 'themes/ehg/src/theme.js' ),
+			'customizer': filePath( 'wp-content/themes/ehg/src/customizer.js' ),
+			'theme': filePath( 'wp-content/themes/ehg/src/theme.js' ),
 		},
 		output: {
 			// Add /* filename */ comments to generated require()s in the output.
 			pathinfo: true,
-			path: filePath( 'themes/ehg/build' ),
-			filename: '[name].bundle.js',
+			path: filePath( 'wp-content/themes/ehg/build' ),
+			filename: '[name].js',
 		},
 	} ),
 
