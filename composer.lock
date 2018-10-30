@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "980271cc195828482dda08dc332305b7",
+    "content-hash": "0c636eb90fc918ab1501456bf7624eda",
     "packages": [
         {
             "name": "fig-r/psr2r-sniffer",
@@ -54,21 +54,21 @@
         },
         {
             "name": "humanmade/coding-standards",
-            "version": "v0.5.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/humanmade/coding-standards.git",
-                "reference": "b35747249bcc727a9eff22f746aaf9758d8a90ce"
+                "reference": "eeeb32a48294ad46f13524b629a049ea2464d7b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/coding-standards/zipball/b35747249bcc727a9eff22f746aaf9758d8a90ce",
-                "reference": "b35747249bcc727a9eff22f746aaf9758d8a90ce",
+                "url": "https://api.github.com/repos/humanmade/coding-standards/zipball/eeeb32a48294ad46f13524b629a049ea2464d7b2",
+                "reference": "eeeb32a48294ad46f13524b629a049ea2464d7b2",
                 "shasum": ""
             },
             "require": {
                 "fig-r/psr2r-sniffer": "^0.5.0",
-                "squizlabs/php_codesniffer": "^3.1",
+                "squizlabs/php_codesniffer": "~3.2.0",
                 "wp-coding-standards/wpcs": "^0.14.0"
             },
             "require-dev": {
@@ -80,20 +80,20 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Human Made coding standards",
-            "time": "2018-05-22T13:24:47+00:00"
+            "time": "2018-10-13T20:12:10+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.3.0",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "d86873af43b4aa9d1f39a3601cc0cfcf02b25266"
+                "reference": "4842476c434e375f9d3182ff7b89059583aa8b27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d86873af43b4aa9d1f39a3601cc0cfcf02b25266",
-                "reference": "d86873af43b4aa9d1f39a3601cc0cfcf02b25266",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/4842476c434e375f9d3182ff7b89059583aa8b27",
+                "reference": "4842476c434e375f9d3182ff7b89059583aa8b27",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-06-06T23:58:19+00:00"
+            "time": "2018-02-20T21:35:23+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -176,8 +176,10 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "humanmade/coding-standards": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
