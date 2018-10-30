@@ -1,4 +1,6 @@
 <?php
+// phpcs:disable PSR1.Files.SideEffects
+// phpcs:disable HM.Functions.NamespacedFunctions.MissingNamespace
 /**
  * Emily Garfield Art functions and definitions
  *
@@ -6,8 +8,6 @@
  *
  * @package Emily_Garfield_Art
  */
-// phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
-// phpcs:disable HM.Functions.NamespacedFunctions.MissingNamespace
 
 if ( ! function_exists( 'ehg_setup' ) ) :
 	/**
