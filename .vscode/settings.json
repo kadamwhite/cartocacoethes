@@ -1,6 +1,7 @@
 {
   "files.exclude": {
     "wp-content/plugins/acf-repeater": true,
+    "wp-content/plugins/block-unit-test": true,
     "wp-content/plugins/category-posts": true,
     "wp-content/plugins/debug-bar": true,
     "wp-content/plugins/featured-item-metabox": true,
