@@ -1,6 +1,5 @@
 <?php
 // phpcs:disable PSR1.Files.SideEffects
-// phpcs:disable HM.Functions.NamespacedFunctions.MissingNamespace
 /**
  * Emily Garfield Art functions and definitions
  *
@@ -8,6 +7,7 @@
  *
  * @package Emily_Garfield_Art
  */
+namespace EHG;
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -16,7 +16,7 @@
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function ehg_setup() {
+function setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
@@ -61,13 +61,16 @@ function ehg_setup() {
 	] );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'ehg_custom_background_args', [
+	add_theme_support( 'custom-background', apply_filters( 'custom_background_args', [
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	] ) );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	// Add theme support for wide Gutenberg images.
+	add_theme_support( 'align-wide' );
 
 	/**
 	 * Add support for core custom logo.
@@ -81,13 +84,13 @@ function ehg_setup() {
 		'flex-height' => true,
 	] );
 }
-add_action( 'after_setup_theme', 'ehg_setup' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
 
 
 /**
  * Define the custom thumbnail sizes for use in this theme.
  */
-function ehg_register_image_sizes() {
+function register_image_sizes() {
 	foreach ( [
 		'xs' => 160,
 		'sm' => 320,
@@ -99,14 +102,14 @@ function ehg_register_image_sizes() {
 		add_image_size( "landscape_$size", $width, floor( $width / 1.5 ), true );
 	}
 }
-add_action( 'after_setup_theme', 'ehg_register_image_sizes' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\register_image_sizes' );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function ehg_widgets_init() {
+function widgets_init() {
 	register_sidebar( [
 		'name'          => esc_html__( 'Sidebar', 'ehg' ),
 		'id'            => 'sidebar-1',
@@ -117,23 +120,27 @@ function ehg_widgets_init() {
 		'after_title'   => '</h2>',
 	] );
 }
-add_action( 'widgets_init', 'ehg_widgets_init' );
+add_action( 'widgets_init', __NAMESPACE__ . '\\widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function ehg_scripts() {
+function enqueue_scripts() {
 	wp_enqueue_style( 'ehg-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'ehg-navigation', get_template_directory_uri() . '/js/navigation.js', [], '20151215', true );
-
-	wp_enqueue_script( 'ehg-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [], '20151215', true );
+	wp_enqueue_script(
+		'ehg-theme',
+		get_template_directory_uri() . '/build/theme.js',
+		[],
+		'20181030',
+		true
+	);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'ehg_scripts' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 
 // /**
 //  * Implement the Custom Header feature.
@@ -141,11 +148,10 @@ add_action( 'wp_enqueue_scripts', 'ehg_scripts' );
 // require_once( get_template_directory() . '/inc/custom-header.php' );
 // HM\CustomHeader\setup();
 
-// /**
-//  * Custom template tags for this theme.
-//  */
-// require_once( get_template_directory() . '/inc/template-tags.php' );
-// HM\TemplateTags\setup();
+/**
+ * Custom template tags for this theme.
+ */
+require_once( get_template_directory() . '/inc/template-tags.php' );
 
 // /**
 //  * Functions which enhance the theme by hooking into WordPress.

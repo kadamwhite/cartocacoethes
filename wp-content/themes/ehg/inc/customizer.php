@@ -55,5 +55,11 @@ function customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function customize_preview_js() {
-	wp_enqueue_script( 'ehg-customizer', get_template_directory_uri() . '/js/customizer.js', [ 'customize-preview' ], '20151215', true );
+	wp_enqueue_script(
+		'ehg-customizer',
+		get_template_directory_uri() . '/build/customizer.js',
+		[ 'customize-preview' ],
+		'20181030',
+		true
+	);
 }
