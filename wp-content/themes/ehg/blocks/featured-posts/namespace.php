@@ -2,6 +2,7 @@
 /**
  * Server-rendered three-column Featured Posts block.
  */
+// phpcs:disable WordPress.VIP.SlowDBQuery
 namespace EHG\Blocks\Featured_Posts;
 
 function setup() {
@@ -34,10 +35,10 @@ function ehg_get_featured_posts( $opts ) {
 	$posts_per_category = $opts['posts_per_category'];
 
 	// Ordered numeric array of IDs of categories to be featured
-	$featured_category_ids = array();
+	$featured_category_ids = [];
 
 	// Associative array of category objects keyed by category ID
-	$featured_categories = array();
+	$featured_categories = [];
 
 	// Associative array of ordered arrays of post IDs for that category, keyed by
 	// category ID: in the below example, posts 120 & 134 from category 24, and
@@ -46,27 +47,27 @@ function ehg_get_featured_posts( $opts ) {
 	//         '24': [ 120, 134 ],
 	//         '34': [ 145 ]
 	//     }
-	$featured_posts_by_category = array();
+	$featured_posts_by_category = [];
 
 	// Numeric array of IDs of posts to be featured (order does not matter)
-	$featured_post_ids = array();
+	$featured_post_ids = [];
 
 	// Associative array of post objects keyed by post ID
-	$featured_posts = array();
+	$featured_posts = [];
 
 	while ( count( $featured_category_ids ) < $category_count ) {
-		$args = array(
+		$args = [
 			'post_type'        => 'post',
 			'posts_per_page'   => 1,
 			'meta_key'         => '_featured',
 			'meta_value'       => 'yes',
 			'post__not_in'     => $featured_post_ids,
-			'category__not_in' => $featured_category_ids
-		);
+			'category__not_in' => $featured_category_ids,
+		];
 		$featured_post_query = new WP_Query( $args );
-		$post = $featured_post_query->posts[ 0 ];
+		$post = $featured_post_query->posts[0];
 		$categories = get_the_category( $post->ID );
-		$first_category = $categories[ 0 ];
+		$first_category = $categories[0];
 
 		// Store the post ID for future __not_in usage
 		array_push( $featured_post_ids, $post->ID );
@@ -79,14 +80,14 @@ function ehg_get_featured_posts( $opts ) {
 		$featured_posts[ $post->ID ] = $post;
 		// This should be safe because category__not_in ensures we won't be stomping
 		// on any category record that already has data
-		$featured_posts_by_category[ $first_category->term_id ] = array( $post->ID );
+		$featured_posts_by_category[ $first_category->term_id ] = [ $post->ID ];
 
 		// Restore original Post Data (even though we aren't stomping the main query)
 		wp_reset_postdata();
 	}
 
 	foreach ( $featured_category_ids as $category_id ) {
-		$args = array(
+		$args = [
 			'post_type'      => 'post',
 			'meta_key'       => '_featured',
 			'meta_value'     => 'yes',
@@ -94,10 +95,10 @@ function ehg_get_featured_posts( $opts ) {
 			// specified maximum number of posts per category: one post has
 			// already been retrieved for every category.
 			'posts_per_page' => $posts_per_category - 1,
-			'category__in'   => array( $category_id ),
+			'category__in'   => [ $category_id ],
 			// Don't repeat posts
-			'post__not_in'   => $featured_post_ids
-		);
+			'post__not_in'   => $featured_post_ids,
+		];
 		$additional_posts_query = new WP_Query( $args );
 
 		foreach ( $additional_posts_query->posts as $post ) {
@@ -117,7 +118,7 @@ function ehg_get_featured_posts( $opts ) {
 	return [
 		'posts' => $featured_posts,
 		'categories' => $featured_categories,
-		'posts_by_category' => $featured_posts_by_category
+		'posts_by_category' => $featured_posts_by_category,
 	];
 }
 
@@ -136,7 +137,7 @@ function ehg_get_homepage_content() {
 		// Execute the queries
 		$featured_posts = ehg_get_featured_posts( [
 			'category_count' => 4,
-			'posts_per_category' => 3
+			'posts_per_category' => 3,
 		] );
 
 		// store the transient
@@ -161,7 +162,7 @@ function render_featured_posts_block( $attributes, $content ) {
 	if ( count( $recent_posts ) === 0 ) {
 		return 'No posts';
 	}
-	$post = $recent_posts[ 0 ];
+	$post = $recent_posts[0];
 	$post_id = $post['ID'];
 	return sprintf(
 		'<a class="wp-block-my-plugin-latest-post" href="%1$s">%2$s</a>',

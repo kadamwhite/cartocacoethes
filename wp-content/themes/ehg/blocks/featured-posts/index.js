@@ -1,7 +1,29 @@
-import { disposeBlock, registerBlock } from '../hmr-helpers';
-import EditFeaturedPostsBlock from './edit';
-
 const { withSelect } = wp.data;
+
+/**
+ * Accept a posts list and className and render the editing interface.
+ *
+ * @param {Object} props React properties object.
+ * @returns {Object} JSX component tree.
+ */
+const EditFeaturedPostsBlock = ( { posts, className } ) => {
+	if ( ! posts ) {
+	 return (
+		 'Loading...'
+	 );
+	}
+	if ( ! posts.lengh ) {
+	 return (
+		 'No Posts'
+	 );
+	}
+	const post = posts[0];
+	return (
+	 <a className={ className } href={ post }>
+		 { post.title.rendered }
+	 </a>
+	);
+};
 
 export const name = 'my-plugin/latest-post';
 
@@ -19,12 +41,3 @@ export const options = {
 		return null;
 	},
 };
-
-if ( module.hot ) {
-	module.hot.accept();
-
-	// When accepting hot updates we must unregister blocks before re-registering them.
-	disposeBlock( name, module.hot );
-}
-
-registerBlock( name, options, module.hot );

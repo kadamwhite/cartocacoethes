@@ -15,15 +15,15 @@ const devServerPort = () => parseInt( process.env.PORT, 10 ) || 9090;
  * @param  {...String} relPaths Strings describing a file relative to the content/ folder.
  * @returns {String} An absolute file system path.
  */
-const filePath = ( ...relPaths ) => join( process.cwd(), 'wp-content', ...relPaths );
+const filePath = ( ...relPaths ) => join( process.cwd(), ...relPaths );
 
 /**
  * An array of file system paths in which to find first-party source code.
  * Used to limit Webpack transforms like Babel to just those folders containing our code.
  */
 const srcPaths = [
-	filePath( 'themes', 'ehg', 'src' ),
-	filePath( 'themes', 'ehg', 'blocks' ),
+	filePath( 'wp-content/themes/ehg/src' ),
+	filePath( 'wp-content/themes/ehg/blocks' ),
 ];
 
 /**
