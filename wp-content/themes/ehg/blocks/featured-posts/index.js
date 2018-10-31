@@ -1,27 +1,9 @@
 import { disposeBlock, registerBlock } from '../hmr-helpers';
+import EditFeaturedPostsBlock from './edit';
 
 const { withSelect } = wp.data;
 
 export const name = 'my-plugin/latest-post';
-
-export const EditFeaturedPostsBlock = ( { posts, className } ) => {
-	if ( ! posts ) {
-		return (
-			'Loading...'
-		);
-	}
-	if ( ! posts.lengh ) {
-		return (
-			'No Posts'
-		);
-	}
-	const post = posts[0];
-	return (
-		<a className={ className } href={ post }>
-			{ post.title.rendered }
-		</a>
-	);
-};
 
 export const options = {
 	title: 'Latest Post',
