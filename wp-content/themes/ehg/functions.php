@@ -27,8 +27,8 @@ add_action( 'widgets_init', __NAMESPACE__ . '\\widgets_init' );
 /**
  * Bootstrap Gutenberg blocks.
  */
-require_once( __DIR__ . '/inc/blocks.php' );
-Blocks\bootstrap();
+// require_once( __DIR__ . '/inc/blocks.php' );
+// Blocks\bootstrap();
 
 /**
  * Customizer additions.

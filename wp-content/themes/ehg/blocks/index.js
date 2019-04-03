@@ -8,7 +8,7 @@ import { disposeBlock, registerBlock } from './lib/hmr-helpers';
 /**
  * Given the results of a require.context() call, require all those files.
  *
- * @param {Object} r The results of running require.context().
+ * @param {Object} requireContext The results of running require.context().
  */
 const importAll = requireContext => requireContext.keys().forEach( module => {
 	const { name, options } = requireContext();
