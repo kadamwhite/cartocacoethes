@@ -55,6 +55,9 @@ wp-content/themes/twentyseventeen
 wp-content/plugins/gutenberg
 wp-content/plugins/public-post-preview
 
+# WIP plugins: add as submodules once stable
+wp-content/plugins/featured-item-blocks
+
 # wp core (as of 3.4.1)
 /db-config.php
 /index.php
@@ -90,6 +93,11 @@ wp-content/plugins/public-post-preview
 # /wp-content/themes/twentyeleven
 /wp-content/themes/twentytwelve
 /wp-content/themes/twentythirteen
+/wp-content/themes/twentyfourteen
+/wp-content/themes/twentyfifteen
+/wp-content/themes/twentysixteen
+/wp-content/themes/twentyseventeen
+/wp-content/themes/twentynineteen
 /wp-content/themes/index.php
 /wp-content/plugins/index.php
 # Plugins that are not strictly functionality-oriented
