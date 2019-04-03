@@ -1,5 +1,6 @@
 {
   "files.exclude": {
+    "iterative-landscape": true,
     "wp-content/plugins/acf-repeater": true,
     "wp-content/plugins/block-unit-test": true,
     "wp-content/plugins/category-posts": true,
@@ -14,7 +15,14 @@
     "wp-content/plugins/smarter-navigation": true,
     "wp-content/upgrade": true,
     "wp-content/uploads": true,
-    "iterative-landscape": true,
+    "vendor": true,
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/build/*": true,
+    "wp-content/themes/emilygarfield": true,
+    "wp-content/themes/twentyeleven": true,
   },
   "files.trimTrailingWhitespace": true
 }
