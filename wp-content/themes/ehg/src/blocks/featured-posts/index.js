@@ -1,5 +1,7 @@
 const { withSelect } = wp.data;
 
+console.log( 'here' );
+
 /**
  * Accept a posts list and className and render the editing interface.
  *
@@ -32,9 +34,14 @@ export const options = {
 	icon: 'megaphone',
 	category: 'widgets',
 
-	edit: withSelect( select => ( {
-		posts: select( 'core' ).getEntityRecords( 'postType', 'post' ),
-	} ) )( EditFeaturedPostsBlock ),
+	// edit: withSelect( select => ( {
+	// 	posts: select( 'core' ).getEntityRecords( 'postType', 'post' ),
+	// } ) )( EditFeaturedPostsBlock ),
+	edit() {
+		return (
+			<div><p>Placeholder woo!</p></div>
+		);
+	},
 
 	save: function() {
 		// Rendering in PHP

@@ -6,7 +6,7 @@ const { choosePort, cleanOnExit, filePath } = helpers;
 
 // Clean up manifests on exit.
 cleanOnExit( [
-	filePath( 'wp-content/themes/ehg/asset-manifest.json' ),
+	filePath( 'wp-content/themes/ehg/build/asset-manifest.json' ),
 ] );
 
 module.exports = choosePort( 9090 ).then( port => presets.development( {
@@ -20,7 +20,7 @@ module.exports = choosePort( 9090 ).then( port => presets.development( {
 	entry: {
 		customizer: filePath( 'wp-content/themes/ehg/src/customizer.js' ),
 		theme: filePath( 'wp-content/themes/ehg/src/index.js' ),
-		editor: filePath( 'wp-content/themes/ehg/blocks/index.js' ),
+		editor: filePath( 'wp-content/themes/ehg/src/editor.js' ),
 	},
 	output: {
 		path: filePath( 'wp-content/themes/ehg/build' ),

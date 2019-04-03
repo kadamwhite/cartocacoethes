@@ -15,7 +15,7 @@ module.exports = presets.production( {
 	entry: {
 		customizer: filePath( 'wp-content/themes/ehg/src/customizer.js' ),
 		theme: filePath( 'wp-content/themes/ehg/src/index.js' ),
-		editor: filePath( 'wp-content/themes/ehg/blocks/index.js' ),
+		editor: filePath( 'wp-content/themes/ehg/src/editor.js' ),
 	},
 	output: {
 		path: filePath( 'wp-content/themes/ehg/build' ),

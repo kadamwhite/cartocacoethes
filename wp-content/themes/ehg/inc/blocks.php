@@ -7,105 +7,13 @@
 
 namespace EHG\Blocks;
 
-use Asset_Loader;
-
 /**
  * EHG\Blocks Bootstrap.
  */
-function bootstrap() {
+function setup() {
 	// Register all blocks defined in this plugin.
 	// register_blocks();
-
-	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_editor_assets' );
-	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_frontent_assets' );
 }
-
-/**
- * Enqueue the JS and CSS for blocks in the editor.
- *
- * @return void
- */
-function enqueue_block_editor_assets() {
-	$plugin_path = plugin_dir_path( dirname( __FILE__ ) );
-	$plugin_url = plugin_dir_url( dirname( __FILE__ ) );
-	$dev_manifest = $plugin_path . 'build/asset-manifest.json';
-	$bundle = [
-		'handle' => 'ehg-editor-blocks',
-		'scripts' => [ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ],
-		/**
-		 * Filter function to select only blocks whose names include the word "editor".
-		 */
-		'filter' => function( $script_key ) {
-			return strpos( $script_key, 'editor' ) !== false;
-		},
-	];
-
-	$loaded_dev_assets = Asset_Loader\enqueue_assets( $dev_manifest, $bundle );
-
-	if ( ! $loaded_dev_assets ) {
-		// Production mode. Manually enqueue script bundles.
-		wp_enqueue_script(
-			$bundle['handle'],
-			$plugin_url . 'build/editor.js',
-			$bundle['scripts'],
-			'20181031',
-			true
-		);
-
-		wp_enqueue_style(
-			$bundle['handle'],
-			$plugin_url . 'build/editor.css',
-			null,
-			'20181031'
-		);
-	}
-}
-
-/**
- * Enqueue the JS and CSS for blocks on the frontend.
- *
- * @return void
- */
-function enqueue_block_frontent_assets() {
-	/**
-	 * Filter function to select only blocks whose names include the word "frontend".
-	 */
-	$frontend_blocks_only = function( $script_key ) {
-		return strpos( $script_key, 'frontend' ) !== false;
-	};
-
-	$plugin_path  = plugin_dir_path( dirname( __FILE__ ) );
-	$plugin_url   = plugin_dir_url( dirname( __FILE__ ) );
-	$dev_manifest = $plugin_path . 'build/asset-manifest.json';
-	$script_deps  = [ 'wp-editor', 'wp-i18n' ];
-
-	$loaded_dev_assets = Asset_Loader\enqueue_assets( $dev_manifest, [
-		'handle' => 'ehg-frontend-blocks',
-		'filter' => $frontend_blocks_only,
-		'scripts' => $script_deps,
-	] );
-
-	if ( ! $loaded_dev_assets ) {
-		// Production mode. Manually enqueue script bundles.
-		wp_enqueue_script(
-			'ehg-frontend-blocks',
-			$plugin_url . 'build/frontend.bundle.js',
-			$script_deps,
-			filemtime( $plugin_path . '/build/frontend.bundle.js' ),
-			true
-		);
-
-		wp_enqueue_style(
-			'ehg-frontend-blocks',
-			$plugin_url . 'build/frontend.bundle.css',
-			null,
-			filemtime( $plugin_path . 'build/frontend.bundle.css' )
-		);
-	}
-
-	register_i18n_textdomain();
-}
-
 
 /**
  * Dynamically register blocks if a registration file exists.
