@@ -143,7 +143,7 @@ function autoenqueue(
 
 	if ( ! $loaded_dev_assets ) {
 		$js_bundle = $theme_path . 'build/' . $bundle_filename;
-		$css_bundle_filename = preg_replace( '\/js$/', '.css', $bundle_filename );
+		$css_bundle_filename = preg_replace( '/\/js$/', '.css', $bundle_filename );
 		$css_bundle = $theme_path . 'build/' . $css_bundle_filename;
 
 		// Production mode. Manually enqueue script bundles.
