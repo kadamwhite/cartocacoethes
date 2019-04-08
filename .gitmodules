@@ -1,3 +1,6 @@
 [submodule "wp-content/plugins/artgallery"]
 	path = wp-content/plugins/artgallery
 	url = https://github.com/kadamwhite/artgallery.git
+[submodule "wp-content/plugins/asset-loader"]
+	path = wp-content/plugins/asset-loader
+	url = git@github.com:kadamwhite/asset-loader.git
