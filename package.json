@@ -36,7 +36,6 @@
     "acorn": "^6.1.1",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "css-loader": "^1.0.1",
     "eslint": "^5.16.0",
     "eslint-config-humanmade": "^0.6.0",
     "eslint-config-react-app": "^3.0.8",
