@@ -8,37 +8,36 @@
  */
 namespace EHG;
 
-/**
- * Namespace functions.
- */
-require_once( __DIR__ . '/inc/asset-loader.php' );
+// Load root namespace file.
 require_once( __DIR__ . '/inc/namespace.php' );
-// Bind hooks defined in EHG namespace.
-add_action( 'init', __NAMESPACE__ . '\\init' );
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
+// All other modules use "setup" as their action-binding function name.
+setup();
 
-/**
- * Custom template tags for this theme.
- */
-require_once( get_template_directory() . '/inc/template-tags.php' );
+// Use a highly DIY auto-loader to load in the rest!
+foreach ( [
+	'assets',
+	'blocks',
+	'customizer',
+	'template-functions',
+	'template-tags',
+] as $path ) {
+	require_once( __DIR__ . "/inc/$path.php" );
 
+	$namespaces = join( '\\', array_map( function( $module ) {
+		return str_replace( ' ', '_', ucwords( preg_replace( '/[^a-z0-9]+/', ' ', $module ) ) );
+	}, explode( '/', $path ) ) );
 
-/**
- * Bootstrap Gutenberg blocks.
- */
-require_once( __DIR__ . '/inc/blocks.php' );
-Blocks\setup();
+	$setup_function = "EHG\\$namespaces\\setup";
 
-/**
- * Customizer additions.
- */
-require_once( get_template_directory() . '/inc/customizer.php' );
-Customizer\setup();
+	if ( function_exists( $setup_function ) ) {
+		call_user_func( $setup_function );
+	}
+}
 
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-	require_once( get_template_directory() . '/inc/jetpack.php' );
+	require_once( __DIR__ . '/inc/jetpack.php' );
 	Jetpack\setup();
 }

@@ -1,19 +1,16 @@
 <?php
+
 namespace EHG;
 
-use EHG\Asset_Loader;
-
 /**
- * Action to run on the 'init' hook, used to register additional action callbacks.
+ * EHG namespace bootstrap.
  *
  * @return void
  */
-function init() {
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
+function setup() {
 	add_action( 'after_setup_theme', __NAMESPACE__ . '\\register_image_sizes' );
+	add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup_theme_support' );
 	add_action( 'widgets_init', __NAMESPACE__ . '\\widgets_init' );
-	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_editor_assets' );
-	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_frontent_assets' );
 }
 
 /**
@@ -25,7 +22,7 @@ function init() {
  *
  * @return void
  */
-function setup() {
+function setup_theme_support() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
@@ -108,113 +105,6 @@ function register_image_sizes() {
 		// Aspect ratio 3:2 => 1.5
 		add_image_size( "landscape_$size", $width, floor( $width / 1.5 ), true );
 	}
-}
-
-/**
- * Attempt to load a particular script bundle from a manifest, falling back
- * to wp_enqueue_script when the manifest is not available.
- *
- * @param string $script_handle   The handle to use for the script (and associated stylesheet).
- * @param array  $script_deps     An array of script dependencies for this JS bundle.
- * @param string $manifest_path   The absolute file system path to the manifest file.
- * @param string $bundle_filename The expected string filename of the file to load.
- * @return void
- */
-function autoenqueue(
-	string $script_handle,
-	array $script_deps,
-	string $manifest_path,
-	string $bundle_filename
-) {
-	/**
-	 * Filter function to select only blocks whose names include the word "frontend".
-	 */
-	$manifest_filter = function( $script_key ) use ( $bundle_filename ) {
-		return strpos( $script_key, $bundle_filename ) !== false;
-	};
-
-	$theme_path = get_stylesheet_directory();
-
-	$loaded_dev_assets = Asset_Loader\enqueue_assets( $manifest_path, [
-		'handle'  => $script_handle,
-		'filter'  => $manifest_filter,
-		'scripts' => $script_deps,
-	] );
-
-	if ( ! $loaded_dev_assets ) {
-		$js_bundle = $theme_path . 'build/' . $bundle_filename;
-		$css_bundle_filename = preg_replace( '/\/js$/', '.css', $bundle_filename );
-		$css_bundle = $theme_path . 'build/' . $css_bundle_filename;
-
-		// Production mode. Manually enqueue script bundles.
-		if ( file_exists( $js_bundle ) ) {
-			wp_enqueue_script(
-				$script_handle,
-				get_theme_file_uri( 'build/' . $bundle_filename ),
-				$script_deps,
-				filemtime( $js_bundle ),
-				true
-			);
-		}
-
-		if ( file_exists( $css_bundle ) ) {
-			wp_enqueue_style(
-				$script_handle,
-				get_theme_file_uri( 'build/' . $css_bundle_filename ),
-				null,
-				filemtime( $css_bundle )
-			);
-		}
-	}
-}
-
-/**
- * Enqueue the JS and CSS for blocks in the editor.
- *
- * @return void
- */
-function enqueue_block_editor_assets() {
-	autoenqueue(
-		'ehg-editor',
-		[ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ],
-		get_stylesheet_directory() . '/build/asset-manifest.json',
-		'editor.js'
-	);
-}
-
-/**
- * Enqueue the JS and CSS for blocks on the frontend.
- *
- * @return void
- */
-function enqueue_block_frontent_assets() {
-	autoenqueue(
-		'ehg-theme',
-		[ 'wp-editor', 'wp-i18n' ],
-		get_stylesheet_directory() . '/build/asset-manifest.json',
-		'theme.js'
-	);
-}
-
-/**
- * Enqueue scripts and styles.
- */
-function enqueue_scripts() {
-	// wp_enqueue_style( 'ehg-style', get_stylesheet_uri() );
-
-	// Asset_Loader\enqueue_assets( get_stylesheet_directory() );
-
-	// wp_enqueue_script(
-	// 	'ehg-theme',
-	// 	get_template_directory_uri() . '/build/theme.js',
-	// 	[],
-	// 	'20181030',
-	// 	true
-	// );
-
-	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-	// 	wp_enqueue_script( 'comment-reply' );
-	// }
 }
 
 /**
