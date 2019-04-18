@@ -23,7 +23,7 @@
     "postinstall": "composer install",
     "prebuild": "node .bin/clean-build.js",
     "build": "webpack --config=.config/webpack.config.prod.js",
-    "eslint": "eslint wp-content/themes/ehg/src wp-content/themes/ehg/blocks .config",
+    "eslint": "eslint wp-content/themes/ehg/src .config",
     "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml --ignore=wp-content/themes/twenty* -s .",
     "lint": "npm run eslint && npm run phpcs",
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
