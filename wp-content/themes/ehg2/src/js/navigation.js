@@ -4,17 +4,18 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+/* global wprigScreenReaderText: false */
 
 const SITENAV = document.querySelector( '.main-navigation' ),
 	KEYMAP = {
-		TAB: 9
+		TAB: 9,
 	};
 
 // Initiate the menus when the DOM loads.
 document.addEventListener( 'DOMContentLoaded', function() {
 	initMainNavigation();
 	initMenuToggle();
-});
+} );
 
 /**
  * Initiate the main navigation script.
@@ -39,7 +40,7 @@ function initMainNavigation() {
 
 	SUBMENUS.forEach( function( submenu ) {
 		const parentMenuItem = submenu.parentNode;
-		var dropdown = parentMenuItem.querySelector( '.dropdown' );
+		let dropdown = parentMenuItem.querySelector( '.dropdown' );
 
 		// If no dropdown, create one.
 		if ( ! dropdown ) {
@@ -69,19 +70,19 @@ function initMainNavigation() {
 		// Toggle the submenu when we click the dropdown button.
 		thisDropdownButton.addEventListener( 'click', function( event ) {
 			toggleSubMenu( this.parentNode );
-		});
+		} );
 
 		// Clean up the toggle if a mouse takes over from keyboard.
 		parentMenuItem.addEventListener( 'mouseleave', function( event ) {
 			toggleSubMenu( this, false );
-		});
+		} );
 
 		// When we focus on a menu link, make sure all siblings are closed.
 		parentMenuItem.querySelector( 'a' ).addEventListener( 'focus', function( event ) {
 			this.parentNode.parentNode.querySelectorAll( 'li.toggled-on' ).forEach( function( item ) {
 				toggleSubMenu( item, false );
-			});
-		});
+			} );
+		} );
 
 		// Handle keyboard accessibility for traversing menu.
 		submenu.addEventListener( 'keydown', function( event ) {
@@ -104,8 +105,8 @@ function initMainNavigation() {
 					}
 				}
 			}
-		});
-	});
+		} );
+	} );
 
 	SITENAV.classList.add( 'has-dropdown-toggle' );
 
@@ -127,7 +128,7 @@ function initMenuToggle() {
 
 	MENUTOGGLE.addEventListener( 'click', function() {
 		SITENAV.classList.toggle( 'toggled-on' );
-		this.setAttribute( 'aria-expanded', 'false' === this.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
+		this.setAttribute( 'aria-expanded', this.getAttribute( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 	}, false );
 }
 
@@ -137,10 +138,10 @@ function initMenuToggle() {
 function toggleSubMenu( parentMenuItem, forceToggle ) {
 	const toggleButton = parentMenuItem.querySelector( '.dropdown-toggle' ),
 		subMenu = parentMenuItem.querySelector( 'ul' );
-	var parentMenuItemToggled = parentMenuItem.classList.contains( 'toggled-on' );
+	let parentMenuItemToggled = parentMenuItem.classList.contains( 'toggled-on' );
 
 	// Will be true if we want to force the toggle on, false if force toggle close.
-	if ( undefined !== forceToggle && 'boolean' == ( typeof forceToggle ) ) {
+	if ( undefined !== forceToggle && ( typeof forceToggle ) == 'boolean' ) {
 		parentMenuItemToggled = ! forceToggle;
 	}
 
@@ -162,14 +163,14 @@ function toggleSubMenu( parentMenuItem, forceToggle ) {
 		// Make sure all children are closed.
 		parentMenuItem.querySelectorAll( '.toggled-on' ).forEach( function( item ) {
 			toggleSubMenu( item, false );
-        });
+		} );
 
 	} else {
 
 		// Make sure siblings are closed.
 		parentMenuItem.parentNode.querySelectorAll( 'li.toggled-on' ).forEach( function( item ) {
 			toggleSubMenu( item, false );
-		});
+		} );
 
 		// Toggle "on" the submenu.
 		parentMenuItem.classList.add( 'toggled-on' );
@@ -197,7 +198,7 @@ function getDropdownButton() {
  */
 function isfirstFocusableElement( container, element, focusSelector ) {
 	const focusableElements = container.querySelectorAll( focusSelector );
-	if ( 0 < focusableElements.length ) {
+	if ( focusableElements.length > 0 ) {
 		return element === focusableElements[0];
 	}
 	return false;
@@ -209,7 +210,7 @@ function isfirstFocusableElement( container, element, focusSelector ) {
  */
 function islastFocusableElement( container, element, focusSelector ) {
 	const focusableElements = container.querySelectorAll( focusSelector );
-	if ( 0 < focusableElements.length ) {
+	if ( focusableElements.length > 0 ) {
 		return element === focusableElements[focusableElements.length - 1];
 	}
 	return false;

@@ -1,3 +1,4 @@
+@import './variables.scss';
 /*!
 Theme Name: WP Rig
 Theme URI: https://github.com/ehg2/ehg2/
@@ -434,7 +435,7 @@ template {
   max-width: 100%;
 }
 
-@media (--sidebar-query) {
+@include respond-above( $sidebar-width ) {
 	.has-sidebar .site {
 		margin: 0 1em;
 		display: grid;
@@ -471,14 +472,14 @@ input,
 select,
 optgroup,
 textarea {
-	color: var(--global-font-color);
-	font-family: var(--global-font-family);
-	font-size: calc(var(--global-font-size) / 16)rem;
-	line-height: var(--global-font-line-height);
+	color: $global-font-color;
+	font-family: $global-font-family;
+	font-size: $global-font-size / 16;
+	line-height: $global-font-line-height;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	color: #32373c;
 	clear: both;
 }
@@ -739,7 +740,7 @@ textarea {
 
 .site-title {
 	margin: 0 1em;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	font-size: 38px;
 	font-weight: bold;
 	line-height: 1.2;
@@ -753,7 +754,7 @@ textarea {
 
 .site-description {
 	margin: .4375em 0 0;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	font-size: 17px;
 	font-weight: inherit;
 	line-height: 1.4;
@@ -769,15 +770,15 @@ textarea {
 	display: block;
 	margin: 0 auto 2em;
 	padding: 0 1em;
-	max-width: var(--content-width)rem;
-	font-family: var(--highlight-font-family);
+	max-width: content-width;
+	font-family: highlight-font-family;
 }
 
 .menu-toggle {
 	display: block;
 	margin: 1.2em auto;
 	padding: .6em 1.2em .5em;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	font-size: 80%;
 	text-transform: uppercase;
 	border: 2px solid black;
@@ -822,13 +823,13 @@ textarea {
 	display: none;
 }
 
-@media (--narrow-menu-query) {
+@include respond-below( $menu-size-cutoff ) {
 	.main-navigation.toggled-on .menu {
 		display: block;
 	}
 }
 
-@media (--wide-menu-query) {
+@include respond-above( $menu-size-cutoff ) {
 	.menu-toggle {
 		display: none;
 	}
@@ -883,7 +884,7 @@ textarea {
 
 	.main-navigation .menu-item-has-children,
 	.main-navigation .page_item_has_children {
-		padding-right: var(--dropdown-symbol-width);
+		padding-right: $dropdown-symbol-width;
 	}
 
 	.main-navigation .dropdown,
@@ -893,8 +894,8 @@ textarea {
 		position: absolute;
 		right: 0;
 		top: 50%;
-		width: var(--dropdown-symbol-width);
-		height: var(--dropdown-symbol-width);
+		width: $dropdown-symbol-width;
+		height: $dropdown-symbol-width;
 		font-size: inherit;
 		line-height: inherit;
 		margin: 0;
@@ -956,7 +957,7 @@ textarea {
 	max-width: 720px;
 	overflow: hidden;
 	padding-bottom: 2em;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 }
 
 .nav-links {
@@ -978,7 +979,7 @@ textarea {
 }
 
 .post-navigation-sub span {
-	color: var(--global-font-color);
+	color: $global-font-color;
 	text-decoration: none;
 	display: inline-block;
 }
@@ -989,7 +990,7 @@ textarea {
 .site-footer {
 	margin: 1em 0 0;
 	padding: 2em 0;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 }
 
 .site-info {

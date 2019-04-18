@@ -87,7 +87,7 @@ function ehg2_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function ehg2_customize_preview_js() {
-	wp_enqueue_script( 'ehg2-customizer', get_theme_file_uri( '/js/customizer.js' ), array( 'customize-preview' ), '20151215', true );
+	wp_enqueue_script( 'ehg2-customizer', get_theme_file_uri( '/build/customizer.js' ), array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'ehg2_customize_preview_js' );
 

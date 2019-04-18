@@ -289,7 +289,7 @@ function ehg2_gutenberg_styles() {
 	wp_enqueue_style( 'ehg2-fonts', ehg2_fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue main stylesheet.
-	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/css/editor-styles.css' ), array(), '20180514' );
+	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/editor-styles.css' ), array(), '20180514' );
 }
 add_action( 'enqueue_block_editor_assets', 'ehg2_gutenberg_styles' );
 
@@ -319,14 +319,14 @@ function ehg2_styles() {
 	wp_enqueue_style( 'ehg2-fonts', ehg2_fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue main stylesheet.
-	wp_enqueue_style( 'ehg2-base-style', get_stylesheet_uri(), array(), '20180514' );
+	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/style.css' ), array(), '20180514' );
 
 	// Register component styles that are printed as needed.
-	wp_register_style( 'ehg2-comments', get_theme_file_uri( '/css/comments.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-content', get_theme_file_uri( '/css/content.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-sidebar', get_theme_file_uri( '/css/sidebar.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-widgets', get_theme_file_uri( '/css/widgets.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-front-page', get_theme_file_uri( '/css/front-page.css' ), array(), '20180514' );
+	wp_register_style( 'ehg2-comments', get_theme_file_uri( '/build/comments.css' ), array(), '20180514' );
+	wp_register_style( 'ehg2-content', get_theme_file_uri( '/build/content.css' ), array(), '20180514' );
+	wp_register_style( 'ehg2-sidebar', get_theme_file_uri( '/build/sidebar.css' ), array(), '20180514' );
+	wp_register_style( 'ehg2-widgets', get_theme_file_uri( '/build/widgets.css' ), array(), '20180514' );
+	wp_register_style( 'ehg2-front-page', get_theme_file_uri( '/build/front-page.css' ), array(), '20180514' );
 }
 add_action( 'wp_enqueue_scripts', 'ehg2_styles' );
 
@@ -341,7 +341,7 @@ function ehg2_scripts() {
 	}
 
 	// Enqueue the navigation script.
-	wp_enqueue_script( 'ehg2-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
+	wp_enqueue_script( 'ehg2-navigation', get_theme_file_uri( '/build/navigation.js' ), array(), '20180514', false );
 	wp_script_add_data( 'ehg2-navigation', 'async', true );
 	wp_localize_script( 'ehg2-navigation', 'wprigScreenReaderText', array(
 		'expand'   => __( 'Expand child menu', 'wprig' ),
@@ -349,7 +349,7 @@ function ehg2_scripts() {
 	));
 
 	// Enqueue skip-link-focus script.
-	wp_enqueue_script( 'ehg2-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );
+	wp_enqueue_script( 'ehg2-skip-link-focus-fix', get_theme_file_uri( '/build/skip-link-focus-fix.js' ), array(), '20180514', false );
 	wp_script_add_data( 'ehg2-skip-link-focus-fix', 'defer', true );
 
 	// Enqueue comment script on singular post/page views only.
