@@ -3,6 +3,7 @@
 
 # Whitelist what you want tracked:
 !/*.php
+!/src/
 !/pluggable/
 !/template-parts/
 !/js/
