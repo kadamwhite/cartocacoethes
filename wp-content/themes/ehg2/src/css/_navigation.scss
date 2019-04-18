@@ -15,6 +15,43 @@
 	padding: 0 1em;
 	max-width: content-width;
 	font-family: highlight-font-family;
+
+	a {
+		display: block;
+		width: 100%;
+		padding: .5em 1em .5em 0;
+		text-decoration: none;
+		color: black;
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+
+	ul {
+		display: block;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		position: relative;
+	}
+
+	ul ul li {
+		padding-left: 1em;
+	}
+
+	.dropdown,
+	button.dropdown-toggle {
+		display: none;
+	}
+
+	.menu {
+		display: none;
+	}
 }
 
 .menu-toggle {
@@ -29,43 +66,6 @@
 	background: transparent;
 }
 
-.main-navigation a {
-	display: block;
-	width: 100%;
-	padding: .5em 1em .5em 0;
-	text-decoration: none;
-	color: black;
-}
-
-.main-navigation a:hover,
-.main-navigation a:focus {
-	text-decoration: underline;
-}
-
-.main-navigation ul {
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.main-navigation li {
-	position: relative;
-}
-
-.main-navigation ul ul li {
-	padding-left: 1em;
-}
-
-.main-navigation .dropdown,
-.main-navigation button.dropdown-toggle {
-	display: none;
-}
-
-.main-navigation .menu {
-	display: none;
-}
-
 @include respond-below( $menu-size-cutoff ) {
 	.main-navigation.toggled-on .menu {
 		display: block;
@@ -77,114 +77,115 @@
 		display: none;
 	}
 
-	.main-navigation ul li a {
-		padding: .4em 0.5em;
-	}
+	.main-navigation {
+		.menu {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
 
-	.main-navigation ul li {
-		margin: 0 0 0 0.5em;
-	}
-	.main-navigation ul li:first-child {
-		margin-left: 0;
-	}
+		.menu-item-has-children,
+		.page_item_has_children {
+			padding-right: $dropdown-symbol-width;
+		}
 
-	.main-navigation ul ul {
-		display: none;
-		position: absolute;
-		top: 100%;
-		flex-direction: column;
-		background: white;
-		margin-left: 0;
-		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-		z-index: 1;
-	}
+		.dropdown,
+		button.dropdown-toggle {
+			display: block;
+			background: transparent;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			width: $dropdown-symbol-width;
+			height: $dropdown-symbol-width;
+			font-size: inherit;
+			line-height: inherit;
+			margin: 0;
+			padding: 0;
+			border: none;
+			border-radius: 0;
+			transform: translateY(-50%);
+			overflow: visible;
+		}
 
-	.main-navigation ul ul a {
-		width: 200px;
-	}
+		.dropdown-symbol {
+			display: block;
+			background: transparent;
+			position: absolute;
+			right: 20%;
+			top: 35%;
+			width: 60%;
+			height: 60%;
+			border: solid black;
+			border-width: 0 2px 2px 0;
+			transform: translateY(-50%) rotate(45deg);
+		}
 
-	.main-navigation ul ul li {
-		padding-left: 0;
-		margin-left: 0;
-	}
+		ul li {
+			margin: 0 0 0 0.5em;
 
-	.main-navigation ul ul li a {
-		width: 218px;
-		background: none;
-	}
+			&:first-child {
+				margin-left: 0;
+			}
 
-	.main-navigation ul ul ul {
-		top: 0;
-		left: 100%;
-		min-height: 100%;
-	}
+			a {
+				padding: .4em 0.5em;
+			}
+		}
 
-	.main-navigation .menu {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
+		ul ul {
+			display: none;
+			position: absolute;
+			top: 100%;
+			flex-direction: column;
+			background: white;
+			margin-left: 0;
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			z-index: 1;
 
-	.main-navigation .menu-item-has-children,
-	.main-navigation .page_item_has_children {
-		padding-right: $dropdown-symbol-width;
-	}
+			a {
+				width: 200px;
+			}
 
-	.main-navigation .dropdown,
-	.main-navigation button.dropdown-toggle {
-		display: block;
-		background: transparent;
-		position: absolute;
-		right: 0;
-		top: 50%;
-		width: $dropdown-symbol-width;
-		height: $dropdown-symbol-width;
-		font-size: inherit;
-		line-height: inherit;
-		margin: 0;
-		padding: 0;
-		border: none;
-		border-radius: 0;
-		transform: translateY(-50%);
-		overflow: visible;
-	}
+			li {
+				padding-left: 0;
+				margin-left: 0;
+			}
 
-	.main-navigation .dropdown-symbol {
-		display: block;
-		background: transparent;
-		position: absolute;
-		right: 20%;
-		top: 35%;
-		width: 60%;
-		height: 60%;
-		border: solid black;
-		border-width: 0 2px 2px 0;
-		transform: translateY(-50%) rotate(45deg);
-	}
+			li a {
+				width: 218px;
+				background: none;
+			}
 
-	.main-navigation ul ul .dropdown,
-	.main-navigation ul ul button.dropdown-toggle {
-		top: 40%;
-		right: 0.2em;
-	}
+			ul {
+				top: 0;
+				left: 100%;
+				min-height: 100%;
+			}
 
-	.main-navigation ul ul .dropdown-symbol {
-		transform: rotate(-45deg);
-	}
+			.dropdown,
+			button.dropdown-toggle {
+				top: 40%;
+				right: 0.2em;
+			}
 
-	/*
-	 * If the dropdown toggle is active with JS, then
-	 * we'll take care of showing the submenu with JS.
-	 *
-	 * "focus-within" is an alternative to focus class for
-	 * supporting browsers (all but IE/Edge) for no-JS context
-	 * (e.g. AMP) See https://caniuse.com/#feat=css-focus-within
-	 */
-	.main-navigation li:hover > ul,
-	.main-navigation li.toggled-on > ul,
-	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
-	.main-navigation:not(.has-dropdown-toggle) li:focus-within > ul {
-		display: block;
+			.dropdown-symbol {
+				transform: rotate(-45deg);
+			}
+		}
+
+		// If the dropdown toggle is active with JS, then
+		// we'll take care of showing the submenu with JS.
+		//
+		// "focus-within" is an alternative to focus class for
+		// supporting browsers (all but IE/Edge) for no-JS context
+		// (e.g. AMP) See https://caniuse.com/#feat=css-focus-within
+		li:hover > ul,
+		li.toggled-on > ul,
+		&:not(.has-dropdown-toggle) li:focus > ul,
+		&:not(.has-dropdown-toggle) li:focus-within > ul {
+			display: block;
+		}
 	}
 }
 
@@ -192,15 +193,17 @@
 /*--------------------------------------------------------------
 # Content navigation
 --------------------------------------------------------------*/
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
-	border-bottom: 1px solid #111;
-	margin: 0 auto 2em;
-	max-width: 720px;
-	overflow: hidden;
-	padding-bottom: 2em;
-	font-family: $highlight-font-family;
+.site-main {
+	.comment-navigation,
+	.posts-navigation,
+	.post-navigation {
+		border-bottom: 1px solid #111;
+		margin: 0 auto 2em;
+		max-width: 720px;
+		overflow: hidden;
+		padding-bottom: 2em;
+		font-family: $highlight-font-family;
+	}
 }
 
 .nav-links {
