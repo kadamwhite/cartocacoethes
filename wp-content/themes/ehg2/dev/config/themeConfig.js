@@ -2,7 +2,7 @@
 
 module.exports = {
 	theme: {
-		slug: 'wprig',
+		slug: 'ehg2',
 		name: 'WP Rig',
 		author: 'Morten Rand-Hendriksen'
 	},
