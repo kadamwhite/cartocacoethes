@@ -1,0 +1,40 @@
+
+$global-font-color: #333;
+$global-font-family: "Crimson Text", serif;
+$global-font-size: 20;
+$global-font-line-height: 1.4;
+$highlight-font-family: "Roboto Condensed", sans-serif;
+$content-width: 45rem;
+$dropdown-symbol-width: 0.7em;
+$small-font-size: 16rem;
+$regular-font-size: 20rem;
+$large-font-size: 36rem;
+$larger-font-size: 48rem;
+
+$menu-size-cutoff: 37.5em;
+$content-width: 48em;
+$sidebar-width: 60em;
+
+// Responsive Mixins
+// =================================================
+
+@mixin respond-above( $breakpoint ) {
+	@media screen and ( min-width: $breakpoint ) {
+		@content;
+	}
+}
+
+// Prefer pixel dimensions when using these two mixins: if we used
+// ems, there would be a 1em gap between the top of respond-below and
+// the bottom of respond-above for any em value. Using px avoids this.
+@mixin respond-below( $breakpoint ) {
+	@media screen and ( max-width: ( $breakpoint - 1 ) ) {
+		@content;
+	}
+}
+
+@mixin respond-between( $breakpoint1, $breakpoint2 ) {
+	@media screen and ( min-width: $breakpoint1 ) and ( max-width: ( $breakpoint2 - 1 ) ) {
+		@content;
+	}
+}

@@ -1,8 +1,9 @@
+@import './variables.scss';
 /**
  * Custom styles for the front-page.php template.
  */
 
-@media (--sidebar-query) {
+@include respond-above( $sidebar-width ) {
 	.site {
 		margin: 0 1em;
 		display: grid;

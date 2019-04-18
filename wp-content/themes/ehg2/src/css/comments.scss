@@ -1,3 +1,4 @@
+@import './variables.scss';
 /*--------------------------------------------------------------
 # Comments
 --------------------------------------------------------------*/
@@ -77,7 +78,7 @@
 }
 
 .comment-meta {
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 }
 
 .comment-author {
@@ -133,7 +134,7 @@
 .comment-form .form-submit input {
 	display: inline-block;
 	padding: .5em 1.4em;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	font-size: 85%;
 	color: #000;
 	line-height: 1.3em;
@@ -166,10 +167,10 @@
 
 .comment-notes {
 	margin-top: -1em;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	font-size: .9em;
 	font-style: italic;
-	background: hsl(0, 0% 95%);
+	background: hsl(0, 0%, 95%);
 }
 
 .comment-form a {
@@ -180,7 +181,7 @@
 	width: 13em;
 	display: block;
 	font-size: .9em;
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	padding-bottom: .4em;
 }
 

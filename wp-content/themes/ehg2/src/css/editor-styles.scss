@@ -1,12 +1,13 @@
+@import './variables.scss';
 /**
  * Styles for the WordPress post/page editor.
  * Ensures a visual match between back- and front-end.
  */
  body.gutenberg-editor-page .editor-writing-flow {
-	color: var(--global-font-color);
-	font-family: var(--global-font-family);
-	font-size: calc(var(--global-font-size) / 16)rem;
-	line-height: var(--global-font-line-height);
+	color: $global-font-color;
+	font-family: $global-font-family;
+	font-size: $global-font-size / 16;
+	line-height: $global-font-line-height;
 }
 
 body.gutenberg-editor-page .editor-post-title .editor-post-title__input,
@@ -17,7 +18,7 @@ body.gutenberg-editor-page .editor-writing-flow h4,
 body.gutenberg-editor-page .editor-writing-flow h5,
 body.gutenberg-editor-page .editor-writing-flow h6,
 body.gutenberg-editor-page .edit-post-visual-editor p {
-	font-family: var(--highlight-font-family);
+	font-family: $highlight-font-family;
 	color: #32373c;
 	clear: both;
 }
@@ -28,8 +29,8 @@ body.gutenberg-editor-page .editor-post-title .editor-post-title__input {
 }
 
 body.gutenberg-editor-page .edit-post-visual-editor p {
-	font-family: var(--global-font-family);
-	font-size: calc(var(--global-font-size) / 16)rem;
+	font-family: $global-font-family;
+	font-size: $global-font-size / 16;
 
 }
 
@@ -138,17 +139,17 @@ body.gutenberg-editor-page .wp-block-cover-image .wp-block-cover-image h2 {
 /* Visualize editor font sizes (defined in functions.php). */
 
 .has-small-font-size {
-	font-size: calc(var(--small-font-size) / 16)rem;
+	font-size: $small-font-size / 16;
 }
 
 .has-regular-font-size {
-	font-size: calc(var(--regular-font-size) / 16)rem;
+	font-size: $regular-font-size / 16;
 }
 
 .has-large-font-size {
-	font-size: calc(var(--large-font-size) / 16)rem;
+	font-size: $large-font-size / 16;
 }
 
 .has-larger-font-size {
-	font-size: calc(var(--larger-font-size) / 16)rem;
+	font-size: $larger-font-size / 16;
 }

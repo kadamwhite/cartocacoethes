@@ -1,3 +1,4 @@
+@import './variables.scss';
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
@@ -109,7 +110,7 @@
 }
 
 .rssSummary {
-	font-family: var(--global-font-family);
+	font-family: $global-font-family;
 	padding: .5em 0;
 	font-size: .9em;
 	line-height: 1.3em;
