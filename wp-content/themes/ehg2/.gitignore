@@ -1,33 +1,3 @@
-# Ignore everything:
-/*
-
-# Whitelist what you want tracked:
-!/*.php
-!/src/
-!/pluggable/
-!/template-parts/
-!/js/
-!/optional/
-!/css/
-!/.github/
-!/dev/
-!/languages/
-
-!.babelrc
-!composer.json
-!composer.lock
-!CHANGELOG.md
-!CONTRIBUTING.md
-!.editorconfig
-!.eslintignore
-!.eslintrc.json
-!.gitignore
-!gulpfile.babel.js
-!LICENSE
-!package-lock.json
-!package.json
-!phpcs.xml.dist
-!README.md
-!readme.txt
-!screenshot.png
-!.travis.yml
+node_modules/
+*.map
+build/
