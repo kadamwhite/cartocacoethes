@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package wprig
+ * @package ehg2
  */
 
 ?>
@@ -16,15 +16,15 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php
-				wprig_posted_on();
-				wprig_posted_by();
-				wprig_comments_link();
+				ehg2_posted_on();
+				ehg2_posted_by();
+				ehg2_comments_link();
 			?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php wprig_post_thumbnail(); ?>
+	<?php ehg2_post_thumbnail(); ?>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
@@ -32,9 +32,9 @@
 
 	<footer class="entry-footer">
 		<?php
-			wprig_post_categories();
-			wprig_post_tags();
-			wprig_edit_post_link();
+			ehg2_post_categories();
+			ehg2_post_tags();
+			ehg2_edit_post_link();
 		?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

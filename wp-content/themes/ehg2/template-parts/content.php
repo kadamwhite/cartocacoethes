@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package wprig
+ * @package ehg2
  */
 
 ?>
@@ -22,9 +22,9 @@
 			?>
 			<div class="entry-meta">
 				<?php
-					wprig_posted_on();
-					wprig_posted_by();
-					wprig_comments_link();
+					ehg2_posted_on();
+					ehg2_posted_by();
+					ehg2_comments_link();
 				?>
 			</div><!-- .entry-meta -->
 			<?php
@@ -32,7 +32,7 @@
 		?>
 	</header><!-- .entry-header -->
 
-	<?php wprig_post_thumbnail(); ?>
+	<?php ehg2_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -40,7 +40,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wprig' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'ehg2' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -53,7 +53,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wprig' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
 				'after'  => '</div>',
 			)
 		);
@@ -62,9 +62,9 @@
 
 	<footer class="entry-footer">
 		<?php
-		wprig_post_categories();
-		wprig_post_tags();
-		wprig_edit_post_link();
+		ehg2_post_categories();
+		ehg2_post_tags();
+		ehg2_edit_post_link();
 		?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
@@ -73,8 +73,8 @@
 if ( is_singular() ) :
 	the_post_navigation(
 		array(
-			'prev_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Previous:', 'wprig' ) . '</span></div>%title',
-			'next_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Next:', 'wprig' ) . '</span></div>%title',
+			'prev_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Previous:', 'ehg2' ) . '</span></div>%title',
+			'next_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Next:', 'ehg2' ) . '</span></div>%title',
 		)
 	);
 

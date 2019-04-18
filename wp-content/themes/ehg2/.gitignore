@@ -2,6 +2,12 @@
 /*
 
 # Whitelist what you want tracked:
+!/*.php
+!/pluggable/
+!/template-parts/
+!/js/
+!/optional/
+!/css/
 !/.github/
 !/dev/
 !/languages/
