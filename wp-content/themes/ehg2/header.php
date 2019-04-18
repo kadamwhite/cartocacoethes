@@ -17,7 +17,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
-	<?php if ( ! wprig_is_amp() ) : ?>
+	<?php if ( ! ehg2_is_amp() ) : ?>
 		<script>document.documentElement.classList.remove("no-js");</script>
 	<?php endif; ?>
 
@@ -41,18 +41,18 @@
 					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php endif; ?>
 
-				<?php $wprig_description = get_bloginfo( 'description', 'display' ); ?>
-				<?php if ( $wprig_description || is_customize_preview() ) : ?>
-					<p class="site-description"><?php echo $wprig_description; /* WPCS: xss ok. */ ?></p>
+				<?php $ehg2_description = get_bloginfo( 'description', 'display' ); ?>
+				<?php if ( $ehg2_description || is_customize_preview() ) : ?>
+					<p class="site-description"><?php echo $ehg2_description; /* WPCS: xss ok. */ ?></p>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'wprig' ); ?>"
-				<?php if ( wprig_is_amp() ) : ?>
+				<?php if ( ehg2_is_amp() ) : ?>
 					[class]=" siteNavigationMenu.expanded ? 'main-navigation toggled-on' : 'main-navigation' "
 				<?php endif; ?>
 			>
-				<?php if ( wprig_is_amp() ) : ?>
+				<?php if ( ehg2_is_amp() ) : ?>
 					<amp-state id="siteNavigationMenu">
 						<script type="application/json">
 							{
@@ -63,7 +63,7 @@
 				<?php endif; ?>
 
 				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'wprig' ); ?>" aria-controls="primary-menu" aria-expanded="false"
-					<?php if ( wprig_is_amp() ) : ?>
+					<?php if ( ehg2_is_amp() ) : ?>
 						on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
 						[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
 					<?php endif; ?>
