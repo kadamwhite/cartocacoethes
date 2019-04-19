@@ -113,17 +113,16 @@ function enqueue_scripts() {
 		return;
 	}
 
-	// Enqueue the navigation script.
-	wp_enqueue_script( 'ehg2-navigation', get_theme_file_uri( '/build/navigation.js' ), [], '20180514', false );
-	wp_script_add_data( 'ehg2-navigation', 'async', true );
-	wp_localize_script( 'ehg2-navigation', 'wprigScreenReaderText', [
+	// Enqueue the global theme navigation and link focus script.
+	Asset_Loader\autoenqueue( manifest_path(), 'theme.js', [
+		'handle' => 'ehg2-theme',
+	] );
+	wp_script_add_data( 'ehg2-theme', 'async', true );
+	wp_script_add_data( 'ehg2-theme', 'defer', true );
+	wp_localize_script( 'ehg2-theme', 'wprigScreenReaderText', [
 		'expand'   => __( 'Expand child menu', 'wprig' ),
 		'collapse' => __( 'Collapse child menu', 'wprig' ),
 	] );
-
-	// Enqueue skip-link-focus script.
-	wp_enqueue_script( 'ehg2-skip-link-focus-fix', get_theme_file_uri( '/build/skip-link-focus-fix.js' ), [], '20180514', false );
-	wp_script_add_data( 'ehg2-skip-link-focus-fix', 'defer', true );
 
 	// Enqueue comment script on singular post/page views only.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

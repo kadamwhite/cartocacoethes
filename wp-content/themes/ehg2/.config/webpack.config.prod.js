@@ -24,8 +24,10 @@ module.exports = presets.production( {
 		style: themePath( 'src/css/style.scss' ),
 		widgets: themePath( 'src/css/widgets.scss' ),
 		customizer: themePath( 'src/js/customizer.js' ),
-		navigation: themePath( 'src/js/navigation.js' ),
-		'skip-link-focus-fix': themePath( 'src/js/skip-link-focus-fix.js' ),
+		theme: [
+			themePath( 'src/js/navigation.js' ),
+			themePath( 'src/js/skip-link-focus-fix.js' ),
+		],
 	},
 	output: {
 		path: themePath( 'build' ),
