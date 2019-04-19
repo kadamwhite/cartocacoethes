@@ -2,7 +2,12 @@
 <ruleset>
 	<!-- Use HM Coding Standards -->
 	<rule ref="vendor/humanmade/coding-standards">
-		<!-- Disable specific dumb rules -->
+		<!-- Don't restrict namespaced functions to `namespace.php` -->
 		<exclude name="HM.Files.FunctionFileName.WrongFile" />
+	</rule>
+
+	<!-- Don't restrict namespace to `inc/` directory for tests -->
+	<rule ref="HM.Files.NamespaceDirectoryName">
+		<exclude-pattern>wp-content/themes/ehg2/tests/*</exclude-pattern>
 	</rule>
 </ruleset>
