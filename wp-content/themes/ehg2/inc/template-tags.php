@@ -164,11 +164,11 @@ function ehg2_comments_link() {
 				wp_kses(
 					/* translators: %s: post title */
 					__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'ehg2' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
+					[
+						'span' => [
+							'class' => [],
+						],
+					]
 				),
 				get_the_title()
 			)
@@ -186,11 +186,11 @@ function ehg2_edit_post_link() {
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
 				__( 'Edit <span class="screen-reader-text">%s</span>', 'ehg2' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
+				[
+					'span' => [
+						'class' => [],
+					],
+				]
 			),
 			get_the_title()
 		),
@@ -214,7 +214,7 @@ function ehg2_post_thumbnail() {
 		?>
 
 		<div class="post-thumbnail">
-			<?php the_post_thumbnail( 'full', array( 'class' => 'skip-lazy' ) ); ?>
+			<?php the_post_thumbnail( 'full', [ 'class' => 'skip-lazy' ] ); ?>
 		</div><!-- .post-thumbnail -->
 
 		<?php
@@ -227,24 +227,24 @@ function ehg2_post_thumbnail() {
 			if ( 0 === $wp_query->current_post ) {
 				the_post_thumbnail(
 					'full',
-					array(
+					[
 						'class' => 'skip-lazy',
 						'alt'   => the_title_attribute(
-							array(
+							[
 								'echo' => false,
-							)
+							]
 						),
-					)
+					]
 				);
 			} else {
 				the_post_thumbnail(
-					'post-thumbnail', array(
+					'post-thumbnail', [
 						'alt' => the_title_attribute(
-							array(
+							[
 								'echo' => false,
-							)
+							]
 						),
-					)
+					]
 				);
 			}
 			?>

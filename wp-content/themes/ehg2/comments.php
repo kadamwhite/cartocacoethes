@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<?php wp_print_styles( array( 'ehg2-comments' ) ); ?>
+<?php wp_print_styles( [ 'ehg2-comments' ] ); ?>
 <div id="comments" class="comments-area">
 
 	<?php
@@ -61,10 +61,10 @@ if ( post_password_required() ) {
 		<ol class="comment-list" <?php echo ehg2_using_amp_live_list_comments() ? 'items' : ''; ?>>
 			<?php
 				wp_list_comments(
-					array(
+					[
 						'style'      => 'ol',
 						'short_ping' => true,
-					)
+					]
 				);
 			?>
 		</ol><!-- .comment-list -->

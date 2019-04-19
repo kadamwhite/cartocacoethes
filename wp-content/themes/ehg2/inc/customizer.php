@@ -17,16 +17,16 @@ function ehg2_customize_register( $wp_customize ) {
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
-			'blogname', array(
+			'blogname', [
 				'selector'        => '.site-title a',
 				'render_callback' => 'ehg2_customize_partial_blogname',
-			)
+			]
 		);
 		$wp_customize->selective_refresh->add_partial(
-			'blogdescription', array(
+			'blogdescription', [
 				'selector'        => '.site-description',
 				'render_callback' => 'ehg2_customize_partial_blogdescription',
-			)
+			]
 		);
 	}
 
@@ -34,32 +34,32 @@ function ehg2_customize_register( $wp_customize ) {
 	 * Theme options.
 	 */
 	$wp_customize->add_section(
-		'theme_options', array(
+		'theme_options', [
 			'title'    => __( 'Theme Options', 'ehg2' ),
 			'priority' => 130, // Before Additional CSS.
-		)
+		]
 	);
 
 	if ( function_exists( 'ehg2_lazyload_images' ) ) {
 		$wp_customize->add_setting(
-			'lazy_load_media', array(
+			'lazy_load_media', [
 				'default'           => 'lazyload',
 				'sanitize_callback' => 'ehg2_sanitize_lazy_load_media',
 				'transport'         => 'postMessage',
-			)
+			]
 		);
 
 		$wp_customize->add_control(
-			'lazy_load_media', array(
+			'lazy_load_media', [
 				'label'           => __( 'Lazy-load images', 'ehg2' ),
 				'section'         => 'theme_options',
 				'type'            => 'radio',
 				'description'     => __( 'Lazy-loading images means images are loaded only when they are in view. Improves performance, but can result in content jumping around on slower connections.', 'ehg2' ),
-				'choices'         => array(
+				'choices'         => [
 					'lazyload'    => __( 'Lazy-load on (default)', 'ehg2' ),
 					'no-lazyload' => __( 'Lazy-load off', 'ehg2' ),
-				),
-			)
+				],
+			]
 		);
 	}
 }
@@ -87,7 +87,7 @@ function ehg2_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function ehg2_customize_preview_js() {
-	wp_enqueue_script( 'ehg2-customizer', get_theme_file_uri( '/build/customizer.js' ), array( 'customize-preview' ), '20151215', true );
+	wp_enqueue_script( 'ehg2-customizer', get_theme_file_uri( '/build/customizer.js' ), [ 'customize-preview' ], '20151215', true );
 }
 add_action( 'customize_preview_init', 'ehg2_customize_preview_js' );
 
@@ -97,10 +97,10 @@ add_action( 'customize_preview_init', 'ehg2_customize_preview_js' );
  * @param string $input Lazy-load setting.
  */
 function ehg2_sanitize_lazy_load_media( $input ) {
-	$valid = array(
+	$valid = [
 		'lazyload' => __( 'Lazy-load images', 'ehg2' ),
 		'no-lazyload' => __( 'Load images immediately', 'ehg2' ),
-	);
+	];
 
 	if ( array_key_exists( $input, $valid ) ) {
 		return $input;

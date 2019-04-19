@@ -41,21 +41,21 @@
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
 					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'ehg2' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
+					[
+						'span' => [
+							'class' => [],
+						],
+					]
 				),
 				get_the_title()
 			)
 		);
 
 		wp_link_pages(
-			array(
+			[
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
 				'after'  => '</div>',
-			)
+			]
 		);
 		?>
 	</div><!-- .entry-content -->
@@ -72,10 +72,10 @@
 <?php
 if ( is_singular() ) :
 	the_post_navigation(
-		array(
+		[
 			'prev_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Previous:', 'ehg2' ) . '</span></div>%title',
 			'next_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Next:', 'ehg2' ) . '</span></div>%title',
-		)
+			]
 	);
 
 	// If comments are open or we have at least one comment, load up the comment template.

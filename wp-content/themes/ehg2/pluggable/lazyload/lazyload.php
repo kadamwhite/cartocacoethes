@@ -79,12 +79,12 @@ function ehg2_allow_lazy_attributes( $allowed_tags ) {
 		return $allowed_tags;
 	}
 	// But, if images are allowed, ensure that our attributes are allowed!
-	$img_attributes      = array_merge( $allowed_tags['img'], array(
+	$img_attributes      = array_merge( $allowed_tags['img'], [
 		'data-src'    => 1,
 		'data-srcset' => 1,
 		'data-sizes'  => 1,
 		'class'       => 1,
-	) );
+	] );
 	$allowed_tags['img'] = $img_attributes;
 	return $allowed_tags;
 }
@@ -119,9 +119,9 @@ function ehg2_add_image_placeholders( $content ) {
  * @return bool
  */
 function ehg2_should_skip_image_with_blacklisted_class( $classes ) {
-	$blacklisted_classes = array(
+	$blacklisted_classes = [
 		'skip-lazy',
-	);
+	];
 
 	foreach ( $blacklisted_classes as $class ) {
 		if ( false !== strpos( $classes, $class ) ) {
@@ -229,7 +229,7 @@ function ehg2_get_placeholder_image() {
  * @return string $flattened_attributes
  */
 function ehg2_flatten_kses_hair_data( $attributes ) {
-	$flattened_attributes = array();
+	$flattened_attributes = [];
 	foreach ( $attributes as $name => $attribute ) {
 		$flattened_attributes[ $name ] = $attribute['value'];
 	}
@@ -243,7 +243,7 @@ function ehg2_flatten_kses_hair_data( $attributes ) {
  * @return string
  */
 function ehg2_build_attributes_string( $attributes ) {
-	$string = array();
+	$string = [];
 	foreach ( $attributes as $name => $value ) {
 		if ( '' === $value ) {
 			$string[] = sprintf( '%s', $name );
@@ -259,6 +259,6 @@ function ehg2_build_attributes_string( $attributes ) {
  * Enqueue and defer lazyload script.
  */
 function ehg2_enqueue_assets() {
-	wp_enqueue_script( 'ehg2-lazy-load-images', get_theme_file_uri( '/pluggable/lazyload/js/lazyload.js' ), array(), '20151215', false );
+	wp_enqueue_script( 'ehg2-lazy-load-images', get_theme_file_uri( '/pluggable/lazyload/js/lazyload.js' ), [], '20151215', false );
 	wp_script_add_data( 'ehg2-lazy-load-images', 'defer', true );
 }

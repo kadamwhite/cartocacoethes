@@ -50,7 +50,7 @@ add_action( 'wp_head', 'ehg2_pingback_header' );
  */
 function ehg2_filter_script_loader_tag( $tag, $handle ) {
 
-	foreach ( array( 'async', 'defer' ) as $attr ) {
+	foreach ( [ 'async', 'defer' ] as $attr ) {
 		if ( ! wp_scripts()->get_data( $handle, $attr ) ) {
 			continue;
 		}
@@ -96,7 +96,7 @@ function ehg2_add_body_style() {
 	// Get registered styles.
 	$wp_styles = wp_styles();
 
-	$preloads = array();
+	$preloads = [];
 
 	// Preload content.css.
 	$preloads['ehg2-content'] = ehg2_get_preload_stylesheet_uri( $wp_styles, 'ehg2-content' );

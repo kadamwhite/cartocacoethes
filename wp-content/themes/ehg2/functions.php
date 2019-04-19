@@ -43,9 +43,9 @@ function ehg2_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
-		array(
+		[
 			'primary' => esc_html__( 'Primary', 'wprig' ),
-		)
+		]
 	);
 
 	/*
@@ -53,22 +53,22 @@ function ehg2_setup() {
 		* to output valid HTML5.
 		*/
 	add_theme_support(
-		'html5', array(
+		'html5', [
 			'search-form',
 			'comment-form',
 			'comment-list',
 			'gallery',
 			'caption',
-		)
+		]
 	);
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support(
 		'custom-background', apply_filters(
-			'ehg2_custom_background_args', array(
+			'ehg2_custom_background_args', [
 				'default-color' => 'ffffff',
 				'default-image' => '',
-			)
+			]
 		)
 	);
 
@@ -81,12 +81,12 @@ function ehg2_setup() {
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
 	add_theme_support(
-		'custom-logo', array(
+		'custom-logo', [
 			'height'      => 250,
 			'width'       => 250,
 			'flex-width'  => false,
 			'flex-height' => false,
-		)
+		]
 	);
 
 	/**
@@ -107,53 +107,53 @@ function ehg2_setup() {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/extensibility/theme-support/#block-color-palettes
 	 */
-	add_theme_support( 'editor-color-palette', array(
-		array(
+	add_theme_support( 'editor-color-palette', [
+		[
 			'name'  => __( 'Dusty orange', 'wprig' ),
 			'slug'  => 'dusty-orange',
 			'color' => '#ed8f5b',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dusty red', 'wprig' ),
 			'slug'  => 'dusty-red',
 			'color' => '#e36d60',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dusty wine', 'wprig' ),
 			'slug'  => 'dusty-wine',
 			'color' => '#9c4368',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dark sunset', 'wprig' ),
 			'slug'  => 'dark-sunset',
 			'color' => '#33223b',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Almost black', 'wprig' ),
 			'slug'  => 'almost-black',
 			'color' => '#0a1c28',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dusty water', 'wprig' ),
 			'slug'  => 'dusty-water',
 			'color' => '#41848f',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dusty sky', 'wprig' ),
 			'slug'  => 'dusty-sky',
 			'color' => '#72a7a3',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dusty daylight', 'wprig' ),
 			'slug'  => 'dusty-daylight',
 			'color' => '#97c0b7',
-		),
-		array(
+		],
+		[
 			'name'  => __( 'Dusty sun', 'wprig' ),
 			'slug'  => 'dusty-sun',
 			'color' => '#eee9d1',
-		),
-	) );
+		],
+	] );
 
 	/**
 	 * Optional: Disable custom colors in block color palettes.
@@ -168,32 +168,32 @@ function ehg2_setup() {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/extensibility/theme-support/#block-font-sizes
 	 */
-	add_theme_support( 'editor-font-sizes', array(
-		array(
+	add_theme_support( 'editor-font-sizes', [
+		[
 			'name'      => __( 'small', 'wprig' ),
 			'shortName' => __( 'S', 'wprig' ),
 			'size'      => 16,
 			'slug'      => 'small',
-		),
-		array(
+		],
+		[
 			'name'      => __( 'regular', 'wprig' ),
 			'shortName' => __( 'M', 'wprig' ),
 			'size'      => 20,
 			'slug'      => 'regular',
-		),
-		array(
+		],
+		[
 			'name'      => __( 'large', 'wprig' ),
 			'shortName' => __( 'L', 'wprig' ),
 			'size'      => 36,
 			'slug'      => 'large',
-		),
-		array(
+		],
+		[
 			'name'      => __( 'larger', 'wprig' ),
 			'shortName' => __( 'XL', 'wprig' ),
 			'size'      => 48,
 			'slug'      => 'larger',
-		),
-	) );
+		],
+	] );
 
 	/**
 	 * Optional: Add AMP support.
@@ -203,9 +203,9 @@ function ehg2_setup() {
 	 *
 	 * @link https://wordpress.org/plugins/amp/
 	 */
-	add_theme_support( 'amp', array(
+	add_theme_support( 'amp', [
 		'comments_live_list' => true,
-	) );
+	] );
 
 }
 add_action( 'after_setup_theme', 'ehg2_setup' );
@@ -237,7 +237,7 @@ function ehg2_fonts_url() {
 	 */
 	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'wprig' );
 
-	$font_families = array();
+	$font_families = [];
 
 	if ( 'off' !== $roboto ) {
 		$font_families[] = 'Roboto Condensed:400,400i,700,700i';
@@ -247,11 +247,11 @@ function ehg2_fonts_url() {
 		$font_families[] = 'Crimson Text:400,400i,600,600i';
 	}
 
-	if ( in_array( 'on', array( $roboto, $crimson_text ) ) ) {
-		$query_args = array(
+	if ( in_array( 'on', [ $roboto, $crimson_text ] ) ) {
+		$query_args = [
 			'family' => urlencode( implode( '|', $font_families ) ),
 			'subset' => urlencode( 'latin,latin-ext' ),
-		);
+		];
 
 		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 	}
@@ -271,10 +271,10 @@ function ehg2_fonts_url() {
  */
 function ehg2_resource_hints( $urls, $relation_type ) {
 	if ( wp_style_is( 'ehg2-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
-		$urls[] = array(
+		$urls[] = [
 			'href' => 'https://fonts.gstatic.com',
 			'crossorigin',
-		);
+		];
 	}
 
 	return $urls;
@@ -286,10 +286,10 @@ add_filter( 'wp_resource_hints', 'ehg2_resource_hints', 10, 2 );
  */
 function ehg2_gutenberg_styles() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'ehg2-fonts', ehg2_fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	wp_enqueue_style( 'ehg2-fonts', ehg2_fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue main stylesheet.
-	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/editor-styles.css' ), array(), '20180514' );
+	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/editor-styles.css' ), [], '20180514' );
 }
 add_action( 'enqueue_block_editor_assets', 'ehg2_gutenberg_styles' );
 
@@ -299,7 +299,7 @@ add_action( 'enqueue_block_editor_assets', 'ehg2_gutenberg_styles' );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function ehg2_widgets_init() {
-	register_sidebar( array(
+	register_sidebar( [
 		'name'          => esc_html__( 'Sidebar', 'wprig' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'wprig' ),
@@ -307,7 +307,7 @@ function ehg2_widgets_init() {
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
-	) );
+	] );
 }
 add_action( 'widgets_init', 'ehg2_widgets_init' );
 
@@ -316,17 +316,17 @@ add_action( 'widgets_init', 'ehg2_widgets_init' );
  */
 function ehg2_styles() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'ehg2-fonts', ehg2_fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	wp_enqueue_style( 'ehg2-fonts', ehg2_fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue main stylesheet.
-	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/style.css' ), array(), '20180514' );
+	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/style.css' ), [], '20180514' );
 
 	// Register component styles that are printed as needed.
-	wp_register_style( 'ehg2-comments', get_theme_file_uri( '/build/comments.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-content', get_theme_file_uri( '/build/content.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-sidebar', get_theme_file_uri( '/build/sidebar.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-widgets', get_theme_file_uri( '/build/widgets.css' ), array(), '20180514' );
-	wp_register_style( 'ehg2-front-page', get_theme_file_uri( '/build/front-page.css' ), array(), '20180514' );
+	wp_register_style( 'ehg2-comments', get_theme_file_uri( '/build/comments.css' ), [], '20180514' );
+	wp_register_style( 'ehg2-content', get_theme_file_uri( '/build/content.css' ), [], '20180514' );
+	wp_register_style( 'ehg2-sidebar', get_theme_file_uri( '/build/sidebar.css' ), [], '20180514' );
+	wp_register_style( 'ehg2-widgets', get_theme_file_uri( '/build/widgets.css' ), [], '20180514' );
+	wp_register_style( 'ehg2-front-page', get_theme_file_uri( '/build/front-page.css' ), [], '20180514' );
 }
 add_action( 'wp_enqueue_scripts', 'ehg2_styles' );
 
@@ -341,15 +341,15 @@ function ehg2_scripts() {
 	}
 
 	// Enqueue the navigation script.
-	wp_enqueue_script( 'ehg2-navigation', get_theme_file_uri( '/build/navigation.js' ), array(), '20180514', false );
+	wp_enqueue_script( 'ehg2-navigation', get_theme_file_uri( '/build/navigation.js' ), [], '20180514', false );
 	wp_script_add_data( 'ehg2-navigation', 'async', true );
-	wp_localize_script( 'ehg2-navigation', 'wprigScreenReaderText', array(
+	wp_localize_script( 'ehg2-navigation', 'wprigScreenReaderText', [
 		'expand'   => __( 'Expand child menu', 'wprig' ),
 		'collapse' => __( 'Collapse child menu', 'wprig' ),
-	));
+	] );
 
 	// Enqueue skip-link-focus script.
-	wp_enqueue_script( 'ehg2-skip-link-focus-fix', get_theme_file_uri( '/build/skip-link-focus-fix.js' ), array(), '20180514', false );
+	wp_enqueue_script( 'ehg2-skip-link-focus-fix', get_theme_file_uri( '/build/skip-link-focus-fix.js' ), [], '20180514', false );
 	wp_script_add_data( 'ehg2-skip-link-focus-fix', 'defer', true );
 
 	// Enqueue comment script on singular post/page views only.

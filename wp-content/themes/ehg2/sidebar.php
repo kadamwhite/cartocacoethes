@@ -12,7 +12,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 
-<?php wp_print_styles( array( 'ehg2-sidebar', 'ehg2-widgets' ) ); ?>
+<?php wp_print_styles( [ 'ehg2-sidebar', 'ehg2-widgets' ] ); ?>
 <aside id="secondary" class="primary-sidebar widget-area">
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 </aside><!-- #secondary -->
