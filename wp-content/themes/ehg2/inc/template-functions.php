@@ -4,6 +4,17 @@
  *
  * @package ehg2
  */
+namespace EHG2\Template_Functions;
+
+function setup() {
+	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes' );
+	add_action( 'wp_head', __NAMESPACE__ . '\\pingback_header' );
+	add_filter( 'script_loader_tag', __NAMESPACE__ . '\\filter_script_loader_tag', 10, 2 );
+	add_action( 'wp_head', __NAMESPACE__ . '\\add_body_style' );
+	add_filter( 'walker_nav_menu_start_el', __NAMESPACE__ . '\\add_primary_menu_dropdown_symbol', 10, 4 );
+	add_filter( 'nav_menu_link_attributes', __NAMESPACE__ . '\\add_nav_menu_aria_current', 10, 2 );
+	add_filter( 'page_menu_link_attributes', __NAMESPACE__ . '\\add_nav_menu_aria_current', 10, 2 );
+}
 
 /**
  * Adds custom classes to the array of body classes.
@@ -11,7 +22,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function ehg2_body_classes( $classes ) {
+function body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -26,17 +37,15 @@ function ehg2_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'ehg2_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
-function ehg2_pingback_header() {
+function pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-add_action( 'wp_head', 'ehg2_pingback_header' );
 
 /**
  * Adds async/defer attributes to enqueued / registered scripts.
@@ -48,7 +57,7 @@ add_action( 'wp_head', 'ehg2_pingback_header' );
  * @param string $handle The script handle.
  * @return array
  */
-function ehg2_filter_script_loader_tag( $tag, $handle ) {
+function filter_script_loader_tag( $tag, $handle ) {
 
 	foreach ( [ 'async', 'defer' ] as $attr ) {
 		if ( ! wp_scripts()->get_data( $handle, $attr ) ) {
@@ -67,7 +76,6 @@ function ehg2_filter_script_loader_tag( $tag, $handle ) {
 	return $tag;
 }
 
-add_filter( 'script_loader_tag', 'ehg2_filter_script_loader_tag', 10, 2 );
 
 /**
  * Generate preload markup for stylesheets.
@@ -75,7 +83,7 @@ add_filter( 'script_loader_tag', 'ehg2_filter_script_loader_tag', 10, 2 );
  * @param object $wp_styles Registered styles.
  * @param string $handle The style handle.
  */
-function ehg2_get_preload_stylesheet_uri( $wp_styles, $handle ) {
+function get_preload_stylesheet_uri( $wp_styles, $handle ) {
 	$preload_uri = $wp_styles->registered[ $handle ]->src . '?ver=' . $wp_styles->registered[ $handle ]->ver;
 	return $preload_uri;
 }
@@ -86,7 +94,7 @@ function ehg2_get_preload_stylesheet_uri( $wp_styles, $handle ) {
  *
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content
  */
-function ehg2_add_body_style() {
+function add_body_style() {
 
 	// If AMP is active, do nothing.
 	if ( ehg2_is_amp() ) {
@@ -99,23 +107,23 @@ function ehg2_add_body_style() {
 	$preloads = [];
 
 	// Preload content.css.
-	$preloads['ehg2-content'] = ehg2_get_preload_stylesheet_uri( $wp_styles, 'ehg2-content' );
+	$preloads['ehg2-content'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-content' );
 
 	// Preload sidebar.css and widget.css.
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
-		$preloads['ehg2-sidebar'] = ehg2_get_preload_stylesheet_uri( $wp_styles, 'ehg2-sidebar' );
-		$preloads['ehg2-widgets'] = ehg2_get_preload_stylesheet_uri( $wp_styles, 'ehg2-widgets' );
+		$preloads['ehg2-sidebar'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-sidebar' );
+		$preloads['ehg2-widgets'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-widgets' );
 	}
 
 	// Preload comments.css.
 	if ( ! post_password_required() && is_singular() && ( comments_open() || get_comments_number() ) ) {
-		$preloads['ehg2-comments'] = ehg2_get_preload_stylesheet_uri( $wp_styles, 'ehg2-comments' );
+		$preloads['ehg2-comments'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-comments' );
 	}
 
 	// Preload front-page.css.
 	global $template;
 	if ( 'front-page.php' === basename( $template ) ) {
-		$preloads['ehg2-front-page'] = ehg2_get_preload_stylesheet_uri( $wp_styles, 'ehg2-front-page' );
+		$preloads['ehg2-front-page'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-front-page' );
 	}
 
 	// Output the preload markup in <head>.
@@ -125,7 +133,6 @@ function ehg2_add_body_style() {
 	}
 
 }
-add_action( 'wp_head', 'ehg2_add_body_style' );
 
 /**
  * Add dropdown symbol to nav menu items with children.
@@ -147,7 +154,7 @@ add_action( 'wp_head', 'ehg2_add_body_style' );
  * @param stdClass $args        An object of wp_nav_menu() arguments.
  * @return string Modified nav menu HTML.
  */
-function ehg2_add_primary_menu_dropdown_symbol( $item_output, $item, $depth, $args ) {
+function add_primary_menu_dropdown_symbol( $item_output, $item, $depth, $args ) {
 
 	// Only for our primary menu location.
 	if ( empty( $args->theme_location ) || 'primary' != $args->theme_location ) {
@@ -161,7 +168,6 @@ function ehg2_add_primary_menu_dropdown_symbol( $item_output, $item, $depth, $ar
 
 	return $item_output;
 }
-add_filter( 'walker_nav_menu_start_el', 'ehg2_add_primary_menu_dropdown_symbol', 10, 4 );
 
 /**
  * Filters the HTML attributes applied to a menu item's anchor element.
@@ -173,7 +179,7 @@ add_filter( 'walker_nav_menu_start_el', 'ehg2_add_primary_menu_dropdown_symbol',
  * @param WP_Post $item  The current menu item.
  * @return array Modified HTML attributes
  */
-function ehg2_add_nav_menu_aria_current( $atts, $item ) {
+function add_nav_menu_aria_current( $atts, $item ) {
 	/*
 	 * First, check if "current" is set,
 	 * which means the item is a nav menu item.
@@ -185,7 +191,7 @@ function ehg2_add_nav_menu_aria_current( $atts, $item ) {
 		if ( $item->current ) {
 			$atts['aria-current'] = 'page';
 		}
-	} else if ( ! empty( $item->ID ) ) {
+	} elseif ( ! empty( $item->ID ) ) {
 		global $post;
 		if ( ! empty( $post->ID ) && $post->ID == $item->ID ) {
 			$atts['aria-current'] = 'page';
@@ -194,5 +200,3 @@ function ehg2_add_nav_menu_aria_current( $atts, $item ) {
 
 	return $atts;
 }
-add_filter( 'nav_menu_link_attributes', 'ehg2_add_nav_menu_aria_current', 10, 2 );
-add_filter( 'page_menu_link_attributes', 'ehg2_add_nav_menu_aria_current', 10, 2 );

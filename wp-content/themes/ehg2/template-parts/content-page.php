@@ -20,12 +20,10 @@
 		<?php
 		the_content();
 
-		wp_link_pages(
-			[
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
-				'after'  => '</div>',
-			]
-		);
+		wp_link_pages( [
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
+			'after'  => '</div>',
+		] );
 		?>
 	</div><!-- .entry-content -->
 

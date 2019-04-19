@@ -8,11 +8,17 @@
  *
  * @package ehg2
  */
+// phpcs:disable HM.Files.NamespaceDirectoryName.NameMismatch
+namespace EHG2\Pluggable\Lazyload;
+
+function setup() {
+	add_action( 'wp', __NAMESPACE__ . '\\lazyload_images' );
+}
 
 /**
  * Main function. Runs everything.
  */
-function ehg2_lazyload_images() {
+function lazyload_images() {
 
 	// If this is the admin page, do nothing.
 	if ( is_admin() ) {
@@ -34,38 +40,37 @@ function ehg2_lazyload_images() {
 		return;
 	}
 
-	add_action( 'wp_head', 'ehg2_setup_filters', PHP_INT_MAX );
-	add_action( 'wp_enqueue_scripts', 'ehg2_enqueue_assets' );
+	add_action( 'wp_head', __NAMESPACE__ . '\\setup_filters', PHP_INT_MAX );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 
 	// Do not lazy load avatar in admin bar.
-	add_action( 'admin_bar_menu', 'ehg2_remove_filters', 0 );
-	add_filter( 'wp_kses_allowed_html', 'ehg2_allow_lazy_attributes' );
+	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\remove_filters', 0 );
+	add_filter( 'wp_kses_allowed_html', __NAMESPACE__ . '\\allow_lazy_attributes' );
 
 }
-add_action( 'wp', 'ehg2_lazyload_images' );
 
 /**
  * Setup filters to enable lazy-loading of images.
  */
-function ehg2_setup_filters() {
-	add_filter( 'the_content', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'post_thumbnail_html', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'get_avatar', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'widget_text', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'get_image_tag', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'wp_get_attachment_image_attributes', 'ehg2_process_image_attributes', PHP_INT_MAX );
+function setup_filters() {
+	add_filter( 'the_content', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'get_avatar', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'widget_text', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'get_image_tag', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\process_image_attributes', PHP_INT_MAX );
 }
 
 /**
  * Remove filters for images that should not be lazy-loaded.
  */
-function ehg2_remove_filters() {
-	remove_filter( 'the_content', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'post_thumbnail_html', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'get_avatar', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'widget_text', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'get_image_tag', 'ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'wp_get_attachment_image_attributes', 'ehg2_process_image_attributes', PHP_INT_MAX );
+function remove_filters() {
+	remove_filter( 'the_content', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'get_avatar', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'widget_text', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'get_image_tag', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\process_image_attributes', PHP_INT_MAX );
 }
 
 /**
@@ -74,7 +79,7 @@ function ehg2_remove_filters() {
  * @param array $allowed_tags The allowed tags and their attributes.
  * @return array
  */
-function ehg2_allow_lazy_attributes( $allowed_tags ) {
+function allow_lazy_attributes( $allowed_tags ) {
 	if ( ! isset( $allowed_tags['img'] ) ) {
 		return $allowed_tags;
 	}
@@ -106,7 +111,11 @@ function ehg2_add_image_placeholders( $content ) {
 	}
 
 	// Find all <img> elements via regex, add lazy-load attributes.
-	$content = preg_replace_callback( '#<(img)([^>]+?)(>(.*?)</\\1>|[\/]?>)#si', 'ehg2_process_image', $content );
+	$content = preg_replace_callback(
+		'#<(img)([^>]+?)(>(.*?)</\\1>|[\/]?>)#si',
+		__NAMESPACE__ . '\\process_image',
+		$content
+	);
 	return $content;
 
 }
@@ -138,19 +147,19 @@ function ehg2_should_skip_image_with_blacklisted_class( $classes ) {
  *
  * @return string The image with updated lazy attributes
  */
-function ehg2_process_image( $matches ) {
+function process_image( $matches ) {
 	$old_attributes_str       = $matches[2];
 	$old_attributes_kses_hair = wp_kses_hair( $old_attributes_str, wp_allowed_protocols() );
 	if ( empty( $old_attributes_kses_hair['src'] ) ) {
 		return $matches[0];
 	}
-	$old_attributes = ehg2_flatten_kses_hair_data( $old_attributes_kses_hair );
-	$new_attributes = ehg2_process_image_attributes( $old_attributes );
+	$old_attributes = flatten_kses_hair_data( $old_attributes_kses_hair );
+	$new_attributes = process_image_attributes( $old_attributes );
 	// If we didn't add lazy attributes, just return the original image source.
 	if ( empty( $new_attributes['data-src'] ) ) {
 		return $matches[0];
 	}
-	$new_attributes_str = ehg2_build_attributes_string( $new_attributes );
+	$new_attributes_str = build_attributes_string( $new_attributes );
 
 	return sprintf( '<img %1$s><noscript>%2$s</noscript>', $new_attributes_str, $matches[0] );
 }
@@ -163,7 +172,7 @@ function ehg2_process_image( $matches ) {
  *
  * @return array The updated image attributes array with lazy load attributes.
  */
-function ehg2_process_image_attributes( $attributes ) {
+function process_image_attributes( $attributes ) {
 	if ( empty( $attributes['src'] ) ) {
 		return $attributes;
 	}
@@ -174,10 +183,10 @@ function ehg2_process_image_attributes( $attributes ) {
 	$old_attributes = $attributes;
 
 	// Add the lazy class to the img element.
-	$attributes['class'] = ehg2_set_lazy_class( $attributes );
+	$attributes['class'] = set_lazy_class( $attributes );
 
 	// Set placeholder and lazy-src.
-	$attributes['src'] = ehg2_get_placeholder_image();
+	$attributes['src'] = get_placeholder_image();
 
 	// Set data-src to the original source uri.
 	$attributes['data-src'] = $old_attributes['src'];
@@ -202,7 +211,7 @@ function ehg2_process_image_attributes( $attributes ) {
  * @param array $attributes <img> element attributes.
  * @return string
  */
-function ehg2_set_lazy_class( $attributes ) {
+function set_lazy_class( $attributes ) {
 	if ( array_key_exists( 'class', $attributes ) ) {
 		$classes  = $attributes['class'];
 		$classes .= ' lazy';
@@ -218,7 +227,7 @@ function ehg2_set_lazy_class( $attributes ) {
  *
  * @return string The URL to the placeholder image.
  */
-function ehg2_get_placeholder_image() {
+function get_placeholder_image() {
 	return get_theme_file_uri( '/images/placeholder.svg' );
 }
 
@@ -228,7 +237,7 @@ function ehg2_get_placeholder_image() {
  * @param array $attributes Array of attributes.
  * @return string $flattened_attributes
  */
-function ehg2_flatten_kses_hair_data( $attributes ) {
+function flatten_kses_hair_data( $attributes ) {
 	$flattened_attributes = [];
 	foreach ( $attributes as $name => $attribute ) {
 		$flattened_attributes[ $name ] = $attribute['value'];
@@ -242,7 +251,7 @@ function ehg2_flatten_kses_hair_data( $attributes ) {
  * @param array $attributes Array of attributes.
  * @return string
  */
-function ehg2_build_attributes_string( $attributes ) {
+function build_attributes_string( $attributes ) {
 	$string = [];
 	foreach ( $attributes as $name => $value ) {
 		if ( '' === $value ) {
@@ -258,7 +267,13 @@ function ehg2_build_attributes_string( $attributes ) {
 /**
  * Enqueue and defer lazyload script.
  */
-function ehg2_enqueue_assets() {
-	wp_enqueue_script( 'ehg2-lazy-load-images', get_theme_file_uri( '/pluggable/lazyload/js/lazyload.js' ), [], '20151215', false );
+function enqueue_assets() {
+	wp_enqueue_script(
+		'ehg2-lazy-load-images',
+		get_theme_file_uri( '/inc/pluggable/js/lazyload.js' ),
+		[],
+		'20151215',
+		false
+	);
 	wp_script_add_data( 'ehg2-lazy-load-images', 'defer', true );
 }

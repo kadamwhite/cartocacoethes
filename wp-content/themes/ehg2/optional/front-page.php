@@ -20,12 +20,12 @@ wp_print_styles( [ 'ehg2-content', 'ehg2-front-page' ] ); // Note: If this was a
 	<main id="primary" class="site-main">
 
 		<?php
-		while ( have_posts() ) :
+		while ( have_posts() ) {
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-		endwhile; // End of the loop.
+		} // End of the loop.
 		?>
 		<?php the_posts_navigation(); ?>
 

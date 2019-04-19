@@ -6,6 +6,7 @@
  *
  * @package ehg2
  */
+// phpcs:disable HM.Functions.NamespacedFunctions.MissingNamespace
 
 /**
  * Determine whether this is an AMP response.
@@ -225,27 +226,18 @@ function ehg2_post_thumbnail() {
 			<?php
 			global $wp_query;
 			if ( 0 === $wp_query->current_post ) {
-				the_post_thumbnail(
-					'full',
-					[
-						'class' => 'skip-lazy',
-						'alt'   => the_title_attribute(
-							[
-								'echo' => false,
-							]
-						),
-					]
-				);
+				the_post_thumbnail( 'full', [
+					'class' => 'skip-lazy',
+					'alt'   => the_title_attribute( [
+						'echo' => false,
+					] ),
+				] );
 			} else {
-				the_post_thumbnail(
-					'post-thumbnail', [
-						'alt' => the_title_attribute(
-							[
-								'echo' => false,
-							]
-						),
-					]
-				);
+				the_post_thumbnail( 'post-thumbnail', [
+					'alt' => the_title_attribute( [
+						'echo' => false,
+					] ),
+				] );
 			}
 			?>
 		</a>

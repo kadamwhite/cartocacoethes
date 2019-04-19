@@ -60,12 +60,10 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list" <?php echo ehg2_using_amp_live_list_comments() ? 'items' : ''; ?>>
 			<?php
-				wp_list_comments(
-					[
-						'style'      => 'ol',
-						'short_ping' => true,
-					]
-				);
+				wp_list_comments( [
+					'style'      => 'ol',
+					'short_ping' => true,
+				] );
 			?>
 		</ol><!-- .comment-list -->
 

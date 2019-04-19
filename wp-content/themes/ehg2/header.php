@@ -74,13 +74,11 @@
 				<div class="primary-menu-container">
 					<?php
 
-					wp_nav_menu(
-						[
-							'theme_location' => 'primary',
-							'menu_id'        => 'primary-menu',
-							'container'      => 'ul',
-						]
-					);
+					wp_nav_menu( [
+						'theme_location' => 'primary',
+						'menu_id'        => 'primary-menu',
+						'container'      => 'ul',
+					] );
 
 					?>
 				</div>

@@ -1,8 +1,10 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template Name: Page with Sidebar
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * This template defines a single page with a sidebar.
+ *
+ * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-custom-page-templates-for-global-use
  *
  * @package wprig
  */

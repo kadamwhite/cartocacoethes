@@ -4,6 +4,13 @@
  *
  * @package ehg2
  */
+namespace EHG2\Image_Sizes;
+
+function setup() {
+	add_filter( 'wp_calculate_image_sizes', __NAMESPACE__ . '\\content_image_sizes_attr', 10, 2 );
+	add_filter( 'get_header_image_tag', __NAMESPACE__ . '\\header_image_tag', 10, 3 );
+	add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\post_thumbnail_sizes_attr', 10, 3 );
+}
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
@@ -14,7 +21,7 @@
  *                      values in pixels (in that order).
  * @return string A source size value for use in a content image 'sizes' attribute.
  */
-function ehg2_content_image_sizes_attr( $sizes, $size ) {
+function content_image_sizes_attr( $sizes, $size ) {
 	$width = $size[0];
 
 	if ( 740 <= $width ) {
@@ -27,7 +34,6 @@ function ehg2_content_image_sizes_attr( $sizes, $size ) {
 
 	return $sizes;
 }
-add_filter( 'wp_calculate_image_sizes', 'ehg2_content_image_sizes_attr', 10, 2 );
 
 /**
  * Filter the `sizes` value in the header image markup.
@@ -37,13 +43,12 @@ add_filter( 'wp_calculate_image_sizes', 'ehg2_content_image_sizes_attr', 10, 2 )
  * @param array  $attr   Array of the attributes for the image tag.
  * @return string The filtered header image HTML.
  */
-function ehg2_header_image_tag( $html, $header, $attr ) {
+function header_image_tag( $html, $header, $attr ) {
 	if ( isset( $attr['sizes'] ) ) {
 		$html = str_replace( $attr['sizes'], '100vw', $html );
 	}
 	return $html;
 }
-add_filter( 'get_header_image_tag', 'ehg2_header_image_tag', 10, 3 );
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
@@ -54,7 +59,7 @@ add_filter( 'get_header_image_tag', 'ehg2_header_image_tag', 10, 3 );
  * @param array $size       Registered image size or flat array of height and width dimensions.
  * @return array The filtered attributes for the image markup.
  */
-function ehg2_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
+function post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 
 	$attr['sizes'] = '100vw';
 
@@ -64,5 +69,4 @@ function ehg2_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 
 	return $attr;
 }
-add_filter( 'wp_get_attachment_image_attributes', 'ehg2_post_thumbnail_sizes_attr', 10, 3 );
 

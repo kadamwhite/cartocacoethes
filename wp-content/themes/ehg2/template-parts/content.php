@@ -51,12 +51,10 @@
 			)
 		);
 
-		wp_link_pages(
-			[
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
-				'after'  => '</div>',
-			]
-		);
+		wp_link_pages( [
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
+			'after'  => '</div>',
+		] );
 		?>
 	</div><!-- .entry-content -->
 
@@ -71,15 +69,13 @@
 
 <?php
 if ( is_singular() ) :
-	the_post_navigation(
-		[
-			'prev_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Previous:', 'ehg2' ) . '</span></div>%title',
-			'next_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Next:', 'ehg2' ) . '</span></div>%title',
-			]
-	);
+	the_post_navigation( [
+		'prev_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Previous:', 'ehg2' ) . '</span></div>%title',
+		'next_text' => '<div class="post-navigation-sub"><span>' . esc_html__( 'Next:', 'ehg2' ) . '</span></div>%title',
+	] );
 
 	// If comments are open or we have at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) :
+	if ( comments_open() || get_comments_number() ) {
 		comments_template();
-	endif;
+	}
 endif;
