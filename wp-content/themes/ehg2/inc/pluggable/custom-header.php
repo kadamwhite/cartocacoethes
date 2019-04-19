@@ -51,6 +51,7 @@ function header_style() {
 	}
 
 	// If we get this far, we have custom styles. Let's do this.
+	// (Echo the style tag here purely as a kindness to our syntax highlighter.)
 	echo '<style type="text/css">';
 
 	// Has the text been hidden?
