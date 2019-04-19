@@ -9,10 +9,16 @@
 namespace EHG2;
 
 /**
- * Set up theme features, scripts, and styles.
+ * Set up theme features.
  */
 require get_template_directory() . '/inc/namespace.php';
 setup();
+
+/**
+ * Set up frontend scripts, and styles.
+ */
+require get_template_directory() . '/inc/assets.php';
+Assets\setup();
 
 /**
  * Custom responsive image sizes.
