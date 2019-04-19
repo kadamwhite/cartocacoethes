@@ -1,0 +1,21 @@
+/*
+Override the less-desirable output of wp-block-library block styling. See
+https://github.com/WordPress/gutenberg/blob/master/packages/block-editor/src/style.scss
+for a full list of included block styles.
+*/
+@import './variables.scss';
+
+.entry-content .wp-block-column {
+	@include respond-above( 600px ) {
+		&:not(:last-child) {
+			margin-right: unset;
+		}
+		&:nth-child( odd ) {
+			margin-right: unset;
+		}
+		&:not(:first-child),
+		&:nth-child(2n) {
+			margin-left: unset;
+		}
+	}
+}
