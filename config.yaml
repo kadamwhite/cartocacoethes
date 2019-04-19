@@ -17,8 +17,6 @@ extensions:
 plugins:
   # These plugins are used on the site but we don't need to track them in the repo
   - category-posts
-  - featured-item-metabox
-  - gutenberg
   - jetpack
   - public-post-preview
   - safe-redirect-manager
