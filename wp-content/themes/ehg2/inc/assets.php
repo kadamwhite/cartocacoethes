@@ -13,6 +13,16 @@ function setup() {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
+	// add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_frontend_assets' );
+}
+
+/**
+ * Return the file system path to the theme's Webpack asset manifest.
+ *
+ * @return string
+ */
+function manifest_path() {
+	return get_stylesheet_directory() . '/build/asset-manifest.json';
 }
 
 /**
@@ -50,7 +60,6 @@ function fonts_url() {
 	}
 
 	return esc_url_raw( $fonts_url );
-
 }
 
 /**
@@ -60,8 +69,10 @@ function enqueue_block_styles() {
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'ehg2-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
-	// Enqueue main stylesheet.
-	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/editor-styles.css' ), [], '20180514' );
+	// Enqueue editor stylesheet. Use the same handle as for the frontend main style.css file.
+	Asset_Loader\autoenqueue( manifest_path(), 'editor-styles.js', [
+		'handle'  => 'ehg2-base-style',
+	] );
 }
 
 /**
@@ -72,14 +83,24 @@ function enqueue_styles() {
 	wp_enqueue_style( 'ehg2-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue main stylesheet.
-	wp_enqueue_style( 'ehg2-base-style', get_theme_file_uri( '/build/style.css' ), [], '20180514' );
+	Asset_Loader\autoenqueue( manifest_path(), 'style.js', [
+		'handle' => 'ehg2-base-style',
+	] );
 
 	// Register component styles that are printed as needed.
-	wp_register_style( 'ehg2-comments', get_theme_file_uri( '/build/comments.css' ), [], '20180514' );
-	wp_register_style( 'ehg2-content', get_theme_file_uri( '/build/content.css' ), [], '20180514' );
-	wp_register_style( 'ehg2-sidebar', get_theme_file_uri( '/build/sidebar.css' ), [], '20180514' );
-	wp_register_style( 'ehg2-widgets', get_theme_file_uri( '/build/widgets.css' ), [], '20180514' );
-	wp_register_style( 'ehg2-front-page', get_theme_file_uri( '/build/front-page.css' ), [], '20180514' );
+	foreach ( [
+		// As above, a limitation of Asset_Loader v0.2 requires us to specify
+		// that these are JS files even when we are registering stylesheets.
+		[ 'ehg2-comments', 'comments.js' ],
+		[ 'ehg2-content', 'content.js' ],
+		[ 'ehg2-sidebar', 'sidebar.js' ],
+		[ 'ehg2-widgets', 'widgets.js' ],
+		[ 'ehg2-front-page', 'front-page.js' ],
+	] as $bundle ) {
+		Asset_Loader\autoregister( manifest_path(), $bundle[1], [
+			'handle' => $bundle[0],
+		] );
+	}
 }
 
 /**
