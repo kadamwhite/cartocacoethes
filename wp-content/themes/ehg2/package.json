@@ -46,8 +46,6 @@
     "prebuild": "rm -f build/*",
     "build": "webpack --config=.config/webpack.config.prod.js",
     "lint": "eslint . --fix",
-    "translate": "gulp translate",
-    "bundle": "gulp bundleTheme",
-    "test": "gulp testTheme"
+    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg2 && phpunit'"
   }
 }
