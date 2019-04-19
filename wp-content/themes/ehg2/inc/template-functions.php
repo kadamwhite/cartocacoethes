@@ -30,7 +30,12 @@ function body_classes( $classes ) {
 
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
 		global $template;
-		if ( 'front-page.php' !== basename( $template ) ) {
+
+		$template_forces_sidebar = in_array( basename( $template ), [
+			'page-sidebar.php',
+		], true );
+
+		if ( is_archive() || $template_forces_sidebar ) {
 			$classes[] = 'has-sidebar';
 		}
 	}

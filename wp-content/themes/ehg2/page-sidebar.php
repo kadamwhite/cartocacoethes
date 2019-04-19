@@ -1,11 +1,9 @@
 <?php
 /**
- * Template Name: Custom Post Template
+ * Template Name: Page with Sidebar
+ * Template Post Type: post, page
  *
- * When active, by adding the heading above and providing a custom name
- * this template becomes available in a drop-down panel in the editor.
- *
- * Filename can be anything.
+ * This template defines a single page with a sidebar.
  *
  * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-custom-page-templates-for-global-use
  *
@@ -21,10 +19,10 @@ get_header(); ?>
 			the_post();
 
 			/*
-			* Include the component stylesheet for the content.
-			* This call runs only once on index and archive pages.
-			* At some point, override functionality should be built in similar to the template part below.
-			*/
+			 * Include the component stylesheet for the content.
+			 * This call runs only once on index and archive pages.
+			 * At some point, override functionality should be built in similar to the template part below.
+			 */
 			wp_print_styles( [ 'ehg2-content' ] ); // Note: If this was already done it will be skipped.
 
 			get_template_part( 'template-parts/content', get_post_type() );
