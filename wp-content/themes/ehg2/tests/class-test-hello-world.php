@@ -1,19 +1,17 @@
 <?php
 /**
  * Example test case to verify that Unit tests run correctly.
- *
- * @package hm-base
  */
-
 namespace EHG2\Tests;
+
 use WP_UnitTestCase;
 
 /**
- * Class Hello_World_Test_Case
+ * Class Test_Hello_World
  *
  * @group example
  */
-class Hello_World_Test_Case extends WP_UnitTestCase {
+class Test_Hello_World extends WP_UnitTestCase {
 
 	/**
 	 * Verify that 1 does, in fact, equal 1.
