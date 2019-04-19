@@ -5,6 +5,7 @@ for a full list of included block styles.
 */
 @import './variables.scss';
 
+// Current as of WP 5.1.
 .entry-content .wp-block-column {
 	@include respond-above( 600px ) {
 		&:not(:last-child) {
