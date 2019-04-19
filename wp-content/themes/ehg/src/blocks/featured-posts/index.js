@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { withSelect } = wp.data;
 
 console.log( 'here' );
