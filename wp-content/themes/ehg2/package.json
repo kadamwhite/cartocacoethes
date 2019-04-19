@@ -43,9 +43,12 @@
     "not ie < 10"
   ],
   "scripts": {
+    "postinstall": "composer install",
     "prebuild": "rm -f build/*",
     "build": "webpack --config=.config/webpack.config.prod.js",
-    "lint": "eslint . --fix",
+    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml --ignore=wp-content/themes/twenty* -s .",
+    "eslint": "eslint . --fix",
+    "lint": "npm run eslint && npm run phpcs",
     "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg2 && phpunit'"
   }
 }
