@@ -89,6 +89,9 @@ function filter_script_loader_tag( $tag, $handle ) {
  * @param string $handle The style handle.
  */
 function get_preload_stylesheet_uri( $wp_styles, $handle ) {
+	if ( empty( $wp_styles->registered[ $handle ] ) ) {
+		return null;
+	}
 	$preload_uri = $wp_styles->registered[ $handle ]->src . '?ver=' . $wp_styles->registered[ $handle ]->ver;
 	return $preload_uri;
 }
@@ -133,8 +136,10 @@ function add_body_style() {
 
 	// Output the preload markup in <head>.
 	foreach ( $preloads as $handle => $src ) {
-		echo '<link rel="preload" id="' . esc_attr( $handle ) . '-preload" href="' . esc_url( $src ) . '" as="style" />';
-		echo "\n";
+		if ( ! empty( $src ) ) {
+			echo '<link rel="preload" id="' . esc_attr( $handle ) . '-preload" href="' . esc_url( $src ) . '" as="style" />';
+			echo "\n";
+		}
 	}
 
 }
