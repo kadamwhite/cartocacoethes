@@ -1,44 +1,47 @@
 @import './variables.scss';
+@import 'block-overrides';
 /**
  * Styles for the WordPress post/page editor.
  * Ensures a visual match between back- and front-end.
  */
- body.gutenberg-editor-page .editor-writing-flow {
-	color: $global-font-color;
-	font-family: $global-font-family;
-	font-size: $global-font-size / 16;
-	line-height: $global-font-line-height;
-}
+body.gutenberg-editor-page {
+	.editor-writing-flow {
+		color: $global-font-color;
+		font-family: $global-font-family;
+		font-size: $global-font-size / 16;
+		line-height: $global-font-line-height;
+	}
 
-body.gutenberg-editor-page .editor-post-title .editor-post-title__input,
-body.gutenberg-editor-page .editor-writing-flow h1,
-body.gutenberg-editor-page .editor-writing-flow h2,
-body.gutenberg-editor-page .editor-writing-flow h3,
-body.gutenberg-editor-page .editor-writing-flow h4,
-body.gutenberg-editor-page .editor-writing-flow h5,
-body.gutenberg-editor-page .editor-writing-flow h6,
-body.gutenberg-editor-page .edit-post-visual-editor p {
-	font-family: $highlight-font-family;
-	color: #32373c;
-	clear: both;
-}
+	.editor-post-title .editor-post-title__input,
+	.editor-writing-flow h1,
+	.editor-writing-flow h2,
+	.editor-writing-flow h3,
+	.editor-writing-flow h4,
+	.editor-writing-flow h5,
+	.editor-writing-flow h6,
+	.edit-post-visual-editor p {
+		font-family: $highlight-font-family;
+		color: #32373c;
+		clear: both;
+	}
 
-body.gutenberg-editor-page .editor-post-title .editor-post-title__input {
-	font-size: 2rem;
-	line-height: 1.4;
-}
+	.editor-post-title .editor-post-title__input {
+		font-size: 2rem;
+		line-height: 1.4;
+	}
 
-body.gutenberg-editor-page .edit-post-visual-editor p {
-	font-family: $global-font-family;
-	font-size: $global-font-size / 16;
+	.edit-post-visual-editor p {
+		font-family: $global-font-family;
+		font-size: $global-font-size / 16;
 
-}
+	}
 
-body.gutenberg-editor-page .wp-block-cover-image .wp-block-cover-image-text,
-body.gutenberg-editor-page .wp-block-cover-image .wp-block-cover-image h2 {
-	color: #fff;
-	font-size: 2em;
-	line-height: 1.25;
+	.wp-block-cover-image .wp-block-cover-image-text,
+	.wp-block-cover-image .wp-block-cover-image h2 {
+		color: #fff;
+		font-size: 2em;
+		line-height: 1.25;
+	}
 }
 
 .editor-block-list__block ol.wp-block-latest-comments,
@@ -55,18 +58,4 @@ body.gutenberg-editor-page .wp-block-cover-image .wp-block-cover-image h2 {
 
 /* Visualize editor font sizes (defined in functions.php). */
 
-.has-small-font-size {
-	font-size: $small-font-size / 16;
-}
-
-.has-regular-font-size {
-	font-size: $regular-font-size / 16;
-}
-
-.has-large-font-size {
-	font-size: $large-font-size / 16;
-}
-
-.has-larger-font-size {
-	font-size: $larger-font-size / 16;
-}
+@import 'block-variants';

@@ -29,6 +29,9 @@ const config = {
 		],
 		widgets: themePath( 'src/css/widgets.scss' ),
 		customizer: themePath( 'src/customizer.js' ),
+		editor: [
+			themePath( 'src/blocks.js' ),
+		],
 		theme: [
 			themePath( 'src/theme/navigation.js' ),
 			themePath( 'src/theme/skip-link-focus-fix.js' ),

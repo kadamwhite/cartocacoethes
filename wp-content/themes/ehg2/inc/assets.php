@@ -73,6 +73,11 @@ function enqueue_block_styles() {
 	Asset_Loader\autoenqueue( manifest_path(), 'editor-styles.js', [
 		'handle'  => 'ehg2-base-style',
 	] );
+
+	// Enqueue custom block transforms.
+	Asset_Loader\autoenqueue( manifest_path(), 'editor.js', [
+		'handle'  => 'ehg2-editor-scripts',
+	] );
 }
 
 /**

@@ -1,0 +1,49 @@
+.has-small-font-size {
+	font-size: $small-font-size / 16;
+}
+
+.has-regular-font-size {
+	font-size: $regular-font-size / 16;
+}
+
+.has-large-font-size {
+	font-size: $large-font-size / 16;
+}
+
+.has-larger-font-size {
+	font-size: $larger-font-size / 16;
+}
+
+
+.wp-block-columns.has-2-columns.is-style-large-small {
+	// For editor
+	[data-type="core/column"]:first-child {
+		flex-basis: 37.5%;
+	}
+	[data-type="core/column"]:last-child {
+		flex-basis: 62.5%;
+	}
+	// For frontend
+	.wp-block-column:first-child {
+		width: calc(62.5% - .5em);
+	}
+	.wp-block-column:last-child {
+		width: calc(37.5% - .5em);
+	}
+}
+.wp-block-columns.has-2-columns.is-style-small-large {
+	// For editor
+	[data-type="core/column"]:first-child {
+		flex-basis: 62.5%;
+	}
+	[data-type="core/column"]:last-child {
+		flex-basis: 37.5%;
+	}
+	// For frontend
+	.wp-block-column:first-child {
+		width: calc(37.5% - .5em);
+	}
+	.wp-block-column:last-child {
+		width: calc(62.5% - .5em);
+	}
+}

@@ -6,8 +6,14 @@ for a full list of included block styles.
 @import './variables.scss';
 
 // Current as of WP 5.1.
-.entry-content .wp-block-column {
-	@include respond-above( 600px ) {
+@include respond-above( 600px ) {
+	// // Override the admin-side styles within the block editor.
+	// .wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] {
+	// 	margin-right: 0;
+	// 	margin-left: 0;
+	// }
+	// Override the frontend styles the block editor outputs.
+	.wp-block-column {
 		&:not(:last-child) {
 			margin-right: unset;
 		}

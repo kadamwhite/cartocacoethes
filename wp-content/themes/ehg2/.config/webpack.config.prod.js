@@ -23,10 +23,13 @@ module.exports = presets.production( {
 		sidebar: themePath( 'src/css/sidebar.scss' ),
 		style: themePath( 'src/css/style.scss' ),
 		widgets: themePath( 'src/css/widgets.scss' ),
-		customizer: themePath( 'src/js/customizer.js' ),
+		customizer: themePath( 'src/customizer.js' ),
+		editor: [
+			themePath( 'src/blocks.js' ),
+		],
 		theme: [
-			themePath( 'src/js/navigation.js' ),
-			themePath( 'src/js/skip-link-focus-fix.js' ),
+			themePath( 'src/theme/navigation.js' ),
+			themePath( 'src/theme/skip-link-focus-fix.js' ),
 		],
 	},
 	output: {

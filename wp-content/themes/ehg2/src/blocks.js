@@ -10,6 +10,10 @@ import {
 	unregisterBlockStyle,
 	unregisterBlockType,
 } from '@wordpress/blocks';
+import {
+	addFilter,
+	removeFilter,
+} from '@wordpress/hooks';
 import { select, dispatch } from '@wordpress/data';
 
 /**
@@ -86,8 +90,17 @@ autoload( {
 	/**
 	 * Register a new or updated block.
 	 */
-	register: ( { name, options, styles } ) => {
-		registerBlockType( name, options );
+	register: ( { name, options, filters, styles } ) => {
+		if ( name && options ) {
+			registerBlockType( name, options );
+		}
+
+		if ( filters && Array.isArray( filters ) ) {
+			filters.forEach( ( { hook, namespace, callback } ) => {
+				addFilter( hook, namespace, callback );
+			} );
+		}
+
 		if ( styles && Array.isArray( styles ) ) {
 			styles.forEach( style => registerBlockStyle( name, style ) );
 		}
@@ -96,10 +109,19 @@ autoload( {
 	/**
 	 * Unregister an updated or removed block.
 	 */
-	unregister: ( { name, styles } ) => {
-		unregisterBlockType( name );
+	unregister: ( { name, options, filters, styles } ) => {
+		if ( name && options ) {
+			unregisterBlockType( name );
+		}
+
+		if ( filters && Array.isArray( filters ) ) {
+			filters.forEach( ( { hook, namespace } ) => {
+				removeFilter( hook, namespace );
+			} );
+		}
+
 		if ( styles && Array.isArray( styles ) ) {
-			styles.forEach( ( { name } ) => unregisterBlockStyle( name ) );
+			styles.forEach( style => unregisterBlockStyle( name, style.name ) );
 		}
 	},
 
@@ -118,6 +140,10 @@ autoload( {
 	 */
 	after: ( changed = [] ) => {
 		const changedNames = changed.map( module => module.name );
+
+		if ( ! changedNames.length ) {
+			return;
+		}
 
 		// Refresh all blocks by iteratively selecting each one that has changed.
 		select( 'core/editor' ).getBlocks().forEach( ( { name, clientId } ) => {
