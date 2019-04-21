@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package wprig
+ * @package ehg2
  */
 namespace EHG2;
 
@@ -27,9 +27,9 @@ function setup_theme_support() {
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on wprig, use a find and replace
-		* to change 'wprig' to the name of your theme in all the template files.
+		* to change 'ehg2' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'wprig', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'ehg2', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -51,7 +51,7 @@ function setup_theme_support() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( [
-		'primary' => esc_html__( 'Primary', 'wprig' ),
+		'primary' => esc_html__( 'Primary', 'ehg2' ),
 	] );
 
 	/*
@@ -118,26 +118,26 @@ function setup_theme_support() {
 	 */
 	add_theme_support( 'editor-font-sizes', [
 		[
-			'name'      => __( 'small', 'wprig' ),
-			'shortName' => __( 'S', 'wprig' ),
+			'name'      => __( 'small', 'ehg2' ),
+			'shortName' => __( 'S', 'ehg2' ),
 			'size'      => 16,
 			'slug'      => 'small',
 		],
 		[
-			'name'      => __( 'regular', 'wprig' ),
-			'shortName' => __( 'M', 'wprig' ),
+			'name'      => __( 'regular', 'ehg2' ),
+			'shortName' => __( 'M', 'ehg2' ),
 			'size'      => 20,
 			'slug'      => 'regular',
 		],
 		[
-			'name'      => __( 'large', 'wprig' ),
-			'shortName' => __( 'L', 'wprig' ),
+			'name'      => __( 'large', 'ehg2' ),
+			'shortName' => __( 'L', 'ehg2' ),
 			'size'      => 36,
 			'slug'      => 'large',
 		],
 		[
-			'name'      => __( 'larger', 'wprig' ),
-			'shortName' => __( 'XL', 'wprig' ),
+			'name'      => __( 'larger', 'ehg2' ),
+			'shortName' => __( 'XL', 'ehg2' ),
 			'size'      => 48,
 			'slug'      => 'larger',
 		],
@@ -195,9 +195,9 @@ function add_resource_hints( $urls, $relation_type ) {
  */
 function register_theme_sidebars() {
 	register_sidebar( [
-		'name'          => esc_html__( 'Sidebar', 'wprig' ),
+		'name'          => esc_html__( 'Sidebar', 'ehg2' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'wprig' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ehg2' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',

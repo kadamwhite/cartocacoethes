@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package wprig
+ * @package ehg2
  */
 
 ?>
@@ -26,7 +26,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wprig' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ehg2' ); ?></a>
 		<header id="masthead" class="site-header">
 			<?php if ( has_header_image() ) : ?>
 				<figure class="header-image">
@@ -47,7 +47,7 @@
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'wprig' ); ?>"
+			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'ehg2' ); ?>"
 				<?php if ( ehg2_is_amp() ) : ?>
 					[class]=" siteNavigationMenu.expanded ? 'main-navigation toggled-on' : 'main-navigation' "
 				<?php endif; ?>
@@ -62,13 +62,13 @@
 					</amp-state>
 				<?php endif; ?>
 
-				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'wprig' ); ?>" aria-controls="primary-menu" aria-expanded="false"
+				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'ehg2' ); ?>" aria-controls="primary-menu" aria-expanded="false"
 					<?php if ( ehg2_is_amp() ) : ?>
 						on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
 						[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
 					<?php endif; ?>
 				>
-					<?php esc_html_e( 'Menu', 'wprig' ); ?>
+					<?php esc_html_e( 'Menu', 'ehg2' ); ?>
 				</button>
 
 				<div class="primary-menu-container">

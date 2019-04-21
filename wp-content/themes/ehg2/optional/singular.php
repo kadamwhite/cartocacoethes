@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/template-files-section/post-template-files/#singular-php
  *
- * @package wprig
+ * @package ehg2
  */
 
 get_header(); ?>

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package wprig
+ * @package ehg2
  */
 
 get_header(); ?>

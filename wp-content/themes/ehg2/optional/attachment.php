@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/template-files-section/attachment-template-files/
  *
- * @package wprig
+ * @package ehg2
  */
 
 get_header(); ?>

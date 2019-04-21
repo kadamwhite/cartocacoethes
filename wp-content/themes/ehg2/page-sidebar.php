@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-custom-page-templates-for-global-use
  *
- * @package wprig
+ * @package ehg2
  */
 
 get_header(); ?>

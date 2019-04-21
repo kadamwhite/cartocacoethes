@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package wprig
+ * @package ehg2
  */
 
 get_header(); ?>

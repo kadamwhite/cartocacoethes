@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package wprig
+ * @package ehg2
  */
 namespace EHG2;
 
