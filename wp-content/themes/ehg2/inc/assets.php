@@ -97,7 +97,6 @@ function enqueue_styles() {
 		// As above, a limitation of Asset_Loader v0.2 requires us to specify
 		// that these are JS files even when we are registering stylesheets.
 		[ 'ehg2-comments', 'comments.js' ],
-		[ 'ehg2-content', 'content.js' ],
 		[ 'ehg2-sidebar', 'sidebar.js' ],
 		[ 'ehg2-widgets', 'widgets.js' ],
 		[ 'ehg2-front-page', 'front-page.js' ],

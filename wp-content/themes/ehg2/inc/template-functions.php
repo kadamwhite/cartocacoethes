@@ -114,9 +114,6 @@ function add_body_style() {
 
 	$preloads = [];
 
-	// Preload content.css.
-	$preloads['ehg2-content'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-content' );
-
 	// Preload sidebar.css and widget.css.
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
 		$preloads['ehg2-sidebar'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-sidebar' );

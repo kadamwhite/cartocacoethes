@@ -14,7 +14,7 @@ get_header();
 * This call runs only once on index and archive pages.
 * At some point, override functionality should be built in similar to the template part below.
 */
-wp_print_styles( [ 'ehg2-content', 'ehg2-front-page' ] ); // Note: If this was already done it will be skipped.
+wp_print_styles( [ 'ehg2-front-page' ] ); // Note: If this was already done it will be skipped.
 
 ?>
 	<main id="primary" class="site-main">

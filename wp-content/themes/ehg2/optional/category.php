@@ -25,13 +25,6 @@ get_header(); ?>
 			the_post();
 
 			/*
-			 * Include the component stylesheet for the content.
-			 * This call runs only once on index and archive pages.
-			 * At some point, override functionality should be built in similar to the template part below.
-			 */
-			wp_print_styles( [ 'ehg2-content' ] ); // Note: If this was already done it will be skipped.
-
-			/*
 			 * Include the Post-Type-specific template for the content.
 			 * If you want to override this in a child theme, then include a file
 			 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
