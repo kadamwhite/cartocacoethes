@@ -21,7 +21,6 @@ module.exports = presets.production( {
 		'front-page': themePath( 'src/css/front-page.scss' ),
 		sidebar: themePath( 'src/css/sidebar.scss' ),
 		style: themePath( 'src/css/style.scss' ),
-		widgets: themePath( 'src/css/widgets.scss' ),
 		customizer: themePath( 'src/customizer.js' ),
 		editor: [
 			themePath( 'src/blocks.js' ),

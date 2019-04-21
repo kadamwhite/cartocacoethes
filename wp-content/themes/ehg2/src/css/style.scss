@@ -1,22 +1,10 @@
-@import 'variables';
-@import './navigation';
-
-/*!
-Theme Name: WP Rig
-Theme URI: https://github.com/ehg2/ehg2/
-Author: Morten Rand-Hendriksen et.al.
-Author URI: https://github.com/ehg2/ehg2/
-Description: A progressive theme development rig for WordPress.
-Version: 1.0.4
-Text Domain: ehg2
-Tags: translation-ready
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-
-CSS normalization based in part on normalize.css by
-Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
+/*
+Main theme stylesheet.
+See style.css in project root for theme info & licensing details.
 */
+
+@import 'variables';
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -27,11 +15,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Elements
 # Forms
 # Header
-  # Main navigation menu
-# Content navigation
+# Navigation
+# Content
 # Footer
 # Infinite scroll
 --------------------------------------------------------------*/
+
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -415,6 +404,11 @@ textarea {
 	word-wrap: break-word;
 	color: #757575;
 }
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+@import 'navigation';
 
 /*--------------------------------------------------------------
 # Content

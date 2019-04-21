@@ -34,11 +34,11 @@ function fonts_url() {
 	/**
 	 * Translator: If Roboto Sans does not support characters in your language, translate this to 'off'.
 	 */
-	$roboto = esc_html_x( 'on', 'Roboto Condensed font: on or off', 'wprig' );
+	$roboto = esc_html_x( 'on', 'Roboto Condensed font: on or off', 'ehg2' );
 	/**
 	 * Translator: If Crimson Text does not support characters in your language, translate this to 'off'.
 	 */
-	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'wprig' );
+	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'ehg2' );
 
 	$font_families = [];
 
@@ -87,29 +87,25 @@ function enqueue_styles() {
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'ehg2-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
+	// Register component styles that are printed as needed.
+	// As above, a limitation of Asset_Loader v0.2 requires us to specify
+	// that these are JS files even when we are registering stylesheets.
+	Asset_Loader\autoregister( manifest_path(), 'comments.js', [
+		'handle' => 'ehg2-comments',
+	] );
+	Asset_Loader\autoregister( manifest_path(), 'front-page.js', [
+		'handle' => 'ehg2-front-page',
+	] );
+
 	// Enqueue main stylesheet.
 	Asset_Loader\autoenqueue( manifest_path(), 'style.js', [
 		'handle' => 'ehg2-base-style',
 	] );
 
-	// Register component styles that are printed as needed.
-	foreach ( [
-		// As above, a limitation of Asset_Loader v0.2 requires us to specify
-		// that these are JS files even when we are registering stylesheets.
-		[ 'ehg2-comments', 'comments.js' ],
-		[ 'ehg2-sidebar', 'sidebar.js' ],
-		[ 'ehg2-widgets', 'widgets.js' ],
-		[ 'ehg2-front-page', 'front-page.js' ],
-	] as $bundle ) {
-		Asset_Loader\autoregister( manifest_path(), $bundle[1], [
-			'handle' => $bundle[0],
-		] );
-	}
-
 	if ( \EHG2\page_has_sidebar() ) {
-		// TODO: Combine into one stylesheet.
-		wp_enqueue_style( 'ehg2-sidebar' );
-		wp_enqueue_style( 'ehg2-widgets' );
+		Asset_Loader\autoenqueue( manifest_path(), 'sidebar.js', [
+			'handle' => 'ehg2-sidebar',
+		] );
 	}
 }
 
@@ -130,8 +126,8 @@ function enqueue_scripts() {
 	wp_script_add_data( 'ehg2-theme', 'async', true );
 	wp_script_add_data( 'ehg2-theme', 'defer', true );
 	wp_localize_script( 'ehg2-theme', 'wprigScreenReaderText', [
-		'expand'   => __( 'Expand child menu', 'wprig' ),
-		'collapse' => __( 'Collapse child menu', 'wprig' ),
+		'expand'   => __( 'Expand child menu', 'ehg2' ),
+		'collapse' => __( 'Collapse child menu', 'ehg2' ),
 	] );
 
 	// Enqueue comment script on singular post/page views only.
