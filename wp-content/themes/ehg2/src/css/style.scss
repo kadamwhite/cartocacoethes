@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import 'variables';
 @import './navigation';
 
 /*!
@@ -34,7 +34,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Footer
 # Infinite scroll
 --------------------------------------------------------------*/
-@import './normalize';
+@import 'normalize';
 
 /*--------------------------------------------------------------
 # Accessibility
