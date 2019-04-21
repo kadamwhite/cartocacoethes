@@ -1,0 +1,47 @@
+@import '../variables.scss';
+
+.wp-block-columns {
+	@include respond-between( $narrow-single-column, $menu-size-cutoff ) {
+		&.has-2-columns .featured-items-list__category-list,
+		&.has-3-columns .featured-items-list__category-list,
+		&.has-4-columns .featured-items-list__category-list {
+			width: calc(50% - .5em);
+		}
+		&.has-3-columns .featured-items-list__category-list:first-child {
+			width: 100%;
+		}
+	}
+
+	.featured-items-list__item {
+		display: flex;
+		flex-direction: column;
+		align-items: justify;
+		margin-bottom: 1rem;
+	}
+
+	.featured-category-title {
+		margin-bottom: 0.5em;
+		@include respond-above( $narrow-single-column ) {
+			line-height: 1.2;
+			min-height: 2.4em;
+		}
+	}
+
+	.featured-image {
+		order: 1;
+		margin-bottom: 0.5em;
+	}
+
+	.entry-title {
+		order: 2;
+		@extend h3 !optional;
+		line-height: 1.2;
+		display: block;
+	}
+
+	.entry-meta {
+		order: 3;
+		font-style: italic;
+		color: $global-font-lighter-color;
+	}
+}

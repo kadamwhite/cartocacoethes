@@ -14,36 +14,31 @@
 	font-size: $larger-font-size / 16;
 }
 
+// For editor
+.wp-block-columns.has-2-columns{
+	&.is-style-large-small {
+		// For editor
+		@include respond-above( 600px ) {
+			[data-type="core/column"]:first-child { flex-basis: 37.5%; }
+			[data-type="core/column"]:last-child { flex-basis: 62.5%; }
+		}
+		// For frontend
+		@include respond-above( $menu-size-cutoff ) {
+			.wp-block-column:first-child { width: calc(62.5% - .5em); }
+			.wp-block-column:last-child { width: calc(37.5% - .5em); }
+		}
+	}
 
-.wp-block-columns.has-2-columns.is-style-large-small {
-	// For editor
-	[data-type="core/column"]:first-child {
-		flex-basis: 37.5%;
-	}
-	[data-type="core/column"]:last-child {
-		flex-basis: 62.5%;
-	}
-	// For frontend
-	.wp-block-column:first-child {
-		width: calc(62.5% - .5em);
-	}
-	.wp-block-column:last-child {
-		width: calc(37.5% - .5em);
-	}
-}
-.wp-block-columns.has-2-columns.is-style-small-large {
-	// For editor
-	[data-type="core/column"]:first-child {
-		flex-basis: 62.5%;
-	}
-	[data-type="core/column"]:last-child {
-		flex-basis: 37.5%;
-	}
-	// For frontend
-	.wp-block-column:first-child {
-		width: calc(37.5% - .5em);
-	}
-	.wp-block-column:last-child {
-		width: calc(62.5% - .5em);
+	&.is-style-small-large {
+		// For editor
+		@include respond-above( 600px ) {
+			[data-type="core/column"]:first-child { flex-basis: 62.5%; }
+			[data-type="core/column"]:last-child { flex-basis: 37.5%; }
+		}
+		// For frontend
+		@include respond-above( $menu-size-cutoff ) {
+			.wp-block-column:first-child { width: calc(37.5% - .5em); }
+			.wp-block-column:last-child { width: calc(62.5% - .5em); }
+		}
 	}
 }

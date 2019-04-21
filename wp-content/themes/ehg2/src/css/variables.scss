@@ -1,19 +1,20 @@
 
 $global-font-color: #333;
+$global-font-lighter-color: #555;
 $global-font-family: "Crimson Text", serif;
 $global-font-size: 20;
 $global-font-line-height: 1.4;
 $highlight-font-family: "Roboto Condensed", sans-serif;
-$content-width: 45rem;
 $dropdown-symbol-width: 0.7em;
 $small-font-size: 16rem;
 $regular-font-size: 20rem;
 $large-font-size: 36rem;
 $larger-font-size: 48rem;
 
+$narrow-single-column: 28em; // ~450px
 $menu-size-cutoff: 37.5em;
-$content-width: 48em;
-$sidebar-width: 60em;
+$content-width: 60em; // ~768px
+$sidebar-width: 80em; // ~960px
 
 // Responsive Mixins
 // =================================================

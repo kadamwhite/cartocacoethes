@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './navigation';
+
 /*!
 Theme Name: WP Rig
 Theme URI: https://github.com/ehg2/ehg2/
@@ -252,11 +253,6 @@ table {
 }
 
 /*--------------------------------------------------------------
-# Blocks
---------------------------------------------------------------*/
-@import 'block-overrides';
-
-/*--------------------------------------------------------------
 # Links
 --------------------------------------------------------------*/
 a {
@@ -369,6 +365,11 @@ textarea {
 
 .site-header {
 	padding-bottom: 1em;
+
+	@include respond-above( $menu-size-cutoff ) {
+		display: flex;
+		flex-direction: column-reverse;
+	}
 }
 
 .header-image {
@@ -387,7 +388,10 @@ textarea {
 
 .site-branding {
 	text-align: center;
-	padding: 60px 0 1.75em;
+	padding: 30px 0 1.75em;
+	@include respond-above( $menu-size-cutoff ) {
+		padding-top: 0;
+	}
 }
 
 .site-title {

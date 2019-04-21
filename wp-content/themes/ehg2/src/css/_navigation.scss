@@ -13,8 +13,13 @@
 	display: block;
 	margin: 0 auto 2em;
 	padding: 0 1em;
-	max-width: content-width;
-	font-family: highlight-font-family;
+	max-width: $content-width;
+	font-family: $highlight-font-family;
+
+	@include respond-above ( $content-width ) {
+		padding: 0;
+		width: $content-width;
+	}
 
 	a {
 		display: block;
@@ -78,6 +83,13 @@
 	}
 
 	.main-navigation {
+		&::after {
+			content: ' ';
+			display: block;
+			border-bottom: 1px solid black;
+			width: 100%;
+		}
+
 		.menu {
 			display: flex;
 			flex-wrap: wrap;

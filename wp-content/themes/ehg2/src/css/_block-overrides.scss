@@ -3,16 +3,9 @@ Override the less-desirable output of wp-block-library block styling. See
 https://github.com/WordPress/gutenberg/blob/master/packages/block-editor/src/style.scss
 for a full list of included block styles.
 */
-@import './variables.scss';
 
 // Current as of WP 5.1.
 @include respond-above( 600px ) {
-	// // Override the admin-side styles within the block editor.
-	// .wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] {
-	// 	margin-right: 0;
-	// 	margin-left: 0;
-	// }
-	// Override the frontend styles the block editor outputs.
 	.wp-block-column {
 		&:not(:last-child) {
 			margin-right: unset;
@@ -24,5 +17,11 @@ for a full list of included block styles.
 		&:nth-child(2n) {
 			margin-left: unset;
 		}
+	}
+}
+.wp-block-columns {
+	flex-wrap: unset;
+	@include respond-above( 782px ) {
+		flex-wrap: unset;
 	}
 }
