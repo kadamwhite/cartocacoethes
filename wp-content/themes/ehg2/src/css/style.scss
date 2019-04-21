@@ -25,14 +25,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Layout
 # Typography
 # Elements
-# Blocks
-# Links
 # Forms
 # Header
   # Main navigation menu
 # Content navigation
 # Footer
 # Infinite scroll
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
 --------------------------------------------------------------*/
 @import 'normalize';
 
@@ -181,6 +182,26 @@ big {
 	font-size: 125%;
 }
 
+a {
+	color: #0073aa;
+}
+
+a:visited {
+	color: #333;
+}
+
+a:hover, a:focus, a:active {
+	color: #00a0d2;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:hover, a:active {
+	outline: 0;
+}
+
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -250,29 +271,6 @@ figure {
 table {
 	margin: 0 0 1.5em;
 	width: 100%;
-}
-
-/*--------------------------------------------------------------
-# Links
---------------------------------------------------------------*/
-a {
-	color: #0073aa;
-}
-
-a:visited {
-	color: #333;
-}
-
-a:hover, a:focus, a:active {
-	color: #00a0d2;
-}
-
-a:focus {
-	outline: thin dotted;
-}
-
-a:hover, a:active {
-	outline: 0;
 }
 
 /*--------------------------------------------------------------
@@ -419,6 +417,10 @@ textarea {
 }
 
 /*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 .site-footer {
@@ -429,19 +431,4 @@ textarea {
 
 .site-info {
 	text-align: center;
-}
-
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .posts-navigation,
-.infinite-scroll.neverending .site-footer {
-	/* Theme Footer (when set to scrolling) */
-	display: none;
-}
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
-.infinity-end.neverending .site-footer {
-	display: block;
 }
