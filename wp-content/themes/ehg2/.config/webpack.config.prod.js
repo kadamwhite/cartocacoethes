@@ -17,7 +17,6 @@ module.exports = presets.production( {
 	},
 	entry: {
 		comments: themePath( 'src/css/comments.scss' ),
-		content: themePath( 'src/css/content.scss' ),
 		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
 		'front-page': themePath( 'src/css/front-page.scss' ),
 		sidebar: themePath( 'src/css/sidebar.scss' ),

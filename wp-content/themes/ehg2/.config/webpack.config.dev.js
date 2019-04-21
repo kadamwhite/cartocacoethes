@@ -3,7 +3,7 @@
  */
 const { resolve } = require( 'path' );
 const { externals, helpers, presets } = require( '@humanmade/webpack-helpers' );
-const { choosePort, cleanOnExit, filePath } = helpers;
+const { choosePort, cleanOnExit } = helpers;
 
 const themePath = ( ...pathParts ) => resolve( __dirname, '..', ...pathParts );
 
@@ -19,7 +19,6 @@ const config = {
 	},
 	entry: {
 		comments: themePath( 'src/css/comments.scss' ),
-		content: themePath( 'src/css/content.scss' ),
 		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
 		'front-page': themePath( 'src/css/front-page.scss' ),
 		sidebar: themePath( 'src/css/sidebar.scss' ),
