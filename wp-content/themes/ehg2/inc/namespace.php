@@ -204,3 +204,21 @@ function register_theme_sidebars() {
 		'after_title'   => '</h2>',
 	] );
 }
+
+/**
+ * Determine whether a sidebar should be shown on the current page.
+ */
+function page_has_sidebar() {
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+		global $template;
+
+		$template_forces_sidebar = in_array( basename( $template ), [
+			'page-sidebar.php',
+		], true );
+
+		if ( is_archive() || $template_forces_sidebar ) {
+			return true;
+		}
+	}
+	return false;
+}

@@ -28,16 +28,8 @@ function body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	if ( is_active_sidebar( 'sidebar-1' ) ) {
-		global $template;
-
-		$template_forces_sidebar = in_array( basename( $template ), [
-			'page-sidebar.php',
-		], true );
-
-		if ( is_archive() || $template_forces_sidebar ) {
-			$classes[] = 'has-sidebar';
-		}
+	if ( \EHG2\page_has_sidebar() ) {
+		$classes[] = 'has-sidebar';
 	}
 
 	return $classes;
@@ -113,12 +105,6 @@ function add_body_style() {
 	$wp_styles = wp_styles();
 
 	$preloads = [];
-
-	// Preload sidebar.css and widget.css.
-	if ( is_active_sidebar( 'sidebar-1' ) ) {
-		$preloads['ehg2-sidebar'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-sidebar' );
-		$preloads['ehg2-widgets'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-widgets' );
-	}
 
 	// Preload comments.css.
 	if ( ! post_password_required() && is_singular() && ( comments_open() || get_comments_number() ) ) {

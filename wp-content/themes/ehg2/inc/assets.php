@@ -105,6 +105,12 @@ function enqueue_styles() {
 			'handle' => $bundle[0],
 		] );
 	}
+
+	if ( \EHG2\page_has_sidebar() ) {
+		// TODO: Combine into one stylesheet.
+		wp_enqueue_style( 'ehg2-sidebar' );
+		wp_enqueue_style( 'ehg2-widgets' );
+	}
 }
 
 /**
