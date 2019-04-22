@@ -30,6 +30,7 @@
 
 		&:hover,
 		&:focus {
+			color: $font-color-link;
 			text-decoration: underline;
 		}
 	}

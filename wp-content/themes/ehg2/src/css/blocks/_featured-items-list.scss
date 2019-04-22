@@ -1,24 +1,24 @@
 @import 'variables';
 
-.wp-block-columns {
-	@include respond-between( $narrow-single-column, $menu-size-cutoff ) {
-		&.has-2-columns .featured-items-list__category-list,
-		&.has-3-columns .featured-items-list__category-list,
-		&.has-4-columns .featured-items-list__category-list {
-			width: calc(50% - .5em);
-		}
-		&.has-3-columns .featured-items-list__category-list:first-child {
-			width: 100%;
-		}
+@include respond-between( $narrow-single-column, $menu-size-cutoff ) {
+	.wp-block-columns.has-2-columns .featured-items-list__category-list,
+	.wp-block-columns.has-3-columns .featured-items-list__category-list,
+	.wp-block-columns.has-4-columns .featured-items-list__category-list {
+		width: calc(50% - .5em);
 	}
-
-	.featured-items-list__item {
-		display: flex;
-		flex-direction: column;
-		align-items: justify;
-		margin-bottom: 1rem;
+	.wp-block-columns.has-3-columns .featured-items-list__category-list:first-child {
+		width: 100%;
 	}
+}
 
+.featured-items-list__item {
+	display: flex;
+	flex-direction: column;
+	align-items: justify;
+	margin-bottom: 1rem;
+}
+
+.featured-items-list__category-list {
 	.featured-category-title {
 		margin-bottom: 0.5em;
 		@include respond-above( $narrow-single-column ) {
@@ -37,6 +37,13 @@
 		@extend h3 !optional;
 		line-height: 1.2;
 		display: block;
+		padding-right: 1em;
+	}
+
+	p {
+		order: 3;
+		margin: 0.25em 0;
+		padding-right: 1em;
 	}
 
 	.entry-meta {
