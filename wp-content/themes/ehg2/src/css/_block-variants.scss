@@ -42,3 +42,41 @@
 		}
 	}
 }
+
+h1, h2, h3 {
+	&.is-style-dark {
+		position: relative;
+		color: white;
+		padding: 0.5em 0;
+
+		&::before {
+			content: ' ';
+			position: absolute;
+			display: block;
+			top: 0;
+			bottom: 0;
+			left: -1em;
+			right: -1em;
+			background: $font-color-global;
+			z-index: -1;
+		}
+
+		&.alignfull {
+			width: 100%;
+			padding: 0.5em 1.5rem;
+
+			&::before {
+				content: ' ';
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+		}
+	}
+}
+
+.wp-block-columns.alignfull {
+	padding: 0 1.5rem;
+}

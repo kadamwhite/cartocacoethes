@@ -134,6 +134,14 @@
 	margin-right: auto;
 }
 
+.alignwide {
+	max-width: calc( 50% + #{ $content-width } / 2 );
+}
+
+.alignfull {
+	max-width: 100%;
+}
+
 @include respond-above( $content-width ) {
 
 	.wp-caption.alignright,
@@ -196,15 +204,6 @@
 	margin-left: 0;
 	padding-right: 1.5em;
 	padding-left: 1.5em;
-}
-
-.alignwide {
-	max-width: calc( 50% + #{ $content-width } / 2 );
-}
-
-.alignfull {
-	max-width: 100%;
-	padding: 0;
 }
 
 .wp-block-cover-image .wp-block-cover-image-text,
