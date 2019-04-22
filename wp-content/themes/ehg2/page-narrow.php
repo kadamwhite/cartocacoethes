@@ -8,7 +8,7 @@
  *
  * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/#creating-custom-page-templates-for-global-use
  *
- * @package ehg2
+ * @package ehg
  */
 
 get_header(); ?>

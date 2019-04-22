@@ -4,9 +4,9 @@
  *
  * @link https://jetpack.com/
  *
- * @package ehg2
+ * @package ehg
  */
-namespace EHG2\Jetpack;
+namespace EHG\Jetpack;
 
 function setup() {
 	add_action( 'after_setup_theme', __NAMESPACE__ . '\\jetpack_setup' );
@@ -25,7 +25,7 @@ function jetpack_setup() {
 	// Add theme support for Content Options.
 	add_theme_support( 'jetpack-content-options', [
 		'post-details' => [
-			'stylesheet' => 'ehg2-style',
+			'stylesheet' => 'ehg-style',
 			'date'       => '.posted-on',
 			'categories' => '.cat-links',
 			'tags'       => '.tags-links',

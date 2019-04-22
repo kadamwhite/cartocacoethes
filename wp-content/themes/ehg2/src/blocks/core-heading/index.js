@@ -9,7 +9,7 @@ export const filters = [
 	 */
 	{
 		hook: 'blocks.registerBlockType',
-		namespace: `ehg2/${ name }`,
+		namespace: `ehg/${ name }`,
 		callback: ( settings, blockName ) => {
 			if ( blockName !== name ) {
 				return settings;

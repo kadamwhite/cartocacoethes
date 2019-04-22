@@ -4,9 +4,9 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package ehg2
+ * @package ehg
  */
-namespace EHG2;
+namespace EHG;
 
 /**
  * Set up theme features.

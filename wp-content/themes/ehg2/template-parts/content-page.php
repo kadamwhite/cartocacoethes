@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ehg2
+ * @package ehg
  */
 
 ?>
@@ -21,7 +21,7 @@
 		the_content();
 
 		wp_link_pages( [
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg2' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg' ),
 			'after'  => '</div>',
 		] );
 		?>
@@ -30,7 +30,7 @@
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
 			<?php
-				ehg2_edit_post_link();
+				ehg_edit_post_link();
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>

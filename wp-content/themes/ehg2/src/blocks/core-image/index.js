@@ -13,7 +13,7 @@ export const filters = [
 	 */
 	{
 		hook: 'editor.BlockEdit',
-		namespace: `ehg2/${ name }`,
+		namespace: `ehg/${ name }`,
 		callback: createHigherOrderComponent( BlockEdit => compose(
 			withSelect( select => ( {
 				selectedBlock: select( 'core/editor' ).getSelectedBlock(),
@@ -39,7 +39,7 @@ export const filters = [
 								icon: props.attributes.id === props.featuredMediaId ?
 									'star-filled' :
 									'star-empty',
-								title: __( 'Feature this image', 'ehg2' ),
+								title: __( 'Feature this image', 'ehg' ),
 								isActive: props.attributes.id === props.featuredMediaId,
 								onClick: ( ...args ) => {
 									// Set this image as the featured item, or unselect it.

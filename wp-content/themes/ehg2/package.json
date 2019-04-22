@@ -1,5 +1,5 @@
 {
-  "name": "ehg2",
+  "name": "ehg",
   "version": "1.0.4",
   "description": "A progressive theme development rig for WordPress.",
   "author": "Morten Rand-Hendriksen",
@@ -52,6 +52,6 @@
     "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml --ignore=wp-content/themes/twenty* -s .",
     "eslint": "eslint . .config --fix",
     "lint": "npm run eslint && npm run phpcs",
-    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg2 && phpunit'"
+    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg && phpunit'"
   }
 }

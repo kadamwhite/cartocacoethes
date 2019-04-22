@@ -1,6 +1,6 @@
 <?php
 
-namespace EHG2\Assets;
+namespace EHG\Assets;
 
 use Asset_Loader;
 
@@ -34,11 +34,11 @@ function fonts_url() {
 	/**
 	 * Translator: If Roboto Sans does not support characters in your language, translate this to 'off'.
 	 */
-	$roboto = esc_html_x( 'on', 'Roboto Condensed font: on or off', 'ehg2' );
+	$roboto = esc_html_x( 'on', 'Roboto Condensed font: on or off', 'ehg' );
 	/**
 	 * Translator: If Crimson Text does not support characters in your language, translate this to 'off'.
 	 */
-	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'ehg2' );
+	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'ehg' );
 
 	$font_families = [];
 
@@ -67,16 +67,16 @@ function fonts_url() {
  */
 function enqueue_block_styles() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'ehg2-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	wp_enqueue_style( 'ehg-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue editor stylesheet. Use the same handle as for the frontend main style.css file.
 	Asset_Loader\autoenqueue( manifest_path(), 'editor-styles.js', [
-		'handle'  => 'ehg2-base-style',
+		'handle'  => 'ehg-base-style',
 	] );
 
 	// Enqueue custom block transforms.
 	Asset_Loader\autoenqueue( manifest_path(), 'editor.js', [
-		'handle'  => 'ehg2-editor-scripts',
+		'handle'  => 'ehg-editor-scripts',
 	] );
 }
 
@@ -85,26 +85,26 @@ function enqueue_block_styles() {
  */
 function enqueue_styles() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'ehg2-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	wp_enqueue_style( 'ehg-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Register component styles that are printed as needed.
 	// As above, a limitation of Asset_Loader v0.2 requires us to specify
 	// that these are JS files even when we are registering stylesheets.
 	Asset_Loader\autoregister( manifest_path(), 'comments.js', [
-		'handle' => 'ehg2-comments',
+		'handle' => 'ehg-comments',
 	] );
 	Asset_Loader\autoregister( manifest_path(), 'front-page.js', [
-		'handle' => 'ehg2-front-page',
+		'handle' => 'ehg-front-page',
 	] );
 
 	// Enqueue main stylesheet.
 	Asset_Loader\autoenqueue( manifest_path(), 'theme.js', [
-		'handle' => 'ehg2-theme',
+		'handle' => 'ehg-theme',
 	] );
 
-	if ( \EHG2\page_has_sidebar() ) {
+	if ( \EHG\page_has_sidebar() ) {
 		Asset_Loader\autoenqueue( manifest_path(), 'sidebar.js', [
-			'handle' => 'ehg2-sidebar',
+			'handle' => 'ehg-sidebar',
 		] );
 	}
 }
@@ -115,19 +115,19 @@ function enqueue_styles() {
 function enqueue_scripts() {
 
 	// If the AMP plugin is active, return early.
-	if ( ehg2_is_amp() ) {
+	if ( ehg_is_amp() ) {
 		return;
 	}
 
 	// Enqueue the global theme navigation and link focus script.
 	Asset_Loader\autoenqueue( manifest_path(), 'theme.js', [
-		'handle' => 'ehg2-theme',
+		'handle' => 'ehg-theme',
 	] );
-	wp_script_add_data( 'ehg2-theme', 'async', true );
-	wp_script_add_data( 'ehg2-theme', 'defer', true );
-	wp_localize_script( 'ehg2-theme', 'wprigScreenReaderText', [
-		'expand'   => __( 'Expand child menu', 'ehg2' ),
-		'collapse' => __( 'Collapse child menu', 'ehg2' ),
+	wp_script_add_data( 'ehg-theme', 'async', true );
+	wp_script_add_data( 'ehg-theme', 'defer', true );
+	wp_localize_script( 'ehg-theme', 'wprigScreenReaderText', [
+		'expand'   => __( 'Expand child menu', 'ehg' ),
+		'collapse' => __( 'Collapse child menu', 'ehg' ),
 	] );
 
 	// Enqueue comment script on singular post/page views only.

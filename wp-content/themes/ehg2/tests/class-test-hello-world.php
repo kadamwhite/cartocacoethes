@@ -2,7 +2,7 @@
 /**
  * Example test case to verify that Unit tests run correctly.
  */
-namespace EHG2\Tests;
+namespace EHG\Tests;
 
 use WP_UnitTestCase;
 

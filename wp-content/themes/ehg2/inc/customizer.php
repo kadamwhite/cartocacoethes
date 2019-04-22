@@ -2,9 +2,9 @@
 /**
  * WP Rig Theme Customizer
  *
- * @package ehg2
+ * @package ehg
  */
-namespace EHG2\Customizer;
+namespace EHG\Customizer;
 
 function setup() {
 	add_action( 'customize_register', __NAMESPACE__ . '\\customize_register' );
@@ -43,12 +43,12 @@ function customize_register( $wp_customize ) {
 	 */
 	$wp_customize->add_section(
 		'theme_options', [
-			'title'    => __( 'Theme Options', 'ehg2' ),
+			'title'    => __( 'Theme Options', 'ehg' ),
 			'priority' => 130, // Before Additional CSS.
 		]
 	);
 
-	if ( function_exists( 'ehg2_lazyload_images' ) ) {
+	if ( function_exists( 'ehg_lazyload_images' ) ) {
 		$wp_customize->add_setting( 'lazy_load_media', [
 			'default'           => 'lazyload',
 			'sanitize_callback' => __NAMESPACE__ . '\\sanitize_lazy_load_media',
@@ -56,13 +56,13 @@ function customize_register( $wp_customize ) {
 		] );
 
 		$wp_customize->add_control( 'lazy_load_media', [
-			'label'           => __( 'Lazy-load images', 'ehg2' ),
+			'label'           => __( 'Lazy-load images', 'ehg' ),
 			'section'         => 'theme_options',
 			'type'            => 'radio',
-			'description'     => __( 'Lazy-loading images means images are loaded only when they are in view. Improves performance, but can result in content jumping around on slower connections.', 'ehg2' ),
+			'description'     => __( 'Lazy-loading images means images are loaded only when they are in view. Improves performance, but can result in content jumping around on slower connections.', 'ehg' ),
 			'choices'         => [
-				'lazyload'    => __( 'Lazy-load on (default)', 'ehg2' ),
-				'no-lazyload' => __( 'Lazy-load off', 'ehg2' ),
+				'lazyload'    => __( 'Lazy-load on (default)', 'ehg' ),
+				'no-lazyload' => __( 'Lazy-load off', 'ehg' ),
 			],
 		] );
 	}
@@ -91,7 +91,7 @@ function customize_partial_blogdescription() {
  */
 function enqueue_customize_preview_js() {
 	wp_enqueue_script(
-		'ehg2-customizer',
+		'ehg-customizer',
 		get_theme_file_uri( '/build/customizer.js' ),
 		[ 'customize-preview' ],
 		'20151215',
@@ -106,8 +106,8 @@ function enqueue_customize_preview_js() {
  */
 function sanitize_lazy_load_media( $input ) {
 	$valid = [
-		'lazyload'    => __( 'Lazy-load images', 'ehg2' ),
-		'no-lazyload' => __( 'Load images immediately', 'ehg2' ),
+		'lazyload'    => __( 'Lazy-load images', 'ehg' ),
+		'no-lazyload' => __( 'Load images immediately', 'ehg' ),
 	];
 
 	if ( array_key_exists( $input, $valid ) ) {

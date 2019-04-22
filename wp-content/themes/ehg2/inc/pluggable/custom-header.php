@@ -4,10 +4,10 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package ehg2
+ * @package ehg
  */
 // phpcs:disable HM.Files.NamespaceDirectoryName.NameMismatch
-namespace EHG2\Pluggable\Custom_Header;
+namespace EHG\Pluggable\Custom_Header;
 
 function setup() {
 	add_action( 'after_setup_theme', __NAMESPACE__ . '\\custom_header_setup' );
@@ -22,7 +22,7 @@ function custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'ehg2_custom_header_args', [
+			'ehg_custom_header_args', [
 				'default-image'          => '',
 				'default-text-color'     => '000000',
 				'width'                  => 1600,

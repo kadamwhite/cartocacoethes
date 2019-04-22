@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package ehg2
+ * @package ehg
  */
 
 ?>
@@ -17,7 +17,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
-	<?php if ( ! ehg2_is_amp() ) : ?>
+	<?php if ( ! ehg_is_amp() ) : ?>
 		<script>document.documentElement.classList.remove("no-js");</script>
 	<?php endif; ?>
 
@@ -26,7 +26,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ehg2' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'ehg' ); ?></a>
 		<header id="masthead" class="site-header">
 			<?php if ( has_header_image() ) : ?>
 				<figure class="header-image">
@@ -41,18 +41,18 @@
 					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php endif; ?>
 
-				<?php $ehg2_description = get_bloginfo( 'description', 'display' ); ?>
-				<?php if ( $ehg2_description || is_customize_preview() ) : ?>
-					<p class="site-description"><?php echo $ehg2_description; /* WPCS: xss ok. */ ?></p>
+				<?php $ehg_description = get_bloginfo( 'description', 'display' ); ?>
+				<?php if ( $ehg_description || is_customize_preview() ) : ?>
+					<p class="site-description"><?php echo $ehg_description; /* WPCS: xss ok. */ ?></p>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'ehg2' ); ?>"
-				<?php if ( ehg2_is_amp() ) : ?>
+			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'ehg' ); ?>"
+				<?php if ( ehg_is_amp() ) : ?>
 					[class]=" siteNavigationMenu.expanded ? 'main-navigation toggled-on' : 'main-navigation' "
 				<?php endif; ?>
 			>
-				<?php if ( ehg2_is_amp() ) : ?>
+				<?php if ( ehg_is_amp() ) : ?>
 					<amp-state id="siteNavigationMenu">
 						<script type="application/json">
 							{
@@ -62,13 +62,13 @@
 					</amp-state>
 				<?php endif; ?>
 
-				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'ehg2' ); ?>" aria-controls="primary-menu" aria-expanded="false"
-					<?php if ( ehg2_is_amp() ) : ?>
+				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'ehg' ); ?>" aria-controls="primary-menu" aria-expanded="false"
+					<?php if ( ehg_is_amp() ) : ?>
 						on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
 						[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
 					<?php endif; ?>
 				>
-					<?php esc_html_e( 'Menu', 'ehg2' ); ?>
+					<?php esc_html_e( 'Menu', 'ehg' ); ?>
 				</button>
 
 				<div class="primary-menu-container">

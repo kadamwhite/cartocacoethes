@@ -6,10 +6,10 @@
  *
  * @link https://github.com/Automattic/jetpack/blob/master/modules/lazy-images/lazy-images.php
  *
- * @package ehg2
+ * @package ehg
  */
 // phpcs:disable HM.Files.NamespaceDirectoryName.NameMismatch
-namespace EHG2\Pluggable\Lazyload;
+namespace EHG\Pluggable\Lazyload;
 
 function setup() {
 	add_action( 'wp', __NAMESPACE__ . '\\lazyload_images' );
@@ -36,7 +36,7 @@ function lazyload_images() {
 	}
 
 	// If AMP is active, do nothing.
-	if ( ehg2_is_amp() ) {
+	if ( ehg_is_amp() ) {
 		return;
 	}
 
@@ -53,11 +53,11 @@ function lazyload_images() {
  * Setup filters to enable lazy-loading of images.
  */
 function setup_filters() {
-	add_filter( 'the_content', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'get_avatar', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'widget_text', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	add_filter( 'get_image_tag', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'the_content', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'get_avatar', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'widget_text', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	add_filter( 'get_image_tag', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\process_image_attributes', PHP_INT_MAX );
 }
 
@@ -65,11 +65,11 @@ function setup_filters() {
  * Remove filters for images that should not be lazy-loaded.
  */
 function remove_filters() {
-	remove_filter( 'the_content', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'get_avatar', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'widget_text', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
-	remove_filter( 'get_image_tag', __NAMESPACE__ . '\\ehg2_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'the_content', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'get_avatar', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'widget_text', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
+	remove_filter( 'get_image_tag', __NAMESPACE__ . '\\ehg_add_image_placeholders', PHP_INT_MAX );
 	remove_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\process_image_attributes', PHP_INT_MAX );
 }
 
@@ -100,7 +100,7 @@ function allow_lazy_attributes( $allowed_tags ) {
  * @param object $content The content.
  * @return object
  */
-function ehg2_add_image_placeholders( $content ) {
+function ehg_add_image_placeholders( $content ) {
 	// Don't lazyload for feeds, previews.
 	if ( is_feed() || is_preview() ) {
 		return $content;
@@ -127,7 +127,7 @@ function ehg2_add_image_placeholders( $content ) {
  * @param string $classes A string of space-separated classes.
  * @return bool
  */
-function ehg2_should_skip_image_with_blacklisted_class( $classes ) {
+function ehg_should_skip_image_with_blacklisted_class( $classes ) {
 	$blacklisted_classes = [
 		'skip-lazy',
 	];
@@ -176,7 +176,7 @@ function process_image_attributes( $attributes ) {
 	if ( empty( $attributes['src'] ) ) {
 		return $attributes;
 	}
-	if ( ! empty( $attributes['class'] ) && ehg2_should_skip_image_with_blacklisted_class( $attributes['class'] ) ) {
+	if ( ! empty( $attributes['class'] ) && ehg_should_skip_image_with_blacklisted_class( $attributes['class'] ) ) {
 		return $attributes;
 	}
 
@@ -269,11 +269,11 @@ function build_attributes_string( $attributes ) {
  */
 function enqueue_assets() {
 	wp_enqueue_script(
-		'ehg2-lazy-load-images',
+		'ehg-lazy-load-images',
 		get_theme_file_uri( '/inc/pluggable/js/lazyload.js' ),
 		[],
 		'20151215',
 		false
 	);
-	wp_script_add_data( 'ehg2-lazy-load-images', 'defer', true );
+	wp_script_add_data( 'ehg-lazy-load-images', 'defer', true );
 }

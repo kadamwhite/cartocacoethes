@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ehg2
+ * @package ehg
  */
 
 get_header(); ?>

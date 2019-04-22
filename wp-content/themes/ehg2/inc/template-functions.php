@@ -2,9 +2,9 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package ehg2
+ * @package ehg
  */
-namespace EHG2\Template_Functions;
+namespace EHG\Template_Functions;
 
 function setup() {
 	add_filter( 'body_class', __NAMESPACE__ . '\\body_classes' );
@@ -28,7 +28,7 @@ function body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	if ( \EHG2\page_has_sidebar() ) {
+	if ( \EHG\page_has_sidebar() ) {
 		$classes[] = 'has-sidebar';
 	}
 
@@ -97,7 +97,7 @@ function get_preload_stylesheet_uri( $wp_styles, $handle ) {
 function add_body_style() {
 
 	// If AMP is active, do nothing.
-	if ( ehg2_is_amp() ) {
+	if ( ehg_is_amp() ) {
 		return;
 	}
 
@@ -108,13 +108,13 @@ function add_body_style() {
 
 	// Preload comments.css.
 	if ( ! post_password_required() && is_singular() && ( comments_open() || get_comments_number() ) ) {
-		$preloads['ehg2-comments'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-comments' );
+		$preloads['ehg-comments'] = get_preload_stylesheet_uri( $wp_styles, 'ehg-comments' );
 	}
 
 	// Preload front-page.css.
 	global $template;
 	if ( 'front-page.php' === basename( $template ) ) {
-		$preloads['ehg2-front-page'] = get_preload_stylesheet_uri( $wp_styles, 'ehg2-front-page' );
+		$preloads['ehg-front-page'] = get_preload_stylesheet_uri( $wp_styles, 'ehg-front-page' );
 	}
 
 	// Output the preload markup in <head>.

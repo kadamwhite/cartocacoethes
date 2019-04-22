@@ -10,7 +10,7 @@ export const filters = [
 	 */
 	{
 		hook: 'editor.BlockEdit',
-		namespace: `ehg2/${ name }`,
+		namespace: `ehg/${ name }`,
 		callback: createHigherOrderComponent( BlockEdit => props => {
 			if ( props.name === 'core/columns' && props.insertBlocksAfter === undefined ) {
 				let columnRatio = 1 / 2;

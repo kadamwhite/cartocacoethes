@@ -2,9 +2,9 @@
 /**
  * Responsive Images configuration
  *
- * @package ehg2
+ * @package ehg
  */
-namespace EHG2\Image_Sizes;
+namespace EHG\Image_Sizes;
 
 function setup() {
 	add_filter( 'wp_calculate_image_sizes', __NAMESPACE__ . '\\content_image_sizes_attr', 10, 2 );

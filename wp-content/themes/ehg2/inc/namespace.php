@@ -4,9 +4,9 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package ehg2
+ * @package ehg
  */
-namespace EHG2;
+namespace EHG;
 
 function setup() {
 	add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup_theme_support' );
@@ -27,9 +27,9 @@ function setup_theme_support() {
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on wprig, use a find and replace
-		* to change 'ehg2' to the name of your theme in all the template files.
+		* to change 'ehg' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'ehg2', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'ehg', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -51,7 +51,7 @@ function setup_theme_support() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( [
-		'primary' => esc_html__( 'Primary', 'ehg2' ),
+		'primary' => esc_html__( 'Primary', 'ehg' ),
 	] );
 
 	/*
@@ -68,7 +68,7 @@ function setup_theme_support() {
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters(
-		'ehg2_custom_background_args',
+		'ehg_custom_background_args',
 		[
 			'default-color' => 'ffffff',
 			'default-image' => '',
@@ -118,26 +118,26 @@ function setup_theme_support() {
 	 */
 	add_theme_support( 'editor-font-sizes', [
 		[
-			'name'      => __( 'small', 'ehg2' ),
-			'shortName' => __( 'S', 'ehg2' ),
+			'name'      => __( 'small', 'ehg' ),
+			'shortName' => __( 'S', 'ehg' ),
 			'size'      => 16,
 			'slug'      => 'small',
 		],
 		[
-			'name'      => __( 'regular', 'ehg2' ),
-			'shortName' => __( 'M', 'ehg2' ),
+			'name'      => __( 'regular', 'ehg' ),
+			'shortName' => __( 'M', 'ehg' ),
 			'size'      => 20,
 			'slug'      => 'regular',
 		],
 		[
-			'name'      => __( 'large', 'ehg2' ),
-			'shortName' => __( 'L', 'ehg2' ),
+			'name'      => __( 'large', 'ehg' ),
+			'shortName' => __( 'L', 'ehg' ),
 			'size'      => 36,
 			'slug'      => 'large',
 		],
 		[
-			'name'      => __( 'larger', 'ehg2' ),
-			'shortName' => __( 'XL', 'ehg2' ),
+			'name'      => __( 'larger', 'ehg' ),
+			'shortName' => __( 'XL', 'ehg' ),
 			'size'      => 48,
 			'slug'      => 'larger',
 		],
@@ -178,7 +178,7 @@ function set_embed_dimensions( array $dimensions ) {
  * @return array $urls           URLs to print for resource hints.
  */
 function add_resource_hints( $urls, $relation_type ) {
-	if ( wp_style_is( 'ehg2-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+	if ( wp_style_is( 'ehg-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
 		$urls[] = [
 			'href' => 'https://fonts.gstatic.com',
 			'crossorigin',
@@ -195,9 +195,9 @@ function add_resource_hints( $urls, $relation_type ) {
  */
 function register_theme_sidebars() {
 	register_sidebar( [
-		'name'          => esc_html__( 'Sidebar', 'ehg2' ),
+		'name'          => esc_html__( 'Sidebar', 'ehg' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'ehg2' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ehg' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',

@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#category
  *
- * @package ehg2
+ * @package ehg
  */
 
 get_header(); ?>
@@ -18,7 +18,7 @@ get_header(); ?>
 	if ( have_posts() ) {
 
 		/* Display the appropriate header when required. */
-		ehg2_index_header();
+		ehg_index_header();
 
 		/* Start the Loop */
 		while ( have_posts() ) {
