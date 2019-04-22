@@ -27,6 +27,9 @@ matrix:
   allow_failures:
     - php: 'nightly'
 
+  services:
+    - mysql
+
 # Use this to prepare the system to install prerequisites or dependencies.
 # e.g. sudo apt-get update.
 # Failures in this section will result in build status 'errored'.
@@ -52,11 +55,9 @@ before_script:
     if [[ "$SNIFF" == "1" ]]; then
       phpenv rehash;
     fi
-  # Pull in the WP Core jshint rules.
+  # Set up Travis environment for PHP unit testing.
   - |
-    if [[ "$SNIFF" == "1" ]]; then
-      wget https://develop.svn.wordpress.org/trunk/.jshintrc;
-    fi
+    bash .bin/travisci/install-wp-tests.sh "wp_tests" "root" "" "127.0.0.1"
 
 # Run test script commands.
 # Default is specific to project language.
