@@ -11,11 +11,9 @@ const SITENAV = document.querySelector( '.main-navigation' ),
 		TAB: 9,
 	};
 
-// Initiate the menus when the DOM loads.
-document.addEventListener( 'DOMContentLoaded', function() {
-	initMainNavigation();
-	initMenuToggle();
-} );
+// Initiate the menus (script is loaded in footer).
+initMainNavigation();
+initMenuToggle();
 
 /**
  * Initiate the main navigation script.

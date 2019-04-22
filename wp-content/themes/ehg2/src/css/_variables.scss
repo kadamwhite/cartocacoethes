@@ -16,15 +16,16 @@ $font-family-highlight: "Roboto Condensed", sans-serif;
 $global-font-size: 20;
 $global-font-line-height: 1.4;
 $dropdown-symbol-width: 0.7em;
-$small-font-size: 16rem;
-$regular-font-size: 20rem;
-$large-font-size: 36rem;
-$larger-font-size: 48rem;
+$small-font-size: 16px;
+$regular-font-size: 20px;
+$large-font-size: 36px;
+$larger-font-size: 48px;
 
 // Responsive Breakpoints
 // =================================================
 $narrow-single-column: 28rem; // ~450px
 $menu-size-cutoff: 37.5rem; // ~600px
+$narrow-content-width: 45rem; // ~720px
 $content-width: 60rem; // ~960px
 $sidebar-width: 65rem; // ~1040px
 

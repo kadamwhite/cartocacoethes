@@ -353,9 +353,10 @@ textarea {
 --------------------------------------------------------------*/
 
 .site-header {
-	padding-bottom: 1em;
+	padding-bottom: 0;
 
 	@include respond-above( $menu-size-cutoff ) {
+		padding-bottom: 0;
 		display: flex;
 		flex-direction: column-reverse;
 	}
@@ -377,19 +378,24 @@ textarea {
 
 .site-branding {
 	text-align: center;
-	padding: 30px 0 1.75em;
+	@include respond-above( $narrow-single-column ) {
+		padding: 30px 0 1.75em;
+	}
 	@include respond-above( $menu-size-cutoff ) {
 		padding-top: 0;
 	}
 }
 
 .site-title {
-	margin: 0 1em;
 	font-family: $font-family-highlight;
-	font-size: 38px;
+	font-size: $large-font-size;
 	font-weight: bold;
 	line-height: 1.2;
 	color: #333332;
+	@include respond-above( $narrow-single-column ) {
+		margin: 0 1em;
+		font-size: $large-font-size;
+	}
 }
 
 .site-title a {

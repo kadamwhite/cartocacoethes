@@ -24,9 +24,20 @@
 	a {
 		display: block;
 		width: 100%;
-		padding: .5em 1em .5em 0;
 		text-decoration: none;
 		color: black;
+		@include respond-below( $menu-size-cutoff ) {
+			position: relative;
+			margin: 0 1em .25em 1em;
+			&::before {
+				content: '-';
+				position: absolute;
+				left: -1em;
+			}
+		}
+		@include respond-above( $menu-size-cutoff ) {
+			padding: .5em 1em .5em 0;
+		}
 
 		&:hover,
 		&:focus {
