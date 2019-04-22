@@ -3,7 +3,7 @@
  */
 const { resolve } = require( 'path' );
 const { externals, helpers, presets } = require( '@humanmade/webpack-helpers' );
-const { choosePort, cleanOnExit } = helpers;
+const { choosePort, cleanOnExit, filePath } = helpers;
 
 const themePath = ( ...pathParts ) => resolve( __dirname, '..', ...pathParts );
 
@@ -13,10 +13,7 @@ cleanOnExit( [
 ] );
 
 const config = {
-	externals: {
-		...externals,
-		jquery: 'jQuery',
-	},
+	externals,
 	entry: {
 		comments: themePath( 'src/css/comments.scss' ),
 		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
@@ -37,12 +34,12 @@ const config = {
 	},
 };
 
-// If this is the top-level Webpack file loaded by the Webpack DevServer,
-// automatically detect & bind to an open port.
 if (
 	process.argv[1].indexOf( 'webpack-dev-server' ) !== -1
-	&& themePath( '.config' ) === __dirname
+	&& filePath( '.config' ) === __dirname
 ) {
+	// Webpack DevServer is being run from within this project: automatically
+	// detect & bind to an open port.
 	const cwdRelativePublicPath = ( path, port ) => `http://localhost:${ port }${ path.replace( process.cwd(), '' ) }/`;
 	module.exports = choosePort( 9090 ).then( port => presets.development( {
 		...config,
@@ -54,6 +51,10 @@ if (
 			publicPath: cwdRelativePublicPath( config.output.path, port ),
 		},
 	} ) );
-} else {
+} else if ( filePath( '.config' ) === __dirname ) {
+	// Dev-mode static file build is being run from within this project.
 	module.exports = presets.development( config );
+} else {
+	// This configuration is being injested by a parent project's build process.
+	module.exports = config;
 }
