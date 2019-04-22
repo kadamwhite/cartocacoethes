@@ -1,9 +1,6 @@
 # Travis CI (MIT License) configuration file for the WP Rig WordPress theme development rig.
 # @link https://travis-ci.org/
 
-# For use with the WP Rig WordPress theme development rig.
-# @link https://github.com/wprig/wprig
-
 # Ditch sudo and use containers.
 # @link https://docs.travis-ci.com/user/migrating-from-legacy/#Why-migrate-to-container-based-infrastructure%3F
 # @link https://docs.travis-ci.com/user/workers/container-based-infrastructure/#Routing-your-build-to-container-based-infrastructure

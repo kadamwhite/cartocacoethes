@@ -1,10 +1,12 @@
-<img align="right" width="90" height="90"
-     src="https://avatars1.githubusercontent.com/u/38340689"
-     title="WP Rig logo by Morten Rand-Hendriksen">
-# WP Rig: WordPress Theme Boilerplate
-[![Build Status](https://travis-ci.com/wprig/wprig.svg?branch=master)](https://travis-ci.com/wprig/wprig)
+# Cartocacoethes: A WordPress Theme for Map Lovers
+
+[![Build Status](https://travis-ci.com/kadamwhite/cartocacoethes.svg?branch=master)](https://travis-ci.com/kadamwhite/cartocacoethes)
 [![License: GPL](https://img.shields.io/aur/license/yaourt.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-![WP Rig version 1.0.4](https://img.shields.io/badge/version-1.0.4-blue.svg)
+![Cartocacoethes version 0.1.0](https://img.shields.io/github/package-json/v/kadamwhite/cacoethes.svg)
+
+Based on [WP Rig](https://wprig.io) ![WP Rig version 1.0.4](https://img.shields.io/badge/version-1.0.4-blue.svg)
+
+**The below documentation relates to WP Rig, and not to this theme specifically.**
 
 ## Your Performance-Focused Development Rig
 A progressive theme development rig for WordPress, WP Rig is built to promote the latest best practices for progressive web content and optimization. Building a theme from WP Rig means adopting this approach and the core principles it is built on:
