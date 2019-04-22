@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/kadamwhite/cartocacoethes.svg?branch=master)](https://travis-ci.com/kadamwhite/cartocacoethes)
 [![License: GPL](https://img.shields.io/aur/license/yaourt.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-![Cartocacoethes version 0.1.0](https://img.shields.io/github/package-json/v/kadamwhite/cacoethes.svg)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/kadamwhite/cartocacoethes.svg)
 
 Based on [WP Rig](https://wprig.io) ![WP Rig version 1.0.4](https://img.shields.io/badge/version-1.0.4-blue.svg)
 
