@@ -1,0 +1,27 @@
+/*
+Override the less-desirable output of wp-block-library block styling. See
+https://github.com/WordPress/gutenberg/blob/master/packages/block-editor/src/style.scss
+for a full list of included block styles.
+*/
+
+// Current as of WP 5.1.
+@include respond-above( 600px ) {
+	.wp-block-column {
+		&:not(:last-child) {
+			margin-right: unset;
+		}
+		&:nth-child( odd ) {
+			margin-right: unset;
+		}
+		&:not(:first-child),
+		&:nth-child(2n) {
+			margin-left: unset;
+		}
+	}
+}
+.wp-block-columns {
+	flex-wrap: unset;
+	@include respond-above( 782px ) {
+		flex-wrap: unset;
+	}
+}

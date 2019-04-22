@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "vendor": true
+  },
+  "search.exclude": {
+    "node_modules": true,
+    "bower_components": true,
+    "build/*": true
+  },
+  "files.trimTrailingWhitespace": true
+}

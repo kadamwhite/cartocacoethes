@@ -1,0 +1,57 @@
+{
+  "private": true,
+  "name": "cartocacoethes",
+  "version": "0.1.0",
+  "description": "A responsive, block editor-ready WordPress theme for map lovers",
+  "author": "K Adam White",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/wprig/wprig#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wprig/wprig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wprig/wprig/issues"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@humanmade/webpack-helpers": "^0.4.0",
+    "@wordpress/babel-preset-default": "^4.1.0",
+    "acorn": "^6.1.1",
+    "ajv": "^6.9.2",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "eslint": "^5.16.0",
+    "eslint-config-humanmade": "^0.6.0",
+    "eslint-config-react-app": "^3.0.8",
+    "eslint-plugin-flowtype": "^3.6.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.6.0",
+    "node-sass": "^4.11.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-fix-style-only-entries": "^0.2.1"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 10"
+  ],
+  "scripts": {
+    "postinstall": "composer install",
+    "prebuild": "rm -f build/*",
+    "build": "webpack --config=.config/webpack.config.prod.js",
+    "start": "webpack-dev-server --config=.config/webpack.config.dev.js",
+    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s .",
+    "eslint": "eslint . .config --fix",
+    "lint": "npm run eslint && npm run phpcs",
+    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg && phpunit'"
+  }
+}

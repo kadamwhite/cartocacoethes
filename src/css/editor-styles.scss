@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'block-overrides';
+/**
+ * Styles for the WordPress post/page editor.
+ * Ensures a visual match between back- and front-end.
+ */
+body.gutenberg-editor-page {
+	.editor-writing-flow {
+		color: $font-color-global;
+		font-family: $font-family-global;
+		font-size: $global-font-size / 16;
+		line-height: $global-font-line-height;
+	}
+
+	.editor-post-title .editor-post-title__input,
+	.editor-writing-flow h1,
+	.editor-writing-flow h2,
+	.editor-writing-flow h3,
+	.editor-writing-flow h4,
+	.editor-writing-flow h5,
+	.editor-writing-flow h6,
+	.edit-post-visual-editor p {
+		font-family: $font-family-highlight;
+		color: #32373c;
+		clear: both;
+	}
+
+	.editor-post-title .editor-post-title__input {
+		font-size: 2rem;
+		line-height: 1.4;
+	}
+
+	.edit-post-visual-editor p {
+		font-family: $font-family-global;
+		font-size: $global-font-size / 16;
+
+	}
+
+	.wp-block-cover-image .wp-block-cover-image-text,
+	.wp-block-cover-image .wp-block-cover-image h2 {
+		color: #fff;
+		font-size: 2em;
+		line-height: 1.25;
+	}
+}
+
+.editor-block-list__block ol.wp-block-latest-comments,
+.editor-block-list__block ul.wp-block-latest-posts {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	border: 1px solid hsl(0, 0%, 80%);
+}
+
+.editor-block-list__block ol.wp-block-latest-comments {
+	padding-right: 1.5em;
+	padding-left: 1.5em;
+}
+
+/* Visualize editor font sizes (defined in functions.php). */
+
+@import 'block-variants';
