@@ -80,7 +80,7 @@ script:
       vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1;
     fi
   # Run PHPUnit. Automatically uses configuration in `phpunit.xml`.
-  - vendor/phpunit/phpunit/phpunit
+  - vendor/bin/phpunit
 
 # Receive notifications for build results.
 # @link https://docs.travis-ci.com/user/notifications/#Email-notifications
