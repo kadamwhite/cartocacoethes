@@ -4,6 +4,12 @@
 [![License: GPL](https://img.shields.io/aur/license/yaourt.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/kadamwhite/cartocacoethes.svg)
 
+[The name, explained](https://www.geolounge.com/cartocacoethes/):
+
+> Cartocacoethes was a term first coined by John Krygier from the Making Maps blog to describe “a mania, uncontrollable urge, compulsion or itch to see maps everywhere.”
+
+This theme was written for [imaginary map artist Emily Garfield](https://www.instagram.com/emilymap/).
+
 Based on [WP Rig](https://wprig.io) ![WP Rig version 1.0.4](https://img.shields.io/badge/version-1.0.4-blue.svg)
 
 **The below documentation relates to WP Rig, and not to this theme specifically.**
