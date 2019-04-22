@@ -4,3 +4,6 @@
 [submodule "wp-content/plugins/asset-loader"]
 	path = wp-content/plugins/asset-loader
 	url = git@github.com:kadamwhite/asset-loader.git
+[submodule "wp-content/themes/cartocacoethes"]
+	path = wp-content/themes/cartocacoethes
+	url = git@github.com:kadamwhite/cartocacoethes.git

@@ -1,9 +1,0 @@
-<svg
-	xmlns="http://www.w3.org/2000/svg"
-	viewBox="0 0 80 40"
-	width="80"
-	height="40"
->
-	<rect x="0" y="0" width="48" height="40" stroke="black" stroke-width="1" />
-	<rect x="52" y="0" width="28" height="40" stroke="black" stroke-width="1" />
-</svg>
