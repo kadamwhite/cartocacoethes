@@ -6,7 +6,7 @@
 
 [The name, explained](https://www.geolounge.com/cartocacoethes/):
 
-> Cartocacoethes was a term first coined by John Krygier from the Making Maps blog to describe “a mania, uncontrollable urge, compulsion or itch to see maps everywhere.”
+> Cartocacoethes was a term first coined by John Krygier from the [Making Maps blog](https://makingmaps.net/2008/10/13/cartocacoethes-why-the-worlds-oldest-map-isnt-a-map/) to describe _“a mania, uncontrollable urge, compulsion or itch to see maps everywhere.”_
 
 This theme was written for [imaginary map artist Emily Garfield](https://www.instagram.com/emilymap/).
 
