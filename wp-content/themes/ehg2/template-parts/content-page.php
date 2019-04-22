@@ -16,8 +16,6 @@
 		</header><!-- .entry-header -->
 	<?php endif; ?>
 
-	<?php ehg2_post_thumbnail(); ?>
-
 	<div class="entry-content">
 		<?php
 		the_content();
