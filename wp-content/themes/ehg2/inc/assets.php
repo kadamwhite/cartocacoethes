@@ -125,7 +125,7 @@ function enqueue_scripts() {
 	] );
 	wp_script_add_data( 'ehg-theme', 'async', true );
 	wp_script_add_data( 'ehg-theme', 'defer', true );
-	wp_localize_script( 'ehg-theme', 'wprigScreenReaderText', [
+	wp_localize_script( 'ehg-theme', 'ehgScreenReaderText', [
 		'expand'   => __( 'Expand child menu', 'ehg' ),
 		'collapse' => __( 'Collapse child menu', 'ehg' ),
 	] );

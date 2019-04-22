@@ -4,7 +4,7 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-/* global wprigScreenReaderText: false */
+/* global ehgScreenReaderText: false */
 
 const SITENAV = document.querySelector( '.main-navigation' ),
 	KEYMAP = {
@@ -156,7 +156,7 @@ function toggleSubMenu( parentMenuItem, forceToggle ) {
 		// Toggle "off" the submenu.
 		parentMenuItem.classList.remove( 'toggled-on' );
 		subMenu.classList.remove( 'toggle-show' );
-		toggleButton.setAttribute( 'aria-label', wprigScreenReaderText.expand );
+		toggleButton.setAttribute( 'aria-label', ehgScreenReaderText.expand );
 
 		// Make sure all children are closed.
 		parentMenuItem.querySelectorAll( '.toggled-on' ).forEach( function( item ) {
@@ -173,7 +173,7 @@ function toggleSubMenu( parentMenuItem, forceToggle ) {
 		// Toggle "on" the submenu.
 		parentMenuItem.classList.add( 'toggled-on' );
 		subMenu.classList.add( 'toggle-show' );
-		toggleButton.setAttribute( 'aria-label', wprigScreenReaderText.collapse );
+		toggleButton.setAttribute( 'aria-label', ehgScreenReaderText.collapse );
 
 	}
 }
@@ -186,7 +186,7 @@ function getDropdownButton() {
 	const dropdownButton = document.createElement( 'button' );
 	dropdownButton.classList.add( 'dropdown-toggle' );
 	dropdownButton.setAttribute( 'aria-expanded', 'false' );
-	dropdownButton.setAttribute( 'aria-label', wprigScreenReaderText.expand );
+	dropdownButton.setAttribute( 'aria-label', ehgScreenReaderText.expand );
 	return dropdownButton;
 }
 
