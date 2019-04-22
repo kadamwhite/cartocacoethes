@@ -52,6 +52,6 @@
     "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s .",
     "eslint": "eslint . .config --fix",
     "lint": "npm run eslint && npm run phpcs",
-    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg && phpunit'"
+    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/cartocacoethes && phpunit'"
   }
 }
