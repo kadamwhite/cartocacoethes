@@ -18,7 +18,8 @@
 
 	@include respond-above ( $content-width ) {
 		padding: 0;
-		max-width: calc( 50% + #{ $content-width } / 2 ); // match .alignwide
+		width: $wide-content-width;
+		max-width: $wide-content-width;
 	}
 
 	a {

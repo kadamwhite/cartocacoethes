@@ -427,10 +427,11 @@ textarea {
 # Footer
 --------------------------------------------------------------*/
 .site-footer {
-	margin: 1em auto 0;
-	padding: 2em 0;
+	margin: 0 auto;
+	padding: 2rem 0;
 	font-family: $font-family-highlight;
-	max-width: $content-width;
+	max-width: $wide-content-width;
+	border-top: 1px solid #111;
 }
 
 .site-info {
@@ -439,8 +440,12 @@ textarea {
 
 .copyright-notice {
 	position: relative;
-	max-width: $narrow-content-width;
+	max-width: $content-width;
 	margin: 0 auto 2em;
+
+	@include respond-below( $content-width ) {
+		padding: 0 1.5rem;
+	}
 
 	&__toggle {
 		text-align: center;
