@@ -1,10 +1,10 @@
 {
-  "name": "ehg",
-  "version": "1.0.4",
-  "description": "A progressive theme development rig for WordPress.",
-  "author": "Morten Rand-Hendriksen",
+  "private": true,
+  "name": "cartocacoethes",
+  "version": "0.1.0",
+  "description": "A responsive, block editor-ready WordPress theme for map lovers",
+  "author": "K Adam White",
   "license": "GPL-3.0",
-  "main": "index.php",
   "homepage": "https://github.com/wprig/wprig#readme",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "prebuild": "rm -f build/*",
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config=.config/webpack.config.dev.js",
-    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml --ignore=wp-content/themes/twenty* -s .",
+    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s .",
     "eslint": "eslint . .config --fix",
     "lint": "npm run eslint && npm run phpcs",
     "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/ehg && phpunit'"
