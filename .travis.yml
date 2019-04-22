@@ -45,19 +45,12 @@ before_install:
 before_script:
   # Speed up build time by disabling Xdebug.
   - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
-  # Install CodeSniffer and rulesets.
-  - |
-    if [[ "$SNIFF" == "1" ]]; then
-      composer install;
-    fi
+  # Install PHPUnit, CodeSniffer and rulesets.
+  - composer install
   # After CodeSniffer install you should refresh your path.
-  - |
-    if [[ "$SNIFF" == "1" ]]; then
-      phpenv rehash;
-    fi
+  - phpenv rehash
   # Set up Travis environment for PHP unit testing.
-  - |
-    bash .bin/travisci/install-wp-tests.sh "wp_tests" "root" "" "127.0.0.1"
+  - bash .bin/travisci/install-wp-tests.sh "wp_tests" "root" "" "127.0.0.1"
 
 # Run test script commands.
 # Default is specific to project language.
