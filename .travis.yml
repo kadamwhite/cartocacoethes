@@ -73,11 +73,14 @@ script:
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
   # @link https://pear.php.net/package/PHP_CodeSniffer/
   # Uses a custom ruleset based on WordPress. This ruleset is automatically
-  # picked up by PHPCS as it's named `phpcs.xml(.dist)`.
+  # picked up by PHPCS as it is named `phpcs.xml(.dist)`.
   - |
     if [[ "$SNIFF" == "1" ]]; then
       vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1;
     fi
+  # Run PHPUnit. Automatically uses configuration in `phpunit.xml`.
+  - |
+    phpunit
 
 # Receive notifications for build results.
 # @link https://docs.travis-ci.com/user/notifications/#Email-notifications
