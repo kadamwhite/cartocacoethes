@@ -19,12 +19,12 @@ const config = {
 		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
 		'front-page': themePath( 'src/css/front-page.scss' ),
 		sidebar: themePath( 'src/css/sidebar.scss' ),
-		style: themePath( 'src/css/style.scss' ),
 		customizer: themePath( 'src/customizer.js' ),
 		editor: [
 			themePath( 'src/blocks.js' ),
 		],
 		theme: [
+			themePath( 'src/css/theme.scss' ),
 			themePath( 'src/theme/navigation.js' ),
 			themePath( 'src/theme/skip-link-focus-fix.js' ),
 		],

@@ -98,8 +98,8 @@ function enqueue_styles() {
 	] );
 
 	// Enqueue main stylesheet.
-	Asset_Loader\autoenqueue( manifest_path(), 'style.js', [
-		'handle' => 'ehg2-base-style',
+	Asset_Loader\autoenqueue( manifest_path(), 'theme.js', [
+		'handle' => 'ehg2-theme',
 	] );
 
 	if ( \EHG2\page_has_sidebar() ) {
