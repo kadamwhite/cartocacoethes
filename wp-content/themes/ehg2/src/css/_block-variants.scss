@@ -47,7 +47,7 @@ h1, h2, h3 {
 	&.is-style-dark {
 		position: relative;
 		color: white;
-		padding: 0.5em 0;
+		padding: 0.5em 1.5rem;
 
 		&::before {
 			content: ' ';
@@ -55,15 +55,31 @@ h1, h2, h3 {
 			display: block;
 			top: 0;
 			bottom: 0;
-			left: -1em;
-			right: -1em;
+			left: 0;
+			right: 0;
 			background: $font-color-global;
 			z-index: -1;
 		}
 
+		&.alignwide {
+			@include respond-above( $content-width ) {
+				padding: 0.5 1rem;
+				&::before {
+					left: calc( ( -100% - #{ $content-width } ) / 2 );
+					right: calc( ( -100% - #{ $content-width } ) / 2 );
+				}
+			}
+			@include respond-above( $content-width + 3rem ) {
+				padding: 0.5em 0;
+				&::before {
+					left: -1.5rem;
+					right: -1.5rem;
+				}
+			}
+		}
+
 		&.alignfull {
 			width: 100%;
-			padding: 0.5em 1.5rem;
 
 			&::before {
 				content: ' ';
@@ -77,6 +93,18 @@ h1, h2, h3 {
 	}
 }
 
-.wp-block-columns.alignfull {
-	padding: 0 1.5rem;
+.wp-block-columns {
+	&.alignwide {
+		@include respond-above( $content-width ) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		@include respond-above( $content-width + 3rem ) {
+			padding-right: unset;
+			padding-left: unset;
+		}
+	}
+	&.alignfull {
+		padding: 0 1.5rem;
+	}
 }
