@@ -14,7 +14,7 @@
 	margin: 0 auto 2em;
 	padding: 0 1em;
 	max-width: $content-width;
-	font-family: $highlight-font-family;
+	font-family: $font-family-highlight;
 
 	@include respond-above ( $content-width ) {
 		padding: 0;
@@ -63,7 +63,7 @@
 	display: block;
 	margin: 1.2em auto;
 	padding: .6em 1.2em .5em;
-	font-family: $highlight-font-family;
+	font-family: $font-family-highlight;
 	font-size: 80%;
 	text-transform: uppercase;
 	border: 2px solid black;
@@ -214,7 +214,7 @@
 		max-width: 720px;
 		overflow: hidden;
 		padding-bottom: 2em;
-		font-family: $highlight-font-family;
+		font-family: $font-family-highlight;
 	}
 }
 
@@ -237,7 +237,7 @@
 }
 
 .post-navigation-sub span {
-	color: $global-font-color;
+	color: $font-color-global;
 	text-decoration: none;
 	display: inline-block;
 }

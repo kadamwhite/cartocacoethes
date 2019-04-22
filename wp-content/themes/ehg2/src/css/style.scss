@@ -110,15 +110,15 @@ input,
 select,
 optgroup,
 textarea {
-	color: $global-font-color;
-	font-family: $global-font-family;
+	color: $font-color-global;
+	font-family: $font-family-global;
 	font-size: $global-font-size / 16;
 	line-height: $global-font-line-height;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $highlight-font-family;
-	color: #32373c;
+	font-family: $font-family-highlight;
+	color: $font-color-header;
 	clear: both;
 }
 
@@ -142,7 +142,7 @@ address {
 
 pre {
 	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-family: $font-family-pre;
 	font-size: 0.9375rem;
 	line-height: 1.6;
 	margin-bottom: 1.6em;
@@ -152,13 +152,13 @@ pre {
 }
 
 code, kbd, tt, var {
-	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-family: $font-family-code;
 	font-size: 12.8px;
 	font-size: .8em;
 }
 
 abbr, acronym {
-	border-bottom: 1px dotted #666;
+	border-bottom: 1px dotted $font-color-deemphasized;
 	cursor: help;
 }
 
@@ -172,15 +172,17 @@ big {
 }
 
 a {
-	color: #0073aa;
+	color: $font-color-link;
+	text-decoration: none;
 }
 
 a:visited {
-	color: #333;
+	color: adjust-hue( lighten( $font-color-link, 10% ), 10% );
 }
 
 a:hover, a:focus, a:active {
-	color: #00a0d2;
+	color: darken( $font-color-link, 20% );
+	text-decoration: underline;
 }
 
 a:focus {
@@ -206,7 +208,7 @@ html {
 }
 
 body {
-	background: #fff;
+	background: $background-color;
 	/* Fallback for when there is no custom background color defined. */ }
 
 blockquote, q {
@@ -383,7 +385,7 @@ textarea {
 
 .site-title {
 	margin: 0 1em;
-	font-family: $highlight-font-family;
+	font-family: $font-family-highlight;
 	font-size: 38px;
 	font-weight: bold;
 	line-height: 1.2;
@@ -397,7 +399,7 @@ textarea {
 
 .site-description {
 	margin: .4375em 0 0;
-	font-family: $highlight-font-family;
+	font-family: $font-family-highlight;
 	font-size: 17px;
 	font-weight: inherit;
 	line-height: 1.4;
@@ -421,7 +423,7 @@ textarea {
 .site-footer {
 	margin: 1em 0 0;
 	padding: 2em 0;
-	font-family: $highlight-font-family;
+	font-family: $font-family-highlight;
 }
 
 .site-info {

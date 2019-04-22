@@ -6,8 +6,8 @@
  */
 body.gutenberg-editor-page {
 	.editor-writing-flow {
-		color: $global-font-color;
-		font-family: $global-font-family;
+		color: $font-color-global;
+		font-family: $font-family-global;
 		font-size: $global-font-size / 16;
 		line-height: $global-font-line-height;
 	}
@@ -20,7 +20,7 @@ body.gutenberg-editor-page {
 	.editor-writing-flow h5,
 	.editor-writing-flow h6,
 	.edit-post-visual-editor p {
-		font-family: $highlight-font-family;
+		font-family: $font-family-highlight;
 		color: #32373c;
 		clear: both;
 	}
@@ -31,7 +31,7 @@ body.gutenberg-editor-page {
 	}
 
 	.edit-post-visual-editor p {
-		font-family: $global-font-family;
+		font-family: $font-family-global;
 		font-size: $global-font-size / 16;
 
 	}

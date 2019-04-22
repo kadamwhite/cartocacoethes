@@ -1,16 +1,28 @@
+// Colors
+// =================================================
+$font-color-global: #333;
+$font-color-deemphasized: #555;
+$font-color-header: #32373c;
+$font-color-link: #1982d1;
+$background-color: #fff;
 
-$global-font-color: #333;
-$global-font-lighter-color: #555;
-$global-font-family: "Crimson Text", serif;
+// Typography
+// =================================================
+$font-family-global: "Crimson Text", serif;
+$font-family-pre: "Courier 10 Pitch", Courier, monospace;
+$font-family-code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font-family-highlight: "Roboto Condensed", sans-serif;
+
 $global-font-size: 20;
 $global-font-line-height: 1.4;
-$highlight-font-family: "Roboto Condensed", sans-serif;
 $dropdown-symbol-width: 0.7em;
 $small-font-size: 16rem;
 $regular-font-size: 20rem;
 $large-font-size: 36rem;
 $larger-font-size: 48rem;
 
+// Responsive Breakpoints
+// =================================================
 $narrow-single-column: 28rem; // ~450px
 $menu-size-cutoff: 37.5rem;
 $content-width: 60rem; // ~960px
