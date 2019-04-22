@@ -32,8 +32,6 @@
 		?>
 	</header><!-- .entry-header -->
 
-	<?php ehg2_post_thumbnail(); ?>
-
 	<div class="entry-content">
 		<?php
 		the_content(
