@@ -427,11 +427,37 @@ textarea {
 # Footer
 --------------------------------------------------------------*/
 .site-footer {
-	margin: 1em 0 0;
+	margin: 1em auto 0;
 	padding: 2em 0;
 	font-family: $font-family-highlight;
+	max-width: $content-width;
 }
 
 .site-info {
 	text-align: center;
+}
+
+.copyright-notice {
+	position: relative;
+	max-width: $narrow-content-width;
+	margin: 0 auto 2em;
+
+	&__toggle {
+		text-align: center;
+	}
+
+	&__more-info {
+		text-align: left;
+		box-sizing: border-box;
+		max-width: 100%;
+		@extend .screen-reader-text;
+	}
+}
+// Overrule the assistive-text styles when the anchor is present in the URL,
+// to provide a low-impact no-JS fallback
+#copyright-notice:target {
+	position: static !important; // overrides .screen-reader-text
+	height: unset;
+	width: unset;
+	clip: unset;
 }
