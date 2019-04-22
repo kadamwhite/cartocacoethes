@@ -1,8 +1,5 @@
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
-// import classNames from 'classnames';
-
-// import './style.scss';
 
 export const name = 'core/columns';
 
