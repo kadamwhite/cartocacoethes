@@ -6,8 +6,8 @@ const { choosePort, cleanOnExit, filePath } = helpers;
 
 const projects = [
 	'wp-content/plugins/artgallery',
-	// 'wp-content/plugins/featured-item-blocks',
-	'wp-content/themes/ehg2',
+	'wp-content/plugins/featured-item-blocks',
+	'wp-content/themes/cartocacoethes',
 ];
 
 // Clean up manifests on exit.
