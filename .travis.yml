@@ -35,10 +35,10 @@ matrix:
     - php: 7.2
       env: WP_TRAVISCI=travis:phpcs
     # Run PHP unit tests against all supported PHP versions.
-    # - php: 7.4snapshot
-    # - php: 7.3
+    - php: 7.4snapshot
+    - php: 7.3
     - php: 7.2
-    # - php: 7.1
+    - php: 7.1
     - php: 7.0
     - php: nightly
 
