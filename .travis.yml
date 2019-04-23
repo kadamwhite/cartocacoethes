@@ -11,31 +11,47 @@ dist: trusty
 # @link https://about.travis-ci.org/docs/user/languages/php/
 language: php
 
+cache:
+  apt: true
+  directories:
+    - node_modules
+    - vendor
+    - $HOME/.composer/cache
+
+env:
+  global:
+    - WP_TRAVISCI=travis:phpunit
+
 # Declare versions of PHP to use. Use one decimal max.
 # @link https://docs.travis-ci.com/user/build-configuration/
 matrix:
   fast_finish: true
 
   include:
-    # aliased to a recent 7.2.x version
-    - php: '7.2'
-    # bleeding edge PHP
-    - php: 'nightly'
+    # Run JS unit tests only on one PHP version (which does not matter).
+    - php: 7.2
+      env: WP_TRAVISCI=travis:js
+    # Run PHP coding standards checks only on PHP 7.2.
+    - php: 7.2
+      env: WP_TRAVISCI=travis:phpcs
+    # Run PHP unit tests against all supported PHP versions.
+    # - php: 7.4snapshot
+    # - php: 7.3
+    - php: 7.2
+    # - php: 7.1
+    - php: 7.0
+    - php: nightly
 
   allow_failures:
-    - php: 'nightly'
-
-  services:
-    - mysql
+    - php: 7.4snapshot
+    - php: nightly
 
 # Use this to prepare the system to install prerequisites or dependencies.
 # e.g. sudo apt-get update.
 # Failures in this section will result in build status 'errored'.
 before_install:
-  - |
-    if [[ "$SNIFF" == "1" ]]; then
-      npm install;
-    fi
+  # Set up Travis environment for PHP unit testing.
+  - bash .bin/travisci/install-wp-tests.sh "wp_tests" "root" "" "127.0.0.1"
 
 # Use this to prepare your build for testing.
 # e.g. copy database configurations, environment variables, etc.
@@ -43,12 +59,35 @@ before_install:
 before_script:
   # Speed up build time by disabling Xdebug.
   - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
-  # Install PHPUnit, CodeSniffer and rulesets.
-  - composer install
-  # After CodeSniffer install you should refresh your path.
-  - phpenv rehash
-  # Set up Travis environment for PHP unit testing.
-  - bash .bin/travisci/install-wp-tests.sh "wp_tests" "root" "" "127.0.0.1"
+  - |
+    if [[ "$WP_TRAVISCI" == "travis:js" ]]; then
+      npm install;
+    fi
+  # Install CodeSniffer and rulesets when running PHPCS.
+  - |
+    if [[ "$WP_TRAVISCI" == "travis:phpcs" ]]; then
+      composer --version;
+      travis_retry composer install;
+      phpenv rehash;
+    fi
+- |
+  # Install the specified version of PHPUnit depending on the PHP version:
+  if [[ "$WP_TRAVISCI" == "travis:phpunit" ]]; then
+    case "$TRAVIS_PHP_VERSION" in
+      7.4snapshot|7.3|7.2|7.1|nightly)
+        echo "Using PHPUnit 7.x"
+        travis_retry composer global require "phpunit/phpunit:^7"
+        ;;
+      7.0)
+        echo "Using PHPUnit 6.x"
+        travis_retry composer global require "phpunit/phpunit:^6"
+        ;;
+      *)
+        echo "No PHPUnit version handling for PHP version $TRAVIS_PHP_VERSION"
+        exit 1
+        ;;
+    esac
+  fi
 
 # Run test script commands.
 # Default is specific to project language.
@@ -58,20 +97,20 @@ script:
   - find -L . -name '*.php' ! -path "*/vendor/*" -print0 | xargs -0 -n 1 -P 4 php -l
   # Run the theme through JavaScript Code Style checker.
   - |
-    if [[ "$SNIFF" == "1" ]]; then
-      $(npm bin)/eslint .;
+    if [[ "$WP_TRAVISCI" == "travis:js" ]]; then
+      $(npm bin)/eslint . .config;
     fi
-  # WordPress Coding Standards.
-  # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
-  # @link https://pear.php.net/package/PHP_CodeSniffer/
-  # Uses a custom ruleset based on WordPress. This ruleset is automatically
-  # picked up by PHPCS as it is named `phpcs.xml(.dist)`.
+  # Check PHP files against the Human Made coding standards.
+  # @link https://github.com/humanmade/coding-standards
   - |
-    if [[ "$SNIFF" == "1" ]]; then
+    if [[ "$WP_TRAVISCI" == "travis:phpcs" ]]; then
       vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1;
     fi
   # Run PHPUnit. Automatically uses configuration in `phpunit.xml`.
-  - vendor/bin/phpunit
+  - |
+    if [[ "$WP_TRAVISCI" == "travis:phpunit" ]]; then
+      phpunit;
+    fi
 
 # Receive notifications for build results.
 # @link https://docs.travis-ci.com/user/notifications/#Email-notifications
