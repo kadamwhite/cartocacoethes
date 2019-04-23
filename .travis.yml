@@ -70,6 +70,12 @@ before_script:
       travis_retry composer install;
       phpenv rehash;
     fi
+  - |
+    # Export Composer's global bin dir to PATH, to enable custom PHPUnit versions.
+    if [[ "$WP_TRAVISCI" == "travis:phpunit" ]]; then
+      composer config --list --global
+      export PATH=`composer config --list --global | grep '\[home\]' | { read a; echo "${a#* }/vendor/bin:$PATH"; }`
+    fi
   # Install the specified version of PHPUnit depending on the PHP version:
   - |
     if [[ "$WP_TRAVISCI" == "travis:phpunit" ]]; then
