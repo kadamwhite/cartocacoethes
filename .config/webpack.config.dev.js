@@ -1,20 +1,23 @@
 /**
  * This file defines the configuration for development and dev-server builds.
  */
-const { helpers, presets } = require( '@humanmade/webpack-helpers' );
+const { helpers, loaders, presets } = require( '@humanmade/webpack-helpers' );
 const { choosePort, cleanOnExit, filePath } = helpers;
 
-const projects = [
-	'wp-content/plugins/artgallery',
-	'wp-content/plugins/featured-item-blocks',
-	'wp-content/themes/cartocacoethes',
-];
+// Remove automatic .babelrc.js ingestion in favor of manually setting the
+// top-level options (which match those used in the child projects).
+loaders.js.defaults.options = {
+	babelrc: false,
+	...require( '../.babelrc.js' ),
+};
+
+const projects = require( './project-roots' );
 
 // Clean up manifests on exit.
-cleanOnExit( projects.map( relPath => filePath( `${ relPath }/build/asset-manifest.json` ) ) );
+cleanOnExit( projects.map( projectRoot => filePath( projectRoot, 'build/asset-manifest.json' ) ) );
 
 // Build array of partial config objects.
-const configs = projects.map( relPath => require( `../${ relPath }/.config/webpack.config.dev` ) );
+const configs = projects.map( projectRoot => require( `../${ projectRoot }/.config/webpack.config.dev` ) );
 
 if ( process.argv[1].indexOf( 'webpack-dev-server' ) !== -1 ) {
 	// Webpack DevServer is loading this configuration: automatically detect & bind to an open port.
@@ -24,6 +27,7 @@ if ( process.argv[1].indexOf( 'webpack-dev-server' ) !== -1 ) {
 		return configs.map( config => presets.development( {
 			...config,
 			devServer: {
+				publicPath: '/',
 				port,
 			},
 			output: {
