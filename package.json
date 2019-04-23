@@ -5,13 +5,29 @@
   "description": "A responsive, block editor-ready WordPress theme for map lovers",
   "author": "K Adam White",
   "license": "GPL-3.0",
-  "homepage": "https://github.com/wprig/wprig#readme",
+  "homepage": "https://github.com/kadamwhite/cartocacoethes#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wprig/wprig.git"
+    "url": "git+https://github.com/kadamwhite/cartocacoethes.git"
   },
   "bugs": {
-    "url": "https://github.com/wprig/wprig/issues"
+    "url": "https://github.com/kadamwhite/cartocacoethes/issues"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 10"
+  ],
+  "scripts": {
+    "postinstall": "composer install",
+    "prebuild": "rm -f build/*",
+    "build": "webpack --config=.config/webpack.config.prod.js",
+    "start": "webpack-dev-server --config=.config/webpack.config.dev.js",
+    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s .",
+    "eslint": "eslint . .config --fix",
+    "lint": "npm run eslint && npm run phpcs",
+    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/cartocacoethes && phpunit'"
   },
   "dependencies": {
     "classnames": "^2.2.6"
@@ -37,21 +53,5 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1",
     "webpack-fix-style-only-entries": "^0.2.1"
-  },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie < 10"
-  ],
-  "scripts": {
-    "postinstall": "composer install",
-    "prebuild": "rm -f build/*",
-    "build": "webpack --config=.config/webpack.config.prod.js",
-    "start": "webpack-dev-server --config=.config/webpack.config.dev.js",
-    "phpcs": "vendor/bin/phpcs --standard=phpcs.ruleset.xml -s .",
-    "eslint": "eslint . .config --fix",
-    "lint": "npm run eslint && npm run phpcs",
-    "test": "vagrant ssh -c 'cd /vagrant/content/wp-content/themes/cartocacoethes && phpunit'"
   }
 }
