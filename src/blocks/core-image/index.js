@@ -16,7 +16,6 @@ export const filters = [
 		namespace: `ehg/${ name }`,
 		callback: createHigherOrderComponent( BlockEdit => compose(
 			withSelect( select => ( {
-				selectedBlock: select( 'core/editor' ).getSelectedBlock(),
 				featuredMediaId: select( 'core/editor' ).getEditedPostAttribute( 'featured_media' ),
 			} ) ),
 			withDispatch( dispatch => ( {
@@ -24,31 +23,31 @@ export const filters = [
 					featured_media: id,
 				} ),
 			} ) ),
-		)( props => {
+		)( ( {
+			featuredMediaId,
+			setFeaturedMediaId,
+			...props
+		} ) => {
+			// Only add toolbar to core/image block.
 			if ( props.name !== 'core/image' ) {
 				return (
 					<BlockEdit { ...props } />
 				);
 			}
+
+			const isFeaturedImage = props.attributes.id === featuredMediaId;
+
 			return (
 				<Fragment>
 					<BlockEdit { ...props } />
 					<BlockControls>
 						<Toolbar controls={ [
 							{
-								icon: props.attributes.id === props.featuredMediaId ?
-									'star-filled' :
-									'star-empty',
+								icon: isFeaturedImage ? 'star-filled' : 'star-empty',
 								title: __( 'Feature this image', 'ehg' ),
-								isActive: props.attributes.id === props.featuredMediaId,
-								onClick: ( ...args ) => {
-									// Set this image as the featured item, or unselect it.
-									if ( props.attributes.id !== props.featuredMediaId ) {
-										props.setFeaturedMediaId( props.attributes.id );
-									} else {
-										props.setFeaturedMediaId( 0 );
-									}
-								},
+								isActive: isFeaturedImage,
+								// Set this image as the featured item, or unselect it.
+								onClick: () => setFeaturedMediaId( isFeaturedImage ? 0 : props.attributes.id ),
 							},
 						] } />
 					</BlockControls>
