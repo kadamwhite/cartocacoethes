@@ -17,6 +17,9 @@ setup();
 /**
  * Set up frontend scripts, and styles.
  */
+if ( ! function_exists( 'Asset_Loader\\autoenqueue' ) ) {
+	require get_template_directory() . '/vendor/asset-loader/asset-loader.php';
+}
 require get_template_directory() . '/inc/assets.php';
 Assets\setup();
 
