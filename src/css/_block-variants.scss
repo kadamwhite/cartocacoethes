@@ -19,8 +19,8 @@
 	&.is-style-large-small {
 		// For editor
 		@include respond-above( 600px ) {
-			[data-type="core/column"]:first-child { flex-basis: 37.5%; }
-			[data-type="core/column"]:last-child { flex-basis: 62.5%; }
+			[data-type="core/column"]:first-child { flex-basis: 62.5%; }
+			[data-type="core/column"]:last-child { flex-basis: 37.5%; }
 		}
 		// For frontend
 		@include respond-above( $menu-size-cutoff ) {
@@ -32,8 +32,8 @@
 	&.is-style-small-large {
 		// For editor
 		@include respond-above( 600px ) {
-			[data-type="core/column"]:first-child { flex-basis: 62.5%; }
-			[data-type="core/column"]:last-child { flex-basis: 37.5%; }
+			[data-type="core/column"]:first-child { flex-basis: 37.5%; }
+			[data-type="core/column"]:last-child { flex-basis: 62.5%; }
 		}
 		// For frontend
 		@include respond-above( $menu-size-cutoff ) {
