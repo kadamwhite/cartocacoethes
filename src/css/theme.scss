@@ -70,7 +70,21 @@ See style.css in project root for theme info & licensing details.
 --------------------------------------------------------------*/
 .site {
   margin: 0 auto;
-  max-width: 100%;
+	max-width: 100%;
+
+	// Page is flex layout by default, to anchor footer at bottom.
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	.site-main {
+		flex: 1;
+	}
+	.site-header,
+	.site-footer {
+		flex: none;
+		width: 100%;
+	}
 }
 
 @include respond-above( $sidebar-width ) {
