@@ -1,0 +1,35 @@
+<!-- wp:columns {"align":"wide","className":"is-style-large-small"} -->
+<div class="wp-block-columns alignwide has-2-columns is-style-large-small"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading -->
+<h2>Recent Artwork</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[Artwork Grid]</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading -->
+<h2>About the Artist</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Emily Garfield creates intricate maps of imaginary places that explore the origins of cities and the function of maps themselves.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Her drawings are inspired by the visual language of maps and the fractal similarity that cities share with biological processes such as the patterns of cells and neurons.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"align":"wide","className":"is-style-dark"} -->
+<h2 style="text-align:wide" class="alignwide is-style-dark">Latest Updates</h2>
+<!-- /wp:heading -->
+
+<!-- wp:featured-item-blocks/featured-items-list {"align":"wide"} /-->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
