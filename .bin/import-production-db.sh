@@ -26,9 +26,11 @@ wp plugin activate featured-item-blocks
 wp theme activate cartocacoethes
 wp user create admin admin@ehg.local --role=administrator --user_pass=password
 
-# Update Artwork posts
-wp artgallery-migrate-acf-meta
-
 # Populate homepage with new content
 wp post update $( wp post list --name=homepage --post_type=page --field=ID ) --post_type=page --post_content="$( cat /vagrant/content/homepage-content.txt )" --post_title="Homepage"
+
+# Run WP-CLI commands
+wp artgallery-migrate-acf-meta
+wp artgallery-populate-artwork-post-content
+wp search-replace vagrant.local ehg.local
 '
