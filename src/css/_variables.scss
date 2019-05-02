@@ -1,19 +1,19 @@
 // Colors
 // =================================================
 $font-color-global: #333;
-$font-color-deemphasized: #555;
+$font-color-deemphasized: #707070;
 $font-color-header: #32373c;
 $font-color-link: #1982d1;
 $background-color: #fff;
 
 // Typography
 // =================================================
-$font-family-global: "Crimson Text", serif;
+$font-family-global: Futura, "Century Gothic", AppleGothic, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-pre: "Courier 10 Pitch", Courier, monospace;
 $font-family-code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font-family-highlight: "Roboto Condensed", sans-serif;
 
-$global-font-size: 20;
+$global-font-size: 16px;
 $global-font-line-height: 1.4;
 $dropdown-symbol-width: 0.7em;
 $small-font-size: 16px;
@@ -23,11 +23,12 @@ $larger-font-size: 48px;
 
 // Responsive Breakpoints
 // =================================================
-$narrow-single-column: 28rem; // ~450px
-$menu-size-cutoff: 37.5rem; // ~600px
-$content-width: 45rem; // ~720px
+// Sizes are defined in px to make respond-below and respond-between predictable.
+$narrow-single-column: 28 * $global-font-size; // 28rem, 450px
+$menu-size-cutoff: 37.5 * $global-font-size; // 37.5rem, 600px
+$content-width: 45 * $global-font-size; // 45rem, 720px
 $wide-content-width: calc( 50% + #{ $content-width } / 2 ); // .alignwide
-$sidebar-width: 65rem; // ~1040px
+$sidebar-width: 65 * $global-font-size; // ~65rem, 1040px
 
 // Responsive Mixins
 // =================================================

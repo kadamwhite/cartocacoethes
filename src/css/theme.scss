@@ -126,8 +126,17 @@ optgroup,
 textarea {
 	color: $font-color-global;
 	font-family: $font-family-global;
-	font-size: $global-font-size / 16;
+	font-size: $global-font-size;
 	line-height: $global-font-line-height;
+
+	@include respond-above( $content-width ) {
+		font-size: $global-font-size * 1.1;
+	}
+
+	@include respond-above( $sidebar-width ) {
+		font-size: $global-font-size * 1.2;
+		line-height: 1.5;
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
