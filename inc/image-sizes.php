@@ -20,17 +20,17 @@ function setup() {
  * Sets up custom thumbnail sizes for use in this theme
  */
 function register_image_sizes() {
-	$ASPECT = 3 / 2;
-	$widths = array(
+	$aspect = 3 / 2;
+	$widths = [
 		'xs' => 160,
 		'sm' => 320,
 		'md' => 640,
 		'lg' => 960,
-		'xl' => 1280
-	);
+		'xl' => 1280,
+	];
 
 	foreach ( $widths as $size => $width ) {
-		add_image_size( "landscape_$size", $width, floor( $width / $ASPECT ), true );
+		add_image_size( "landscape_$size", $width, floor( $width / $aspect ), true );
 	}
 }
 
