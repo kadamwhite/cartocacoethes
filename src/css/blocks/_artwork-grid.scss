@@ -1,0 +1,10 @@
+.artwork-grid {
+	&__title {
+		font-family: $font-family-highlight;
+		font-weight: bold;
+		color: $font-color-global;
+	}
+	&__meta {
+		color: $font-color-deemphasized;
+	}
+}

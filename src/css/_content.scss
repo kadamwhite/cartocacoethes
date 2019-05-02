@@ -63,7 +63,8 @@
 .site-info,
 .post-navigation,
 .page-navigation,
-.comments-area {
+.comments-area,
+.wp-video {
 	margin: 1.5em auto;
 	padding-right: 1.5rem;
 	padding-left: 1.5rem;
@@ -258,6 +259,7 @@
 --------------------------------------------------------------*/
 
 @import 'block-variants';
+@import 'blocks/artwork-grid';
 @import 'blocks/featured-items-list';
 
 /*--------------------------------------------------------------
@@ -270,6 +272,14 @@
 	margin-bottom: 0;
 	margin-top: 0;
 	padding: 0;
+}
+
+.wp-video {
+	width: unset !important;
+
+	.entry-content & {
+		 max-width: $content-width;
+	}
 }
 
 /* Make sure embeds and iframes fit their containers. */
