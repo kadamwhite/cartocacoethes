@@ -16,6 +16,13 @@
 	flex-direction: column;
 	align-items: justify;
 	margin-bottom: 1rem;
+
+	@include respond-above( $content-width ) {
+		font-size: $global-font-size;
+	}
+	@include respond-above( $sidebar-width ) {
+		font-size: $global-font-size;
+	}
 }
 
 .featured-items-list__category-list {
@@ -35,7 +42,8 @@
 	.entry-title {
 		order: 2;
 		@extend h3 !optional;
-		line-height: 1.2;
+		font-size: 1.2em;
+		line-height: 1.4;
 		display: block;
 		padding-right: 1em;
 	}

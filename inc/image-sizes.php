@@ -7,9 +7,45 @@
 namespace EHG\Image_Sizes;
 
 function setup() {
+	add_filter( 'after_setup_theme', __NAMESPACE__ . '\\register_image_sizes' );
 	add_filter( 'wp_calculate_image_sizes', __NAMESPACE__ . '\\content_image_sizes_attr', 10, 2 );
 	add_filter( 'get_header_image_tag', __NAMESPACE__ . '\\header_image_tag', 10, 3 );
 	add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\post_thumbnail_sizes_attr', 10, 3 );
+
+	// Plugin integration.
+	add_filter( 'featured_item_blocks_thumbnail_size', __NAMESPACE__ . '\\featured_items_image_size', 10 );
+	add_filter( 'featured_item_blocks_image_sizes', __NAMESPACE__ . '\\featured_items_sizes_attr', 10 );
+}
+/**
+ * Sets up custom thumbnail sizes for use in this theme
+ */
+function register_image_sizes() {
+	$ASPECT = 3 / 2;
+	$widths = array(
+		'xs' => 160,
+		'sm' => 320,
+		'md' => 640,
+		'lg' => 960,
+		'xl' => 1280
+	);
+
+	foreach ( $widths as $size => $width ) {
+		add_image_size( "landscape_$size", $width, floor( $width / $ASPECT ), true );
+	}
+}
+
+/**
+ * Specify which image size to use when rendering a featured items block column.
+ */
+function featured_items_image_size() {
+	return 'landscape_sm';
+}
+
+/**
+ * Specify the sizes attribute to use when rendering a featured items block image.
+ */
+function featured_items_sizes_attr() {
+	return '(max-width: 45rem) 50vw, (max-width: 1200px) 230px, 320px';
 }
 
 /**
