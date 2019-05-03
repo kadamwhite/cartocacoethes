@@ -222,7 +222,7 @@
 				content: ' ';
 				box-sizing: border-box;
 				width: 100%;
-				height: 100%;
+				height: calc( 100% - 1px );
 				position: absolute;
 				top: 0;
 				border: 1px dashed $font-color-deemphasized;
