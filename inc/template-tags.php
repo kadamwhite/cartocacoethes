@@ -9,6 +9,15 @@
 // phpcs:disable HM.Functions.NamespacedFunctions.MissingNamespace
 
 /**
+ * Ensure compatibility with WP versions below 5.2.
+ */
+if ( ! function_exists( 'wp_body_open' ) ) {
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}
+
+/**
  * Determine whether this is an AMP response.
  *
  * Note that this must only be called after the parse_query action.
