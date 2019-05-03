@@ -100,7 +100,10 @@ function post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	$attr['sizes'] = '100vw';
 
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
-		$attr['sizes'] = '(min-width: 960px) 75vw, 100vw';
+		$attr['sizes'] = '(min-width: 1040px) 75vw, 100vw';
+	}
+	if ( ehg_is_archive() ) {
+		$attr['sizes'] = '(min-width: 600px) 320px, (min-width: 960) 465px, 100vw';
 	}
 
 	return $attr;

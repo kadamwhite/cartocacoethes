@@ -222,12 +222,12 @@
 	.comment-navigation,
 	.posts-navigation,
 	.post-navigation {
-		border-bottom: 1px solid #111;
+		border-top: 1px solid #111;
 		margin: 0 auto 2em;
-		max-width: 720px;
 		overflow: hidden;
-		padding-bottom: 2em;
+		padding-top: 2em;
 		font-family: $font-family-highlight;
+		max-width: $content-width;
 	}
 }
 

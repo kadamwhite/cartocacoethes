@@ -21,14 +21,22 @@ $regular-font-size: 20px;
 $large-font-size: 36px;
 $larger-font-size: 48px;
 
+/**
+ * Define values in terms of rems, but render in px (better for breakpoint math)
+ */
+@function rems( $rems ) {
+	@return $rems * $global-font-size;
+}
+
 // Responsive Breakpoints
 // =================================================
 // Sizes are defined in px to make respond-below and respond-between predictable.
-$narrow-single-column: 28 * $global-font-size; // 28rem, 450px
-$menu-size-cutoff: 37.5 * $global-font-size; // 37.5rem, 600px
-$content-width: 45 * $global-font-size; // 45rem, 720px
+$narrow-single-column: rems( 28 ); // 28rem, 450px
+$menu-size-cutoff: rems( 37.5 ); // 37.5rem, 600px
+$content-width: rems( 45 ); // 45rem, 720px
+$archive-width: rems( 60 ); // 60rem, 960px
 $wide-content-width: calc( 50% + #{ $content-width } / 2 ); // .alignwide
-$sidebar-width: 65 * $global-font-size; // ~65rem, 1040px
+$sidebar-width: rems( 65 ); // ~65rem, 1040px
 
 // Responsive Mixins
 // =================================================

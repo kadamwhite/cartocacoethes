@@ -17,7 +17,11 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
-
+		?>
+		<div class="entry-thumbnail">
+			<?php the_post_thumbnail( 'landscape_md' ); ?>
+		</div>
+		<?php
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">
@@ -34,20 +38,24 @@
 
 	<div class="entry-content">
 		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'ehg' ),
-					[
-						'span' => [
-							'class' => [],
-						],
-					]
-				),
-				get_the_title()
-			)
-		);
+		if ( ehg_is_archive() ) {
+			the_excerpt();
+		} else {
+			the_content(
+				sprintf(
+					wp_kses(
+						/* translators: %s: Name of current post. Only visible to screen readers */
+						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'ehg' ),
+						[
+							'span' => [
+								'class' => [],
+							],
+						]
+					),
+					get_the_title()
+				)
+			);
+		}
 
 		wp_link_pages( [
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ehg' ),

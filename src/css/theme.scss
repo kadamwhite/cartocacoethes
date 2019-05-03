@@ -87,34 +87,6 @@ See style.css in project root for theme info & licensing details.
 	}
 }
 
-@include respond-above( $sidebar-width ) {
-	.has-sidebar .site {
-		margin: 0 1em;
-		display: grid;
-		grid-template-columns: 3fr 1fr;
-		grid-gap: 2rem;
-		justify-content: center;
-	}
-
-	.site-header {
-		grid-column: span 2;
-	}
-
-	.site-main {
-		grid-column: 1;
-		min-width: 0;
-	}
-
-	.primary-sidebar {
-		grid-column: 2;
-		min-width: 0;
-	}
-
-	.site-footer {
-		grid-column: span 2;
-	}
-}
-
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/

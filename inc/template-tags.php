@@ -18,6 +18,14 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 }
 
 /**
+ * Determine whether this is an archive layout.
+ * @return bool Whether we're on an archive page.
+ */
+function ehg_is_archive() {
+	return is_archive() || ( ! is_front_page() && is_home() );
+}
+
+/**
  * Determine whether this is an AMP response.
  *
  * Note that this must only be called after the parse_query action.
@@ -62,8 +70,8 @@ function ehg_add_amp_live_list_pagination_attribute( $markup ) {
 function ehg_index_header() {
 	if ( is_home() && ! is_front_page() ) {
 		?>
-		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+		<header class="screen-reader-text">
+			<h1 class="page-title"><?php single_post_title(); ?></h1>
 		</header>
 		<?php
 	} elseif ( is_search() ) {

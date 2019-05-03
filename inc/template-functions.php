@@ -28,10 +28,6 @@ function body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	if ( \EHG\page_has_sidebar() ) {
-		$classes[] = 'has-sidebar';
-	}
-
 	return $classes;
 }
 

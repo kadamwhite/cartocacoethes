@@ -69,7 +69,7 @@ h1, h2, h3 {
 					right: calc( ( -100% - #{ $content-width } ) / 2 );
 				}
 			}
-			@include respond-above( $content-width + 48px /* 3rem */ ) {
+			@include respond-above( $content-width + rems( 3 ) ) {
 				padding: 0.5em 0;
 				&::before {
 					left: -1.5rem;
@@ -99,7 +99,7 @@ h1, h2, h3 {
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}
-		@include respond-above( $content-width + 48px /* 3rem */ ) {
+		@include respond-above( $content-width + rems( 3 ) ) {
 			padding-right: unset;
 			padding-left: unset;
 		}
