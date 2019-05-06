@@ -13,7 +13,6 @@ function setup() {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
-	// add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_frontend_assets' );
 }
 
 /**
@@ -35,10 +34,6 @@ function fonts_url() {
 	 * Translator: If Roboto Sans does not support characters in your language, translate this to 'off'.
 	 */
 	$roboto = esc_html_x( 'on', 'Roboto Condensed font: on or off', 'ehg' );
-	/**
-	 * Translator: If Crimson Text does not support characters in your language, translate this to 'off'.
-	 */
-	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'ehg' );
 
 	$font_families = [];
 
@@ -46,11 +41,7 @@ function fonts_url() {
 		$font_families[] = 'Roboto Condensed:400,400i,700,700i';
 	}
 
-	if ( 'off' !== $crimson_text ) {
-		$font_families[] = 'Crimson Text:400,400i,600,600i';
-	}
-
-	if ( in_array( 'on', [ $roboto, $crimson_text ] ) ) {
+	if ( in_array( 'on', [ $roboto ] ) ) {
 		$query_args = [
 			'family' => urlencode( implode( '|', $font_families ) ),
 			'subset' => urlencode( 'latin,latin-ext' ),
@@ -71,12 +62,12 @@ function enqueue_block_styles() {
 
 	// Enqueue editor stylesheet. Use the same handle as for the frontend main style.css file.
 	Asset_Loader\autoenqueue( manifest_path(), 'editor-styles.js', [
-		'handle'  => 'ehg-base-style',
+		'handle' => 'ehg-base-style',
 	] );
 
 	// Enqueue custom block transforms.
 	Asset_Loader\autoenqueue( manifest_path(), 'editor.js', [
-		'handle'  => 'ehg-editor-scripts',
+		'handle' => 'ehg-editor-scripts',
 	] );
 }
 
