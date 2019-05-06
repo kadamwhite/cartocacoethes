@@ -1,6 +1,7 @@
 {
   "require-dev": {
-    "humanmade/coding-standards" : "dev-master"
+    "humanmade/coding-standards" : "dev-master",
+    "giacocorsiglia/wordpress-stubs": "dev-master"
   },
   "minimum-stability": "dev"
 }

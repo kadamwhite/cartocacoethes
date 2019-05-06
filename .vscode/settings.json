@@ -7,5 +7,6 @@
     "bower_components": true,
     "build/*": true
   },
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "intelephense.files.maxSize": 4000000
 }

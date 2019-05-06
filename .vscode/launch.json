@@ -11,7 +11,6 @@
       "request": "launch",
       "pathMappings": {
         "/vagrant": "/home/kadam/code/ehg.com/ehg.local",
-        // "vagrant/content": "/home/kadam/code/ehg.com/ehg.local/content/wp-content",
         "/chassis/wp": "/home/kadam/code/ehg.com/ehg.local/wp"
       },
       "port": 9000
