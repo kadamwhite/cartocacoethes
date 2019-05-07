@@ -1,6 +1,16 @@
 {
   "files.exclude": {
     "iterative-landscape": true,
+    "vendor/autoload.php": true,
+    "vendor/automattic": true,
+    "vendor/bin": true,
+    "vendor/composer": true,
+    "vendor/dealerdirect": true,
+    "vendor/fig-r": true,
+    "vendor/giacocorsiglia/wordpress-stubs/[^w]*": true,
+    "vendor/humanmade": true,
+    "vendor/squizlabs": true,
+    "vendor/wp-coding-standards": true,
     "wp-content/backups": true,
     "wp-content/plugins/api-testbed": true,
     "wp-content/plugins/block-unit-test": true,
@@ -22,14 +32,15 @@
     "wp-content/themes/twentynineteen": true,
     "wp-content/upgrade": true,
     "wp-content/uploads": true,
-    "vendor": true,
+    "wp-content/**/vendor": true,
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/build/*": true,
+    "vendor": true,
     "wp-content/themes/emilygarfield": true,
-    "wp-content/themes/twentyeleven": true,
+    "wp-content/themes/twentyeleven": true
   },
   "files.trimTrailingWhitespace": true
 }
