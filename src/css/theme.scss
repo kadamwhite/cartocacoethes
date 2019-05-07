@@ -172,7 +172,7 @@ a {
 }
 
 a:visited {
-	color: adjust-hue( lighten( $font-color-link, 10% ), 10% );
+	color: adjust-hue( darken( $font-color-link, 10% ), 10% );
 }
 
 a:hover, a:focus, a:active {
