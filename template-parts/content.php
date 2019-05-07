@@ -17,11 +17,15 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
-		?>
-		<div class="entry-thumbnail">
-			<?php the_post_thumbnail( 'landscape_md' ); ?>
-		</div>
-		<?php
+
+		if ( ehg_is_archive() ) :
+			?>
+			<div class="entry-thumbnail">
+				<?php the_post_thumbnail( 'landscape_md' ); ?>
+			</div>
+			<?php
+		endif;
+
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">

@@ -24,6 +24,14 @@ require __DIR__ . '/inc/assets.php';
 Assets\setup();
 
 /**
+ * Integrate with Art Gallery plugin.
+ */
+if ( defined( 'ARTGALLERY_VERSION' ) ) {
+	require __DIR__ . '/inc/artgallery.php';
+	ArtGallery\setup();
+}
+
+/**
  * Custom responsive image sizes.
  */
 require __DIR__ . '/inc/image-sizes.php';

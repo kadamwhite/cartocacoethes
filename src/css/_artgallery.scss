@@ -1,0 +1,71 @@
+/*--------------------------------------------------------------
+# ArtGallery Plugin Integration
+--------------------------------------------------------------*/
+
+.archive .site-main article.ag_artwork_item {
+	width: 50%;
+	margin-bottom: 0;
+
+	@include respond-above( $narrow-single-column ) {
+		width: 33%;
+	}
+
+	@include respond-above( $menu-size-cutoff ) {
+		width: 25%;
+	}
+}
+.archive {
+	&.post-type-archive-ag_artwork_item,
+	&.tax-ag_artwork_categories,
+	&.ag_artwork_availability,
+	&.ag_artwork_media {
+		.page-title {
+			font-size: $regular-font-size;
+		}
+		.posts-navigation {
+			border-top: 0;
+			margin-bottom: 0;
+		}
+		.site-main {
+			padding-bottom: 2em;
+		}
+	}
+}
+
+.artwork-archive {
+	&__link {
+		position: relative;
+		display: block;
+		margin: 0;
+		border: 2px solid transparent;
+	}
+
+	&__info {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 0 0.5em;
+		background: rgba( 255, 255, 255, 0.9 );
+
+		a:not(:focus):not(:hover):not(:active) & {
+			@extend .screen-reader-text;
+		}
+	}
+
+	&__title {
+		font-family: $font-family-highlight;
+		font-weight: bold;
+		color: $font-color-global;
+		line-height: 1.2;
+	}
+
+	&__meta {
+		position: absolute;
+		bottom: 0;
+		color: $font-color-deemphasized;
+		line-height: 1.1;
+		font-size: 0.7em;
+		letter-spacing: 0.05px;
+	}
+}

@@ -36,14 +36,14 @@ get_header(); ?>
 		}
 
 		if ( ! is_singular() ) {
-			the_posts_navigation();
+			the_posts_navigation( apply_filters( 'ehg_posts_navigation', [] ) );
 		}
 	} else {
 		get_template_part( 'template-parts/content', 'none' );
 	}
 	?>
 
-	</main><!-- #primary -->
+	</main><!-- #primary -->e
 
 <?php
 get_footer();
