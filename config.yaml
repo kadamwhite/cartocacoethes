@@ -24,5 +24,7 @@ plugins:
   # These development-oriented plugins are only needed locally
   - block-unit-test
   - debug-bar
+  - debug-bar-actions-and-filters-addon
+  - debug-bar-list-dependencies
   - regenerate-thumbnails
   - rewrite-rules-inspector
