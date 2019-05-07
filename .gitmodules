@@ -7,3 +7,6 @@
 [submodule "wp-content/themes/cartocacoethes"]
 	path = wp-content/themes/cartocacoethes
 	url = git@github.com:kadamwhite/cartocacoethes.git
+[submodule "wp-content/plugins/featured-item-blocks"]
+	path = wp-content/plugins/featured-item-blocks
+	url = https://github.com/kadamwhite/featured-item-blocks.git
