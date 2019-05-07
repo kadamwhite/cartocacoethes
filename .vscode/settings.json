@@ -1,9 +1,11 @@
 {
+  "files.exclude": {
+    "vendor": true
+  },
   "search.exclude": {
     "node_modules": true,
     "bower_components": true,
-    "build/*": true,
-    "vendor": true
+    "build/*": true
   },
   "files.trimTrailingWhitespace": true,
   "intelephense.files.maxSize": 4000000
