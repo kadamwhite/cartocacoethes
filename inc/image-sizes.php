@@ -18,6 +18,7 @@ function setup() {
 	add_filter( 'featured_item_blocks_thumbnail_size', __NAMESPACE__ . '\\featured_items_image_size', 10 );
 	add_filter( 'featured_item_blocks_image_sizes', __NAMESPACE__ . '\\featured_items_sizes_attr', 10 );
 }
+
 /**
  * Sets up custom thumbnail sizes for use in this theme
  */
@@ -55,6 +56,17 @@ function update_default_image_sizes() {
 }
 
 /**
+ * Given an array of sizes string values, implode that array into a
+ * comma-separated sizes string.
+ *
+ * @param array $sizes An array of sizes (e.g. '(min-width: 960px) 50vw')
+ * @return string A concatenated sizes string.
+ */
+function sizes( array $sizes ) : string {
+	return implode( ', ', $sizes );
+}
+
+/**
  * Specify which image size to use when rendering a featured items block column.
  */
 function featured_items_image_size() {
@@ -65,7 +77,11 @@ function featured_items_image_size() {
  * Specify the sizes attribute to use when rendering a featured items block image.
  */
 function featured_items_sizes_attr() {
-	return '(max-width: 45rem) 50vw, (max-width: 1200px) 230px, 320px';
+	return sizes( [
+		'(max-width: 45rem) 50vw',
+		'(max-width: 1200px) 230px',
+		'320px'
+	] );
 }
 
 /**
@@ -85,7 +101,10 @@ function content_image_sizes_attr( $sizes, $size ) {
 	}
 
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
-		$sizes = '(min-width: 960px) 75vw, 100vw';
+		$sizes = sizes( [
+			'(min-width: 960px) 75vw',
+			'100vw'
+		] );
 	}
 
 	return $sizes;
@@ -123,7 +142,11 @@ function post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 		$attr['sizes'] = '(min-width: 1040px) 75vw, 100vw';
 	}
 	if ( ehg_is_archive() ) {
-		$attr['sizes'] = '(min-width: 600px) 320px, (min-width: 960) 465px, 100vw';
+		$attr['sizes'] = implode( ', ', [
+			'(min-width: 960px) 465px',
+			'(min-width: 600px) 320px',
+			'100vw'
+		] );
 	}
 
 	return $attr;
