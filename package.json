@@ -23,6 +23,7 @@
     "import-production-db": ".bin/import-production-db.sh",
     "postinstall": "composer install",
     "prebuild": "node .bin/clean-build.js",
+    "media:optimize": "find wp-content/uploads -name '*.jp*' -print0 | xargs -0 -I{} -t guetzli --quality 90 {} {}",
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
     "eslint": "eslint wp-content/themes/ehg/src wp-content/themes/ehg2/src wp-content/plugins/artgallery/src .config",
