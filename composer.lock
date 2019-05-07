@@ -4,8 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef3f1615ed7167a401b2a30fd529a4d5",
-    "packages": [
+    "content-hash": "1eb2c8de89b5b904bbdfa27011cdec61",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "automattic/vipwpcs",
             "version": "0.4.0",
@@ -164,17 +165,56 @@
             "time": "2017-08-30T10:00:39+00:00"
         },
         {
+            "name": "giacocorsiglia/wordpress-stubs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GiacoCorsiglia/wordpress-stubs.git",
+                "reference": "1c6f011f5c241bab7293315d7fb7fca27fe79473"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GiacoCorsiglia/wordpress-stubs/zipball/1c6f011f5c241bab7293315d7fb7fca27fe79473",
+                "reference": "1c6f011f5c241bab7293315d7fb7fca27fe79473",
+                "shasum": ""
+            },
+            "require-dev": {
+                "ext-gettext": "*",
+                "giacocorsiglia/stubs-generator": "^0.5.0",
+                "johnpbloch/wordpress": "5.1.1",
+                "php": "^7.1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Giaco Corsiglia",
+                    "email": "GiacoCorsiglia@gmail.com"
+                }
+            ],
+            "description": "WordPress function, class, and global variable declaration stubs for easier static analysis.",
+            "homepage": "https://github.com/GiacoCorsiglia/wordpress-stubs",
+            "keywords": [
+                "static analysis",
+                "wordpress"
+            ],
+            "time": "2019-03-13T21:16:05+00:00"
+        },
+        {
             "name": "humanmade/coding-standards",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/humanmade/coding-standards.git",
-                "reference": "d294a78a4e7cbeecbac15e17adb151e4acb94b1f"
+                "reference": "5b02f09ac64e283c7c3fa5f81fc930cb45ef2b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/coding-standards/zipball/d294a78a4e7cbeecbac15e17adb151e4acb94b1f",
-                "reference": "d294a78a4e7cbeecbac15e17adb151e4acb94b1f",
+                "url": "https://api.github.com/repos/humanmade/coding-standards/zipball/5b02f09ac64e283c7c3fa5f81fc930cb45ef2b78",
+                "reference": "5b02f09ac64e283c7c3fa5f81fc930cb45ef2b78",
                 "shasum": ""
             },
             "require": {
@@ -194,7 +234,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Human Made coding standards",
-            "time": "2019-04-02T19:48:11+00:00"
+            "time": "2019-04-26T14:27:32+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -289,47 +329,6 @@
                 "wordpress"
             ],
             "time": "2018-12-18T09:43:51+00:00"
-        }
-    ],
-    "packages-dev": [
-        {
-            "name": "giacocorsiglia/wordpress-stubs",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GiacoCorsiglia/wordpress-stubs.git",
-                "reference": "1c6f011f5c241bab7293315d7fb7fca27fe79473"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GiacoCorsiglia/wordpress-stubs/zipball/1c6f011f5c241bab7293315d7fb7fca27fe79473",
-                "reference": "1c6f011f5c241bab7293315d7fb7fca27fe79473",
-                "shasum": ""
-            },
-            "require-dev": {
-                "ext-gettext": "*",
-                "giacocorsiglia/stubs-generator": "^0.5.0",
-                "johnpbloch/wordpress": "5.1.1",
-                "php": "^7.1"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Giaco Corsiglia",
-                    "email": "GiacoCorsiglia@gmail.com"
-                }
-            ],
-            "description": "WordPress function, class, and global variable declaration stubs for easier static analysis.",
-            "homepage": "https://github.com/GiacoCorsiglia/wordpress-stubs",
-            "keywords": [
-                "static analysis",
-                "wordpress"
-            ],
-            "time": "2019-03-13T21:16:05+00:00"
         }
     ],
     "aliases": [],
