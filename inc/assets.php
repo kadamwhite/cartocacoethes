@@ -11,6 +11,7 @@ use Asset_Loader;
  */
 function setup() {
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
+	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\dequeue_jetpack_scripts', 20 );
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_styles' );
 }
@@ -126,4 +127,14 @@ function enqueue_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
+}
+
+/**
+ * Un-hook scripts which Jetpack injects regardless of whether their associated
+ * functionality is used.
+ *
+ * @return void
+ */
+function dequeue_jetpack_scripts() {
+	wp_dequeue_script( 'milestone' );
 }
