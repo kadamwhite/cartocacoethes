@@ -39,6 +39,7 @@ wp-content/mysql.sql
 .htaccess
 
 # Development plugins
+wp-content/plugins/api-testbed
 wp-content/plugins/block-unit-test
 wp-content/plugins/blogger-importer
 wp-content/plugins/debug-bar
