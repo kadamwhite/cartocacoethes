@@ -383,13 +383,13 @@ textarea {
 
 .site-title {
 	font-family: $font-family-highlight;
-	font-size: $large-font-size;
+	font-size: $font-size-large;
 	font-weight: bold;
 	line-height: 1.2;
 	color: #333332;
 	@include respond-above( $narrow-single-column ) {
 		margin: 0 1em;
-		font-size: $large-font-size;
+		font-size: $font-size-large;
 	}
 }
 

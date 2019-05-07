@@ -16,10 +16,10 @@ $font-family-highlight: "Roboto Condensed", sans-serif;
 $global-font-size: 16px;
 $global-font-line-height: 1.4;
 $dropdown-symbol-width: 0.7em;
-$small-font-size: 16px;
-$regular-font-size: 20px;
-$large-font-size: 36px;
-$larger-font-size: 48px;
+$font-size-small: 16px;
+$font-size-regular: 20px;
+$font-size-large: 36px;
+$font-size-larger: 48px;
 
 /**
  * Define values in terms of rems, but render in px (better for breakpoint math)
