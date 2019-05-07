@@ -2,18 +2,8 @@
 # ArtGallery Plugin Integration
 --------------------------------------------------------------*/
 
-.archive .site-main article.ag_artwork_item {
-	width: 50%;
-	margin-bottom: 0;
+$artwork-border-size: 3px;
 
-	@include respond-above( $narrow-single-column ) {
-		width: 33%;
-	}
-
-	@include respond-above( $menu-size-cutoff ) {
-		width: 25%;
-	}
-}
 .archive {
 	&.post-type-archive-ag_artwork_item,
 	&.tax-ag_artwork_categories,
@@ -28,7 +18,22 @@
 		}
 		.site-main {
 			padding-bottom: 2em;
+			justify-content: flex-start;
 		}
+	}
+}
+
+.archive .site-main article.ag_artwork_item {
+	width: 50%;
+	margin-bottom: 0;
+	padding: $artwork-border-size;
+
+	@include respond-above( $narrow-single-column ) {
+		width: 33%;
+	}
+
+	@include respond-above( $menu-size-cutoff ) {
+		width: 25%;
 	}
 }
 
@@ -36,16 +41,20 @@
 	&__link {
 		position: relative;
 		display: block;
-		margin: 0;
-		border: 2px solid transparent;
+		// Force square links.
+		width: 100%;
+		height: 0;
+		padding-bottom: 100%;
+		overflow: hidden;
 	}
 
 	&__info {
 		position: absolute;
 		top: 0;
-		bottom: 0;
 		width: 100%;
+		height: 100%;
 		padding: 0 0.5em;
+		box-sizing: border-box;
 		background: rgba( 255, 255, 255, 0.9 );
 
 		a:not(:focus):not(:hover):not(:active) & {
