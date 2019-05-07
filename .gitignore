@@ -63,9 +63,6 @@ wp-content/plugins/image-widget
 wp-content/themes/twentyseventeen
 wp-content/plugins/public-post-preview
 
-# WIP plugins: add as submodules once stable
-wp-content/plugins/artgallery
-
 # wp core (as of 3.4.1)
 /db-config.php
 /index.php
