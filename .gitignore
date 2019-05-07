@@ -1,6 +1,8 @@
 node_modules/
 *.map
 build/
-vendor/
+vendor/*
+!vendor/humanmade/asset-loader/asset-loader.php
+!vendor/humanmade/asset-loader/inc/*
 package-lock.json
 composer.lock
