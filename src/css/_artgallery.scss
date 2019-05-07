@@ -17,8 +17,8 @@
 .archive {
 	&.post-type-archive-ag_artwork_item,
 	&.tax-ag_artwork_categories,
-	&.ag_artwork_availability,
-	&.ag_artwork_media {
+	&.tax-ag_artwork_availability,
+	&.tax-ag_artwork_media {
 		.page-title {
 			font-size: $regular-font-size;
 		}
