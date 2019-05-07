@@ -7,7 +7,9 @@
 namespace EHG\Image_Sizes;
 
 function setup() {
-	add_filter( 'after_setup_theme', __NAMESPACE__ . '\\register_image_sizes' );
+	add_action( 'after_setup_theme', __NAMESPACE__ . '\\register_image_sizes' );
+	add_action( 'after_switch_theme', __NAMESPACE__ . '\\update_default_image_sizes' );
+
 	add_filter( 'wp_calculate_image_sizes', __NAMESPACE__ . '\\content_image_sizes_attr', 10, 2 );
 	add_filter( 'get_header_image_tag', __NAMESPACE__ . '\\header_image_tag', 10, 3 );
 	add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\\post_thumbnail_sizes_attr', 10, 3 );
@@ -21,17 +23,35 @@ function setup() {
  */
 function register_image_sizes() {
 	$aspect = 3 / 2;
-	$widths = [
+
+	foreach ( [
 		'xs' => 160,
 		'sm' => 320,
 		'md' => 640,
 		'lg' => 960,
 		'xl' => 1280,
-	];
-
-	foreach ( $widths as $size => $width ) {
+	] as $size => $width ) {
 		add_image_size( "landscape_$size", $width, floor( $width / $aspect ), true );
 	}
+}
+
+/**
+ * Update the site image size options when the theme is activated.
+ *
+ * @return void
+ */
+function update_default_image_sizes() {
+	update_option( 'thumbnail_size_w', 160 );
+	update_option( 'thumbnail_size_h', 160 );
+
+	update_option( 'medium_size_w', 420 );
+	update_option( 'medium_size_h', 420 );
+
+	update_option( 'large_size_w', 1200 );
+	update_option( 'large_size_h', 1200 );
+
+	update_option( 'medium_large_size_w', 768 );
+	update_option( 'medium_large_size_h', 768 );
 }
 
 /**
