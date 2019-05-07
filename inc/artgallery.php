@@ -26,12 +26,6 @@ function setup() {
  * @return array The filtered arguments.
  */
 function posts_navigation_arguments( array $args = [] ) : array {
-	error_log( 'Status:' .
-		( is_post_type_archive( Post_Types\ARTWORK_POST_TYPE ) ? '1' : '0' ) . '; ' .
-		( is_tax( Taxonomies\ARTWORK_CATEGORIES_TAXONOMY ) ? '1' : '0' ) . '; ' .
-		( is_tax( Taxonomies\AVAILABILITY_TAXONOMY ) ? '1' : '0' ) . '; ' .
-		( is_tax( Taxonomies\MEDIA_TAXONOMY ) ? '1' : '0' ) . '; '
-	);
 	if ( ! is_artwork_archive() ) {
 		return $args;
 	}
