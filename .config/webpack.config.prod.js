@@ -12,10 +12,7 @@ const themePath = ( ...pathParts ) => resolve( __dirname, '..', ...pathParts );
  * Theme production build configuration.
  */
 const config = {
-	externals: {
-		...externals,
-		jquery: 'jQuery',
-	},
+	externals,
 	entry: {
 		comments: themePath( 'src/css/comments.scss' ),
 		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
