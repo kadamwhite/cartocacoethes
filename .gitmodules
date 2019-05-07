@@ -3,10 +3,10 @@
 	url = https://github.com/kadamwhite/artgallery.git
 [submodule "wp-content/plugins/asset-loader"]
 	path = wp-content/plugins/asset-loader
-	url = git@github.com:kadamwhite/asset-loader.git
+	url = https://github.com/kadamwhite/asset-loader.git
 [submodule "wp-content/themes/cartocacoethes"]
 	path = wp-content/themes/cartocacoethes
-	url = git@github.com:kadamwhite/cartocacoethes.git
+	url = https://github.com/kadamwhite/cartocacoethes.git
 [submodule "wp-content/plugins/featured-item-blocks"]
 	path = wp-content/plugins/featured-item-blocks
 	url = https://github.com/kadamwhite/featured-item-blocks.git
