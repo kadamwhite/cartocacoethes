@@ -56,7 +56,7 @@ then
 fi
 
 # Only proceed if provided version number appears in main style.css file.
-grep -q $VERSION $PWD/style.php
+grep -q $VERSION $PWD/style.css
 if [[ $? != 0 ]]
 then
   echo "Error! Version number $VERSION not found in style.css."
