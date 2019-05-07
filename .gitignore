@@ -23,6 +23,9 @@ wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/cache/supercache/*
 
+# Sometimes-used temporary images backup directory
+wp-content/backups/
+
 # wpengine specific
 .smushit-status
 .gitattributes
@@ -35,24 +38,28 @@ wp-content/mu-plugins/wpengine-common
 wp-content/mysql.sql
 .htaccess
 
-# Non-essential plugins
-wp-content/plugins/wordpress-importer
-wp-content/plugins/blogger-importer
+# Development plugins
 wp-content/plugins/block-unit-test
+wp-content/plugins/blogger-importer
 wp-content/plugins/debug-bar
+wp-content/plugins/debug-bar-actions-and-filters-addon
+wp-content/plugins/debug-bar-list-dependencies
+wp-content/plugins/gutenberg
 wp-content/plugins/regenerate-thumbnails
+wp-content/plugins/wordpress-beta-tester
+wp-content/plugins/wordpress-importer
+
+# Non-essential plugins
 wp-content/plugins/post-thumbnail-editor
 wp-content/plugins/rewrite-rules-inspector
 wp-content/plugins/category-posts
 wp-content/plugins/google-analytics-for-wordpress
 wp-content/plugins/smarter-navigation
 wp-content/plugins/jetpack
-wp-content/plugins/json-rest-api
 wp-content/plugins/safe-redirect-manager
 wp-content/plugins/hw-image-widget
 wp-content/plugins/image-widget
 wp-content/themes/twentyseventeen
-wp-content/plugins/gutenberg
 wp-content/plugins/public-post-preview
 
 # WIP plugins: add as submodules once stable
