@@ -43,7 +43,7 @@ get_header(); ?>
 	}
 	?>
 
-	</main><!-- #primary -->e
+	</main><!-- #primary -->
 
 <?php
 get_footer();
