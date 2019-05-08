@@ -14,37 +14,57 @@ function maybe-initialize-submodules() {
 echo "Installing root project"
 composer install
 
-# echo "Swapping 'cartocacoethes' remote from HTTP to SSH..."
-cd wp-content/themes/cartocacoethes;
-echo $PWD;
+echo ""
+echo "\ Swapping 'cartocacoethes' remote to SSH..."
+echo "/------------------------------------------------------"
+cd wp-content/themes/cartocacoethes
+echo $PWD
 setup-remotes kadamwhite/cartocacoethes
 maybe-initialize-submodules
 npm install
 composer install
 cd - > /dev/null
 
-# echo "Swapping 'artgallery' remote from HTTP to SSH..."
-cd wp-content/plugins/artgallery;
-echo $PWD;
+echo ""
+echo "\ Swapping 'artgallery' remote to SSH..."
+echo "/------------------------------------------------------"
+cd wp-content/plugins/artgallery
+echo $PWD
 setup-remotes kadamwhite/artgallery
 maybe-initialize-submodules
 npm install
 composer install
 cd - > /dev/null
 
-# echo "Swapping 'featured-item-blocks' remote from HTTP to SSH..."
-cd wp-content/plugins/featured-item-blocks;
-echo $PWD;
+echo ""
+echo "\ Swapping 'featured-item-blocks' remote to SSH..."
+echo "/------------------------------------------------------"
+cd wp-content/plugins/featured-item-blocks
+echo $PWD
 setup-remotes kadamwhite/featured-item-blocks
 maybe-initialize-submodules
 npm install
 composer install
 cd - > /dev/null
 
-# echo "Swapping 'asset-loader' remote from HTTP to SSH..."
-cd wp-content/plugins/asset-loader;
-echo $PWD;
+echo ""
+echo "\ Swapping 'asset-loader' remote to SSH..."
+echo "/------------------------------------------------------"
+cd wp-content/plugins/asset-loader
+echo $PWD
 setup-remotes humanmade/asset-loader.git
 # Very important: NO `npm install` in this directory!
+# It would cause another top-level npm install, which would run this script,
+# which would cause another top-level install, and so on... forever.
 composer install
 cd - > /dev/null
+
+echo ""
+echo "\ Initializing Virtual Machine..."
+echo "/------------------------------------------------------"
+vagrant up
+
+echo ""
+echo "\ Attempt to restore database..."
+echo "/------------------------------------------------------"
+echo "\ (you DID copy down the wp_emilygarfield.sql, right?)"
