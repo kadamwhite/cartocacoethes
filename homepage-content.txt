@@ -4,9 +4,7 @@
 <h2>Recent Artwork</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>[Artwork Grid]</p>
-<!-- /wp:paragraph --></div>
+<!-- wp:artgallery/artwork-grid /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
