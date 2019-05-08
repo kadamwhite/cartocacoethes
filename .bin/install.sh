@@ -72,3 +72,4 @@ echo ""
 echo "\ Attempt to restore database..."
 echo "/------------------------------------------------------"
 echo "\ (you DID copy down the wp_emilygarfield.sql, right?)"
+npm run import-production-db
