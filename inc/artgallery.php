@@ -37,6 +37,13 @@ function posts_navigation_arguments( array $args = [] ) : array {
 }
 
 /**
+ * Determine whether we're on a single artwork page.
+ */
+function is_single_artwork() {
+	return is_singular( Post_Types\ARTWORK_POST_TYPE );
+}
+
+/**
  * Determine whether the current page is an archive for ArtGallery artwork items.
  *
  * @return bool Whether to consider this an archive page.
