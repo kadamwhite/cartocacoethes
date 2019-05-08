@@ -22,7 +22,6 @@
   "scripts": {
     "import-production-db": ".bin/import-production-db.sh",
     "postinstall": ".bin/install.sh",
-    "prebuild": "node .bin/clean-build.js",
     "media:optimize": "find wp-content/uploads -name '*.jp*' -print0 | xargs -0 -I{} -t guetzli --quality 90 {} {}",
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
