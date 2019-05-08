@@ -20,28 +20,6 @@ function setup() {
 }
 
 /**
- * Helper method to assemble a complete object of all registered image sizes.
- *
- * @return array
- */
-function get_registered_image_sizes() : array {
-	$image_sizes = [];
-	foreach ( get_intermediate_image_sizes() as $size ) {
-		$image_sizes[ $size ] = [];
-		$image_sizes[ $size ]['width'] = intval( get_option( "{$size}_size_w" ) );
-		$image_sizes[ $size ]['height'] = intval( get_option( "{$size}_size_h" ) );
-		$image_sizes[ $size ]['crop'] = get_option( "{$size}_crop" ) ? get_option( "{$size}_crop" ) : false;
-	}
-
-	global $_wp_additional_image_sizes;
-	if ( isset( $_wp_additional_image_sizes ) && count( $_wp_additional_image_sizes ) ) {
-		$image_sizes = array_merge( $image_sizes, $_wp_additional_image_sizes );
-	}
-
-	return $image_sizes;
-}
-
-/**
  * Sets up custom thumbnail sizes for use in this theme.
  *
  * For each value, define a size that will constrain an image to that length
