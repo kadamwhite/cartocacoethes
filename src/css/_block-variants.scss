@@ -24,8 +24,8 @@
 		}
 		// For frontend
 		@include respond-above( $menu-size-cutoff ) {
-			.wp-block-column:first-child { width: calc(62.5% - .5em); }
-			.wp-block-column:last-child { width: calc(37.5% - .5em); }
+			.wp-block-column:first-child { width: calc(62.5% - 1rem); }
+			.wp-block-column:last-child { width: calc(37.5% - 1rem); }
 		}
 	}
 
@@ -37,8 +37,8 @@
 		}
 		// For frontend
 		@include respond-above( $menu-size-cutoff ) {
-			.wp-block-column:first-child { width: calc(37.5% - .5em); }
-			.wp-block-column:last-child { width: calc(62.5% - .5em); }
+			.wp-block-column:first-child { width: calc(37.5% - 0.75rem); }
+			.wp-block-column:last-child { width: calc(62.5% - 0.75rem); }
 		}
 	}
 }
