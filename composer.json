@@ -1,9 +1,6 @@
 {
   "name": "kadamwhite/cartocacoethes",
   "description": "A responsive, block editor-ready WordPress theme for map lovers",
-  "require": {
-    "humanmade/asset-loader" : "dev-master"
-  },
   "require-dev": {
     "humanmade/coding-standards" : "dev-master"
   },
