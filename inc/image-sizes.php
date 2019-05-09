@@ -20,17 +20,20 @@ function setup() {
 }
 
 /**
- * Sets up custom thumbnail sizes for use in this theme
+ * Sets up custom thumbnail sizes for use in this theme.
+ *
+ * For each value, define a size that will constrain an image to that length
+ * on its longest edge.
  */
 function register_image_sizes() {
 	$aspect = 3 / 2;
 
 	foreach ( [
-		'xs' => 160,
-		'sm' => 320,
-		'md' => 640,
-		'lg' => 960,
-		'xl' => 1280,
+		// All values should be evenly divisible by 1.5.
+		'xs' => 240,
+		'sm' => 321,
+		'md' => 480,
+		'lg' => 720,
 	] as $size => $width ) {
 		add_image_size( "landscape_$size", $width, floor( $width / $aspect ), true );
 	}
@@ -42,17 +45,17 @@ function register_image_sizes() {
  * @return void
  */
 function update_default_image_sizes() {
-	update_option( 'thumbnail_size_w', 160 );
-	update_option( 'thumbnail_size_h', 160 );
+	update_option( 'thumbnail_size_w', 320 );
+	update_option( 'thumbnail_size_h', 320 );
 
-	update_option( 'medium_size_w', 420 );
-	update_option( 'medium_size_h', 420 );
+	update_option( 'medium_size_w', 480 );
+	update_option( 'medium_size_h', 480 );
 
-	update_option( 'large_size_w', 1200 );
-	update_option( 'large_size_h', 1200 );
+	update_option( 'medium_large_size_w', 720 );
+	update_option( 'medium_large_size_h', 720 );
 
-	update_option( 'medium_large_size_w', 768 );
-	update_option( 'medium_large_size_h', 768 );
+	update_option( 'large_size_w', 1080 );
+	update_option( 'large_size_h', 1080 );
 }
 
 /**
@@ -69,18 +72,20 @@ function sizes( array $sizes ) : string {
 /**
  * Specify which image size to use when rendering a featured items block column.
  */
-function featured_items_image_size() {
-	return 'landscape_sm';
+function featured_items_image_size() : string {
+	return 'landscape_md';
 }
 
 /**
  * Specify the sizes attribute to use when rendering a featured items block image.
  */
-function featured_items_sizes_attr() {
+function featured_items_sizes_attr() : string {
 	return sizes( [
-		'(max-width: 45rem) 50vw',
-		'(max-width: 1200px) 230px',
-		'320px'
+		'(max-width: 368px) 320px',
+		'(max-width: 450px) 380px',
+		'(max-width: 1360px) 240px',
+		'(max-width: 1980px) 320px',
+		'385px',
 	] );
 }
 
@@ -93,18 +98,11 @@ function featured_items_sizes_attr() {
  *                      values in pixels (in that order).
  * @return string A source size value for use in a content image 'sizes' attribute.
  */
-function content_image_sizes_attr( $sizes, $size ) {
+function content_image_sizes_attr( $sizes, $size ) : string {
 	$width = $size[0];
 
-	if ( 740 <= $width ) {
+	if ( 720 <= $width ) {
 		$sizes = '100vw';
-	}
-
-	if ( is_active_sidebar( 'sidebar-1' ) ) {
-		$sizes = sizes( [
-			'(min-width: 960px) 75vw',
-			'100vw'
-		] );
 	}
 
 	return $sizes;
@@ -116,9 +114,10 @@ function content_image_sizes_attr( $sizes, $size ) {
  * @param string $html   The HTML image tag markup being filtered.
  * @param object $header The custom header object returned by 'get_custom_header()'.
  * @param array  $attr   Array of the attributes for the image tag.
+ *
  * @return string The filtered header image HTML.
  */
-function header_image_tag( $html, $header, $attr ) {
+function header_image_tag( $html, $header, $attr ) : string {
 	if ( isset( $attr['sizes'] ) ) {
 		$html = str_replace( $attr['sizes'], '100vw', $html );
 	}
@@ -132,9 +131,10 @@ function header_image_tag( $html, $header, $attr ) {
  * @param array $attr       Attributes for the image markup.
  * @param int   $attachment Image attachment ID.
  * @param array $size       Registered image size or flat array of height and width dimensions.
+ *
  * @return array The filtered attributes for the image markup.
  */
-function post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
+function post_thumbnail_sizes_attr( array $attr, $attachment, $size ) : array {
 
 	$attr['sizes'] = '100vw';
 
@@ -145,7 +145,7 @@ function post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 		$attr['sizes'] = implode( ', ', [
 			'(min-width: 960px) 465px',
 			'(min-width: 600px) 320px',
-			'100vw'
+			'100vw',
 		] );
 	}
 

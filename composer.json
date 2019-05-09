@@ -5,8 +5,7 @@
     "humanmade/asset-loader" : "dev-master"
   },
   "require-dev": {
-    "humanmade/coding-standards" : "dev-master",
-    "giacocorsiglia/wordpress-stubs": "dev-master"
+    "humanmade/coding-standards" : "dev-master"
   },
   "minimum-stability": "dev"
 }
