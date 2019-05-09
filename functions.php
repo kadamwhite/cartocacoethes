@@ -17,23 +17,21 @@ setup();
 /**
  * Conditionally enqueue scripts & styles.
  */
-add_action( 'plugins_loaded', function() {
-	if ( function_exists( 'Asset_Loader\\autoenqueue' ) ) {
-		require __DIR__ . '/inc/assets.php';
-		Assets\setup();
-	} else {
-		add_action( 'admin_notices', function() {
-			// Deliberately omit .is-dismissible from these classes.
-			echo '<div class="notice notice-error">';
-			echo '<p>';
-			echo 'This theme does not work properly unless the ';
-			echo '<a href="https://github.com/humanmade/asset-loader">Asset Loader plugin</a>';
-			echo ' is installed &amp; active!';
-			echo '</p>';
-			echo '</div>';
-		} );
-	}
-} );
+if ( function_exists( 'Asset_Loader\\autoenqueue' ) ) {
+	require __DIR__ . '/inc/assets.php';
+	Assets\setup();
+} else {
+	add_action( 'admin_notices', function() {
+		// Deliberately omit .is-dismissible from these classes.
+		echo '<div class="notice notice-error">';
+		echo '<p>';
+		echo 'This theme does not work properly unless the ';
+		echo '<a href="https://github.com/humanmade/asset-loader">Asset Loader plugin</a>';
+		echo ' is installed &amp; active!';
+		echo '</p>';
+		echo '</div>';
+	} );
+}
 
 /**
  * Integrate with Art Gallery plugin.
