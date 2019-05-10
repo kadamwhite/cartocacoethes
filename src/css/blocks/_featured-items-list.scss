@@ -10,6 +10,13 @@
 		width: 100%;
 	}
 }
+@include respond-between( $content-width, 800px ) {
+	.wp-block-columns.has-2-columns .featured-items-list__category-list,
+	.wp-block-columns.has-3-columns .featured-items-list__category-list,
+	.wp-block-columns.has-4-columns .featured-items-list__category-list {
+		width: calc(50% - 2em);
+	}
+}
 
 .featured-items-list__item {
 	display: flex;
