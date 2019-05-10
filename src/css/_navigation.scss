@@ -16,9 +16,12 @@
 	max-width: $content-width;
 	font-family: $font-family-highlight;
 
-	@include respond-above ( $content-width ) {
+	@include respond-above( $content-width ) {
 		padding: 0;
 		width: $wide-content-width;
+		max-width: 100%;
+	}
+	@include respond-above( $wide-content-width ) {
 		max-width: $wide-content-width;
 	}
 

@@ -65,13 +65,13 @@ h1, h2, h3 {
 			@include respond-above( $content-width ) {
 				padding: 0.5 1rem;
 				&::before {
-					left: calc( -( 100% - #{ $content-width } ) / 2 );
-					right: calc( -( 100% - #{ $content-width } ) / 2 );
+					width: 100%;
 				}
 			}
 			@include respond-above( $content-width + rems( 3 ) ) {
 				padding: 0.5em 0;
 				&::before {
+					width: auto;
 					left: -1.5rem;
 					right: -1.5rem;
 				}
