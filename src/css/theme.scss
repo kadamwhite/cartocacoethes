@@ -379,6 +379,12 @@ textarea {
 	@include respond-above( $menu-size-cutoff ) {
 		padding-top: 0;
 	}
+
+	.blog &,
+	.archive &,
+	.home.page & {
+		padding-bottom: 0;
+	}
 }
 
 .site-title {
@@ -388,8 +394,20 @@ textarea {
 	line-height: 1.2;
 	color: #333332;
 	@include respond-above( $narrow-single-column ) {
-		margin: 0 1em;
 		font-size: $font-size-large;
+
+		// Left-align the title
+		text-align: left;
+		margin: 0 auto;
+		max-width: $content-width;
+		.home & {
+			max-width: $wide-content-width;
+		}
+
+		.blog &,
+		.archive & {
+			max-width: $archive-width;
+		}
 	}
 }
 

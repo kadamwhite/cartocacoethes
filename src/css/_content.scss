@@ -71,6 +71,13 @@
 	padding-left: 1.5rem;
 	max-width: $content-width;
 }
+.blog,
+.archive {
+	.page-title,
+	.archive-description {
+		margin: 1.5em 0;
+	}
+}
 
 @include respond-above( $content-width ) {
 	.page-content > *,
@@ -177,9 +184,6 @@
 		}
 
 		@include respond-above( $menu-size-cutoff ) {
-			.page-header {
-				text-align: center;
-			}
 			article {
 				width: calc( 50% - 15px );
 			}
