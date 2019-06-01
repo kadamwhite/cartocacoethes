@@ -21,8 +21,8 @@
   ],
   "scripts": {
     "postinstall": "composer install",
+    "prerelease": "rm -f build/*",
     "release": "bash .bin/release",
-    "prebuild": "rm -f build/*",
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config=.config/webpack.config.dev.js",
     "phpcs": "vendor/bin/phpcs --standard=phpcs.xml -s .",
