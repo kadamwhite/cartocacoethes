@@ -254,6 +254,9 @@
 /* Unset problematic Core block styles */
 @import 'block-overrides';
 
+/* Sandboxed widget & third-party styles */
+@import 'widgets';
+
 /*
  * Available block selectors:
 
