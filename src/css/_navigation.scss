@@ -12,7 +12,7 @@
 	clear: both;
 	display: block;
 	margin: 0 auto 2em;
-	padding: 0 1em;
+	padding: 0 1.5rem;
 	max-width: $content-width;
 	font-family: $font-family-highlight;
 
@@ -85,6 +85,10 @@
 	border: 2px solid black;
 	border-radius: 0;
 	background: transparent;
+
+	@include respond-above( $narrow-single-column ) {
+		margin-left: 0;
+	}
 }
 
 @include respond-below( $menu-size-cutoff ) {
