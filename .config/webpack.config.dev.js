@@ -2,8 +2,10 @@
  * This file defines the configuration for development and dev-server builds.
  */
 const { resolve } = require( 'path' );
-const { externals, helpers, presets } = require( '@humanmade/webpack-helpers' );
+const { helpers, presets } = require( '@humanmade/webpack-helpers' );
 const { choosePort, cleanOnExit, filePath } = helpers;
+
+const config = require( './webpack.config.shared' );
 
 const themePath = ( ...pathParts ) => resolve( __dirname, '..', ...pathParts );
 
@@ -11,28 +13,6 @@ const themePath = ( ...pathParts ) => resolve( __dirname, '..', ...pathParts );
 cleanOnExit( [
 	themePath( 'build/asset-manifest.json' ),
 ] );
-
-const config = {
-	externals,
-	entry: {
-		comments: themePath( 'src/css/comments.scss' ),
-		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
-		'front-page': themePath( 'src/css/front-page.scss' ),
-		sidebar: themePath( 'src/css/sidebar.scss' ),
-		customizer: themePath( 'src/customizer.js' ),
-		editor: [
-			themePath( 'src/blocks.js' ),
-		],
-		theme: [
-			themePath( 'src/css/theme.scss' ),
-			themePath( 'src/theme/navigation.js' ),
-			themePath( 'src/theme/skip-link-focus-fix.js' ),
-		],
-	},
-	output: {
-		path: themePath( 'build' ),
-	},
-};
 
 if (
 	process.argv[1].indexOf( 'webpack-dev-server' ) !== -1

@@ -21,7 +21,12 @@ if ( post_password_required() ) {
 ?>
 
 <?php wp_print_styles( [ 'ehg-comments' ] ); ?>
-<div id="comments" class="comments-area">
+
+<div class="comments-toggle">
+	<button data-comments-toggle><?php echo __( 'Toggle comments', 'ehg' ); ?></button>
+</div>
+
+<div id="comments" class="comments-area screen-reader-text">
 
 	<?php
 	// You can start editing here -- including this comment!
