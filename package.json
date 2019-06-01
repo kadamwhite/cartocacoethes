@@ -21,7 +21,6 @@
   ],
   "scripts": {
     "postinstall": "composer install",
-    "prerelease": "rm build/asset-manifest.json",
     "release": "bash .bin/release",
     "prebuild": "rm -f build/*",
     "build": "webpack --config=.config/webpack.config.prod.js",

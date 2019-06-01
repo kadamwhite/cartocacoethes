@@ -69,7 +69,9 @@ echo "Preparing release $VERSION"
 rm -rf build
 git checkout release
 git merge master -X theirs --no-edit
+rm build/*
 npm run build
+rm -f build/asset-manifest.json
 git add -f build
 git commit --amend -m "Tag release v$VERSION"
 git tag "v$VERSION"
