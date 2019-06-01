@@ -65,6 +65,7 @@
 .post-navigation,
 .page-navigation,
 .comments-area,
+.comments-toggle,
 .wp-video {
 	margin: 1.5em auto;
 	padding-right: 1.5rem;
@@ -78,6 +79,9 @@
 		margin: 1.5em 0;
 	}
 }
+.comments-toggle {
+	margin-bottom: 2.25em;
+}
 
 @include respond-above( $content-width ) {
 	.page-content > *,
@@ -90,7 +94,8 @@
 	.site-info,
 	.post-navigation,
 	.page-navigation,
-	.comments-area {
+	.comments-area,
+	.comments-toggle {
 		padding-left: 0px;
 		padding-right: 0px;
 	}

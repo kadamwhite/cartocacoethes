@@ -1,36 +1,17 @@
 /**
  * This file defines the configuration that is used for the production build.
  */
-const { resolve } = require( 'path' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
-const { helpers, externals, presets } = require( '@humanmade/webpack-helpers' );
+const { helpers, presets } = require( '@humanmade/webpack-helpers' );
 const { filePath } = helpers;
 
-const themePath = ( ...pathParts ) => resolve( __dirname, '..', ...pathParts );
+const sharedConfig = require( './webpack.config.shared' );
 
 /**
  * Theme production build configuration.
  */
 const config = {
-	externals,
-	entry: {
-		comments: themePath( 'src/css/comments.scss' ),
-		'editor-styles': themePath( 'src/css/editor-styles.scss' ),
-		'front-page': themePath( 'src/css/front-page.scss' ),
-		sidebar: themePath( 'src/css/sidebar.scss' ),
-		customizer: themePath( 'src/customizer.js' ),
-		editor: [
-			themePath( 'src/blocks.js' ),
-		],
-		theme: [
-			themePath( 'src/css/theme.scss' ),
-			themePath( 'src/theme/navigation.js' ),
-			themePath( 'src/theme/skip-link-focus-fix.js' ),
-		],
-	},
-	output: {
-		path: themePath( 'build' ),
-	},
+	...sharedConfig,
 	plugins: [
 		new FixStyleOnlyEntriesPlugin(),
 	],
