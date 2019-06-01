@@ -1,5 +1,9 @@
 #mc_embed_signup form {
-	padding-left: 0;
+	padding: 0;
 	display: flex;
 	flex-wrap: nowrap;
+
+	input {
+		margin-bottom: 0;
+	}
 }
