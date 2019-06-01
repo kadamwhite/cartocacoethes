@@ -411,7 +411,7 @@ textarea {
 		}
 	}
 	@include respond-between( $narrow-single-column, $content-width ) {
-		.home & {
+		.home {
 			padding: 0 1.5rem;
 		}
 	}
