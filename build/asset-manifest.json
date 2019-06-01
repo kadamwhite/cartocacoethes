@@ -1,0 +1,16 @@
+{
+  "comments.js": "http://localhost:9090/build/comments.js",
+  "comments.js.map": "http://localhost:9090/build/comments.js.map",
+  "customizer.js": "http://localhost:9090/build/customizer.js",
+  "customizer.js.map": "http://localhost:9090/build/customizer.js.map",
+  "editor.js": "http://localhost:9090/build/editor.js",
+  "editor.js.map": "http://localhost:9090/build/editor.js.map",
+  "editor-styles.js": "http://localhost:9090/build/editor-styles.js",
+  "editor-styles.js.map": "http://localhost:9090/build/editor-styles.js.map",
+  "front-page.js": "http://localhost:9090/build/front-page.js",
+  "front-page.js.map": "http://localhost:9090/build/front-page.js.map",
+  "sidebar.js": "http://localhost:9090/build/sidebar.js",
+  "sidebar.js.map": "http://localhost:9090/build/sidebar.js.map",
+  "theme.js": "http://localhost:9090/build/theme.js",
+  "theme.js.map": "http://localhost:9090/build/theme.js.map"
+}

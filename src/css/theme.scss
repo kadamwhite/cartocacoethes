@@ -399,7 +399,7 @@ textarea {
 
 		// Left-align the title
 		text-align: left;
-		margin: 0 auto;
+		margin: 0 auto 1em;
 		max-width: $content-width;
 		.home & {
 			max-width: $wide-content-width;
@@ -408,6 +408,11 @@ textarea {
 		.blog &,
 		.archive & {
 			max-width: $archive-width;
+		}
+	}
+	@include respond-between( $narrow-single-column, $content-width ) {
+		.home & {
+			padding: 0 1.5rem;
 		}
 	}
 }
