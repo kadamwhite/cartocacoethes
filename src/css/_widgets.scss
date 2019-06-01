@@ -1,9 +1,11 @@
 #mc_embed_signup form {
-	padding: 0;
-	display: flex;
+	padding: 0 !important;
+	display: flex !important;
+	align-items: center;
 	flex-wrap: nowrap;
+	overflow: hidden;
 
 	input {
-		margin-bottom: 0;
+		margin-bottom: 0 !important;
 	}
 }
