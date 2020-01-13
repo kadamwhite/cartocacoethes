@@ -50,8 +50,9 @@
 .entry-content > *,
 .entry-summary > *,
 .not-found > * {
-	margin-right: auto;
-	margin-left: auto;
+	// Override questionable margins on elements like .wp-block-image.is-resized
+	margin-right: auto !important;
+	margin-left: auto !important;
 	padding-right: 1.5rem;
 	padding-left: 1.5rem;
 	max-width: $content-width;

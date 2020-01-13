@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { BlockControls } from '@wordpress/editor';
+import { BlockControls } from '@wordpress/block-editor';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { Toolbar } from '@wordpress/components';

@@ -1,8 +1,7 @@
 /**
  * This file defines the configuration that is used for the production build.
  */
-const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
-const { helpers, presets } = require( '@humanmade/webpack-helpers' );
+const { helpers, plugins, presets } = require( '@humanmade/webpack-helpers' );
 const { filePath } = helpers;
 
 const sharedConfig = require( './webpack.config.shared' );
@@ -13,7 +12,7 @@ const sharedConfig = require( './webpack.config.shared' );
 const config = {
 	...sharedConfig,
 	plugins: [
-		new FixStyleOnlyEntriesPlugin(),
+		plugins.fixStyleOnlyEntries(),
 	],
 };
 
