@@ -129,8 +129,8 @@ autoload( {
 	 * Store the selected block to persist selection across block-swaps.
 	 */
 	before: () => {
-		selectedBlockId = select( 'core/editor' ).getSelectedBlockClientId();
-		dispatch( 'core/editor' ).clearSelectedBlock();
+		selectedBlockId = select( 'core/block-editor' ).getSelectedBlockClientId();
+		dispatch( 'core/block-editor' ).clearSelectedBlock();
 	},
 
 	/**
@@ -146,7 +146,7 @@ autoload( {
 		}
 
 		// Refresh all blocks by iteratively selecting each one that has changed.
-		select( 'core/editor' ).getBlocks().forEach( ( { name, clientId } ) => {
+		select( 'core/block-editor' ).getBlocks().forEach( ( { name, clientId } ) => {
 			if ( changedNames.includes( name ) ) {
 				dispatch( 'core/editor' ).selectBlock( clientId );
 			}
@@ -156,7 +156,7 @@ autoload( {
 		if ( selectedBlockId ) {
 			dispatch( 'core/editor' ).selectBlock( selectedBlockId );
 		} else {
-			dispatch( 'core/editor' ).clearSelectedBlock();
+			dispatch( 'core/block-editor' ).clearSelectedBlock();
 		}
 		selectedBlockId = null;
 	},
