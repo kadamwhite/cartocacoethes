@@ -324,23 +324,23 @@
 @include respond-above( $menu-size-cutoff ) {
 	.has-2-columns .wp-block-column,
 	.has-4-columns .wp-block-column {
-		width: calc(50% - 0.75rem);
+		flex-basis: calc(50% - 0.75rem);
 	}
 }
 @include respond-between( $menu-size-cutoff, $content-width ) {
 	.has-3-columns .wp-block-column {
-		width: calc(50% - 0.75rem);
+		flex-basis: calc(50% - 0.75rem);
 		&:first-child {
-			width: 100%;
+			flex-basis: 100%;
 		}
 	}
 }
 @include respond-above( $content-width ) {
 	.has-3-columns .wp-block-column {
-		width: calc(33.3333% - 1rem);
+		flex-basis: calc(33.3333% - 1rem);
 	}
 	.has-4-columns .wp-block-column {
-		width: calc(25% - 1.125rem);
+		flex-basis: calc(25% - 1.125rem);
 	}
 }
 /* END Columns Block (experimental) */
