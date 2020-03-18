@@ -278,11 +278,14 @@
  * .wp-block-verse
 
  */
+.wp-block-quote {
+	padding: 0 1em !important;
+	color: #444;
+}
 
 .wp-block-quote.is-large,
 .wp-block-quote.is-style-large {
 	margin: 1.5em auto;
-	padding: 0 1em;
 }
 
 .entry-content ul,
@@ -316,10 +319,6 @@
 	justify-content: space-between;
 	gap: 1em;
 	flex-wrap: wrap;
-}
-.wp-block-column {
-	flex: none;
-	width: 100%;
 }
 
 @include respond-above( $menu-size-cutoff ) {
