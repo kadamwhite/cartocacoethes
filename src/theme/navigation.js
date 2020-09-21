@@ -11,20 +11,16 @@ const SITENAV = document.querySelector( '.main-navigation' ),
 		TAB: 9,
 	};
 
-// Initiate the menus (script is loaded in footer).
-initMainNavigation();
-initMenuToggle();
+if ( SITENAV ) {
+	// Initiate the menus (script is loaded in footer).
+	initMainNavigation();
+	initMenuToggle();
+}
 
 /**
  * Initiate the main navigation script.
  */
 function initMainNavigation() {
-
-	// No point if no site nav.
-	if ( ! SITENAV ) {
-		return;
-	}
-
 	// Get the submenus.
 	const SUBMENUS = SITENAV.querySelectorAll( '.menu ul' );
 
