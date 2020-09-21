@@ -278,11 +278,14 @@
  * .wp-block-verse
 
  */
+.wp-block-quote {
+	padding: 0 1em !important;
+	color: #444;
+}
 
 .wp-block-quote.is-large,
 .wp-block-quote.is-style-large {
 	margin: 1.5em auto;
-	padding: 0 1em;
 }
 
 .entry-content ul,
@@ -317,31 +320,27 @@
 	gap: 1em;
 	flex-wrap: wrap;
 }
-.wp-block-column {
-	flex: none;
-	width: 100%;
-}
 
 @include respond-above( $menu-size-cutoff ) {
 	.has-2-columns .wp-block-column,
 	.has-4-columns .wp-block-column {
-		width: calc(50% - 0.75rem);
+		flex-basis: calc(50% - 0.75rem);
 	}
 }
 @include respond-between( $menu-size-cutoff, $content-width ) {
 	.has-3-columns .wp-block-column {
-		width: calc(50% - 0.75rem);
+		flex-basis: calc(50% - 0.75rem);
 		&:first-child {
-			width: 100%;
+			flex-basis: 100%;
 		}
 	}
 }
 @include respond-above( $content-width ) {
 	.has-3-columns .wp-block-column {
-		width: calc(33.3333% - 1rem);
+		flex-basis: calc(33.3333% - 1rem);
 	}
 	.has-4-columns .wp-block-column {
-		width: calc(25% - 1.125rem);
+		flex-basis: calc(25% - 1.125rem);
 	}
 }
 /* END Columns Block (experimental) */

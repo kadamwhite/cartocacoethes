@@ -1,4 +1,4 @@
-@import 'variables';
+@import '../variables';
 
 @include respond-between( $narrow-single-column, $menu-size-cutoff ) {
 	.wp-block-columns.has-2-columns .featured-items-list__category-list,

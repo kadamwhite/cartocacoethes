@@ -1,17 +1,17 @@
 .has-small-font-size {
-	font-size: $font-size-small / 16;
+	font-size: $font-size-small;
 }
 
 .has-regular-font-size {
-	font-size: $font-size-regular / 16;
+	font-size: $font-size-regular;
 }
 
 .has-large-font-size {
-	font-size: $font-size-large / 16;
+	font-size: $font-size-large;
 }
 
 .has-larger-font-size {
-	font-size: $font-size-larger / 16;
+	font-size: $font-size-larger;
 }
 
 // For editor
@@ -24,8 +24,8 @@
 		}
 		// For frontend
 		@include respond-above( $menu-size-cutoff ) {
-			.wp-block-column:first-child { width: calc(62.5% - 1rem); }
-			.wp-block-column:last-child { width: calc(37.5% - 1rem); }
+			.wp-block-column:first-child { flex-basis: calc(62.5% - 1rem); }
+			.wp-block-column:last-child { flex-basis: calc(37.5% - 1rem); }
 		}
 	}
 
@@ -37,8 +37,8 @@
 		}
 		// For frontend
 		@include respond-above( $menu-size-cutoff ) {
-			.wp-block-column:first-child { width: calc(37.5% - 0.75rem); }
-			.wp-block-column:last-child { width: calc(62.5% - 0.75rem); }
+			.wp-block-column:first-child { flex-basis: calc(37.5% - 0.75rem); }
+			.wp-block-column:last-child { flex-basis: calc(62.5% - 0.75rem); }
 		}
 	}
 }
