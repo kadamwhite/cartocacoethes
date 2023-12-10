@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "cartocacoethes",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A responsive, block editor-ready WordPress theme for map lovers",
   "author": "K Adam White",
   "license": "GPL-3.0",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
-    "@humanmade/webpack-helpers": "^0.9.0",
+    "@humanmade/webpack-helpers": "^0.12.0",
     "@wordpress/babel-preset-default": "^4.1.0",
     "acorn": "^6.1.1",
     "ajv": "^6.9.2",

@@ -62,12 +62,12 @@ function enqueue_block_styles() {
 	wp_enqueue_style( 'ehg-fonts', fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 	// Enqueue editor stylesheet. Use the same handle as for the frontend main style.css file.
-	Asset_Loader\autoenqueue( manifest_path(), 'editor-styles.js', [
+	Asset_Loader\enqueue_asset( manifest_path(), 'editor-styles.js', [
 		'handle' => 'ehg-base-style',
 	] );
 
 	// Enqueue custom block transforms.
-	Asset_Loader\autoenqueue( manifest_path(), 'editor.js', [
+	Asset_Loader\enqueue_asset( manifest_path(), 'editor.js', [
 		'handle' => 'ehg-editor-scripts',
 	] );
 }
@@ -82,20 +82,20 @@ function enqueue_styles() {
 	// Register component styles that are printed as needed.
 	// As above, a limitation of Asset_Loader v0.2 requires us to specify
 	// that these are JS files even when we are registering stylesheets.
-	Asset_Loader\autoregister( manifest_path(), 'comments.js', [
+	Asset_Loader\register_asset( manifest_path(), 'comments.js', [
 		'handle' => 'ehg-comments',
 	] );
-	Asset_Loader\autoregister( manifest_path(), 'front-page.js', [
+	Asset_Loader\register_asset( manifest_path(), 'front-page.js', [
 		'handle' => 'ehg-front-page',
 	] );
 
 	// Enqueue main stylesheet.
-	Asset_Loader\autoenqueue( manifest_path(), 'theme.js', [
+	Asset_Loader\enqueue_asset( manifest_path(), 'theme.js', [
 		'handle' => 'ehg-theme',
 	] );
 
 	if ( \EHG\page_has_sidebar() ) {
-		Asset_Loader\autoenqueue( manifest_path(), 'sidebar.js', [
+		Asset_Loader\enqueue_asset( manifest_path(), 'sidebar.js', [
 			'handle' => 'ehg-sidebar',
 		] );
 	}
@@ -112,7 +112,7 @@ function enqueue_scripts() {
 	}
 
 	// Enqueue the global theme navigation and link focus script.
-	Asset_Loader\autoenqueue( manifest_path(), 'theme.js', [
+	Asset_Loader\enqueue_asset( manifest_path(), 'theme.js', [
 		'handle' => 'ehg-theme',
 	] );
 	wp_script_add_data( 'ehg-theme', 'async', true );
