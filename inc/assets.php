@@ -22,7 +22,7 @@ function setup() {
  * @return string
  */
 function manifest_path() {
-	return get_stylesheet_directory() . '/build/asset-manifest.json';
+	return get_stylesheet_directory() . '/build/production-asset-manifest.json';
 }
 
 /**
