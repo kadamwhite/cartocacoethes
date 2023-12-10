@@ -17,7 +17,7 @@ setup();
 /**
  * Conditionally enqueue scripts & styles.
  */
-if ( function_exists( 'Asset_Loader\\autoenqueue' ) ) {
+if ( function_exists( 'Asset_Loader\\enqueue_asset' ) ) {
 	require __DIR__ . '/inc/assets.php';
 	Assets\setup();
 } else {
